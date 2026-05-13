@@ -1,0 +1,32 @@
+task: sst2
+glue_subset: sst2
+model_name: roberta-base
+num_labels: 2
+
+lora:
+  r: 8
+  alpha: 16
+  dropout: 0.0
+  target_modules: ["query", "value"]
+
+optim:
+  lr: 2.0e-4
+  weight_decay: 0.0
+  warmup_steps: 100
+  scheduler: linear
+
+batch_size: 32
+eval_batch_size: 64
+max_seq_len: 128
+total_steps: 5000
+save_steps: [1000, 2000, 3000, 4000, 5000]
+
+diagnostic_ratio: 0.2
+seed: 42
+
+# Stage 1 saliency / ablation
+saliency_batches: 8           # number of batches used to estimate first-order saliency
+fisher_max_samples: 256       # cap per-sample examples for Fisher (S4/S5)
+oracle_test_max: 1024         # cap held-out test examples used by oracle (None=all)
+
+output_dir: results/stage1/sst2

@@ -1,0 +1,15 @@
+{
+  "task": "sst2",
+  "model": "roberta-base",
+  "total_steps": 100,
+  "final_loss": 0.33660126169887156,
+  "final_acc": 0.8738532110091743,
+  "best_acc": 0.8738532110091743,
+  "elapsed_sec": 12.51378321647644,
+  "peak_gpu_mem_gb": 2.2122111320495605,
+  "n_train_main": 53880,
+  "n_diag": 13469,
+  "n_test_holdout": 872,
+  "trainable_params": 887042,
+  "pass_threshold": false
+}

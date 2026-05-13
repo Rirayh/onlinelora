@@ -1,0 +1,15 @@
+size: 11M
+method: relora_diag_gated
+effective_gate: S3_fo_val_signed
+gate_sign: S3neg_drops
+lora_r: 64
+lora_alpha: 64
+seq_len: 256
+batch_size: 16
+total_steps: 5000
+merge_every: 1000
+lr: 0.0003
+warmup_steps: 200
+seed: 42
+n_params_total: 14372736
+n_trainable: 393216

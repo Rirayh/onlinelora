@@ -1,0 +1,69 @@
+[2026-05-12 17:02:33,282] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - START stage3 model=/mnt/cpfs/public_data/public_model/Qwen/Qwen2.5-7B dataset=gsm8k method=relora_diag_gated_S3neg out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/qwen25-7b/gsm8k/relora_diag_gated_S3neg
+[2026-05-12 17:02:35,093] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - tokenizer loaded in 0.3s, vocab=151643
+[2026-05-12 17:02:37,106] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - loading gsm8k (config=main)
+[2026-05-12 17:04:24,130] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - gsm8k train=7223 val=250 test=1319
+[2026-05-12 17:04:26,855] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - gsm8k tokenized: train 7223 val 250
+[2026-05-12 17:04:26,858] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - data prepared in 111.8s
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:00,  5.02it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:00<00:00,  4.57it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:00<00:00,  4.29it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00,  4.96it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00,  4.79it/s]
+[2026-05-12 17:04:29,255] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - model loaded in 2.4s
+[2026-05-12 17:06:52,228] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - #LoRA layers=196 #components=3136
+[2026-05-12 17:06:52,233] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - #trainable params=40.37M
+[2026-05-12 17:07:17,684] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - [step 0] mean_ER=1456.74 mean_CN=9.00e+05 (sampled 8 layers)
+[2026-05-12 17:07:17,685] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - merge events scheduled at: [500, 1000, 1500, 2000, 2500, 3000]
+[2026-05-12 17:10:34,966] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=25/3000 train_loss=0.3997 lr=5.00e-05 elapsed=197s
+[2026-05-12 17:13:43,030] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=50/3000 train_loss=0.1596 lr=1.00e-04 elapsed=385s
+[2026-05-12 17:17:00,668] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=75/3000 train_loss=0.1343 lr=1.50e-04 elapsed=583s
+[2026-05-12 17:20:12,704] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=100/3000 train_loss=0.1247 lr=2.00e-04 elapsed=775s
+[2026-05-12 17:23:25,950] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=125/3000 train_loss=0.1178 lr=2.00e-04 elapsed=968s
+[2026-05-12 17:26:35,900] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=150/3000 train_loss=0.1162 lr=2.00e-04 elapsed=1158s
+[2026-05-12 17:29:48,450] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=175/3000 train_loss=0.1172 lr=2.00e-04 elapsed=1351s
+[2026-05-12 17:32:58,003] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=200/3000 train_loss=0.1184 lr=1.99e-04 elapsed=1540s
+[2026-05-12 17:36:12,630] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=225/3000 train_loss=0.1248 lr=1.99e-04 elapsed=1735s
+[2026-05-12 17:39:29,238] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=250/3000 train_loss=0.0724 lr=1.99e-04 elapsed=1932s
+[2026-05-12 17:39:46,108] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=250 VAL_LOSS=0.1263
+[2026-05-12 17:43:01,670] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=275/3000 train_loss=0.0680 lr=1.98e-04 elapsed=2144s
+[2026-05-12 17:46:08,453] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=300/3000 train_loss=0.0645 lr=1.98e-04 elapsed=2331s
+[2026-05-12 17:49:17,163] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=325/3000 train_loss=0.0653 lr=1.97e-04 elapsed=2519s
+[2026-05-12 17:52:23,558] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=350/3000 train_loss=0.0632 lr=1.96e-04 elapsed=2706s
+[2026-05-12 17:55:44,626] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=375/3000 train_loss=0.0675 lr=1.96e-04 elapsed=2907s
+[2026-05-12 17:58:56,782] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=400/3000 train_loss=0.0659 lr=1.95e-04 elapsed=3099s
+[2026-05-12 18:02:06,360] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=425/3000 train_loss=0.0689 lr=1.94e-04 elapsed=3289s
+[2026-05-12 18:05:18,671] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=450/3000 train_loss=0.0721 lr=1.93e-04 elapsed=3481s
+[2026-05-12 18:08:28,715] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=475/3000 train_loss=0.0275 lr=1.92e-04 elapsed=3671s
+[2026-05-12 18:11:41,775] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=500/3000 train_loss=0.0272 lr=1.91e-04 elapsed=3864s
+[2026-05-12 18:11:58,656] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=500 VAL_LOSS=0.1482
+[2026-05-12 18:12:23,263] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=500 mean_ER=1456.93 mean_CN=3.20e+05
+[2026-05-12 18:12:23,263] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - === MERGE EVENT 1 at step 500 (method=relora_diag_gated_S3neg) ===
+[2026-05-12 18:12:31,425] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - merge: total=3136 kept=2024 drop_rate=0.355
+[2026-05-12 18:13:13,217] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=500 POST-MERGE VAL_LOSS=0.1492 (first_eval=0.126281265908527)
+[2026-05-12 18:16:28,475] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=525/3000 train_loss=0.0385 lr=5.00e-05 elapsed=4151s
+[2026-05-12 18:19:36,523] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=550/3000 train_loss=0.0332 lr=1.00e-04 elapsed=4339s
+[2026-05-12 18:22:49,467] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=575/3000 train_loss=0.0305 lr=1.50e-04 elapsed=4532s
+[2026-05-12 18:26:04,614] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=600/3000 train_loss=0.0289 lr=2.00e-04 elapsed=4727s
+[2026-05-12 18:29:19,468] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=625/3000 train_loss=0.0331 lr=2.00e-04 elapsed=4922s
+[2026-05-12 18:32:35,002] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=650/3000 train_loss=0.0321 lr=2.00e-04 elapsed=5117s
+[2026-05-12 18:35:42,723] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=675/3000 train_loss=0.0338 lr=2.00e-04 elapsed=5305s
+[2026-05-12 18:39:00,734] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=700/3000 train_loss=0.0180 lr=1.99e-04 elapsed=5503s
+[2026-05-12 18:42:16,388] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=725/3000 train_loss=0.0163 lr=1.99e-04 elapsed=5699s
+[2026-05-12 18:45:34,777] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=750/3000 train_loss=0.0181 lr=1.98e-04 elapsed=5897s
+[2026-05-12 18:45:51,675] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=750 VAL_LOSS=0.1642
+[2026-05-12 18:48:55,225] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=775/3000 train_loss=0.0174 lr=1.97e-04 elapsed=6098s
+[2026-05-12 18:52:08,454] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=800/3000 train_loss=0.0180 lr=1.97e-04 elapsed=6291s
+[2026-05-12 18:55:17,417] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=825/3000 train_loss=0.0189 lr=1.96e-04 elapsed=6480s
+[2026-05-12 18:58:27,861] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=850/3000 train_loss=0.0195 lr=1.95e-04 elapsed=6670s
+[2026-05-12 19:01:38,232] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=875/3000 train_loss=0.0170 lr=1.94e-04 elapsed=6861s
+[2026-05-12 19:04:50,523] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=900/3000 train_loss=0.0208 lr=1.92e-04 elapsed=7053s
+[2026-05-12 19:08:08,305] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=925/3000 train_loss=0.0110 lr=1.91e-04 elapsed=7251s
+[2026-05-12 19:11:19,890] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=950/3000 train_loss=0.0076 lr=1.90e-04 elapsed=7442s
+[2026-05-12 19:14:35,307] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=975/3000 train_loss=0.0084 lr=1.88e-04 elapsed=7638s
+[2026-05-12 19:17:50,147] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=1000/3000 train_loss=0.0109 lr=1.87e-04 elapsed=7832s
+[2026-05-12 19:18:07,019] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=1000 VAL_LOSS=0.2004
+[2026-05-12 19:18:31,970] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=1000 mean_ER=1457.01 mean_CN=9.46e+05
+[2026-05-12 19:18:31,970] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - === MERGE EVENT 2 at step 1000 (method=relora_diag_gated_S3neg) ===
+[2026-05-12 19:18:39,978] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - merge: total=3136 kept=1907 drop_rate=0.392
+[2026-05-12 19:19:21,771] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - step=1000 POST-MERGE VAL_LOSS=0.2010 (first_eval=0.126281265908527)
+[2026-05-12 19:19:21,771] WARNING stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - ABORT: post-merge val_loss=0.2010 > first_eval=0.1263 * 1.5
+[2026-05-12 19:19:21,787] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - training ABORTED in 7924.1s
+[2026-05-12 19:19:38,658] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - FINAL VAL_LOSS=0.2010
+[2026-05-12 19:20:03,521] INFO stage3.qwen25-7b.gsm8k.relora_diag_gated_S3neg - summary.json written

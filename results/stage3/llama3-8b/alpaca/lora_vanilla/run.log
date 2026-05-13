@@ -1,0 +1,152 @@
+[2026-05-12 15:27:37,190] INFO stage3.llama3-8b.alpaca.lora_vanilla - START stage3 model=/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B dataset=alpaca method=lora_vanilla out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/lora_vanilla
+[2026-05-12 15:27:40,883] INFO stage3.llama3-8b.alpaca.lora_vanilla - tokenizer loaded in 0.3s, vocab=128000
+[2026-05-12 15:27:42,385] INFO stage3.llama3-8b.alpaca.lora_vanilla - loading yahma/alpaca-cleaned
+[2026-05-12 15:29:27,336] INFO stage3.llama3-8b.alpaca.lora_vanilla - alpaca train=10000 val=500
+[2026-05-12 15:29:31,255] INFO stage3.llama3-8b.alpaca.lora_vanilla - alpaca tokenized: train 10000 val 500
+[2026-05-12 15:29:31,279] INFO stage3.llama3-8b.alpaca.lora_vanilla - data prepared in 110.4s
+[2026-05-12 15:29:34,181] INFO stage3.llama3-8b.alpaca.lora_vanilla - model loaded in 2.9s
+[2026-05-12 15:30:19,453] INFO stage3.llama3-8b.alpaca.lora_vanilla - #LoRA layers=224 #components=3584
+[2026-05-12 15:30:19,459] INFO stage3.llama3-8b.alpaca.lora_vanilla - #trainable params=41.94M
+[2026-05-12 15:30:35,622] INFO stage3.llama3-8b.alpaca.lora_vanilla - [step 0] mean_ER=1622.41 mean_CN=1.18e+07 (sampled 8 layers)
+[2026-05-12 15:30:35,623] INFO stage3.llama3-8b.alpaca.lora_vanilla - merge events scheduled at: []
+[2026-05-12 15:32:22,319] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=25/3000 train_loss=1.0822 lr=5.00e-05 elapsed=107s
+[2026-05-12 15:34:13,500] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=50/3000 train_loss=1.0029 lr=1.00e-04 elapsed=218s
+[2026-05-12 15:35:57,881] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=75/3000 train_loss=0.9831 lr=1.50e-04 elapsed=322s
+[2026-05-12 15:37:46,378] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=100/3000 train_loss=1.0002 lr=2.00e-04 elapsed=431s
+[2026-05-12 15:39:32,382] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=125/3000 train_loss=0.9829 lr=2.00e-04 elapsed=537s
+[2026-05-12 15:41:21,779] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=150/3000 train_loss=0.9858 lr=2.00e-04 elapsed=646s
+[2026-05-12 15:43:07,950] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=175/3000 train_loss=0.9909 lr=2.00e-04 elapsed=752s
+[2026-05-12 15:44:51,904] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=200/3000 train_loss=1.0004 lr=1.99e-04 elapsed=856s
+[2026-05-12 15:46:41,415] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=225/3000 train_loss=1.0011 lr=1.99e-04 elapsed=966s
+[2026-05-12 15:48:31,797] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=250/3000 train_loss=0.9752 lr=1.99e-04 elapsed=1076s
+[2026-05-12 15:48:52,101] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=250 VAL_LOSS=0.9732
+[2026-05-12 15:50:39,517] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=275/3000 train_loss=0.9771 lr=1.98e-04 elapsed=1204s
+[2026-05-12 15:52:25,985] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=300/3000 train_loss=0.9747 lr=1.98e-04 elapsed=1310s
+[2026-05-12 15:54:16,081] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=325/3000 train_loss=0.9371 lr=1.97e-04 elapsed=1420s
+[2026-05-12 15:56:06,854] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=350/3000 train_loss=0.8546 lr=1.96e-04 elapsed=1531s
+[2026-05-12 15:57:51,003] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=375/3000 train_loss=0.8356 lr=1.96e-04 elapsed=1635s
+[2026-05-12 15:59:41,201] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=400/3000 train_loss=0.8268 lr=1.95e-04 elapsed=1746s
+[2026-05-12 16:01:26,868] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=425/3000 train_loss=0.8722 lr=1.94e-04 elapsed=1851s
+[2026-05-12 16:03:16,175] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=450/3000 train_loss=0.8548 lr=1.93e-04 elapsed=1961s
+[2026-05-12 16:05:01,521] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=475/3000 train_loss=0.8536 lr=1.92e-04 elapsed=2066s
+[2026-05-12 16:06:48,701] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=500/3000 train_loss=0.8452 lr=1.91e-04 elapsed=2173s
+[2026-05-12 16:07:08,815] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=500 VAL_LOSS=0.9868
+[2026-05-12 16:07:25,202] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=500 mean_ER=1623.05 mean_CN=6.70e+06
+[2026-05-12 16:09:12,943] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=525/3000 train_loss=0.8574 lr=1.90e-04 elapsed=2317s
+[2026-05-12 16:11:01,084] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=550/3000 train_loss=0.8767 lr=1.88e-04 elapsed=2425s
+[2026-05-12 16:12:43,704] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=575/3000 train_loss=0.8587 lr=1.87e-04 elapsed=2528s
+[2026-05-12 16:14:28,183] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=600/3000 train_loss=0.8671 lr=1.86e-04 elapsed=2633s
+[2026-05-12 16:16:14,701] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=625/3000 train_loss=0.8397 lr=1.84e-04 elapsed=2739s
+[2026-05-12 16:17:59,577] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=650/3000 train_loss=0.6210 lr=1.83e-04 elapsed=2844s
+[2026-05-12 16:19:46,429] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=675/3000 train_loss=0.6518 lr=1.81e-04 elapsed=2951s
+[2026-05-12 16:21:33,286] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=700/3000 train_loss=0.6562 lr=1.80e-04 elapsed=3058s
+[2026-05-12 16:23:22,800] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=725/3000 train_loss=0.6967 lr=1.78e-04 elapsed=3167s
+[2026-05-12 16:25:09,853] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=750/3000 train_loss=0.6347 lr=1.76e-04 elapsed=3274s
+[2026-05-12 16:25:30,149] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=750 VAL_LOSS=1.0656
+[2026-05-12 16:27:17,592] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=775/3000 train_loss=0.6356 lr=1.74e-04 elapsed=3402s
+[2026-05-12 16:29:02,613] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=800/3000 train_loss=0.6573 lr=1.73e-04 elapsed=3507s
+[2026-05-12 16:30:50,271] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=825/3000 train_loss=0.6527 lr=1.71e-04 elapsed=3615s
+[2026-05-12 16:32:36,207] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=850/3000 train_loss=0.6553 lr=1.69e-04 elapsed=3721s
+[2026-05-12 16:34:25,667] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=875/3000 train_loss=0.6640 lr=1.67e-04 elapsed=3830s
+[2026-05-12 16:36:13,902] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=900/3000 train_loss=0.6435 lr=1.65e-04 elapsed=3938s
+[2026-05-12 16:38:02,797] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=925/3000 train_loss=0.6619 lr=1.63e-04 elapsed=4047s
+[2026-05-12 16:39:47,536] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=950/3000 train_loss=0.5394 lr=1.61e-04 elapsed=4152s
+[2026-05-12 16:41:34,877] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=975/3000 train_loss=0.4348 lr=1.58e-04 elapsed=4259s
+[2026-05-12 16:43:19,979] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1000/3000 train_loss=0.4303 lr=1.56e-04 elapsed=4364s
+[2026-05-12 16:43:40,098] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1000 VAL_LOSS=1.2144
+[2026-05-12 16:43:56,079] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1000 mean_ER=1623.33 mean_CN=2.51e+07
+[2026-05-12 16:45:43,672] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1025/3000 train_loss=0.4318 lr=1.54e-04 elapsed=4508s
+[2026-05-12 16:47:31,442] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1050/3000 train_loss=0.4436 lr=1.52e-04 elapsed=4616s
+[2026-05-12 16:49:22,821] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1075/3000 train_loss=0.4332 lr=1.49e-04 elapsed=4727s
+[2026-05-12 16:51:12,491] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1100/3000 train_loss=0.4409 lr=1.47e-04 elapsed=4837s
+[2026-05-12 16:53:06,824] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1125/3000 train_loss=0.4431 lr=1.44e-04 elapsed=4951s
+[2026-05-12 16:54:59,640] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1150/3000 train_loss=0.4512 lr=1.42e-04 elapsed=5064s
+[2026-05-12 16:56:41,173] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1175/3000 train_loss=0.4329 lr=1.40e-04 elapsed=5166s
+[2026-05-12 16:58:29,706] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1200/3000 train_loss=0.4568 lr=1.37e-04 elapsed=5274s
+[2026-05-12 17:00:16,977] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1225/3000 train_loss=0.4580 lr=1.34e-04 elapsed=5381s
+[2026-05-12 17:02:07,216] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1250/3000 train_loss=0.4705 lr=1.32e-04 elapsed=5492s
+[2026-05-12 17:02:27,341] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1250 VAL_LOSS=1.1809
+[2026-05-12 17:04:13,245] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1275/3000 train_loss=0.2600 lr=1.29e-04 elapsed=5618s
+[2026-05-12 17:06:01,347] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1300/3000 train_loss=0.2587 lr=1.27e-04 elapsed=5726s
+[2026-05-12 17:08:59,699] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1325/3000 train_loss=0.2736 lr=1.24e-04 elapsed=5904s
+[2026-05-12 17:12:58,227] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1350/3000 train_loss=0.2749 lr=1.21e-04 elapsed=6143s
+[2026-05-12 17:16:54,597] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1375/3000 train_loss=0.2834 lr=1.19e-04 elapsed=6379s
+[2026-05-12 17:20:54,065] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1400/3000 train_loss=0.2769 lr=1.16e-04 elapsed=6618s
+[2026-05-12 17:24:52,807] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1425/3000 train_loss=0.2844 lr=1.14e-04 elapsed=6857s
+[2026-05-12 17:28:57,421] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1450/3000 train_loss=0.2660 lr=1.11e-04 elapsed=7102s
+[2026-05-12 17:33:02,755] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1475/3000 train_loss=0.2918 lr=1.08e-04 elapsed=7347s
+[2026-05-12 17:37:05,867] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1500/3000 train_loss=0.2781 lr=1.05e-04 elapsed=7590s
+[2026-05-12 17:37:50,973] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1500 VAL_LOSS=1.3538
+[2026-05-12 17:38:26,341] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1500 mean_ER=1623.33 mean_CN=1.22e+07
+[2026-05-12 17:42:34,449] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1525/3000 train_loss=0.2770 lr=1.03e-04 elapsed=7919s
+[2026-05-12 17:46:32,303] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1550/3000 train_loss=0.2805 lr=1.00e-04 elapsed=8157s
+[2026-05-12 17:50:27,980] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1575/3000 train_loss=0.2031 lr=9.73e-05 elapsed=8392s
+[2026-05-12 17:54:27,217] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1600/3000 train_loss=0.1456 lr=9.46e-05 elapsed=8632s
+[2026-05-12 17:58:37,616] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1625/3000 train_loss=0.1690 lr=9.19e-05 elapsed=8882s
+[2026-05-12 18:02:37,099] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1650/3000 train_loss=0.1559 lr=8.92e-05 elapsed=9121s
+[2026-05-12 18:06:37,215] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1675/3000 train_loss=0.1513 lr=8.65e-05 elapsed=9362s
+[2026-05-12 18:10:43,103] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1700/3000 train_loss=0.1592 lr=8.38e-05 elapsed=9607s
+[2026-05-12 18:14:39,957] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1725/3000 train_loss=0.1601 lr=8.12e-05 elapsed=9844s
+[2026-05-12 18:18:42,479] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1750/3000 train_loss=0.1579 lr=7.85e-05 elapsed=10087s
+[2026-05-12 18:19:27,525] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1750 VAL_LOSS=1.5572
+[2026-05-12 18:23:35,322] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1775/3000 train_loss=0.1587 lr=7.59e-05 elapsed=10380s
+[2026-05-12 18:27:38,554] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1800/3000 train_loss=0.1591 lr=7.32e-05 elapsed=10623s
+[2026-05-12 18:31:44,498] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1825/3000 train_loss=0.1613 lr=7.06e-05 elapsed=10869s
+[2026-05-12 18:35:34,661] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1850/3000 train_loss=0.1545 lr=6.81e-05 elapsed=11099s
+[2026-05-12 18:39:30,910] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1875/3000 train_loss=0.1722 lr=6.55e-05 elapsed=11335s
+[2026-05-12 18:43:33,092] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1900/3000 train_loss=0.0845 lr=6.30e-05 elapsed=11577s
+[2026-05-12 18:47:25,473] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1925/3000 train_loss=0.0784 lr=6.05e-05 elapsed=11810s
+[2026-05-12 18:51:33,108] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1950/3000 train_loss=0.0866 lr=5.80e-05 elapsed=12057s
+[2026-05-12 18:55:36,048] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=1975/3000 train_loss=0.0904 lr=5.56e-05 elapsed=12300s
+[2026-05-12 18:59:32,838] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2000/3000 train_loss=0.0780 lr=5.32e-05 elapsed=12537s
+[2026-05-12 19:00:17,942] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2000 VAL_LOSS=1.7780
+[2026-05-12 19:00:53,831] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2000 mean_ER=1623.30 mean_CN=3.20e+07
+[2026-05-12 19:04:44,024] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2025/3000 train_loss=0.0850 lr=5.08e-05 elapsed=12848s
+[2026-05-12 19:08:50,977] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2050/3000 train_loss=0.0808 lr=4.84e-05 elapsed=13095s
+[2026-05-12 19:12:51,345] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2075/3000 train_loss=0.0802 lr=4.61e-05 elapsed=13336s
+[2026-05-12 19:16:50,627] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2100/3000 train_loss=0.0821 lr=4.39e-05 elapsed=13575s
+[2026-05-12 19:20:55,493] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2125/3000 train_loss=0.0871 lr=4.17e-05 elapsed=13820s
+[2026-05-12 19:25:05,348] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2150/3000 train_loss=0.0916 lr=3.95e-05 elapsed=14070s
+[2026-05-12 19:29:09,857] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2175/3000 train_loss=0.0810 lr=3.73e-05 elapsed=14314s
+[2026-05-12 19:33:02,563] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2200/3000 train_loss=0.0556 lr=3.53e-05 elapsed=14547s
+[2026-05-12 19:36:57,252] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2225/3000 train_loss=0.0420 lr=3.32e-05 elapsed=14782s
+[2026-05-12 19:40:58,750] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2250/3000 train_loss=0.0447 lr=3.12e-05 elapsed=15023s
+[2026-05-12 19:41:43,054] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2250 VAL_LOSS=2.0114
+[2026-05-12 19:45:39,470] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2275/3000 train_loss=0.0413 lr=2.93e-05 elapsed=15304s
+[2026-05-12 19:49:30,577] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2300/3000 train_loss=0.0385 lr=2.74e-05 elapsed=15535s
+[2026-05-12 19:53:30,108] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2325/3000 train_loss=0.0430 lr=2.56e-05 elapsed=15774s
+[2026-05-12 19:57:33,493] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2350/3000 train_loss=0.0443 lr=2.38e-05 elapsed=16018s
+[2026-05-12 20:01:37,858] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2375/3000 train_loss=0.0429 lr=2.21e-05 elapsed=16262s
+[2026-05-12 20:05:40,248] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2400/3000 train_loss=0.0427 lr=2.04e-05 elapsed=16505s
+[2026-05-12 20:09:37,294] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2425/3000 train_loss=0.0440 lr=1.88e-05 elapsed=16742s
+[2026-05-12 20:13:40,245] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2450/3000 train_loss=0.0430 lr=1.72e-05 elapsed=16985s
+[2026-05-12 20:17:54,266] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2475/3000 train_loss=0.0435 lr=1.57e-05 elapsed=17239s
+[2026-05-12 20:21:54,068] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2500/3000 train_loss=0.0426 lr=1.43e-05 elapsed=17478s
+[2026-05-12 20:22:39,186] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2500 VAL_LOSS=2.0757
+[2026-05-12 20:23:15,239] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2500 mean_ER=1623.30 mean_CN=2.77e+07
+[2026-05-12 20:27:22,968] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2525/3000 train_loss=0.0263 lr=1.29e-05 elapsed=17807s
+[2026-05-12 20:31:22,998] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2550/3000 train_loss=0.0239 lr=1.16e-05 elapsed=18047s
+[2026-05-12 20:35:24,567] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2575/3000 train_loss=0.0244 lr=1.04e-05 elapsed=18289s
+[2026-05-12 20:39:23,230] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2600/3000 train_loss=0.0244 lr=9.24e-06 elapsed=18528s
+[2026-05-12 20:43:16,681] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2625/3000 train_loss=0.0231 lr=8.14e-06 elapsed=18761s
+[2026-05-12 20:47:18,607] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2650/3000 train_loss=0.0230 lr=7.10e-06 elapsed=19003s
+[2026-05-12 20:51:16,278] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2675/3000 train_loss=0.0247 lr=6.13e-06 elapsed=19241s
+[2026-05-12 20:55:14,655] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2700/3000 train_loss=0.0241 lr=5.23e-06 elapsed=19479s
+[2026-05-12 20:59:16,186] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2725/3000 train_loss=0.0218 lr=4.40e-06 elapsed=19721s
+[2026-05-12 21:03:16,230] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2750/3000 train_loss=0.0236 lr=3.65e-06 elapsed=19961s
+[2026-05-12 21:04:01,024] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2750 VAL_LOSS=2.2966
+[2026-05-12 21:07:58,106] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2775/3000 train_loss=0.0209 lr=2.96e-06 elapsed=20242s
+[2026-05-12 21:11:55,911] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2800/3000 train_loss=0.0220 lr=2.34e-06 elapsed=20480s
+[2026-05-12 21:15:55,237] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2825/3000 train_loss=0.0221 lr=1.79e-06 elapsed=20720s
+[2026-05-12 21:19:58,515] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2850/3000 train_loss=0.0215 lr=1.32e-06 elapsed=20963s
+[2026-05-12 21:24:00,690] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2875/3000 train_loss=0.0164 lr=9.15e-07 elapsed=21205s
+[2026-05-12 21:28:03,879] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2900/3000 train_loss=0.0183 lr=5.86e-07 elapsed=21448s
+[2026-05-12 21:31:59,526] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2925/3000 train_loss=0.0164 lr=3.30e-07 elapsed=21684s
+[2026-05-12 21:35:59,280] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2950/3000 train_loss=0.0176 lr=1.47e-07 elapsed=21924s
+[2026-05-12 21:40:06,912] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=2975/3000 train_loss=0.0163 lr=3.67e-08 elapsed=22171s
+[2026-05-12 21:44:07,801] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=3000/3000 train_loss=0.0183 lr=0.00e+00 elapsed=22412s
+[2026-05-12 21:44:52,872] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=3000 VAL_LOSS=2.3882
+[2026-05-12 21:45:28,109] INFO stage3.llama3-8b.alpaca.lora_vanilla - step=3000 mean_ER=1623.30 mean_CN=2.12e+07
+[2026-05-12 21:45:28,109] INFO stage3.llama3-8b.alpaca.lora_vanilla - training done in 22492.5s
+[2026-05-12 21:46:13,181] INFO stage3.llama3-8b.alpaca.lora_vanilla - FINAL VAL_LOSS=2.3882
+[2026-05-12 21:46:48,415] INFO stage3.llama3-8b.alpaca.lora_vanilla - summary.json written

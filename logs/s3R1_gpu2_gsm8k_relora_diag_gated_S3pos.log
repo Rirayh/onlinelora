@@ -1,0 +1,171 @@
+[2026-05-12 15:27:37,192] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - START stage3 model=/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B dataset=gsm8k method=relora_diag_gated_S3pos out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3pos
+[2026-05-12 15:27:43,207] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - tokenizer loaded in 0.3s, vocab=128000
+[2026-05-12 15:27:44,032] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - loading gsm8k (config=main)
+[2026-05-12 15:29:30,714] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - gsm8k train=7223 val=250 test=1319
+[2026-05-12 15:29:33,053] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - gsm8k tokenized: train 7223 val 250
+[2026-05-12 15:29:33,056] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - data prepared in 109.8s
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 76.42it/s]
+[2026-05-12 15:29:34,666] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - model loaded in 1.6s
+[2026-05-12 15:30:19,517] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - #LoRA layers=224 #components=3584
+[2026-05-12 15:30:19,523] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - #trainable params=41.94M
+[2026-05-12 15:30:35,621] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - [step 0] mean_ER=1622.41 mean_CN=1.18e+07 (sampled 8 layers)
+[2026-05-12 15:30:35,621] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - merge events scheduled at: [500, 1000, 1500, 2000, 2500, 3000]
+[2026-05-12 15:32:00,978] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=25/3000 train_loss=1.0372 lr=5.00e-05 elapsed=85s
+[2026-05-12 15:33:21,499] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=50/3000 train_loss=0.5707 lr=1.00e-04 elapsed=166s
+[2026-05-12 15:34:42,500] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=75/3000 train_loss=0.5293 lr=1.50e-04 elapsed=247s
+[2026-05-12 15:36:05,887] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=100/3000 train_loss=0.4964 lr=2.00e-04 elapsed=330s
+[2026-05-12 15:37:28,556] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=125/3000 train_loss=0.5109 lr=2.00e-04 elapsed=413s
+[2026-05-12 15:38:52,149] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=150/3000 train_loss=0.4967 lr=2.00e-04 elapsed=497s
+[2026-05-12 15:40:15,853] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=175/3000 train_loss=0.4818 lr=2.00e-04 elapsed=580s
+[2026-05-12 15:41:37,388] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=200/3000 train_loss=0.4672 lr=1.99e-04 elapsed=662s
+[2026-05-12 15:43:00,375] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=225/3000 train_loss=0.4650 lr=1.99e-04 elapsed=745s
+[2026-05-12 15:44:20,603] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=250/3000 train_loss=0.4047 lr=1.99e-04 elapsed=825s
+[2026-05-12 15:44:27,937] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=250 VAL_LOSS=0.4591
+[2026-05-12 15:45:51,251] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=275/3000 train_loss=0.4014 lr=1.98e-04 elapsed=916s
+[2026-05-12 15:47:13,889] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=300/3000 train_loss=0.3968 lr=1.98e-04 elapsed=998s
+[2026-05-12 15:48:33,940] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=325/3000 train_loss=0.3958 lr=1.97e-04 elapsed=1078s
+[2026-05-12 15:49:56,863] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=350/3000 train_loss=0.4074 lr=1.96e-04 elapsed=1161s
+[2026-05-12 15:51:18,828] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=375/3000 train_loss=0.3991 lr=1.96e-04 elapsed=1243s
+[2026-05-12 15:52:42,085] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=400/3000 train_loss=0.3919 lr=1.95e-04 elapsed=1326s
+[2026-05-12 15:54:03,144] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=425/3000 train_loss=0.3911 lr=1.94e-04 elapsed=1408s
+[2026-05-12 15:55:26,026] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=450/3000 train_loss=0.3997 lr=1.93e-04 elapsed=1490s
+[2026-05-12 15:56:48,320] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=475/3000 train_loss=0.2878 lr=1.92e-04 elapsed=1573s
+[2026-05-12 15:58:09,017] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=500/3000 train_loss=0.2755 lr=1.91e-04 elapsed=1653s
+[2026-05-12 15:58:16,359] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=500 VAL_LOSS=0.4865
+[2026-05-12 15:58:32,225] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=500 mean_ER=1622.99 mean_CN=3.20e+08
+[2026-05-12 15:58:32,225] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - === MERGE EVENT 1 at step 500 (method=relora_diag_gated_S3pos) ===
+[2026-05-12 15:58:34,555] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - merge: total=3584 kept=1292 drop_rate=0.640
+[2026-05-12 15:58:58,760] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=500 POST-MERGE VAL_LOSS=0.5624 (first_eval=0.45911298384742133)
+[2026-05-12 16:00:20,805] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=525/3000 train_loss=0.4726 lr=5.00e-05 elapsed=1785s
+[2026-05-12 16:01:43,024] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=550/3000 train_loss=0.4124 lr=1.00e-04 elapsed=1867s
+[2026-05-12 16:03:05,555] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=575/3000 train_loss=0.3937 lr=1.50e-04 elapsed=1950s
+[2026-05-12 16:04:28,737] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=600/3000 train_loss=0.3935 lr=2.00e-04 elapsed=2033s
+[2026-05-12 16:05:49,960] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=625/3000 train_loss=0.3924 lr=2.00e-04 elapsed=2114s
+[2026-05-12 16:07:13,191] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=650/3000 train_loss=0.3806 lr=2.00e-04 elapsed=2198s
+[2026-05-12 16:08:35,139] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=675/3000 train_loss=0.3841 lr=2.00e-04 elapsed=2280s
+[2026-05-12 16:09:57,516] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=700/3000 train_loss=0.3135 lr=1.99e-04 elapsed=2362s
+[2026-05-12 16:11:18,664] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=725/3000 train_loss=0.3148 lr=1.99e-04 elapsed=2443s
+[2026-05-12 16:12:43,126] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=750/3000 train_loss=0.3184 lr=1.98e-04 elapsed=2527s
+[2026-05-12 16:12:50,477] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=750 VAL_LOSS=0.4764
+[2026-05-12 16:14:15,467] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=775/3000 train_loss=0.3254 lr=1.97e-04 elapsed=2620s
+[2026-05-12 16:15:39,510] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=800/3000 train_loss=0.3117 lr=1.97e-04 elapsed=2704s
+[2026-05-12 16:17:00,565] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=825/3000 train_loss=0.3198 lr=1.96e-04 elapsed=2785s
+[2026-05-12 16:18:22,576] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=850/3000 train_loss=0.3234 lr=1.95e-04 elapsed=2867s
+[2026-05-12 16:19:44,562] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=875/3000 train_loss=0.3268 lr=1.94e-04 elapsed=2949s
+[2026-05-12 16:21:06,728] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=900/3000 train_loss=0.3178 lr=1.92e-04 elapsed=3031s
+[2026-05-12 16:22:27,327] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=925/3000 train_loss=0.2032 lr=1.91e-04 elapsed=3112s
+[2026-05-12 16:23:49,499] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=950/3000 train_loss=0.2012 lr=1.90e-04 elapsed=3194s
+[2026-05-12 16:25:12,214] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=975/3000 train_loss=0.1997 lr=1.88e-04 elapsed=3277s
+[2026-05-12 16:26:34,617] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1000/3000 train_loss=0.2006 lr=1.87e-04 elapsed=3359s
+[2026-05-12 16:26:41,959] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1000 VAL_LOSS=0.5569
+[2026-05-12 16:26:58,542] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1000 mean_ER=1623.34 mean_CN=2.38e+07
+[2026-05-12 16:26:58,542] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - === MERGE EVENT 2 at step 1000 (method=relora_diag_gated_S3pos) ===
+[2026-05-12 16:27:01,211] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - merge: total=3584 kept=1042 drop_rate=0.709
+[2026-05-12 16:27:24,922] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1000 POST-MERGE VAL_LOSS=0.5134 (first_eval=0.45911298384742133)
+[2026-05-12 16:28:48,784] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1025/3000 train_loss=0.3937 lr=5.00e-05 elapsed=3493s
+[2026-05-12 16:30:12,498] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1050/3000 train_loss=0.3366 lr=1.00e-04 elapsed=3577s
+[2026-05-12 16:31:34,539] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1075/3000 train_loss=0.3218 lr=1.50e-04 elapsed=3659s
+[2026-05-12 16:32:56,497] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1100/3000 train_loss=0.3118 lr=2.00e-04 elapsed=3741s
+[2026-05-12 16:34:18,488] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1125/3000 train_loss=0.3198 lr=2.00e-04 elapsed=3823s
+[2026-05-12 16:35:41,390] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1150/3000 train_loss=0.2727 lr=2.00e-04 elapsed=3906s
+[2026-05-12 16:37:04,090] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1175/3000 train_loss=0.2539 lr=1.99e-04 elapsed=3988s
+[2026-05-12 16:38:27,475] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1200/3000 train_loss=0.2689 lr=1.99e-04 elapsed=4072s
+[2026-05-12 16:39:48,690] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1225/3000 train_loss=0.2682 lr=1.98e-04 elapsed=4153s
+[2026-05-12 16:41:10,232] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1250/3000 train_loss=0.2663 lr=1.97e-04 elapsed=4235s
+[2026-05-12 16:41:17,579] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1250 VAL_LOSS=0.5019
+[2026-05-12 16:42:43,800] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1275/3000 train_loss=0.2808 lr=1.96e-04 elapsed=4328s
+[2026-05-12 16:44:07,576] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1300/3000 train_loss=0.2734 lr=1.95e-04 elapsed=4412s
+[2026-05-12 16:45:29,936] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1325/3000 train_loss=0.2713 lr=1.93e-04 elapsed=4494s
+[2026-05-12 16:46:51,251] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1350/3000 train_loss=0.2670 lr=1.92e-04 elapsed=4576s
+[2026-05-12 16:48:13,299] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1375/3000 train_loss=0.1669 lr=1.90e-04 elapsed=4658s
+[2026-05-12 16:49:37,439] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1400/3000 train_loss=0.1479 lr=1.88e-04 elapsed=4742s
+[2026-05-12 16:50:58,438] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1425/3000 train_loss=0.1465 lr=1.86e-04 elapsed=4823s
+[2026-05-12 16:52:21,373] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1450/3000 train_loss=0.1522 lr=1.84e-04 elapsed=4906s
+[2026-05-12 16:53:45,363] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1475/3000 train_loss=0.1521 lr=1.81e-04 elapsed=4990s
+[2026-05-12 16:55:05,738] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1500/3000 train_loss=0.1558 lr=1.79e-04 elapsed=5070s
+[2026-05-12 16:55:13,083] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1500 VAL_LOSS=0.5860
+[2026-05-12 16:55:29,207] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1500 mean_ER=1623.62 mean_CN=3.22e+09
+[2026-05-12 16:55:29,207] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - === MERGE EVENT 3 at step 1500 (method=relora_diag_gated_S3pos) ===
+[2026-05-12 16:55:31,896] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - merge: total=3584 kept=984 drop_rate=0.725
+[2026-05-12 16:55:55,601] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1500 POST-MERGE VAL_LOSS=0.4883 (first_eval=0.45911298384742133)
+[2026-05-12 16:57:17,941] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1525/3000 train_loss=0.3218 lr=5.00e-05 elapsed=5202s
+[2026-05-12 16:58:40,779] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1550/3000 train_loss=0.2599 lr=1.00e-04 elapsed=5285s
+[2026-05-12 17:00:05,434] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1575/3000 train_loss=0.2483 lr=1.50e-04 elapsed=5370s
+[2026-05-12 17:01:28,770] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1600/3000 train_loss=0.2227 lr=2.00e-04 elapsed=5453s
+[2026-05-12 17:02:50,235] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1625/3000 train_loss=0.2122 lr=2.00e-04 elapsed=5535s
+[2026-05-12 17:04:12,676] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1650/3000 train_loss=0.2178 lr=1.99e-04 elapsed=5617s
+[2026-05-12 17:05:39,492] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1675/3000 train_loss=0.2162 lr=1.99e-04 elapsed=5704s
+[2026-05-12 17:07:15,568] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1700/3000 train_loss=0.2216 lr=1.97e-04 elapsed=5800s
+[2026-05-12 17:10:17,836] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1725/3000 train_loss=0.2161 lr=1.96e-04 elapsed=5982s
+[2026-05-12 17:13:17,397] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1750/3000 train_loss=0.2141 lr=1.94e-04 elapsed=6162s
+[2026-05-12 17:13:33,881] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1750 VAL_LOSS=0.5628
+[2026-05-12 17:16:37,278] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1775/3000 train_loss=0.2139 lr=1.92e-04 elapsed=6362s
+[2026-05-12 17:19:40,196] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1800/3000 train_loss=0.2117 lr=1.90e-04 elapsed=6545s
+[2026-05-12 17:22:45,972] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1825/3000 train_loss=0.1336 lr=1.88e-04 elapsed=6730s
+[2026-05-12 17:25:47,475] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1850/3000 train_loss=0.1099 lr=1.85e-04 elapsed=6912s
+[2026-05-12 17:28:50,755] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1875/3000 train_loss=0.1136 lr=1.82e-04 elapsed=7095s
+[2026-05-12 17:31:57,491] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1900/3000 train_loss=0.1079 lr=1.78e-04 elapsed=7282s
+[2026-05-12 17:35:01,576] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1925/3000 train_loss=0.1122 lr=1.75e-04 elapsed=7466s
+[2026-05-12 17:38:04,206] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1950/3000 train_loss=0.1142 lr=1.71e-04 elapsed=7649s
+[2026-05-12 17:41:10,210] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=1975/3000 train_loss=0.1119 lr=1.67e-04 elapsed=7835s
+[2026-05-12 17:44:13,064] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2000/3000 train_loss=0.1102 lr=1.62e-04 elapsed=8017s
+[2026-05-12 17:44:29,535] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2000 VAL_LOSS=0.6801
+[2026-05-12 17:45:05,024] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2000 mean_ER=1623.81 mean_CN=8.41e+06
+[2026-05-12 17:45:05,024] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - === MERGE EVENT 4 at step 2000 (method=relora_diag_gated_S3pos) ===
+[2026-05-12 17:45:14,227] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - merge: total=3584 kept=954 drop_rate=0.734
+[2026-05-12 17:46:06,378] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2000 POST-MERGE VAL_LOSS=0.4749 (first_eval=0.45911298384742133)
+[2026-05-12 17:49:12,736] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2025/3000 train_loss=0.2762 lr=5.00e-05 elapsed=8317s
+[2026-05-12 17:52:16,238] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2050/3000 train_loss=0.1852 lr=1.00e-04 elapsed=8501s
+[2026-05-12 17:55:22,827] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2075/3000 train_loss=0.1697 lr=1.50e-04 elapsed=8687s
+[2026-05-12 17:58:27,386] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2100/3000 train_loss=0.1606 lr=2.00e-04 elapsed=8872s
+[2026-05-12 18:01:37,949] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2125/3000 train_loss=0.1716 lr=2.00e-04 elapsed=9062s
+[2026-05-12 18:04:38,098] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2150/3000 train_loss=0.1609 lr=1.98e-04 elapsed=9242s
+[2026-05-12 18:07:40,575] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2175/3000 train_loss=0.1573 lr=1.97e-04 elapsed=9425s
+[2026-05-12 18:10:44,362] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2200/3000 train_loss=0.1632 lr=1.94e-04 elapsed=9609s
+[2026-05-12 18:13:45,459] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2225/3000 train_loss=0.1753 lr=1.91e-04 elapsed=9790s
+[2026-05-12 18:16:52,267] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2250/3000 train_loss=0.1608 lr=1.87e-04 elapsed=9977s
+[2026-05-12 18:17:08,747] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2250 VAL_LOSS=0.5866
+[2026-05-12 18:20:11,549] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2275/3000 train_loss=0.1016 lr=1.82e-04 elapsed=10176s
+[2026-05-12 18:23:12,154] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2300/3000 train_loss=0.0745 lr=1.77e-04 elapsed=10357s
+[2026-05-12 18:26:19,101] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2325/3000 train_loss=0.0791 lr=1.71e-04 elapsed=10543s
+[2026-05-12 18:29:22,676] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2350/3000 train_loss=0.0824 lr=1.64e-04 elapsed=10727s
+[2026-05-12 18:32:22,840] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2375/3000 train_loss=0.0818 lr=1.57e-04 elapsed=10907s
+[2026-05-12 18:35:26,653] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2400/3000 train_loss=0.0846 lr=1.50e-04 elapsed=11091s
+[2026-05-12 18:38:33,443] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2425/3000 train_loss=0.0843 lr=1.42e-04 elapsed=11278s
+[2026-05-12 18:41:32,748] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2450/3000 train_loss=0.0818 lr=1.34e-04 elapsed=11457s
+[2026-05-12 18:44:43,208] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2475/3000 train_loss=0.0825 lr=1.26e-04 elapsed=11648s
+[2026-05-12 18:47:49,563] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2500/3000 train_loss=0.0485 lr=1.17e-04 elapsed=11834s
+[2026-05-12 18:48:06,066] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2500 VAL_LOSS=0.8315
+[2026-05-12 18:48:41,629] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2500 mean_ER=1623.98 mean_CN=4.18e+06
+[2026-05-12 18:48:41,629] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - === MERGE EVENT 5 at step 2500 (method=relora_diag_gated_S3pos) ===
+[2026-05-12 18:48:49,648] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - merge: total=3584 kept=970 drop_rate=0.729
+[2026-05-12 18:49:41,756] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2500 POST-MERGE VAL_LOSS=0.4687 (first_eval=0.45911298384742133)
+[2026-05-12 18:52:46,808] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2525/3000 train_loss=0.2236 lr=5.00e-05 elapsed=12131s
+[2026-05-12 18:55:50,722] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2550/3000 train_loss=0.1222 lr=1.00e-04 elapsed=12315s
+[2026-05-12 18:58:54,061] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2575/3000 train_loss=0.1040 lr=1.50e-04 elapsed=12498s
+[2026-05-12 19:01:56,475] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2600/3000 train_loss=0.1050 lr=2.00e-04 elapsed=12681s
+[2026-05-12 19:05:02,835] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2625/3000 train_loss=0.1176 lr=1.98e-04 elapsed=12867s
+[2026-05-12 19:08:04,818] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2650/3000 train_loss=0.1146 lr=1.92e-04 elapsed=13049s
+[2026-05-12 19:11:07,919] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2675/3000 train_loss=0.1178 lr=1.83e-04 elapsed=13232s
+[2026-05-12 19:14:15,524] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2700/3000 train_loss=0.1153 lr=1.71e-04 elapsed=13420s
+[2026-05-12 19:17:18,621] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2725/3000 train_loss=0.0750 lr=1.56e-04 elapsed=13603s
+[2026-05-12 19:20:09,490] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2750/3000 train_loss=0.0625 lr=1.38e-04 elapsed=13774s
+[2026-05-12 19:20:16,841] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2750 VAL_LOSS=0.7502
+[2026-05-12 19:21:39,096] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2775/3000 train_loss=0.0618 lr=1.20e-04 elapsed=13863s
+[2026-05-12 19:22:59,994] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2800/3000 train_loss=0.0579 lr=1.00e-04 elapsed=13944s
+[2026-05-12 19:24:23,210] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2825/3000 train_loss=0.0594 lr=8.05e-05 elapsed=14028s
+[2026-05-12 19:25:46,766] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2850/3000 train_loss=0.0608 lr=6.17e-05 elapsed=14111s
+[2026-05-12 19:27:07,840] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2875/3000 train_loss=0.0529 lr=4.44e-05 elapsed=14192s
+[2026-05-12 19:28:29,137] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2900/3000 train_loss=0.0481 lr=2.93e-05 elapsed=14274s
+[2026-05-12 19:29:52,493] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2925/3000 train_loss=0.0474 lr=1.69e-05 elapsed=14357s
+[2026-05-12 19:31:14,937] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2950/3000 train_loss=0.0297 lr=7.61e-06 elapsed=14439s
+[2026-05-12 19:32:37,289] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=2975/3000 train_loss=0.0188 lr=1.92e-06 elapsed=14522s
+[2026-05-12 19:33:59,506] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=3000/3000 train_loss=0.0179 lr=0.00e+00 elapsed=14604s
+[2026-05-12 19:34:06,863] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=3000 VAL_LOSS=0.9298
+[2026-05-12 19:34:23,870] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=3000 mean_ER=1624.02 mean_CN=5.10e+06
+[2026-05-12 19:34:23,870] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - === MERGE EVENT 6 at step 3000 (method=relora_diag_gated_S3pos) ===
+[2026-05-12 19:34:26,071] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - merge: total=3584 kept=725 drop_rate=0.798
+[2026-05-12 19:34:49,278] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - step=3000 POST-MERGE VAL_LOSS=0.4675 (first_eval=0.45911298384742133)
+[2026-05-12 19:34:49,284] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - training done in 14653.7s
+[2026-05-12 19:34:56,614] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - FINAL VAL_LOSS=0.4675
+[2026-05-12 19:35:12,592] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3pos - summary.json written

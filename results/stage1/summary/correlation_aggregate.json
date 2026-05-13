@@ -1,0 +1,33 @@
+{
+  "delta_rho_fisher": {
+    "mean": 0.045796711246145635,
+    "ci95_lo": 0.0078624202000199,
+    "ci95_hi": 0.08754660273625767,
+    "n_pos": 10,
+    "n_total": 15
+  },
+  "delta_rho_fo": {
+    "mean": 0.2464888008753131,
+    "ci95_lo": 0.12033867801047123,
+    "ci95_hi": 0.3729510281311885,
+    "n_pos": 11,
+    "n_total": 15
+  },
+  "auc_s3_signed_sym_per_task_at_latest_ckpt": {
+    "sst2": 0.5865928975810603,
+    "mrpc": 0.7756210126238631,
+    "rte": 0.7589141599413058
+  },
+  "auc_s3_unsigned_per_task_at_latest_ckpt": {
+    "sst2": 0.5828615542974781,
+    "mrpc": 0.7024569024026062,
+    "rte": 0.6931768158473955
+  },
+  "latest_ckpt_per_task": {
+    "sst2": 5000,
+    "mrpc": 2000,
+    "rte": 2000
+  },
+  "n_tasks": 3,
+  "rho_key": "rho_vs_delta"
+}

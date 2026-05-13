@@ -1,0 +1,232 @@
+[2026-05-13 06:49:28,920] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - START stage3 model=/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B dataset=alpaca method=relora_diag_gated_S3neg out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2
+[2026-05-13 06:49:31,519] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - tokenizer loaded in 0.3s, vocab=128000
+[2026-05-13 06:49:32,452] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - loading yahma/alpaca-cleaned
+[2026-05-13 06:51:17,199] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - alpaca train=10000 val=500
+[2026-05-13 06:51:21,110] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - alpaca tokenized: train 10000 val 500
+[2026-05-13 06:51:21,131] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - data prepared in 109.6s
+[2026-05-13 06:51:23,216] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - model loaded in 2.1s
+[2026-05-13 06:51:57,803] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - #LoRA layers=224 #components=3584
+[2026-05-13 06:51:57,809] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - #trainable params=41.94M
+[2026-05-13 06:52:14,925] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - [step 0] mean_ER=1622.41 mean_CN=1.18e+07 (sampled 8 layers)
+[2026-05-13 06:52:14,925] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - merge events scheduled at: [500, 1000, 1500, 2000, 2500, 3000]
+[2026-05-13 06:54:02,766] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=25/3000 train_loss=1.0822 lr=5.00e-05 elapsed=108s
+[2026-05-13 06:55:54,320] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=50/3000 train_loss=1.0029 lr=1.00e-04 elapsed=219s
+[2026-05-13 06:55:54,784] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000050
+[2026-05-13 06:57:39,538] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=75/3000 train_loss=0.9832 lr=1.50e-04 elapsed=325s
+[2026-05-13 06:59:28,453] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=100/3000 train_loss=1.0001 lr=2.00e-04 elapsed=434s
+[2026-05-13 06:59:28,913] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000100
+[2026-05-13 07:01:15,381] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=125/3000 train_loss=0.9832 lr=2.00e-04 elapsed=540s
+[2026-05-13 07:03:04,988] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=150/3000 train_loss=0.9854 lr=2.00e-04 elapsed=650s
+[2026-05-13 07:03:05,433] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000150
+[2026-05-13 07:04:51,900] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=175/3000 train_loss=0.9909 lr=2.00e-04 elapsed=757s
+[2026-05-13 07:06:36,142] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=200/3000 train_loss=1.0000 lr=1.99e-04 elapsed=861s
+[2026-05-13 07:06:36,566] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000200
+[2026-05-13 07:08:26,445] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=225/3000 train_loss=1.0011 lr=1.99e-04 elapsed=972s
+[2026-05-13 07:10:17,218] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=250/3000 train_loss=0.9750 lr=1.99e-04 elapsed=1082s
+[2026-05-13 07:10:17,655] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000250
+[2026-05-13 07:10:37,918] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=250 VAL_LOSS=0.9730
+[2026-05-13 07:10:38,389] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - best ckpt updated: step=250 val_loss=0.9730
+[2026-05-13 07:12:26,203] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=275/3000 train_loss=0.9769 lr=1.98e-04 elapsed=1211s
+[2026-05-13 07:14:13,043] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=300/3000 train_loss=0.9748 lr=1.98e-04 elapsed=1318s
+[2026-05-13 07:14:13,479] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000300
+[2026-05-13 07:16:03,923] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=325/3000 train_loss=0.9370 lr=1.97e-04 elapsed=1429s
+[2026-05-13 07:17:55,098] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=350/3000 train_loss=0.8544 lr=1.96e-04 elapsed=1540s
+[2026-05-13 07:17:55,521] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000350
+[2026-05-13 07:19:39,945] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=375/3000 train_loss=0.8353 lr=1.96e-04 elapsed=1645s
+[2026-05-13 07:21:30,497] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=400/3000 train_loss=0.8265 lr=1.95e-04 elapsed=1756s
+[2026-05-13 07:21:30,917] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000400
+[2026-05-13 07:23:16,889] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=425/3000 train_loss=0.8721 lr=1.94e-04 elapsed=1862s
+[2026-05-13 07:25:06,555] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=450/3000 train_loss=0.8552 lr=1.93e-04 elapsed=1972s
+[2026-05-13 07:25:07,018] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000450
+[2026-05-13 07:26:52,702] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=475/3000 train_loss=0.8529 lr=1.92e-04 elapsed=2078s
+[2026-05-13 07:28:40,305] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=500/3000 train_loss=0.8455 lr=1.91e-04 elapsed=2185s
+[2026-05-13 07:28:40,771] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000500
+[2026-05-13 07:29:01,042] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=500 VAL_LOSS=0.9863
+[2026-05-13 07:29:17,838] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=500 mean_ER=1623.04 mean_CN=1.35e+07
+[2026-05-13 07:29:17,838] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - === MERGE EVENT 1 at step 500 (method=relora_diag_gated_S3neg) ===
+[2026-05-13 07:29:22,262] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - merge: total=3584 kept=2282 drop_rate=0.363
+[2026-05-13 07:29:58,137] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=500 POST-MERGE VAL_LOSS=0.9896 (first_eval=0.973049812078476)
+[2026-05-13 07:31:46,943] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=525/3000 train_loss=0.8865 lr=5.00e-05 elapsed=2372s
+[2026-05-13 07:33:35,245] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=550/3000 train_loss=0.8988 lr=1.00e-04 elapsed=2480s
+[2026-05-13 07:33:35,696] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000550
+[2026-05-13 07:35:18,473] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=575/3000 train_loss=0.8788 lr=1.50e-04 elapsed=2584s
+[2026-05-13 07:37:03,323] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=600/3000 train_loss=0.8902 lr=2.00e-04 elapsed=2688s
+[2026-05-13 07:37:03,768] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000600
+[2026-05-13 07:38:50,624] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=625/3000 train_loss=0.8607 lr=2.00e-04 elapsed=2796s
+[2026-05-13 07:40:36,946] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=650/3000 train_loss=0.7584 lr=2.00e-04 elapsed=2902s
+[2026-05-13 07:40:37,388] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000650
+[2026-05-13 07:42:23,170] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=675/3000 train_loss=0.7559 lr=2.00e-04 elapsed=3008s
+[2026-05-13 07:44:08,717] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=700/3000 train_loss=0.7460 lr=1.99e-04 elapsed=3114s
+[2026-05-13 07:44:09,159] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000700
+[2026-05-13 07:45:56,401] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=725/3000 train_loss=0.7499 lr=1.99e-04 elapsed=3221s
+[2026-05-13 07:47:46,051] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=750/3000 train_loss=0.7359 lr=1.98e-04 elapsed=3331s
+[2026-05-13 07:47:46,495] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000750
+[2026-05-13 07:48:06,788] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=750 VAL_LOSS=0.9927
+[2026-05-13 07:49:57,540] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=775/3000 train_loss=0.7661 lr=1.97e-04 elapsed=3463s
+[2026-05-13 07:51:52,857] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=800/3000 train_loss=0.7506 lr=1.97e-04 elapsed=3578s
+[2026-05-13 07:51:53,319] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000800
+[2026-05-13 07:53:45,980] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=825/3000 train_loss=0.7761 lr=1.96e-04 elapsed=3691s
+[2026-05-13 07:55:30,653] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=850/3000 train_loss=0.7400 lr=1.95e-04 elapsed=3796s
+[2026-05-13 07:55:31,200] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000850
+[2026-05-13 07:57:19,444] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=875/3000 train_loss=0.7631 lr=1.94e-04 elapsed=3905s
+[2026-05-13 07:59:07,641] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=900/3000 train_loss=0.7680 lr=1.92e-04 elapsed=4013s
+[2026-05-13 07:59:08,113] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000900
+[2026-05-13 08:00:55,366] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=925/3000 train_loss=0.7783 lr=1.91e-04 elapsed=4120s
+[2026-05-13 08:02:46,436] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=950/3000 train_loss=0.7058 lr=1.90e-04 elapsed=4232s
+[2026-05-13 08:02:46,925] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_000950
+[2026-05-13 08:04:35,879] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=975/3000 train_loss=0.5954 lr=1.88e-04 elapsed=4341s
+[2026-05-13 08:06:24,224] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1000/3000 train_loss=0.6080 lr=1.87e-04 elapsed=4449s
+[2026-05-13 08:06:24,660] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001000
+[2026-05-13 08:06:44,933] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1000 VAL_LOSS=1.0663
+[2026-05-13 08:07:01,133] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1000 mean_ER=1623.46 mean_CN=2.29e+07
+[2026-05-13 08:07:01,133] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - === MERGE EVENT 2 at step 1000 (method=relora_diag_gated_S3neg) ===
+[2026-05-13 08:07:04,180] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - merge: total=3584 kept=2380 drop_rate=0.336
+[2026-05-13 08:07:41,347] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1000 POST-MERGE VAL_LOSS=1.0638 (first_eval=0.973049812078476)
+[2026-05-13 08:09:29,874] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1025/3000 train_loss=0.6352 lr=5.00e-05 elapsed=4635s
+[2026-05-13 08:11:15,649] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1050/3000 train_loss=0.6153 lr=1.00e-04 elapsed=4741s
+[2026-05-13 08:11:16,077] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001050
+[2026-05-13 08:13:06,497] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1075/3000 train_loss=0.6364 lr=1.50e-04 elapsed=4852s
+[2026-05-13 08:14:55,172] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1100/3000 train_loss=0.6405 lr=2.00e-04 elapsed=4960s
+[2026-05-13 08:14:55,614] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001100
+[2026-05-13 08:16:46,770] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1125/3000 train_loss=0.6439 lr=2.00e-04 elapsed=5072s
+[2026-05-13 08:18:31,435] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1150/3000 train_loss=0.6720 lr=2.00e-04 elapsed=5177s
+[2026-05-13 08:18:31,891] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001150
+[2026-05-13 08:20:21,719] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1175/3000 train_loss=0.6369 lr=1.99e-04 elapsed=5287s
+[2026-05-13 08:22:12,831] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1200/3000 train_loss=0.6277 lr=1.99e-04 elapsed=5398s
+[2026-05-13 08:22:13,286] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001200
+[2026-05-13 08:24:01,444] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1225/3000 train_loss=0.6355 lr=1.98e-04 elapsed=5507s
+[2026-05-13 08:25:46,442] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1250/3000 train_loss=0.6187 lr=1.97e-04 elapsed=5612s
+[2026-05-13 08:25:46,902] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001250
+[2026-05-13 08:26:07,211] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1250 VAL_LOSS=1.0513
+[2026-05-13 08:27:55,903] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1275/3000 train_loss=0.5395 lr=1.96e-04 elapsed=5741s
+[2026-05-13 08:29:40,546] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1300/3000 train_loss=0.5182 lr=1.95e-04 elapsed=5846s
+[2026-05-13 08:29:40,998] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001300
+[2026-05-13 08:31:32,084] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1325/3000 train_loss=0.5340 lr=1.93e-04 elapsed=5957s
+[2026-05-13 08:33:21,046] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1350/3000 train_loss=0.5641 lr=1.92e-04 elapsed=6066s
+[2026-05-13 08:33:21,505] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001350
+[2026-05-13 08:35:07,825] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1375/3000 train_loss=0.5272 lr=1.90e-04 elapsed=6173s
+[2026-05-13 08:36:51,342] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1400/3000 train_loss=0.5310 lr=1.88e-04 elapsed=6276s
+[2026-05-13 08:36:51,792] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001400
+[2026-05-13 08:38:42,606] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1425/3000 train_loss=0.5252 lr=1.86e-04 elapsed=6388s
+[2026-05-13 08:40:30,426] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1450/3000 train_loss=0.5262 lr=1.84e-04 elapsed=6495s
+[2026-05-13 08:40:30,876] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001450
+[2026-05-13 08:42:18,188] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1475/3000 train_loss=0.5115 lr=1.81e-04 elapsed=6603s
+[2026-05-13 08:44:08,036] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1500/3000 train_loss=0.5499 lr=1.79e-04 elapsed=6713s
+[2026-05-13 08:44:08,481] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001500
+[2026-05-13 08:44:28,766] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1500 VAL_LOSS=1.1216
+[2026-05-13 08:44:44,701] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1500 mean_ER=1623.78 mean_CN=8.99e+06
+[2026-05-13 08:44:44,701] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - === MERGE EVENT 3 at step 1500 (method=relora_diag_gated_S3neg) ===
+[2026-05-13 08:44:47,839] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - merge: total=3584 kept=2088 drop_rate=0.417
+[2026-05-13 08:45:24,294] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1500 POST-MERGE VAL_LOSS=1.1304 (first_eval=0.973049812078476)
+[2026-05-13 08:47:16,758] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1525/3000 train_loss=0.5639 lr=5.00e-05 elapsed=6902s
+[2026-05-13 08:49:06,474] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1550/3000 train_loss=0.5542 lr=1.00e-04 elapsed=7012s
+[2026-05-13 08:49:06,942] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001550
+[2026-05-13 08:50:54,504] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1575/3000 train_loss=0.4864 lr=1.50e-04 elapsed=7120s
+[2026-05-13 08:52:39,661] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1600/3000 train_loss=0.4630 lr=2.00e-04 elapsed=7225s
+[2026-05-13 08:52:40,119] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001600
+[2026-05-13 08:54:24,519] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1625/3000 train_loss=0.4519 lr=2.00e-04 elapsed=7330s
+[2026-05-13 08:56:17,075] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1650/3000 train_loss=0.4587 lr=1.99e-04 elapsed=7442s
+[2026-05-13 08:56:17,514] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001650
+[2026-05-13 08:58:04,933] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1675/3000 train_loss=0.4713 lr=1.99e-04 elapsed=7550s
+[2026-05-13 08:59:51,099] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1700/3000 train_loss=0.4737 lr=1.97e-04 elapsed=7656s
+[2026-05-13 08:59:51,542] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001700
+[2026-05-13 09:01:43,967] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1725/3000 train_loss=0.4538 lr=1.96e-04 elapsed=7769s
+[2026-05-13 09:03:31,721] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1750/3000 train_loss=0.4668 lr=1.94e-04 elapsed=7877s
+[2026-05-13 09:03:32,179] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001750
+[2026-05-13 09:03:52,478] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1750 VAL_LOSS=1.1658
+[2026-05-13 09:05:39,660] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1775/3000 train_loss=0.4718 lr=1.92e-04 elapsed=8005s
+[2026-05-13 09:07:28,359] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1800/3000 train_loss=0.4777 lr=1.90e-04 elapsed=8113s
+[2026-05-13 09:07:28,805] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001800
+[2026-05-13 09:09:16,470] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1825/3000 train_loss=0.4555 lr=1.88e-04 elapsed=8222s
+[2026-05-13 09:11:02,874] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1850/3000 train_loss=0.4589 lr=1.85e-04 elapsed=8328s
+[2026-05-13 09:11:03,294] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001850
+[2026-05-13 09:12:52,824] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1875/3000 train_loss=0.4959 lr=1.82e-04 elapsed=8438s
+[2026-05-13 09:14:35,668] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1900/3000 train_loss=0.3342 lr=1.78e-04 elapsed=8541s
+[2026-05-13 09:14:36,138] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001900
+[2026-05-13 09:16:31,614] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1925/3000 train_loss=0.3710 lr=1.75e-04 elapsed=8657s
+[2026-05-13 09:18:18,664] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1950/3000 train_loss=0.3506 lr=1.71e-04 elapsed=8764s
+[2026-05-13 09:18:19,107] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_001950
+[2026-05-13 09:20:04,599] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=1975/3000 train_loss=0.3470 lr=1.67e-04 elapsed=8870s
+[2026-05-13 09:21:51,413] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2000/3000 train_loss=0.3523 lr=1.62e-04 elapsed=8976s
+[2026-05-13 09:21:51,846] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002000
+[2026-05-13 09:22:12,129] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2000 VAL_LOSS=1.2874
+[2026-05-13 09:22:28,110] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2000 mean_ER=1624.07 mean_CN=1.67e+07
+[2026-05-13 09:22:28,110] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - === MERGE EVENT 4 at step 2000 (method=relora_diag_gated_S3neg) ===
+[2026-05-13 09:22:31,642] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - merge: total=3584 kept=2366 drop_rate=0.340
+[2026-05-13 09:23:07,878] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2000 POST-MERGE VAL_LOSS=1.3273 (first_eval=0.973049812078476)
+[2026-05-13 09:24:54,086] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2025/3000 train_loss=0.3702 lr=5.00e-05 elapsed=9159s
+[2026-05-13 09:26:42,028] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2050/3000 train_loss=0.3774 lr=1.00e-04 elapsed=9267s
+[2026-05-13 09:26:42,467] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002050
+[2026-05-13 09:28:30,055] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2075/3000 train_loss=0.3675 lr=1.50e-04 elapsed=9375s
+[2026-05-13 09:30:16,147] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2100/3000 train_loss=0.3795 lr=2.00e-04 elapsed=9481s
+[2026-05-13 09:30:16,597] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002100
+[2026-05-13 09:32:06,219] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2125/3000 train_loss=0.3805 lr=2.00e-04 elapsed=9591s
+[2026-05-13 09:34:00,578] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2150/3000 train_loss=0.3951 lr=1.98e-04 elapsed=9706s
+[2026-05-13 09:34:01,053] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002150
+[2026-05-13 09:35:48,468] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2175/3000 train_loss=0.3735 lr=1.97e-04 elapsed=9814s
+[2026-05-13 09:37:38,426] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2200/3000 train_loss=0.3381 lr=1.94e-04 elapsed=9923s
+[2026-05-13 09:37:38,870] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002200
+[2026-05-13 09:39:24,455] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2225/3000 train_loss=0.2865 lr=1.91e-04 elapsed=10030s
+[2026-05-13 09:41:12,072] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2250/3000 train_loss=0.2892 lr=1.87e-04 elapsed=10137s
+[2026-05-13 09:41:12,542] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002250
+[2026-05-13 09:41:32,835] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2250 VAL_LOSS=1.3756
+[2026-05-13 09:43:19,751] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2275/3000 train_loss=0.3196 lr=1.82e-04 elapsed=10265s
+[2026-05-13 09:45:09,193] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2300/3000 train_loss=0.2881 lr=1.77e-04 elapsed=10374s
+[2026-05-13 09:45:09,636] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002300
+[2026-05-13 09:47:00,286] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2325/3000 train_loss=0.3024 lr=1.71e-04 elapsed=10485s
+[2026-05-13 09:48:51,641] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2350/3000 train_loss=0.2984 lr=1.64e-04 elapsed=10597s
+[2026-05-13 09:48:52,079] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002350
+[2026-05-13 09:50:36,453] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2375/3000 train_loss=0.3003 lr=1.57e-04 elapsed=10702s
+[2026-05-13 09:52:22,545] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2400/3000 train_loss=0.3075 lr=1.50e-04 elapsed=10808s
+[2026-05-13 09:52:23,000] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002400
+[2026-05-13 09:54:12,497] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2425/3000 train_loss=0.3012 lr=1.42e-04 elapsed=10918s
+[2026-05-13 09:55:58,082] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2450/3000 train_loss=0.2940 lr=1.34e-04 elapsed=11023s
+[2026-05-13 09:55:58,533] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002450
+[2026-05-13 09:57:44,968] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2475/3000 train_loss=0.3128 lr=1.26e-04 elapsed=11130s
+[2026-05-13 09:59:32,037] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2500/3000 train_loss=0.3034 lr=1.17e-04 elapsed=11237s
+[2026-05-13 09:59:32,468] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002500
+[2026-05-13 09:59:52,735] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2500 VAL_LOSS=1.3283
+[2026-05-13 10:00:08,483] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2500 mean_ER=1624.37 mean_CN=1.11e+07
+[2026-05-13 10:00:08,483] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - === MERGE EVENT 5 at step 2500 (method=relora_diag_gated_S3neg) ===
+[2026-05-13 10:00:11,682] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - merge: total=3584 kept=1807 drop_rate=0.496
+[2026-05-13 10:00:48,107] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2500 POST-MERGE VAL_LOSS=1.4118 (first_eval=0.973049812078476)
+[2026-05-13 10:02:38,484] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2525/3000 train_loss=0.2463 lr=5.00e-05 elapsed=11424s
+[2026-05-13 10:04:29,235] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2550/3000 train_loss=0.2415 lr=1.00e-04 elapsed=11534s
+[2026-05-13 10:04:29,678] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002550
+[2026-05-13 10:06:17,065] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2575/3000 train_loss=0.2490 lr=1.50e-04 elapsed=11642s
+[2026-05-13 10:08:07,989] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2600/3000 train_loss=0.2770 lr=2.00e-04 elapsed=11753s
+[2026-05-13 10:08:08,474] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002600
+[2026-05-13 10:09:54,583] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2625/3000 train_loss=0.2509 lr=1.98e-04 elapsed=11860s
+[2026-05-13 10:11:42,738] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2650/3000 train_loss=0.2611 lr=1.92e-04 elapsed=11968s
+[2026-05-13 10:11:43,169] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002650
+[2026-05-13 10:13:31,905] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2675/3000 train_loss=0.2542 lr=1.83e-04 elapsed=12077s
+[2026-05-13 10:15:20,117] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2700/3000 train_loss=0.2621 lr=1.71e-04 elapsed=12185s
+[2026-05-13 10:15:20,541] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002700
+[2026-05-13 10:17:07,109] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2725/3000 train_loss=0.2686 lr=1.56e-04 elapsed=12292s
+[2026-05-13 10:18:51,423] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2750/3000 train_loss=0.2381 lr=1.38e-04 elapsed=12396s
+[2026-05-13 10:18:51,887] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002750
+[2026-05-13 10:19:12,193] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2750 VAL_LOSS=1.3866
+[2026-05-13 10:21:02,586] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2775/3000 train_loss=0.2710 lr=1.20e-04 elapsed=12528s
+[2026-05-13 10:22:48,384] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2800/3000 train_loss=0.2579 lr=1.00e-04 elapsed=12633s
+[2026-05-13 10:22:48,814] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002800
+[2026-05-13 10:24:31,945] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2825/3000 train_loss=0.2224 lr=8.05e-05 elapsed=12737s
+[2026-05-13 10:26:18,353] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2850/3000 train_loss=0.1863 lr=6.17e-05 elapsed=12843s
+[2026-05-13 10:26:18,776] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002850
+[2026-05-13 10:28:08,200] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2875/3000 train_loss=0.1751 lr=4.44e-05 elapsed=12953s
+[2026-05-13 10:29:54,859] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2900/3000 train_loss=0.1862 lr=2.93e-05 elapsed=13060s
+[2026-05-13 10:29:55,292] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002900
+[2026-05-13 10:31:46,514] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2925/3000 train_loss=0.1862 lr=1.69e-05 elapsed=13172s
+[2026-05-13 10:33:35,252] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2950/3000 train_loss=0.1816 lr=7.61e-06 elapsed=13280s
+[2026-05-13 10:33:35,685] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_002950
+[2026-05-13 10:35:27,581] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=2975/3000 train_loss=0.1952 lr=1.92e-06 elapsed=13393s
+[2026-05-13 10:37:14,757] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=3000/3000 train_loss=0.1771 lr=0.00e+00 elapsed=13500s
+[2026-05-13 10:37:15,181] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_diag_gated_S3neg_v2/checkpoints/step_003000
+[2026-05-13 10:37:35,452] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=3000 VAL_LOSS=1.5485
+[2026-05-13 10:37:51,442] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=3000 mean_ER=1624.38 mean_CN=5.22e+07
+[2026-05-13 10:37:51,442] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - === MERGE EVENT 6 at step 3000 (method=relora_diag_gated_S3neg) ===
+[2026-05-13 10:37:54,701] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - merge: total=3584 kept=2100 drop_rate=0.414
+[2026-05-13 10:38:31,700] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - step=3000 POST-MERGE VAL_LOSS=1.5900 (first_eval=0.973049812078476)
+[2026-05-13 10:38:31,700] WARNING stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - ABORT: post-merge val_loss=1.5900 > first_eval=0.9730 * 1.5
+[2026-05-13 10:38:31,717] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - training ABORTED in 13576.8s
+[2026-05-13 10:38:51,837] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - FINAL VAL_LOSS=1.5900
+[2026-05-13 10:39:07,602] INFO stage3.llama3-8b.alpaca.relora_diag_gated_S3neg - summary.json written

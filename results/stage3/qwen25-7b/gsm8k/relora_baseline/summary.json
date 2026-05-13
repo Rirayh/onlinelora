@@ -1,0 +1,18 @@
+{
+  "model_key": "qwen25-7b",
+  "model_path": "/mnt/cpfs/public_data/public_model/Qwen/Qwen2.5-7B",
+  "dataset": "gsm8k",
+  "method": "relora_baseline",
+  "gate_sign": null,
+  "total_steps": 3000,
+  "merge_every": 500,
+  "final_val_loss": 0.20619935104771267,
+  "first_eval_val_loss": 0.12618085907565224,
+  "final_mean_effective_rank": 1457.1005334554716,
+  "final_mean_condition_number": 167394.6163005163,
+  "sampled_layers": 8,
+  "elapsed_sec": 3547.2290115356445,
+  "n_trainable_M": 40.370176,
+  "n_lora_components": 3136,
+  "aborted": true
+}

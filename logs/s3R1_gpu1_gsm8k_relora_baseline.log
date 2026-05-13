@@ -1,0 +1,94 @@
+[2026-05-12 15:27:37,194] INFO stage3.llama3-8b.gsm8k.relora_baseline - START stage3 model=/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B dataset=gsm8k method=relora_baseline out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_baseline
+[2026-05-12 15:27:42,236] INFO stage3.llama3-8b.gsm8k.relora_baseline - tokenizer loaded in 0.3s, vocab=128000
+[2026-05-12 15:27:43,062] INFO stage3.llama3-8b.gsm8k.relora_baseline - loading gsm8k (config=main)
+[2026-05-12 15:29:29,049] INFO stage3.llama3-8b.gsm8k.relora_baseline - gsm8k train=7223 val=250 test=1319
+[2026-05-12 15:29:31,359] INFO stage3.llama3-8b.gsm8k.relora_baseline - gsm8k tokenized: train 7223 val 250
+[2026-05-12 15:29:31,362] INFO stage3.llama3-8b.gsm8k.relora_baseline - data prepared in 109.1s
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 75.77it/s]
+[2026-05-12 15:29:34,182] INFO stage3.llama3-8b.gsm8k.relora_baseline - model loaded in 2.8s
+[2026-05-12 15:30:19,749] INFO stage3.llama3-8b.gsm8k.relora_baseline - #LoRA layers=224 #components=3584
+[2026-05-12 15:30:19,754] INFO stage3.llama3-8b.gsm8k.relora_baseline - #trainable params=41.94M
+[2026-05-12 15:30:36,035] INFO stage3.llama3-8b.gsm8k.relora_baseline - [step 0] mean_ER=1622.41 mean_CN=1.18e+07 (sampled 8 layers)
+[2026-05-12 15:30:36,035] INFO stage3.llama3-8b.gsm8k.relora_baseline - merge events scheduled at: [500, 1000, 1500, 2000, 2500, 3000]
+[2026-05-12 15:32:01,059] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=25/3000 train_loss=1.0372 lr=5.00e-05 elapsed=85s
+[2026-05-12 15:33:21,624] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=50/3000 train_loss=0.5707 lr=1.00e-04 elapsed=166s
+[2026-05-12 15:34:42,672] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=75/3000 train_loss=0.5293 lr=1.50e-04 elapsed=247s
+[2026-05-12 15:36:06,102] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=100/3000 train_loss=0.4964 lr=2.00e-04 elapsed=330s
+[2026-05-12 15:37:28,674] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=125/3000 train_loss=0.5109 lr=2.00e-04 elapsed=413s
+[2026-05-12 15:38:52,290] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=150/3000 train_loss=0.4967 lr=2.00e-04 elapsed=496s
+[2026-05-12 15:40:16,025] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=175/3000 train_loss=0.4818 lr=2.00e-04 elapsed=580s
+[2026-05-12 15:41:37,590] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=200/3000 train_loss=0.4672 lr=1.99e-04 elapsed=662s
+[2026-05-12 15:43:00,585] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=225/3000 train_loss=0.4650 lr=1.99e-04 elapsed=745s
+[2026-05-12 15:44:20,853] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=250/3000 train_loss=0.4047 lr=1.99e-04 elapsed=825s
+[2026-05-12 15:44:28,186] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=250 VAL_LOSS=0.4591
+[2026-05-12 15:45:51,535] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=275/3000 train_loss=0.4014 lr=1.98e-04 elapsed=915s
+[2026-05-12 15:47:14,210] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=300/3000 train_loss=0.3968 lr=1.98e-04 elapsed=998s
+[2026-05-12 15:48:34,298] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=325/3000 train_loss=0.3958 lr=1.97e-04 elapsed=1078s
+[2026-05-12 15:49:57,268] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=350/3000 train_loss=0.4074 lr=1.96e-04 elapsed=1161s
+[2026-05-12 15:51:19,257] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=375/3000 train_loss=0.3991 lr=1.96e-04 elapsed=1243s
+[2026-05-12 15:52:42,552] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=400/3000 train_loss=0.3919 lr=1.95e-04 elapsed=1327s
+[2026-05-12 15:54:03,659] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=425/3000 train_loss=0.3911 lr=1.94e-04 elapsed=1408s
+[2026-05-12 15:55:26,548] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=450/3000 train_loss=0.3997 lr=1.93e-04 elapsed=1491s
+[2026-05-12 15:56:48,787] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=475/3000 train_loss=0.2878 lr=1.92e-04 elapsed=1573s
+[2026-05-12 15:58:09,498] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=500/3000 train_loss=0.2755 lr=1.91e-04 elapsed=1653s
+[2026-05-12 15:58:16,829] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=500 VAL_LOSS=0.4865
+[2026-05-12 15:58:32,462] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=500 mean_ER=1622.99 mean_CN=3.20e+08
+[2026-05-12 15:58:32,462] INFO stage3.llama3-8b.gsm8k.relora_baseline - === MERGE EVENT 1 at step 500 (method=relora_baseline) ===
+[2026-05-12 15:58:32,624] INFO stage3.llama3-8b.gsm8k.relora_baseline - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-12 15:58:56,793] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=500 POST-MERGE VAL_LOSS=0.4866 (first_eval=0.45911298384742133)
+[2026-05-12 16:00:18,867] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=525/3000 train_loss=0.2794 lr=5.00e-05 elapsed=1783s
+[2026-05-12 16:01:41,126] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=550/3000 train_loss=0.2758 lr=1.00e-04 elapsed=1865s
+[2026-05-12 16:03:03,725] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=575/3000 train_loss=0.2658 lr=1.50e-04 elapsed=1948s
+[2026-05-12 16:04:26,926] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=600/3000 train_loss=0.2678 lr=2.00e-04 elapsed=2031s
+[2026-05-12 16:05:48,460] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=625/3000 train_loss=0.2715 lr=2.00e-04 elapsed=2112s
+[2026-05-12 16:07:11,740] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=650/3000 train_loss=0.2651 lr=2.00e-04 elapsed=2196s
+[2026-05-12 16:08:33,737] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=675/3000 train_loss=0.2713 lr=2.00e-04 elapsed=2278s
+[2026-05-12 16:09:56,577] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=700/3000 train_loss=0.1945 lr=1.99e-04 elapsed=2361s
+[2026-05-12 16:11:20,483] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=725/3000 train_loss=0.1899 lr=1.99e-04 elapsed=2444s
+[2026-05-12 16:12:42,629] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=750/3000 train_loss=0.1893 lr=1.98e-04 elapsed=2527s
+[2026-05-12 16:12:49,974] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=750 VAL_LOSS=0.5338
+[2026-05-12 16:14:12,522] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=775/3000 train_loss=0.1854 lr=1.97e-04 elapsed=2616s
+[2026-05-12 16:15:35,955] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=800/3000 train_loss=0.1869 lr=1.97e-04 elapsed=2700s
+[2026-05-12 16:16:59,587] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=825/3000 train_loss=0.1914 lr=1.96e-04 elapsed=2784s
+[2026-05-12 16:18:20,743] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=850/3000 train_loss=0.1863 lr=1.95e-04 elapsed=2865s
+[2026-05-12 16:19:42,623] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=875/3000 train_loss=0.1903 lr=1.94e-04 elapsed=2947s
+[2026-05-12 16:21:04,434] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=900/3000 train_loss=0.1987 lr=1.92e-04 elapsed=3028s
+[2026-05-12 16:22:28,448] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=925/3000 train_loss=0.1055 lr=1.91e-04 elapsed=3112s
+[2026-05-12 16:23:51,888] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=950/3000 train_loss=0.0904 lr=1.90e-04 elapsed=3196s
+[2026-05-12 16:25:14,267] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=975/3000 train_loss=0.0864 lr=1.88e-04 elapsed=3278s
+[2026-05-12 16:26:36,470] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1000/3000 train_loss=0.0967 lr=1.87e-04 elapsed=3360s
+[2026-05-12 16:26:43,814] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1000 VAL_LOSS=0.6383
+[2026-05-12 16:27:00,300] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1000 mean_ER=1623.70 mean_CN=2.85e+07
+[2026-05-12 16:27:00,300] INFO stage3.llama3-8b.gsm8k.relora_baseline - === MERGE EVENT 2 at step 1000 (method=relora_baseline) ===
+[2026-05-12 16:27:00,456] INFO stage3.llama3-8b.gsm8k.relora_baseline - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-12 16:27:24,717] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1000 POST-MERGE VAL_LOSS=0.6394 (first_eval=0.45911298384742133)
+[2026-05-12 16:28:47,441] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1025/3000 train_loss=0.0926 lr=5.00e-05 elapsed=3491s
+[2026-05-12 16:30:09,227] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1050/3000 train_loss=0.0866 lr=1.00e-04 elapsed=3573s
+[2026-05-12 16:31:30,928] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1075/3000 train_loss=0.0796 lr=1.50e-04 elapsed=3655s
+[2026-05-12 16:32:53,168] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1100/3000 train_loss=0.0875 lr=2.00e-04 elapsed=3737s
+[2026-05-12 16:34:16,653] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1125/3000 train_loss=0.0921 lr=2.00e-04 elapsed=3821s
+[2026-05-12 16:35:40,571] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1150/3000 train_loss=0.0470 lr=2.00e-04 elapsed=3905s
+[2026-05-12 16:37:03,707] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1175/3000 train_loss=0.0406 lr=1.99e-04 elapsed=3988s
+[2026-05-12 16:38:25,382] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1200/3000 train_loss=0.0439 lr=1.99e-04 elapsed=4069s
+[2026-05-12 16:39:47,197] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1225/3000 train_loss=0.0440 lr=1.98e-04 elapsed=4151s
+[2026-05-12 16:41:09,628] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1250/3000 train_loss=0.0438 lr=1.97e-04 elapsed=4234s
+[2026-05-12 16:41:16,971] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1250 VAL_LOSS=0.7846
+[2026-05-12 16:42:39,063] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1275/3000 train_loss=0.0434 lr=1.96e-04 elapsed=4323s
+[2026-05-12 16:44:03,076] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1300/3000 train_loss=0.0481 lr=1.95e-04 elapsed=4407s
+[2026-05-12 16:45:27,066] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1325/3000 train_loss=0.0477 lr=1.93e-04 elapsed=4491s
+[2026-05-12 16:46:47,984] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1350/3000 train_loss=0.0475 lr=1.92e-04 elapsed=4572s
+[2026-05-12 16:48:09,979] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1375/3000 train_loss=0.0241 lr=1.90e-04 elapsed=4654s
+[2026-05-12 16:49:32,900] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1400/3000 train_loss=0.0190 lr=1.88e-04 elapsed=4737s
+[2026-05-12 16:50:56,804] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1425/3000 train_loss=0.0218 lr=1.86e-04 elapsed=4821s
+[2026-05-12 16:52:17,529] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1450/3000 train_loss=0.0211 lr=1.84e-04 elapsed=4901s
+[2026-05-12 16:53:39,800] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1475/3000 train_loss=0.0231 lr=1.81e-04 elapsed=4984s
+[2026-05-12 16:55:03,661] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1500/3000 train_loss=0.0254 lr=1.79e-04 elapsed=5068s
+[2026-05-12 16:55:11,004] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1500 VAL_LOSS=0.9372
+[2026-05-12 16:55:27,021] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1500 mean_ER=1624.33 mean_CN=1.82e+07
+[2026-05-12 16:55:27,021] INFO stage3.llama3-8b.gsm8k.relora_baseline - === MERGE EVENT 3 at step 1500 (method=relora_baseline) ===
+[2026-05-12 16:55:27,177] INFO stage3.llama3-8b.gsm8k.relora_baseline - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-12 16:55:50,888] INFO stage3.llama3-8b.gsm8k.relora_baseline - step=1500 POST-MERGE VAL_LOSS=0.9425 (first_eval=0.45911298384742133)
+[2026-05-12 16:55:50,888] WARNING stage3.llama3-8b.gsm8k.relora_baseline - ABORT: post-merge val_loss=0.9425 > first_eval=0.4591 * 1.5
+[2026-05-12 16:55:50,903] INFO stage3.llama3-8b.gsm8k.relora_baseline - training ABORTED in 5114.9s
+[2026-05-12 16:55:58,226] INFO stage3.llama3-8b.gsm8k.relora_baseline - FINAL VAL_LOSS=0.9425
+[2026-05-12 16:56:14,025] INFO stage3.llama3-8b.gsm8k.relora_baseline - summary.json written

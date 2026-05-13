@@ -1,0 +1,8 @@
+{
+  "S3_fo_val_signed_neg_auc_harmful": 0.4361042183622829,
+  "n_harmful": 130,
+  "n_total": 192,
+  "harmful_rate": 0.6770833333333334,
+  "baseline_test_loss": 0.1996708744709645,
+  "baseline_test_acc": 0.9323394495412844
+}

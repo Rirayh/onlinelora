@@ -1,0 +1,20 @@
+{
+  "model_key": "llama3-8b",
+  "model_path": "/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B",
+  "dataset": "alpaca",
+  "method": "relora_diag_gated_S3neg",
+  "gate_sign": "S3neg_drops",
+  "total_steps": 3000,
+  "merge_every": 500,
+  "final_val_loss": 1.5899634394645692,
+  "first_eval_val_loss": 0.973049812078476,
+  "best_val_loss": 0.973049812078476,
+  "best_step": 250,
+  "final_mean_effective_rank": 1624.2207226145547,
+  "final_mean_condition_number": 13752495.77326435,
+  "sampled_layers": 8,
+  "elapsed_sec": 13576.784546375275,
+  "n_trainable_M": 41.94304,
+  "n_lora_components": 3584,
+  "aborted": true
+}

@@ -1,0 +1,146 @@
+[2026-05-12 15:27:37,194] INFO stage3.llama3-8b.alpaca.relora_baseline - START stage3 model=/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B dataset=alpaca method=relora_baseline out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/alpaca/relora_baseline
+[2026-05-12 15:27:41,033] INFO stage3.llama3-8b.alpaca.relora_baseline - tokenizer loaded in 0.3s, vocab=128000
+[2026-05-12 15:27:42,385] INFO stage3.llama3-8b.alpaca.relora_baseline - loading yahma/alpaca-cleaned
+[2026-05-12 15:29:28,148] INFO stage3.llama3-8b.alpaca.relora_baseline - alpaca train=10000 val=500
+[2026-05-12 15:29:32,057] INFO stage3.llama3-8b.alpaca.relora_baseline - alpaca tokenized: train 10000 val 500
+[2026-05-12 15:29:32,079] INFO stage3.llama3-8b.alpaca.relora_baseline - data prepared in 111.0s
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 76.14it/s]
+[2026-05-12 15:29:34,181] INFO stage3.llama3-8b.alpaca.relora_baseline - model loaded in 2.1s
+[2026-05-12 15:30:19,166] INFO stage3.llama3-8b.alpaca.relora_baseline - #LoRA layers=224 #components=3584
+[2026-05-12 15:30:19,171] INFO stage3.llama3-8b.alpaca.relora_baseline - #trainable params=41.94M
+[2026-05-12 15:30:35,624] INFO stage3.llama3-8b.alpaca.relora_baseline - [step 0] mean_ER=1622.41 mean_CN=1.18e+07 (sampled 8 layers)
+[2026-05-12 15:30:35,624] INFO stage3.llama3-8b.alpaca.relora_baseline - merge events scheduled at: [500, 1000, 1500, 2000, 2500, 3000]
+[2026-05-12 15:32:22,417] INFO stage3.llama3-8b.alpaca.relora_baseline - step=25/3000 train_loss=1.0822 lr=5.00e-05 elapsed=107s
+[2026-05-12 15:34:13,835] INFO stage3.llama3-8b.alpaca.relora_baseline - step=50/3000 train_loss=1.0029 lr=1.00e-04 elapsed=218s
+[2026-05-12 15:35:58,412] INFO stage3.llama3-8b.alpaca.relora_baseline - step=75/3000 train_loss=0.9832 lr=1.50e-04 elapsed=323s
+[2026-05-12 15:37:47,105] INFO stage3.llama3-8b.alpaca.relora_baseline - step=100/3000 train_loss=1.0000 lr=2.00e-04 elapsed=431s
+[2026-05-12 15:39:33,309] INFO stage3.llama3-8b.alpaca.relora_baseline - step=125/3000 train_loss=0.9829 lr=2.00e-04 elapsed=538s
+[2026-05-12 15:41:22,582] INFO stage3.llama3-8b.alpaca.relora_baseline - step=150/3000 train_loss=0.9854 lr=2.00e-04 elapsed=647s
+[2026-05-12 15:43:08,899] INFO stage3.llama3-8b.alpaca.relora_baseline - step=175/3000 train_loss=0.9908 lr=2.00e-04 elapsed=753s
+[2026-05-12 15:44:52,939] INFO stage3.llama3-8b.alpaca.relora_baseline - step=200/3000 train_loss=1.0003 lr=1.99e-04 elapsed=857s
+[2026-05-12 15:46:42,596] INFO stage3.llama3-8b.alpaca.relora_baseline - step=225/3000 train_loss=1.0011 lr=1.99e-04 elapsed=967s
+[2026-05-12 15:48:33,128] INFO stage3.llama3-8b.alpaca.relora_baseline - step=250/3000 train_loss=0.9751 lr=1.99e-04 elapsed=1077s
+[2026-05-12 15:48:53,259] INFO stage3.llama3-8b.alpaca.relora_baseline - step=250 VAL_LOSS=0.9732
+[2026-05-12 15:50:40,898] INFO stage3.llama3-8b.alpaca.relora_baseline - step=275/3000 train_loss=0.9769 lr=1.98e-04 elapsed=1205s
+[2026-05-12 15:52:27,540] INFO stage3.llama3-8b.alpaca.relora_baseline - step=300/3000 train_loss=0.9749 lr=1.98e-04 elapsed=1312s
+[2026-05-12 15:54:17,823] INFO stage3.llama3-8b.alpaca.relora_baseline - step=325/3000 train_loss=0.9371 lr=1.97e-04 elapsed=1422s
+[2026-05-12 15:56:08,785] INFO stage3.llama3-8b.alpaca.relora_baseline - step=350/3000 train_loss=0.8546 lr=1.96e-04 elapsed=1533s
+[2026-05-12 15:57:53,075] INFO stage3.llama3-8b.alpaca.relora_baseline - step=375/3000 train_loss=0.8354 lr=1.96e-04 elapsed=1637s
+[2026-05-12 15:59:43,474] INFO stage3.llama3-8b.alpaca.relora_baseline - step=400/3000 train_loss=0.8266 lr=1.95e-04 elapsed=1748s
+[2026-05-12 16:01:29,295] INFO stage3.llama3-8b.alpaca.relora_baseline - step=425/3000 train_loss=0.8723 lr=1.94e-04 elapsed=1854s
+[2026-05-12 16:03:18,764] INFO stage3.llama3-8b.alpaca.relora_baseline - step=450/3000 train_loss=0.8548 lr=1.93e-04 elapsed=1963s
+[2026-05-12 16:05:04,254] INFO stage3.llama3-8b.alpaca.relora_baseline - step=475/3000 train_loss=0.8531 lr=1.92e-04 elapsed=2069s
+[2026-05-12 16:06:51,612] INFO stage3.llama3-8b.alpaca.relora_baseline - step=500/3000 train_loss=0.8457 lr=1.91e-04 elapsed=2176s
+[2026-05-12 16:07:11,796] INFO stage3.llama3-8b.alpaca.relora_baseline - step=500 VAL_LOSS=0.9867
+[2026-05-12 16:07:28,316] INFO stage3.llama3-8b.alpaca.relora_baseline - step=500 mean_ER=1623.05 mean_CN=5.42e+06
+[2026-05-12 16:07:28,316] INFO stage3.llama3-8b.alpaca.relora_baseline - === MERGE EVENT 1 at step 500 (method=relora_baseline) ===
+[2026-05-12 16:07:28,476] INFO stage3.llama3-8b.alpaca.relora_baseline - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-12 16:08:05,095] INFO stage3.llama3-8b.alpaca.relora_baseline - step=500 POST-MERGE VAL_LOSS=0.9870 (first_eval=0.9731757111549377)
+[2026-05-12 16:09:53,982] INFO stage3.llama3-8b.alpaca.relora_baseline - step=525/3000 train_loss=0.8559 lr=5.00e-05 elapsed=2358s
+[2026-05-12 16:11:42,065] INFO stage3.llama3-8b.alpaca.relora_baseline - step=550/3000 train_loss=0.8704 lr=1.00e-04 elapsed=2466s
+[2026-05-12 16:13:24,863] INFO stage3.llama3-8b.alpaca.relora_baseline - step=575/3000 train_loss=0.8503 lr=1.50e-04 elapsed=2569s
+[2026-05-12 16:15:09,465] INFO stage3.llama3-8b.alpaca.relora_baseline - step=600/3000 train_loss=0.8584 lr=2.00e-04 elapsed=2674s
+[2026-05-12 16:16:56,147] INFO stage3.llama3-8b.alpaca.relora_baseline - step=625/3000 train_loss=0.8314 lr=2.00e-04 elapsed=2781s
+[2026-05-12 16:18:44,508] INFO stage3.llama3-8b.alpaca.relora_baseline - step=650/3000 train_loss=0.6832 lr=2.00e-04 elapsed=2889s
+[2026-05-12 16:20:31,323] INFO stage3.llama3-8b.alpaca.relora_baseline - step=675/3000 train_loss=0.7084 lr=2.00e-04 elapsed=2996s
+[2026-05-12 16:22:23,668] INFO stage3.llama3-8b.alpaca.relora_baseline - step=700/3000 train_loss=0.6899 lr=1.99e-04 elapsed=3108s
+[2026-05-12 16:24:13,708] INFO stage3.llama3-8b.alpaca.relora_baseline - step=725/3000 train_loss=0.6980 lr=1.99e-04 elapsed=3218s
+[2026-05-12 16:26:04,557] INFO stage3.llama3-8b.alpaca.relora_baseline - step=750/3000 train_loss=0.6997 lr=1.98e-04 elapsed=3329s
+[2026-05-12 16:26:24,717] INFO stage3.llama3-8b.alpaca.relora_baseline - step=750 VAL_LOSS=1.0167
+[2026-05-12 16:28:14,719] INFO stage3.llama3-8b.alpaca.relora_baseline - step=775/3000 train_loss=0.6955 lr=1.97e-04 elapsed=3459s
+[2026-05-12 16:30:00,950] INFO stage3.llama3-8b.alpaca.relora_baseline - step=800/3000 train_loss=0.6983 lr=1.97e-04 elapsed=3565s
+[2026-05-12 16:31:46,939] INFO stage3.llama3-8b.alpaca.relora_baseline - step=825/3000 train_loss=0.7023 lr=1.96e-04 elapsed=3671s
+[2026-05-12 16:33:34,389] INFO stage3.llama3-8b.alpaca.relora_baseline - step=850/3000 train_loss=0.7335 lr=1.95e-04 elapsed=3779s
+[2026-05-12 16:35:21,497] INFO stage3.llama3-8b.alpaca.relora_baseline - step=875/3000 train_loss=0.7035 lr=1.94e-04 elapsed=3886s
+[2026-05-12 16:37:08,286] INFO stage3.llama3-8b.alpaca.relora_baseline - step=900/3000 train_loss=0.6933 lr=1.92e-04 elapsed=3993s
+[2026-05-12 16:38:55,198] INFO stage3.llama3-8b.alpaca.relora_baseline - step=925/3000 train_loss=0.6994 lr=1.91e-04 elapsed=4100s
+[2026-05-12 16:40:41,457] INFO stage3.llama3-8b.alpaca.relora_baseline - step=950/3000 train_loss=0.6298 lr=1.90e-04 elapsed=4206s
+[2026-05-12 16:42:23,793] INFO stage3.llama3-8b.alpaca.relora_baseline - step=975/3000 train_loss=0.5452 lr=1.88e-04 elapsed=4308s
+[2026-05-12 16:44:15,210] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1000/3000 train_loss=0.5449 lr=1.87e-04 elapsed=4420s
+[2026-05-12 16:44:35,376] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1000 VAL_LOSS=1.0976
+[2026-05-12 16:44:51,704] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1000 mean_ER=1623.74 mean_CN=1.89e+07
+[2026-05-12 16:44:51,705] INFO stage3.llama3-8b.alpaca.relora_baseline - === MERGE EVENT 2 at step 1000 (method=relora_baseline) ===
+[2026-05-12 16:44:51,869] INFO stage3.llama3-8b.alpaca.relora_baseline - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-12 16:45:28,196] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1000 POST-MERGE VAL_LOSS=1.1002 (first_eval=0.9731757111549377)
+[2026-05-12 16:47:16,797] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1025/3000 train_loss=0.5505 lr=5.00e-05 elapsed=4601s
+[2026-05-12 16:49:01,544] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1050/3000 train_loss=0.5222 lr=1.00e-04 elapsed=4706s
+[2026-05-12 16:50:48,768] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1075/3000 train_loss=0.5179 lr=1.50e-04 elapsed=4813s
+[2026-05-12 16:52:41,504] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1100/3000 train_loss=0.5260 lr=2.00e-04 elapsed=4926s
+[2026-05-12 16:54:31,328] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1125/3000 train_loss=0.5392 lr=2.00e-04 elapsed=5036s
+[2026-05-12 16:56:18,992] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1150/3000 train_loss=0.5395 lr=2.00e-04 elapsed=5143s
+[2026-05-12 16:58:06,851] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1175/3000 train_loss=0.5436 lr=1.99e-04 elapsed=5251s
+[2026-05-12 16:59:52,064] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1200/3000 train_loss=0.5452 lr=1.99e-04 elapsed=5356s
+[2026-05-12 17:01:42,078] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1225/3000 train_loss=0.5495 lr=1.98e-04 elapsed=5466s
+[2026-05-12 17:03:29,427] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1250/3000 train_loss=0.5345 lr=1.97e-04 elapsed=5574s
+[2026-05-12 17:03:49,599] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1250 VAL_LOSS=1.1020
+[2026-05-12 17:05:37,096] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1275/3000 train_loss=0.4347 lr=1.96e-04 elapsed=5701s
+[2026-05-12 17:07:55,478] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1300/3000 train_loss=0.4060 lr=1.95e-04 elapsed=5840s
+[2026-05-12 17:12:02,988] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1325/3000 train_loss=0.4181 lr=1.93e-04 elapsed=6087s
+[2026-05-12 17:15:58,599] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1350/3000 train_loss=0.4146 lr=1.92e-04 elapsed=6323s
+[2026-05-12 17:20:01,828] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1375/3000 train_loss=0.4289 lr=1.90e-04 elapsed=6566s
+[2026-05-12 17:24:05,586] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1400/3000 train_loss=0.4497 lr=1.88e-04 elapsed=6810s
+[2026-05-12 17:28:03,843] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1425/3000 train_loss=0.4339 lr=1.86e-04 elapsed=7048s
+[2026-05-12 17:31:58,746] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1450/3000 train_loss=0.4302 lr=1.84e-04 elapsed=7283s
+[2026-05-12 17:36:00,352] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1475/3000 train_loss=0.4066 lr=1.81e-04 elapsed=7525s
+[2026-05-12 17:40:09,279] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1500/3000 train_loss=0.4515 lr=1.79e-04 elapsed=7774s
+[2026-05-12 17:40:54,413] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1500 VAL_LOSS=1.2045
+[2026-05-12 17:41:29,873] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1500 mean_ER=1624.39 mean_CN=3.11e+07
+[2026-05-12 17:41:29,873] INFO stage3.llama3-8b.alpaca.relora_baseline - === MERGE EVENT 3 at step 1500 (method=relora_baseline) ===
+[2026-05-12 17:41:32,647] INFO stage3.llama3-8b.alpaca.relora_baseline - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-12 17:42:53,164] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1500 POST-MERGE VAL_LOSS=1.2068 (first_eval=0.9731757111549377)
+[2026-05-12 17:46:52,834] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1525/3000 train_loss=0.4484 lr=5.00e-05 elapsed=8177s
+[2026-05-12 17:51:05,813] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1550/3000 train_loss=0.4313 lr=1.00e-04 elapsed=8430s
+[2026-05-12 17:55:07,356] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1575/3000 train_loss=0.4003 lr=1.50e-04 elapsed=8672s
+[2026-05-12 17:58:59,651] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1600/3000 train_loss=0.3117 lr=2.00e-04 elapsed=8904s
+[2026-05-12 18:02:56,043] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1625/3000 train_loss=0.3056 lr=2.00e-04 elapsed=9140s
+[2026-05-12 18:07:09,337] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1650/3000 train_loss=0.3311 lr=1.99e-04 elapsed=9394s
+[2026-05-12 18:11:06,404] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1675/3000 train_loss=0.3212 lr=1.99e-04 elapsed=9631s
+[2026-05-12 18:15:04,207] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1700/3000 train_loss=0.3225 lr=1.97e-04 elapsed=9869s
+[2026-05-12 18:18:56,509] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1725/3000 train_loss=0.3059 lr=1.96e-04 elapsed=10101s
+[2026-05-12 18:23:06,060] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1750/3000 train_loss=0.3096 lr=1.94e-04 elapsed=10350s
+[2026-05-12 18:23:50,184] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1750 VAL_LOSS=1.2873
+[2026-05-12 18:27:52,433] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1775/3000 train_loss=0.3212 lr=1.92e-04 elapsed=10637s
+[2026-05-12 18:31:45,497] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1800/3000 train_loss=0.3124 lr=1.90e-04 elapsed=10870s
+[2026-05-12 18:35:55,140] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1825/3000 train_loss=0.3327 lr=1.88e-04 elapsed=11120s
+[2026-05-12 18:40:02,388] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1850/3000 train_loss=0.3298 lr=1.85e-04 elapsed=11367s
+[2026-05-12 18:44:03,201] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1875/3000 train_loss=0.3014 lr=1.82e-04 elapsed=11608s
+[2026-05-12 18:47:59,076] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1900/3000 train_loss=0.2133 lr=1.78e-04 elapsed=11843s
+[2026-05-12 18:51:58,388] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1925/3000 train_loss=0.2231 lr=1.75e-04 elapsed=12083s
+[2026-05-12 18:55:57,024] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1950/3000 train_loss=0.2039 lr=1.71e-04 elapsed=12321s
+[2026-05-12 18:59:48,942] INFO stage3.llama3-8b.alpaca.relora_baseline - step=1975/3000 train_loss=0.2113 lr=1.67e-04 elapsed=12553s
+[2026-05-12 19:03:49,754] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2000/3000 train_loss=0.2333 lr=1.62e-04 elapsed=12794s
+[2026-05-12 19:04:34,942] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2000 VAL_LOSS=1.4424
+[2026-05-12 19:05:11,579] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2000 mean_ER=1625.00 mean_CN=4.28e+07
+[2026-05-12 19:05:11,579] INFO stage3.llama3-8b.alpaca.relora_baseline - === MERGE EVENT 4 at step 2000 (method=relora_baseline) ===
+[2026-05-12 19:05:14,388] INFO stage3.llama3-8b.alpaca.relora_baseline - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-12 19:06:35,597] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2000 POST-MERGE VAL_LOSS=1.4472 (first_eval=0.9731757111549377)
+[2026-05-12 19:10:31,783] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2025/3000 train_loss=0.2209 lr=5.00e-05 elapsed=13196s
+[2026-05-12 19:14:43,624] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2050/3000 train_loss=0.2304 lr=1.00e-04 elapsed=13448s
+[2026-05-12 19:18:49,457] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2075/3000 train_loss=0.2191 lr=1.50e-04 elapsed=13694s
+[2026-05-12 19:22:44,732] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2100/3000 train_loss=0.2247 lr=2.00e-04 elapsed=13929s
+[2026-05-12 19:26:45,603] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2125/3000 train_loss=0.2308 lr=2.00e-04 elapsed=14170s
+[2026-05-12 19:30:50,989] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2150/3000 train_loss=0.2243 lr=1.98e-04 elapsed=14415s
+[2026-05-12 19:34:58,854] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2175/3000 train_loss=0.2493 lr=1.97e-04 elapsed=14663s
+[2026-05-12 19:39:04,814] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2200/3000 train_loss=0.1918 lr=1.94e-04 elapsed=14909s
+[2026-05-12 19:43:08,371] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2225/3000 train_loss=0.1585 lr=1.91e-04 elapsed=15153s
+[2026-05-12 19:47:06,408] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2250/3000 train_loss=0.1652 lr=1.87e-04 elapsed=15391s
+[2026-05-12 19:47:51,621] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2250 VAL_LOSS=1.4978
+[2026-05-12 19:51:52,443] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2275/3000 train_loss=0.1623 lr=1.82e-04 elapsed=15677s
+[2026-05-12 19:55:43,299] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2300/3000 train_loss=0.1481 lr=1.77e-04 elapsed=15908s
+[2026-05-12 19:59:45,181] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2325/3000 train_loss=0.1650 lr=1.71e-04 elapsed=16150s
+[2026-05-12 20:03:45,864] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2350/3000 train_loss=0.1729 lr=1.64e-04 elapsed=16390s
+[2026-05-12 20:07:45,396] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2375/3000 train_loss=0.1551 lr=1.57e-04 elapsed=16630s
+[2026-05-12 20:11:41,179] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2400/3000 train_loss=0.1596 lr=1.50e-04 elapsed=16866s
+[2026-05-12 20:15:50,701] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2425/3000 train_loss=0.1611 lr=1.42e-04 elapsed=17115s
+[2026-05-12 20:19:48,640] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2450/3000 train_loss=0.1543 lr=1.34e-04 elapsed=17353s
+[2026-05-12 20:23:46,541] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2475/3000 train_loss=0.1486 lr=1.26e-04 elapsed=17591s
+[2026-05-12 20:27:43,257] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2500/3000 train_loss=0.1662 lr=1.17e-04 elapsed=17828s
+[2026-05-12 20:28:28,454] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2500 VAL_LOSS=1.5438
+[2026-05-12 20:29:04,169] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2500 mean_ER=1625.50 mean_CN=1.17e+07
+[2026-05-12 20:29:04,169] INFO stage3.llama3-8b.alpaca.relora_baseline - === MERGE EVENT 5 at step 2500 (method=relora_baseline) ===
+[2026-05-12 20:29:06,930] INFO stage3.llama3-8b.alpaca.relora_baseline - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-12 20:30:28,543] INFO stage3.llama3-8b.alpaca.relora_baseline - step=2500 POST-MERGE VAL_LOSS=1.5452 (first_eval=0.9731757111549377)
+[2026-05-12 20:30:28,544] WARNING stage3.llama3-8b.alpaca.relora_baseline - ABORT: post-merge val_loss=1.5452 > first_eval=0.9732 * 1.5
+[2026-05-12 20:30:28,558] INFO stage3.llama3-8b.alpaca.relora_baseline - training ABORTED in 17992.9s
+[2026-05-12 20:31:13,743] INFO stage3.llama3-8b.alpaca.relora_baseline - FINAL VAL_LOSS=1.5452
+[2026-05-12 20:31:49,241] INFO stage3.llama3-8b.alpaca.relora_baseline - summary.json written

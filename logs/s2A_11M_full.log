@@ -1,0 +1,145 @@
+[2026-05-12 12:46:06,004] INFO stage2.11M.full_rank - size=11M method=full_rank effective_gate=none gate_sign=S3pos_drops out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage2/11M/full_rank
+[2026-05-12 12:46:10,490] INFO stage2.11M.full_rank - loading wikitext-2-raw-v1
+Generating test split:   0%|          | 0/4358 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 4358/4358 [00:00<00:00, 183695.22 examples/s]
+Generating train split:   0%|          | 0/36718 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 36718/36718 [00:00<00:00, 538028.85 examples/s]
+Generating validation split:   0%|          | 0/3760 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 3760/3760 [00:00<00:00, 194451.29 examples/s]
+Token indices sequence length is longer than the specified maximum sequence length for this model (2391884 > 512). Running this sequence through the model will result in indexing errors
+[2026-05-12 12:49:55,859] INFO stage2.11M.full_rank - train tokens=2,391,884  val tokens=247,289
+[2026-05-12 12:49:55,862] INFO stage2.11M.full_rank - #train_windows=9343  #val_windows=965
+[2026-05-12 12:49:56,090] INFO stage2.11M.full_rank - tiny_lm 11M: total params=14.37M (incl. embedding)
+[2026-05-12 12:49:57,068] INFO stage2.11M.full_rank - #trainable params=14.37M
+[2026-05-12 12:49:57,580] INFO stage2.11M.full_rank - [step 0] mean_effective_rank=154.273 mean_condition_number=1.27e+03
+[2026-05-12 12:49:57,580] INFO stage2.11M.full_rank - merge events scheduled at steps: []
+[2026-05-12 12:50:00,363] INFO stage2.11M.full_rank - step=50/5000 train_loss=10.6028 lr=7.50e-05 elapsed=3s
+[2026-05-12 12:50:02,430] INFO stage2.11M.full_rank - step=100/5000 train_loss=9.7358 lr=1.50e-04 elapsed=5s
+[2026-05-12 12:50:04,492] INFO stage2.11M.full_rank - step=150/5000 train_loss=8.4394 lr=2.25e-04 elapsed=7s
+[2026-05-12 12:50:06,558] INFO stage2.11M.full_rank - step=200/5000 train_loss=7.4209 lr=3.00e-04 elapsed=9s
+[2026-05-12 12:50:08,621] INFO stage2.11M.full_rank - step=250/5000 train_loss=6.9735 lr=3.00e-04 elapsed=11s
+[2026-05-12 12:50:09,273] INFO stage2.11M.full_rank - step=250 VAL_LOSS=6.8026  ppl=900.18
+[2026-05-12 12:50:11,339] INFO stage2.11M.full_rank - step=300/5000 train_loss=6.6797 lr=3.00e-04 elapsed=14s
+[2026-05-12 12:50:13,402] INFO stage2.11M.full_rank - step=350/5000 train_loss=6.4840 lr=2.99e-04 elapsed=16s
+[2026-05-12 12:50:15,462] INFO stage2.11M.full_rank - step=400/5000 train_loss=6.3788 lr=2.99e-04 elapsed=18s
+[2026-05-12 12:50:17,524] INFO stage2.11M.full_rank - step=450/5000 train_loss=6.3005 lr=2.98e-04 elapsed=20s
+[2026-05-12 12:50:19,586] INFO stage2.11M.full_rank - step=500/5000 train_loss=6.2027 lr=2.97e-04 elapsed=22s
+[2026-05-12 12:50:20,237] INFO stage2.11M.full_rank - step=500 VAL_LOSS=6.2121  ppl=498.76
+[2026-05-12 12:50:20,478] INFO stage2.11M.full_rank - step=500 mean_effective_rank=150.593 mean_condition_number=3.24e+03
+[2026-05-12 12:50:22,536] INFO stage2.11M.full_rank - step=550/5000 train_loss=6.1336 lr=2.96e-04 elapsed=25s
+[2026-05-12 12:50:24,599] INFO stage2.11M.full_rank - step=600/5000 train_loss=6.0499 lr=2.95e-04 elapsed=27s
+[2026-05-12 12:50:26,660] INFO stage2.11M.full_rank - step=650/5000 train_loss=5.9683 lr=2.94e-04 elapsed=29s
+[2026-05-12 12:50:28,721] INFO stage2.11M.full_rank - step=700/5000 train_loss=5.8951 lr=2.92e-04 elapsed=31s
+[2026-05-12 12:50:30,782] INFO stage2.11M.full_rank - step=750/5000 train_loss=5.8597 lr=2.90e-04 elapsed=33s
+[2026-05-12 12:50:31,434] INFO stage2.11M.full_rank - step=750 VAL_LOSS=5.9792  ppl=395.13
+[2026-05-12 12:50:33,497] INFO stage2.11M.full_rank - step=800/5000 train_loss=5.8258 lr=2.89e-04 elapsed=36s
+[2026-05-12 12:50:35,557] INFO stage2.11M.full_rank - step=850/5000 train_loss=5.7826 lr=2.87e-04 elapsed=38s
+[2026-05-12 12:50:37,618] INFO stage2.11M.full_rank - step=900/5000 train_loss=5.7588 lr=2.85e-04 elapsed=40s
+[2026-05-12 12:50:39,677] INFO stage2.11M.full_rank - step=950/5000 train_loss=5.7350 lr=2.82e-04 elapsed=42s
+[2026-05-12 12:50:41,736] INFO stage2.11M.full_rank - step=1000/5000 train_loss=5.6939 lr=2.80e-04 elapsed=44s
+[2026-05-12 12:50:42,387] INFO stage2.11M.full_rank - step=1000 VAL_LOSS=5.7927  ppl=327.89
+[2026-05-12 12:50:42,621] INFO stage2.11M.full_rank - step=1000 mean_effective_rank=148.385 mean_condition_number=2.04e+03
+[2026-05-12 12:50:44,694] INFO stage2.11M.full_rank - step=1050/5000 train_loss=5.6376 lr=2.77e-04 elapsed=47s
+[2026-05-12 12:50:46,755] INFO stage2.11M.full_rank - step=1100/5000 train_loss=5.5952 lr=2.75e-04 elapsed=49s
+[2026-05-12 12:50:48,826] INFO stage2.11M.full_rank - step=1150/5000 train_loss=5.5823 lr=2.72e-04 elapsed=51s
+[2026-05-12 12:50:50,887] INFO stage2.11M.full_rank - step=1200/5000 train_loss=5.4525 lr=2.69e-04 elapsed=53s
+[2026-05-12 12:50:52,951] INFO stage2.11M.full_rank - step=1250/5000 train_loss=5.4103 lr=2.66e-04 elapsed=55s
+[2026-05-12 12:50:53,602] INFO stage2.11M.full_rank - step=1250 VAL_LOSS=5.6668  ppl=289.11
+[2026-05-12 12:50:55,664] INFO stage2.11M.full_rank - step=1300/5000 train_loss=5.4191 lr=2.63e-04 elapsed=58s
+[2026-05-12 12:50:57,726] INFO stage2.11M.full_rank - step=1350/5000 train_loss=5.3896 lr=2.59e-04 elapsed=60s
+[2026-05-12 12:50:59,785] INFO stage2.11M.full_rank - step=1400/5000 train_loss=5.3193 lr=2.56e-04 elapsed=62s
+[2026-05-12 12:51:01,849] INFO stage2.11M.full_rank - step=1450/5000 train_loss=5.3534 lr=2.53e-04 elapsed=64s
+[2026-05-12 12:51:03,909] INFO stage2.11M.full_rank - step=1500/5000 train_loss=5.3370 lr=2.49e-04 elapsed=66s
+[2026-05-12 12:51:04,559] INFO stage2.11M.full_rank - step=1500 VAL_LOSS=5.5611  ppl=260.10
+[2026-05-12 12:51:04,794] INFO stage2.11M.full_rank - step=1500 mean_effective_rank=146.916 mean_condition_number=3.00e+03
+[2026-05-12 12:51:06,851] INFO stage2.11M.full_rank - step=1550/5000 train_loss=5.3296 lr=2.45e-04 elapsed=69s
+[2026-05-12 12:51:08,911] INFO stage2.11M.full_rank - step=1600/5000 train_loss=5.2851 lr=2.41e-04 elapsed=71s
+[2026-05-12 12:51:10,970] INFO stage2.11M.full_rank - step=1650/5000 train_loss=5.2514 lr=2.37e-04 elapsed=73s
+[2026-05-12 12:51:13,029] INFO stage2.11M.full_rank - step=1700/5000 train_loss=5.2664 lr=2.33e-04 elapsed=75s
+[2026-05-12 12:51:15,087] INFO stage2.11M.full_rank - step=1750/5000 train_loss=5.2032 lr=2.29e-04 elapsed=78s
+[2026-05-12 12:51:15,738] INFO stage2.11M.full_rank - step=1750 VAL_LOSS=5.4743  ppl=238.48
+[2026-05-12 12:51:17,797] INFO stage2.11M.full_rank - step=1800/5000 train_loss=5.0618 lr=2.25e-04 elapsed=80s
+[2026-05-12 12:51:19,855] INFO stage2.11M.full_rank - step=1850/5000 train_loss=5.1117 lr=2.21e-04 elapsed=82s
+[2026-05-12 12:51:21,912] INFO stage2.11M.full_rank - step=1900/5000 train_loss=5.0572 lr=2.16e-04 elapsed=84s
+[2026-05-12 12:51:23,974] INFO stage2.11M.full_rank - step=1950/5000 train_loss=5.0961 lr=2.12e-04 elapsed=86s
+[2026-05-12 12:51:26,034] INFO stage2.11M.full_rank - step=2000/5000 train_loss=5.0436 lr=2.07e-04 elapsed=88s
+[2026-05-12 12:51:26,684] INFO stage2.11M.full_rank - step=2000 VAL_LOSS=5.4416  ppl=230.81
+[2026-05-12 12:51:26,919] INFO stage2.11M.full_rank - step=2000 mean_effective_rank=146.019 mean_condition_number=2.27e+03
+[2026-05-12 12:51:28,976] INFO stage2.11M.full_rank - step=2050/5000 train_loss=5.0399 lr=2.03e-04 elapsed=91s
+[2026-05-12 12:51:31,035] INFO stage2.11M.full_rank - step=2100/5000 train_loss=5.0544 lr=1.98e-04 elapsed=93s
+[2026-05-12 12:51:33,094] INFO stage2.11M.full_rank - step=2150/5000 train_loss=5.0104 lr=1.94e-04 elapsed=96s
+[2026-05-12 12:51:35,152] INFO stage2.11M.full_rank - step=2200/5000 train_loss=5.0214 lr=1.89e-04 elapsed=98s
+[2026-05-12 12:51:37,225] INFO stage2.11M.full_rank - step=2250/5000 train_loss=5.0132 lr=1.84e-04 elapsed=100s
+[2026-05-12 12:51:37,876] INFO stage2.11M.full_rank - step=2250 VAL_LOSS=5.3735  ppl=215.62
+[2026-05-12 12:51:39,937] INFO stage2.11M.full_rank - step=2300/5000 train_loss=4.9639 lr=1.79e-04 elapsed=102s
+[2026-05-12 12:51:41,996] INFO stage2.11M.full_rank - step=2350/5000 train_loss=4.9392 lr=1.74e-04 elapsed=104s
+[2026-05-12 12:51:44,054] INFO stage2.11M.full_rank - step=2400/5000 train_loss=4.8308 lr=1.70e-04 elapsed=106s
+[2026-05-12 12:51:46,114] INFO stage2.11M.full_rank - step=2450/5000 train_loss=4.8100 lr=1.65e-04 elapsed=109s
+[2026-05-12 12:51:48,173] INFO stage2.11M.full_rank - step=2500/5000 train_loss=4.8692 lr=1.60e-04 elapsed=111s
+[2026-05-12 12:51:48,824] INFO stage2.11M.full_rank - step=2500 VAL_LOSS=5.3800  ppl=217.02
+[2026-05-12 12:51:49,067] INFO stage2.11M.full_rank - step=2500 mean_effective_rank=145.509 mean_condition_number=9.54e+03
+[2026-05-12 12:51:51,125] INFO stage2.11M.full_rank - step=2550/5000 train_loss=4.8097 lr=1.55e-04 elapsed=114s
+[2026-05-12 12:51:53,187] INFO stage2.11M.full_rank - step=2600/5000 train_loss=4.8298 lr=1.50e-04 elapsed=116s
+[2026-05-12 12:51:55,244] INFO stage2.11M.full_rank - step=2650/5000 train_loss=4.8197 lr=1.45e-04 elapsed=118s
+[2026-05-12 12:51:57,304] INFO stage2.11M.full_rank - step=2700/5000 train_loss=4.8164 lr=1.40e-04 elapsed=120s
+[2026-05-12 12:51:59,362] INFO stage2.11M.full_rank - step=2750/5000 train_loss=4.7806 lr=1.35e-04 elapsed=122s
+[2026-05-12 12:52:00,012] INFO stage2.11M.full_rank - step=2750 VAL_LOSS=5.3301  ppl=206.45
+[2026-05-12 12:52:02,073] INFO stage2.11M.full_rank - step=2800/5000 train_loss=4.8097 lr=1.30e-04 elapsed=124s
+[2026-05-12 12:52:04,133] INFO stage2.11M.full_rank - step=2850/5000 train_loss=4.8091 lr=1.26e-04 elapsed=127s
+[2026-05-12 12:52:06,192] INFO stage2.11M.full_rank - step=2900/5000 train_loss=4.7834 lr=1.21e-04 elapsed=129s
+[2026-05-12 12:52:08,264] INFO stage2.11M.full_rank - step=2950/5000 train_loss=4.6718 lr=1.16e-04 elapsed=131s
+[2026-05-12 12:52:10,343] INFO stage2.11M.full_rank - step=3000/5000 train_loss=4.6450 lr=1.11e-04 elapsed=133s
+[2026-05-12 12:52:10,993] INFO stage2.11M.full_rank - step=3000 VAL_LOSS=5.3411  ppl=208.75
+[2026-05-12 12:52:11,228] INFO stage2.11M.full_rank - step=3000 mean_effective_rank=145.237 mean_condition_number=4.10e+03
+[2026-05-12 12:52:13,285] INFO stage2.11M.full_rank - step=3050/5000 train_loss=4.6191 lr=1.06e-04 elapsed=136s
+[2026-05-12 12:52:15,345] INFO stage2.11M.full_rank - step=3100/5000 train_loss=4.6777 lr=1.02e-04 elapsed=138s
+[2026-05-12 12:52:17,404] INFO stage2.11M.full_rank - step=3150/5000 train_loss=4.6627 lr=9.72e-05 elapsed=140s
+[2026-05-12 12:52:19,479] INFO stage2.11M.full_rank - step=3200/5000 train_loss=4.6509 lr=9.26e-05 elapsed=142s
+[2026-05-12 12:52:21,538] INFO stage2.11M.full_rank - step=3250/5000 train_loss=4.6361 lr=8.81e-05 elapsed=144s
+[2026-05-12 12:52:22,189] INFO stage2.11M.full_rank - step=3250 VAL_LOSS=5.3349  ppl=207.45
+[2026-05-12 12:52:24,258] INFO stage2.11M.full_rank - step=3300/5000 train_loss=4.6519 lr=8.37e-05 elapsed=147s
+[2026-05-12 12:52:26,317] INFO stage2.11M.full_rank - step=3350/5000 train_loss=4.6469 lr=7.93e-05 elapsed=149s
+[2026-05-12 12:52:28,375] INFO stage2.11M.full_rank - step=3400/5000 train_loss=4.6374 lr=7.50e-05 elapsed=151s
+[2026-05-12 12:52:30,433] INFO stage2.11M.full_rank - step=3450/5000 train_loss=4.6069 lr=7.08e-05 elapsed=153s
+[2026-05-12 12:52:32,494] INFO stage2.11M.full_rank - step=3500/5000 train_loss=4.6011 lr=6.67e-05 elapsed=155s
+[2026-05-12 12:52:33,145] INFO stage2.11M.full_rank - step=3500 VAL_LOSS=5.2923  ppl=198.80
+[2026-05-12 12:52:33,380] INFO stage2.11M.full_rank - step=3500 mean_effective_rank=145.101 mean_condition_number=8.78e+03
+[2026-05-12 12:52:35,432] INFO stage2.11M.full_rank - step=3550/5000 train_loss=4.4805 lr=6.26e-05 elapsed=158s
+[2026-05-12 12:52:37,490] INFO stage2.11M.full_rank - step=3600/5000 train_loss=4.4671 lr=5.87e-05 elapsed=160s
+[2026-05-12 12:52:39,546] INFO stage2.11M.full_rank - step=3650/5000 train_loss=4.5165 lr=5.48e-05 elapsed=162s
+[2026-05-12 12:52:41,601] INFO stage2.11M.full_rank - step=3700/5000 train_loss=4.4902 lr=5.11e-05 elapsed=164s
+[2026-05-12 12:52:43,660] INFO stage2.11M.full_rank - step=3750/5000 train_loss=4.4921 lr=4.75e-05 elapsed=166s
+[2026-05-12 12:52:44,309] INFO stage2.11M.full_rank - step=3750 VAL_LOSS=5.4018  ppl=221.80
+[2026-05-12 12:52:46,363] INFO stage2.11M.full_rank - step=3800/5000 train_loss=4.5031 lr=4.39e-05 elapsed=169s
+[2026-05-12 12:52:48,429] INFO stage2.11M.full_rank - step=3850/5000 train_loss=4.4925 lr=4.05e-05 elapsed=171s
+[2026-05-12 12:52:50,484] INFO stage2.11M.full_rank - step=3900/5000 train_loss=4.5329 lr=3.72e-05 elapsed=173s
+[2026-05-12 12:52:52,538] INFO stage2.11M.full_rank - step=3950/5000 train_loss=4.5101 lr=3.40e-05 elapsed=175s
+[2026-05-12 12:52:54,592] INFO stage2.11M.full_rank - step=4000/5000 train_loss=4.5050 lr=3.10e-05 elapsed=177s
+[2026-05-12 12:52:55,241] INFO stage2.11M.full_rank - step=4000 VAL_LOSS=5.3808  ppl=217.19
+[2026-05-12 12:52:55,475] INFO stage2.11M.full_rank - step=4000 mean_effective_rank=145.022 mean_condition_number=6.84e+03
+[2026-05-12 12:52:57,524] INFO stage2.11M.full_rank - step=4050/5000 train_loss=4.5169 lr=2.81e-05 elapsed=180s
+[2026-05-12 12:52:59,580] INFO stage2.11M.full_rank - step=4100/5000 train_loss=4.4889 lr=2.53e-05 elapsed=182s
+[2026-05-12 12:53:01,636] INFO stage2.11M.full_rank - step=4150/5000 train_loss=4.4116 lr=2.26e-05 elapsed=184s
+[2026-05-12 12:53:03,693] INFO stage2.11M.full_rank - step=4200/5000 train_loss=4.3864 lr=2.01e-05 elapsed=186s
+[2026-05-12 12:53:05,748] INFO stage2.11M.full_rank - step=4250/5000 train_loss=4.4404 lr=1.77e-05 elapsed=188s
+[2026-05-12 12:53:06,398] INFO stage2.11M.full_rank - step=4250 VAL_LOSS=5.4060  ppl=222.74
+[2026-05-12 12:53:08,454] INFO stage2.11M.full_rank - step=4300/5000 train_loss=4.4217 lr=1.55e-05 elapsed=191s
+[2026-05-12 12:53:10,510] INFO stage2.11M.full_rank - step=4350/5000 train_loss=4.4263 lr=1.34e-05 elapsed=193s
+[2026-05-12 12:53:12,567] INFO stage2.11M.full_rank - step=4400/5000 train_loss=4.4184 lr=1.14e-05 elapsed=195s
+[2026-05-12 12:53:14,623] INFO stage2.11M.full_rank - step=4450/5000 train_loss=4.4471 lr=9.61e-06 elapsed=197s
+[2026-05-12 12:53:16,679] INFO stage2.11M.full_rank - step=4500/5000 train_loss=4.4034 lr=7.96e-06 elapsed=199s
+[2026-05-12 12:53:17,327] INFO stage2.11M.full_rank - step=4500 VAL_LOSS=5.4107  ppl=223.78
+[2026-05-12 12:53:17,561] INFO stage2.11M.full_rank - step=4500 mean_effective_rank=144.990 mean_condition_number=4.26e+03
+[2026-05-12 12:53:19,618] INFO stage2.11M.full_rank - step=4550/5000 train_loss=4.4104 lr=6.46e-06 elapsed=202s
+[2026-05-12 12:53:21,678] INFO stage2.11M.full_rank - step=4600/5000 train_loss=4.4049 lr=5.11e-06 elapsed=204s
+[2026-05-12 12:53:23,732] INFO stage2.11M.full_rank - step=4650/5000 train_loss=4.4213 lr=3.92e-06 elapsed=206s
+[2026-05-12 12:53:25,791] INFO stage2.11M.full_rank - step=4700/5000 train_loss=4.3880 lr=2.88e-06 elapsed=208s
+[2026-05-12 12:53:27,846] INFO stage2.11M.full_rank - step=4750/5000 train_loss=4.3722 lr=2.00e-06 elapsed=210s
+[2026-05-12 12:53:28,495] INFO stage2.11M.full_rank - step=4750 VAL_LOSS=5.4203  ppl=225.95
+[2026-05-12 12:53:30,639] INFO stage2.11M.full_rank - step=4800/5000 train_loss=4.3795 lr=1.28e-06 elapsed=213s
+[2026-05-12 12:53:32,811] INFO stage2.11M.full_rank - step=4850/5000 train_loss=4.3862 lr=7.22e-07 elapsed=215s
+[2026-05-12 12:53:35,010] INFO stage2.11M.full_rank - step=4900/5000 train_loss=4.3866 lr=3.21e-07 elapsed=217s
+[2026-05-12 12:53:37,164] INFO stage2.11M.full_rank - step=4950/5000 train_loss=4.4007 lr=8.03e-08 elapsed=220s
+[2026-05-12 12:53:39,292] INFO stage2.11M.full_rank - step=5000/5000 train_loss=4.3825 lr=0.00e+00 elapsed=222s
+[2026-05-12 12:53:40,007] INFO stage2.11M.full_rank - step=5000 VAL_LOSS=5.4203  ppl=225.95
+[2026-05-12 12:53:40,251] INFO stage2.11M.full_rank - step=5000 mean_effective_rank=144.986 mean_condition_number=1.60e+04
+[2026-05-12 12:53:40,251] INFO stage2.11M.full_rank - training done in 222.7s
+[2026-05-12 12:53:41,034] INFO stage2.11M.full_rank - FINAL VAL_LOSS=5.4675  ppl=236.86
+[2026-05-12 12:53:41,267] INFO stage2.11M.full_rank - summary.json written

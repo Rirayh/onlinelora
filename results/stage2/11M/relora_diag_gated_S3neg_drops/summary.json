@@ -1,0 +1,16 @@
+{
+  "size": "11M",
+  "method": "relora_diag_gated",
+  "run_name": "relora_diag_gated_S3neg_drops",
+  "effective_gate": "S3_fo_val_signed",
+  "gate_sign": "S3neg_drops",
+  "total_steps": 5000,
+  "merge_every": 1000,
+  "final_val_loss": 10.402593612670898,
+  "final_mean_effective_rank": 116.91093245712622,
+  "final_mean_condition_number": 13772.487942357806,
+  "elapsed_sec": 195.89510083198547,
+  "n_params_total": 14372736,
+  "n_trainable": 393216,
+  "aborted": false
+}

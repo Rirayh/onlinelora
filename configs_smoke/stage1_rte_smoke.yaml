@@ -1,0 +1,25 @@
+task: rte
+glue_subset: rte
+model_name: roberta-base
+num_labels: 2
+lora:
+  r: 8
+  alpha: 16
+  dropout: 0.0
+  target_modules: ["query", "value"]
+optim:
+  lr: 4.0e-4
+  weight_decay: 0.0
+  warmup_steps: 50
+  scheduler: linear
+batch_size: 16
+eval_batch_size: 64
+max_seq_len: 128
+total_steps: 200
+save_steps: [200]
+diagnostic_ratio: 0.2
+seed: 42
+saliency_batches: 4
+fisher_max_samples: 64
+oracle_test_max: 256
+output_dir: results/stage1_smoke/rte

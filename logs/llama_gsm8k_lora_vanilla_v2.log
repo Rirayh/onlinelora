@@ -1,0 +1,217 @@
+/mnt/cpfs/junlongke/miniconda3/envs/espo/lib/python3.11/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (6.0.0.post1)/charset_normalizer (3.4.6) doesn't match a supported version!
+  warnings.warn(
+[2026-05-13 06:49:28,916] INFO stage3.llama3-8b.gsm8k.lora_vanilla - START stage3 model=/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B dataset=gsm8k method=lora_vanilla out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2
+[2026-05-13 06:49:31,197] INFO stage3.llama3-8b.gsm8k.lora_vanilla - tokenizer loaded in 0.3s, vocab=128000
+[2026-05-13 06:49:32,393] INFO stage3.llama3-8b.gsm8k.lora_vanilla - loading gsm8k (config=main)
+[2026-05-13 06:51:18,157] INFO stage3.llama3-8b.gsm8k.lora_vanilla - gsm8k train=7223 val=250 test=1319
+[2026-05-13 06:51:20,482] INFO stage3.llama3-8b.gsm8k.lora_vanilla - gsm8k tokenized: train 7223 val 250
+[2026-05-13 06:51:20,485] INFO stage3.llama3-8b.gsm8k.lora_vanilla - data prepared in 109.3s
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 59.23it/s]
+[2026-05-13 06:51:23,212] INFO stage3.llama3-8b.gsm8k.lora_vanilla - model loaded in 2.7s
+[2026-05-13 06:51:58,311] INFO stage3.llama3-8b.gsm8k.lora_vanilla - #LoRA layers=224 #components=3584
+[2026-05-13 06:51:58,316] INFO stage3.llama3-8b.gsm8k.lora_vanilla - #trainable params=41.94M
+[2026-05-13 06:52:14,932] INFO stage3.llama3-8b.gsm8k.lora_vanilla - [step 0] mean_ER=1622.41 mean_CN=1.18e+07 (sampled 8 layers)
+[2026-05-13 06:52:14,933] INFO stage3.llama3-8b.gsm8k.lora_vanilla - merge events scheduled at: []
+[2026-05-13 06:53:41,006] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=25/3000 train_loss=1.0372 lr=5.00e-05 elapsed=86s
+[2026-05-13 06:55:01,545] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=50/3000 train_loss=0.5707 lr=1.00e-04 elapsed=167s
+[2026-05-13 06:55:02,049] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000050
+[2026-05-13 06:56:23,081] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=75/3000 train_loss=0.5293 lr=1.50e-04 elapsed=248s
+[2026-05-13 06:57:46,516] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=100/3000 train_loss=0.4964 lr=2.00e-04 elapsed=332s
+[2026-05-13 06:57:47,004] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000100
+[2026-05-13 06:59:09,745] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=125/3000 train_loss=0.5109 lr=2.00e-04 elapsed=415s
+[2026-05-13 07:00:33,375] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=150/3000 train_loss=0.4967 lr=2.00e-04 elapsed=498s
+[2026-05-13 07:00:33,869] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000150
+[2026-05-13 07:01:57,616] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=175/3000 train_loss=0.4818 lr=2.00e-04 elapsed=583s
+[2026-05-13 07:03:19,206] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=200/3000 train_loss=0.4672 lr=1.99e-04 elapsed=664s
+[2026-05-13 07:03:19,687] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000200
+[2026-05-13 07:04:42,675] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=225/3000 train_loss=0.4650 lr=1.99e-04 elapsed=748s
+[2026-05-13 07:06:02,943] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=250/3000 train_loss=0.4047 lr=1.99e-04 elapsed=828s
+[2026-05-13 07:06:03,409] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000250
+[2026-05-13 07:06:10,750] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=250 VAL_LOSS=0.4591
+[2026-05-13 07:06:11,205] INFO stage3.llama3-8b.gsm8k.lora_vanilla - best ckpt updated: step=250 val_loss=0.4591
+[2026-05-13 07:07:34,544] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=275/3000 train_loss=0.4014 lr=1.98e-04 elapsed=920s
+[2026-05-13 07:08:57,223] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=300/3000 train_loss=0.3968 lr=1.98e-04 elapsed=1002s
+[2026-05-13 07:08:57,731] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000300
+[2026-05-13 07:10:17,820] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=325/3000 train_loss=0.3958 lr=1.97e-04 elapsed=1083s
+[2026-05-13 07:11:40,780] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=350/3000 train_loss=0.4074 lr=1.96e-04 elapsed=1166s
+[2026-05-13 07:11:41,267] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000350
+[2026-05-13 07:13:03,260] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=375/3000 train_loss=0.3991 lr=1.96e-04 elapsed=1248s
+[2026-05-13 07:14:26,553] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=400/3000 train_loss=0.3919 lr=1.95e-04 elapsed=1332s
+[2026-05-13 07:14:27,016] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000400
+[2026-05-13 07:15:48,072] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=425/3000 train_loss=0.3911 lr=1.94e-04 elapsed=1413s
+[2026-05-13 07:17:10,954] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=450/3000 train_loss=0.3997 lr=1.93e-04 elapsed=1496s
+[2026-05-13 07:17:11,442] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000450
+[2026-05-13 07:18:33,661] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=475/3000 train_loss=0.2878 lr=1.92e-04 elapsed=1579s
+[2026-05-13 07:19:54,358] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=500/3000 train_loss=0.2755 lr=1.91e-04 elapsed=1659s
+[2026-05-13 07:19:54,825] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000500
+[2026-05-13 07:20:02,170] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=500 VAL_LOSS=0.4865
+[2026-05-13 07:20:17,906] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=500 mean_ER=1622.99 mean_CN=3.20e+08
+[2026-05-13 07:21:40,421] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=525/3000 train_loss=0.2805 lr=1.90e-04 elapsed=1765s
+[2026-05-13 07:23:02,562] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=550/3000 train_loss=0.2875 lr=1.88e-04 elapsed=1848s
+[2026-05-13 07:23:03,031] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000550
+[2026-05-13 07:24:25,489] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=575/3000 train_loss=0.2819 lr=1.87e-04 elapsed=1931s
+[2026-05-13 07:25:48,556] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=600/3000 train_loss=0.2881 lr=1.86e-04 elapsed=2014s
+[2026-05-13 07:25:49,055] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000600
+[2026-05-13 07:27:10,211] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=625/3000 train_loss=0.2910 lr=1.84e-04 elapsed=2095s
+[2026-05-13 07:28:33,406] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=650/3000 train_loss=0.2855 lr=1.83e-04 elapsed=2178s
+[2026-05-13 07:28:33,900] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000650
+[2026-05-13 07:29:55,768] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=675/3000 train_loss=0.2934 lr=1.81e-04 elapsed=2261s
+[2026-05-13 07:31:18,591] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=700/3000 train_loss=0.1704 lr=1.80e-04 elapsed=2344s
+[2026-05-13 07:31:19,095] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000700
+[2026-05-13 07:32:41,988] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=725/3000 train_loss=0.1578 lr=1.78e-04 elapsed=2427s
+[2026-05-13 07:34:03,984] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=750/3000 train_loss=0.1525 lr=1.76e-04 elapsed=2509s
+[2026-05-13 07:34:04,465] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000750
+[2026-05-13 07:34:11,790] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=750 VAL_LOSS=0.5901
+[2026-05-13 07:35:33,809] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=775/3000 train_loss=0.1663 lr=1.74e-04 elapsed=2599s
+[2026-05-13 07:36:57,433] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=800/3000 train_loss=0.1632 lr=1.73e-04 elapsed=2682s
+[2026-05-13 07:36:57,888] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000800
+[2026-05-13 07:38:21,521] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=825/3000 train_loss=0.1766 lr=1.71e-04 elapsed=2767s
+[2026-05-13 07:39:42,595] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=850/3000 train_loss=0.1657 lr=1.69e-04 elapsed=2848s
+[2026-05-13 07:39:43,074] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000850
+[2026-05-13 07:41:07,489] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=875/3000 train_loss=0.1767 lr=1.67e-04 elapsed=2933s
+[2026-05-13 07:42:28,828] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=900/3000 train_loss=0.1671 lr=1.65e-04 elapsed=3014s
+[2026-05-13 07:42:29,276] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000900
+[2026-05-13 07:43:50,813] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=925/3000 train_loss=0.0816 lr=1.63e-04 elapsed=3096s
+[2026-05-13 07:45:11,483] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=950/3000 train_loss=0.0745 lr=1.61e-04 elapsed=3177s
+[2026-05-13 07:45:11,990] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_000950
+[2026-05-13 07:46:36,717] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=975/3000 train_loss=0.0781 lr=1.58e-04 elapsed=3262s
+[2026-05-13 07:48:01,965] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1000/3000 train_loss=0.0828 lr=1.56e-04 elapsed=3347s
+[2026-05-13 07:48:02,455] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001000
+[2026-05-13 07:48:09,783] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1000 VAL_LOSS=0.6860
+[2026-05-13 07:48:25,948] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1000 mean_ER=1623.24 mean_CN=1.65e+08
+[2026-05-13 07:49:49,915] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1025/3000 train_loss=0.0801 lr=1.54e-04 elapsed=3455s
+[2026-05-13 07:51:11,062] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1050/3000 train_loss=0.0829 lr=1.52e-04 elapsed=3536s
+[2026-05-13 07:51:11,576] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001050
+[2026-05-13 07:52:33,561] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1075/3000 train_loss=0.0837 lr=1.49e-04 elapsed=3619s
+[2026-05-13 07:53:55,336] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1100/3000 train_loss=0.0862 lr=1.47e-04 elapsed=3700s
+[2026-05-13 07:53:55,827] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001100
+[2026-05-13 07:55:17,782] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1125/3000 train_loss=0.0854 lr=1.44e-04 elapsed=3783s
+[2026-05-13 07:56:38,839] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1150/3000 train_loss=0.0398 lr=1.42e-04 elapsed=3864s
+[2026-05-13 07:56:39,279] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001150
+[2026-05-13 07:58:01,247] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1175/3000 train_loss=0.0385 lr=1.40e-04 elapsed=3946s
+[2026-05-13 07:59:23,700] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1200/3000 train_loss=0.0408 lr=1.37e-04 elapsed=4029s
+[2026-05-13 07:59:24,169] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001200
+[2026-05-13 08:00:46,729] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1225/3000 train_loss=0.0415 lr=1.34e-04 elapsed=4112s
+[2026-05-13 08:02:09,973] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1250/3000 train_loss=0.0430 lr=1.32e-04 elapsed=4195s
+[2026-05-13 08:02:10,463] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001250
+[2026-05-13 08:02:17,791] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1250 VAL_LOSS=0.8319
+[2026-05-13 08:03:41,480] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1275/3000 train_loss=0.0430 lr=1.29e-04 elapsed=4287s
+[2026-05-13 08:05:03,682] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1300/3000 train_loss=0.0424 lr=1.27e-04 elapsed=4369s
+[2026-05-13 08:05:04,221] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001300
+[2026-05-13 08:06:25,976] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1325/3000 train_loss=0.0428 lr=1.24e-04 elapsed=4451s
+[2026-05-13 08:07:47,881] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1350/3000 train_loss=0.0416 lr=1.21e-04 elapsed=4533s
+[2026-05-13 08:07:48,372] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001350
+[2026-05-13 08:09:11,027] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1375/3000 train_loss=0.0229 lr=1.19e-04 elapsed=4616s
+[2026-05-13 08:10:32,247] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1400/3000 train_loss=0.0197 lr=1.16e-04 elapsed=4697s
+[2026-05-13 08:10:32,758] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001400
+[2026-05-13 08:11:55,175] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1425/3000 train_loss=0.0219 lr=1.14e-04 elapsed=4780s
+[2026-05-13 08:13:16,160] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1450/3000 train_loss=0.0212 lr=1.11e-04 elapsed=4861s
+[2026-05-13 08:13:16,656] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001450
+[2026-05-13 08:14:38,846] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1475/3000 train_loss=0.0201 lr=1.08e-04 elapsed=4944s
+[2026-05-13 08:16:02,365] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1500/3000 train_loss=0.0235 lr=1.05e-04 elapsed=5027s
+[2026-05-13 08:16:02,911] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001500
+[2026-05-13 08:16:10,277] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1500 VAL_LOSS=0.9133
+[2026-05-13 08:16:26,252] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1500 mean_ER=1623.24 mean_CN=1.59e+07
+[2026-05-13 08:17:48,628] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1525/3000 train_loss=0.0224 lr=1.03e-04 elapsed=5134s
+[2026-05-13 08:19:12,025] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1550/3000 train_loss=0.0252 lr=1.00e-04 elapsed=5217s
+[2026-05-13 08:19:12,544] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001550
+[2026-05-13 08:20:36,371] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1575/3000 train_loss=0.0238 lr=9.73e-05 elapsed=5301s
+[2026-05-13 08:21:59,047] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1600/3000 train_loss=0.0126 lr=9.46e-05 elapsed=5384s
+[2026-05-13 08:21:59,521] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001600
+[2026-05-13 08:23:22,136] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1625/3000 train_loss=0.0114 lr=9.19e-05 elapsed=5467s
+[2026-05-13 08:24:45,368] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1650/3000 train_loss=0.0129 lr=8.92e-05 elapsed=5550s
+[2026-05-13 08:24:45,822] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001650
+[2026-05-13 08:26:07,330] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1675/3000 train_loss=0.0130 lr=8.65e-05 elapsed=5632s
+[2026-05-13 08:27:28,500] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1700/3000 train_loss=0.0126 lr=8.38e-05 elapsed=5714s
+[2026-05-13 08:27:28,971] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001700
+[2026-05-13 08:28:54,942] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1725/3000 train_loss=0.0119 lr=8.12e-05 elapsed=5800s
+[2026-05-13 08:30:18,745] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1750/3000 train_loss=0.0115 lr=7.85e-05 elapsed=5884s
+[2026-05-13 08:30:19,227] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001750
+[2026-05-13 08:30:26,558] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1750 VAL_LOSS=1.0131
+[2026-05-13 08:31:48,519] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1775/3000 train_loss=0.0131 lr=7.59e-05 elapsed=5974s
+[2026-05-13 08:33:10,206] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1800/3000 train_loss=0.0130 lr=7.32e-05 elapsed=6055s
+[2026-05-13 08:33:10,759] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001800
+[2026-05-13 08:34:32,733] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1825/3000 train_loss=0.0071 lr=7.06e-05 elapsed=6138s
+[2026-05-13 08:35:56,283] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1850/3000 train_loss=0.0069 lr=6.81e-05 elapsed=6221s
+[2026-05-13 08:35:56,747] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001850
+[2026-05-13 08:37:17,844] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1875/3000 train_loss=0.0069 lr=6.55e-05 elapsed=6303s
+[2026-05-13 08:38:40,331] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1900/3000 train_loss=0.0057 lr=6.30e-05 elapsed=6385s
+[2026-05-13 08:38:40,800] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001900
+[2026-05-13 08:40:05,254] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1925/3000 train_loss=0.0060 lr=6.05e-05 elapsed=6470s
+[2026-05-13 08:41:25,836] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1950/3000 train_loss=0.0061 lr=5.80e-05 elapsed=6551s
+[2026-05-13 08:41:26,330] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_001950
+[2026-05-13 08:42:47,814] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=1975/3000 train_loss=0.0060 lr=5.56e-05 elapsed=6633s
+[2026-05-13 08:44:10,575] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2000/3000 train_loss=0.0067 lr=5.32e-05 elapsed=6716s
+[2026-05-13 08:44:11,023] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002000
+[2026-05-13 08:44:18,344] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2000 VAL_LOSS=1.0991
+[2026-05-13 08:44:34,166] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2000 mean_ER=1623.24 mean_CN=1.19e+07
+[2026-05-13 08:45:59,213] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2025/3000 train_loss=0.0069 lr=5.08e-05 elapsed=6824s
+[2026-05-13 08:47:19,702] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2050/3000 train_loss=0.0045 lr=4.84e-05 elapsed=6905s
+[2026-05-13 08:47:20,219] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002050
+[2026-05-13 08:48:43,287] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2075/3000 train_loss=0.0030 lr=4.61e-05 elapsed=6988s
+[2026-05-13 08:50:06,153] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2100/3000 train_loss=0.0037 lr=4.39e-05 elapsed=7071s
+[2026-05-13 08:50:06,630] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002100
+[2026-05-13 08:51:28,252] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2125/3000 train_loss=0.0030 lr=4.17e-05 elapsed=7153s
+[2026-05-13 08:52:50,375] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2150/3000 train_loss=0.0033 lr=3.95e-05 elapsed=7235s
+[2026-05-13 08:52:50,817] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002150
+[2026-05-13 08:54:12,325] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2175/3000 train_loss=0.0032 lr=3.73e-05 elapsed=7317s
+[2026-05-13 08:55:33,475] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2200/3000 train_loss=0.0035 lr=3.53e-05 elapsed=7399s
+[2026-05-13 08:55:33,957] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002200
+[2026-05-13 08:56:57,632] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2225/3000 train_loss=0.0031 lr=3.32e-05 elapsed=7483s
+[2026-05-13 08:58:20,821] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2250/3000 train_loss=0.0026 lr=3.12e-05 elapsed=7566s
+[2026-05-13 08:58:21,282] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002250
+[2026-05-13 08:58:28,615] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2250 VAL_LOSS=1.1722
+[2026-05-13 08:59:53,296] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2275/3000 train_loss=0.0015 lr=2.93e-05 elapsed=7658s
+[2026-05-13 09:01:14,394] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2300/3000 train_loss=0.0010 lr=2.74e-05 elapsed=7739s
+[2026-05-13 09:01:14,861] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002300
+[2026-05-13 09:02:36,622] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2325/3000 train_loss=0.0015 lr=2.56e-05 elapsed=7822s
+[2026-05-13 09:04:00,854] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2350/3000 train_loss=0.0019 lr=2.38e-05 elapsed=7906s
+[2026-05-13 09:04:01,334] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002350
+[2026-05-13 09:05:25,113] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2375/3000 train_loss=0.0011 lr=2.21e-05 elapsed=7990s
+[2026-05-13 09:06:47,042] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2400/3000 train_loss=0.0010 lr=2.04e-05 elapsed=8072s
+[2026-05-13 09:06:47,538] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002400
+[2026-05-13 09:08:07,721] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2425/3000 train_loss=0.0011 lr=1.88e-05 elapsed=8153s
+[2026-05-13 09:09:29,780] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2450/3000 train_loss=0.0013 lr=1.72e-05 elapsed=8235s
+[2026-05-13 09:09:30,267] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002450
+[2026-05-13 09:10:52,201] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2475/3000 train_loss=0.0013 lr=1.57e-05 elapsed=8317s
+[2026-05-13 09:12:17,201] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2500/3000 train_loss=0.0009 lr=1.43e-05 elapsed=8402s
+[2026-05-13 09:12:17,661] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002500
+[2026-05-13 09:12:24,995] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2500 VAL_LOSS=1.2832
+[2026-05-13 09:12:42,003] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2500 mean_ER=1623.25 mean_CN=9.94e+06
+[2026-05-13 09:14:05,911] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2525/3000 train_loss=0.0004 lr=1.29e-05 elapsed=8511s
+[2026-05-13 09:15:28,903] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2550/3000 train_loss=0.0006 lr=1.16e-05 elapsed=8594s
+[2026-05-13 09:15:29,371] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002550
+[2026-05-13 09:16:49,237] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2575/3000 train_loss=0.0006 lr=1.04e-05 elapsed=8674s
+[2026-05-13 09:18:11,724] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2600/3000 train_loss=0.0004 lr=9.24e-06 elapsed=8757s
+[2026-05-13 09:18:12,192] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002600
+[2026-05-13 09:19:35,365] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2625/3000 train_loss=0.0004 lr=8.14e-06 elapsed=8840s
+[2026-05-13 09:20:57,869] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2650/3000 train_loss=0.0008 lr=7.10e-06 elapsed=8923s
+[2026-05-13 09:20:58,350] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002650
+[2026-05-13 09:22:19,703] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2675/3000 train_loss=0.0004 lr=6.13e-06 elapsed=9005s
+[2026-05-13 09:23:42,393] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2700/3000 train_loss=0.0003 lr=5.23e-06 elapsed=9087s
+[2026-05-13 09:23:42,845] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002700
+[2026-05-13 09:25:06,505] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2725/3000 train_loss=0.0003 lr=4.40e-06 elapsed=9172s
+[2026-05-13 09:26:28,520] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2750/3000 train_loss=0.0002 lr=3.65e-06 elapsed=9254s
+[2026-05-13 09:26:28,979] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002750
+[2026-05-13 09:26:36,304] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2750 VAL_LOSS=1.4114
+[2026-05-13 09:27:59,351] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2775/3000 train_loss=0.0002 lr=2.96e-06 elapsed=9344s
+[2026-05-13 09:29:21,559] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2800/3000 train_loss=0.0002 lr=2.34e-06 elapsed=9427s
+[2026-05-13 09:29:22,025] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002800
+[2026-05-13 09:30:42,494] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2825/3000 train_loss=0.0001 lr=1.79e-06 elapsed=9508s
+[2026-05-13 09:32:03,278] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2850/3000 train_loss=0.0002 lr=1.32e-06 elapsed=9588s
+[2026-05-13 09:32:03,741] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002850
+[2026-05-13 09:33:27,614] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2875/3000 train_loss=0.0002 lr=9.15e-07 elapsed=9673s
+[2026-05-13 09:34:48,513] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2900/3000 train_loss=0.0001 lr=5.86e-07 elapsed=9754s
+[2026-05-13 09:34:48,994] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002900
+[2026-05-13 09:36:13,367] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2925/3000 train_loss=0.0002 lr=3.30e-07 elapsed=9838s
+[2026-05-13 09:37:35,492] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2950/3000 train_loss=0.0001 lr=1.47e-07 elapsed=9921s
+[2026-05-13 09:37:35,977] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_002950
+[2026-05-13 09:38:57,252] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=2975/3000 train_loss=0.0001 lr=3.67e-08 elapsed=10002s
+[2026-05-13 09:40:20,726] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=3000/3000 train_loss=0.0001 lr=0.00e+00 elapsed=10086s
+[2026-05-13 09:40:21,230] INFO stage3.llama3-8b.gsm8k.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/checkpoints/step_003000
+[2026-05-13 09:40:28,557] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=3000 VAL_LOSS=1.4820
+[2026-05-13 09:40:44,565] INFO stage3.llama3-8b.gsm8k.lora_vanilla - step=3000 mean_ER=1623.25 mean_CN=1.24e+07
+[2026-05-13 09:40:44,566] INFO stage3.llama3-8b.gsm8k.lora_vanilla - training done in 10109.6s
+[2026-05-13 09:40:52,139] INFO stage3.llama3-8b.gsm8k.lora_vanilla - FINAL VAL_LOSS=1.4820
+[2026-05-13 09:41:07,911] INFO stage3.llama3-8b.gsm8k.lora_vanilla - summary.json written
+[2026-05-13 09:41:08,380] INFO stage3.llama3-8b.gsm8k.lora_vanilla - adapter saved to /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/lora_vanilla_v2/adapter

@@ -1,0 +1,171 @@
+[2026-05-12 17:02:33,291] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - START stage3 model=/mnt/cpfs/public_data/public_model/Qwen/Qwen2.5-7B dataset=alpaca method=relora_diag_gated_S3neg out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/qwen25-7b/alpaca/relora_diag_gated_S3neg
+[2026-05-12 17:02:36,657] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - tokenizer loaded in 0.3s, vocab=151643
+[2026-05-12 17:02:37,652] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - loading yahma/alpaca-cleaned
+[2026-05-12 17:04:22,517] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - alpaca train=10000 val=500
+[2026-05-12 17:04:27,149] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - alpaca tokenized: train 10000 val 500
+[2026-05-12 17:04:27,171] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - data prepared in 110.5s
+[2026-05-12 17:04:29,255] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - model loaded in 2.1s
+[2026-05-12 17:06:52,229] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - #LoRA layers=196 #components=3136
+[2026-05-12 17:06:52,234] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - #trainable params=40.37M
+[2026-05-12 17:07:17,665] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - [step 0] mean_ER=1456.74 mean_CN=9.00e+05 (sampled 8 layers)
+[2026-05-12 17:07:17,665] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - merge events scheduled at: [500, 1000, 1500, 2000, 2500, 3000]
+[2026-05-12 17:11:11,734] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=25/3000 train_loss=0.9528 lr=5.00e-05 elapsed=234s
+[2026-05-12 17:15:01,942] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=50/3000 train_loss=0.9213 lr=1.00e-04 elapsed=464s
+[2026-05-12 17:18:33,931] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=75/3000 train_loss=0.8974 lr=1.50e-04 elapsed=676s
+[2026-05-12 17:22:27,888] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=100/3000 train_loss=0.9222 lr=2.00e-04 elapsed=910s
+[2026-05-12 17:26:10,739] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=125/3000 train_loss=0.9203 lr=2.00e-04 elapsed=1133s
+[2026-05-12 17:30:00,349] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=150/3000 train_loss=0.9424 lr=2.00e-04 elapsed=1363s
+[2026-05-12 17:33:49,231] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=175/3000 train_loss=0.8995 lr=2.00e-04 elapsed=1592s
+[2026-05-12 17:37:39,280] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=200/3000 train_loss=0.9128 lr=1.99e-04 elapsed=1822s
+[2026-05-12 17:41:19,041] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=225/3000 train_loss=0.9318 lr=1.99e-04 elapsed=2041s
+[2026-05-12 17:44:57,890] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=250/3000 train_loss=0.9085 lr=1.99e-04 elapsed=2260s
+[2026-05-12 17:45:40,283] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=250 VAL_LOSS=0.9106
+[2026-05-12 17:49:27,384] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=275/3000 train_loss=0.9142 lr=1.98e-04 elapsed=2530s
+[2026-05-12 17:53:07,228] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=300/3000 train_loss=0.9141 lr=1.98e-04 elapsed=2750s
+[2026-05-12 17:56:45,523] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=325/3000 train_loss=0.8752 lr=1.97e-04 elapsed=2968s
+[2026-05-12 18:00:35,614] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=350/3000 train_loss=0.8130 lr=1.96e-04 elapsed=3198s
+[2026-05-12 18:04:22,827] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=375/3000 train_loss=0.8347 lr=1.96e-04 elapsed=3425s
+[2026-05-12 18:08:07,334] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=400/3000 train_loss=0.8262 lr=1.95e-04 elapsed=3650s
+[2026-05-12 18:11:51,793] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=425/3000 train_loss=0.8279 lr=1.94e-04 elapsed=3874s
+[2026-05-12 18:15:29,573] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=450/3000 train_loss=0.8141 lr=1.93e-04 elapsed=4092s
+[2026-05-12 18:19:08,425] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=475/3000 train_loss=0.8258 lr=1.92e-04 elapsed=4311s
+[2026-05-12 18:23:02,614] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=500/3000 train_loss=0.8592 lr=1.91e-04 elapsed=4545s
+[2026-05-12 18:23:44,978] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=500 VAL_LOSS=0.9256
+[2026-05-12 18:24:09,379] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=500 mean_ER=1456.97 mean_CN=2.57e+05
+[2026-05-12 18:24:09,379] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - === MERGE EVENT 1 at step 500 (method=relora_diag_gated_S3neg) ===
+[2026-05-12 18:24:20,031] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - merge: total=3136 kept=2060 drop_rate=0.343
+[2026-05-12 18:25:26,947] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=500 POST-MERGE VAL_LOSS=0.9217 (first_eval=0.9105674700737)
+[2026-05-12 18:29:14,629] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=525/3000 train_loss=0.8301 lr=5.00e-05 elapsed=4917s
+[2026-05-12 18:33:07,567] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=550/3000 train_loss=0.8626 lr=1.00e-04 elapsed=5150s
+[2026-05-12 18:36:56,938] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=575/3000 train_loss=0.8626 lr=1.50e-04 elapsed=5379s
+[2026-05-12 18:40:44,915] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=600/3000 train_loss=0.8349 lr=2.00e-04 elapsed=5607s
+[2026-05-12 18:44:19,105] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=625/3000 train_loss=0.8483 lr=2.00e-04 elapsed=5821s
+[2026-05-12 18:48:08,437] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=650/3000 train_loss=0.7734 lr=2.00e-04 elapsed=6051s
+[2026-05-12 18:51:47,657] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=675/3000 train_loss=0.7404 lr=2.00e-04 elapsed=6270s
+[2026-05-12 18:55:44,555] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=700/3000 train_loss=0.7457 lr=1.99e-04 elapsed=6507s
+[2026-05-12 18:59:23,687] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=725/3000 train_loss=0.7506 lr=1.99e-04 elapsed=6726s
+[2026-05-12 19:03:03,764] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=750/3000 train_loss=0.7539 lr=1.98e-04 elapsed=6946s
+[2026-05-12 19:03:46,178] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=750 VAL_LOSS=0.9393
+[2026-05-12 19:07:31,422] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=775/3000 train_loss=0.7303 lr=1.97e-04 elapsed=7214s
+[2026-05-12 19:11:04,368] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=800/3000 train_loss=0.7489 lr=1.97e-04 elapsed=7427s
+[2026-05-12 19:14:46,242] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=825/3000 train_loss=0.7636 lr=1.96e-04 elapsed=7649s
+[2026-05-12 19:18:36,995] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=850/3000 train_loss=0.7511 lr=1.95e-04 elapsed=7879s
+[2026-05-12 19:22:19,032] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=875/3000 train_loss=0.7423 lr=1.94e-04 elapsed=8101s
+[2026-05-12 19:26:10,387] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=900/3000 train_loss=0.7510 lr=1.92e-04 elapsed=8333s
+[2026-05-12 19:29:54,394] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=925/3000 train_loss=0.7565 lr=1.91e-04 elapsed=8557s
+[2026-05-12 19:33:45,575] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=950/3000 train_loss=0.7225 lr=1.90e-04 elapsed=8788s
+[2026-05-12 19:37:38,870] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=975/3000 train_loss=0.6138 lr=1.88e-04 elapsed=9021s
+[2026-05-12 19:41:19,926] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1000/3000 train_loss=0.6283 lr=1.87e-04 elapsed=9242s
+[2026-05-12 19:42:02,315] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1000 VAL_LOSS=0.9958
+[2026-05-12 19:42:26,897] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1000 mean_ER=1457.12 mean_CN=2.95e+05
+[2026-05-12 19:42:26,897] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - === MERGE EVENT 2 at step 1000 (method=relora_diag_gated_S3neg) ===
+[2026-05-12 19:42:37,428] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - merge: total=3136 kept=2277 drop_rate=0.274
+[2026-05-12 19:43:44,313] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1000 POST-MERGE VAL_LOSS=0.9919 (first_eval=0.9105674700737)
+[2026-05-12 19:47:36,432] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1025/3000 train_loss=0.6602 lr=5.00e-05 elapsed=9619s
+[2026-05-12 19:51:21,374] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1050/3000 train_loss=0.6421 lr=1.00e-04 elapsed=9844s
+[2026-05-12 19:55:03,213] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1075/3000 train_loss=0.6455 lr=1.50e-04 elapsed=10066s
+[2026-05-12 19:58:42,906] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1100/3000 train_loss=0.6493 lr=2.00e-04 elapsed=10285s
+[2026-05-12 20:02:25,877] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1125/3000 train_loss=0.6233 lr=2.00e-04 elapsed=10508s
+[2026-05-12 20:06:01,177] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1150/3000 train_loss=0.6139 lr=2.00e-04 elapsed=10724s
+[2026-05-12 20:09:39,631] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1175/3000 train_loss=0.6535 lr=1.99e-04 elapsed=10942s
+[2026-05-12 20:13:30,024] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1200/3000 train_loss=0.6643 lr=1.99e-04 elapsed=11172s
+[2026-05-12 20:17:17,717] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1225/3000 train_loss=0.6437 lr=1.98e-04 elapsed=11400s
+[2026-05-12 20:20:58,096] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1250/3000 train_loss=0.6538 lr=1.97e-04 elapsed=11620s
+[2026-05-12 20:21:40,493] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1250 VAL_LOSS=0.9804
+[2026-05-12 20:25:27,711] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1275/3000 train_loss=0.5449 lr=1.96e-04 elapsed=11890s
+[2026-05-12 20:29:10,454] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1300/3000 train_loss=0.5703 lr=1.95e-04 elapsed=12113s
+[2026-05-12 20:32:57,952] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1325/3000 train_loss=0.5549 lr=1.93e-04 elapsed=12340s
+[2026-05-12 20:36:47,778] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1350/3000 train_loss=0.5774 lr=1.92e-04 elapsed=12570s
+[2026-05-12 20:40:34,760] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1375/3000 train_loss=0.5525 lr=1.90e-04 elapsed=12797s
+[2026-05-12 20:44:24,791] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1400/3000 train_loss=0.5541 lr=1.88e-04 elapsed=13027s
+[2026-05-12 20:48:10,761] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1425/3000 train_loss=0.5656 lr=1.86e-04 elapsed=13253s
+[2026-05-12 20:52:02,176] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1450/3000 train_loss=0.5820 lr=1.84e-04 elapsed=13485s
+[2026-05-12 20:55:46,789] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1475/3000 train_loss=0.5700 lr=1.81e-04 elapsed=13709s
+[2026-05-12 20:59:17,221] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1500/3000 train_loss=0.5638 lr=1.79e-04 elapsed=13920s
+[2026-05-12 20:59:59,647] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1500 VAL_LOSS=1.0414
+[2026-05-12 21:00:24,345] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1500 mean_ER=1457.22 mean_CN=1.98e+05
+[2026-05-12 21:00:24,346] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - === MERGE EVENT 3 at step 1500 (method=relora_diag_gated_S3neg) ===
+[2026-05-12 21:00:34,089] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - merge: total=3136 kept=2053 drop_rate=0.345
+[2026-05-12 21:01:40,799] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1500 POST-MERGE VAL_LOSS=1.0462 (first_eval=0.9105674700737)
+[2026-05-12 21:05:23,656] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1525/3000 train_loss=0.5784 lr=5.00e-05 elapsed=14286s
+[2026-05-12 21:09:15,802] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1550/3000 train_loss=0.5926 lr=1.00e-04 elapsed=14518s
+[2026-05-12 21:13:08,163] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1575/3000 train_loss=0.5445 lr=1.50e-04 elapsed=14750s
+[2026-05-12 21:16:53,274] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1600/3000 train_loss=0.5201 lr=2.00e-04 elapsed=14976s
+[2026-05-12 21:20:40,943] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1625/3000 train_loss=0.4916 lr=2.00e-04 elapsed=15203s
+[2026-05-12 21:24:24,435] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1650/3000 train_loss=0.5004 lr=1.99e-04 elapsed=15427s
+[2026-05-12 21:27:58,121] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1675/3000 train_loss=0.4962 lr=1.99e-04 elapsed=15640s
+[2026-05-12 21:31:38,247] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1700/3000 train_loss=0.5086 lr=1.97e-04 elapsed=15861s
+[2026-05-12 21:35:19,775] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1725/3000 train_loss=0.5001 lr=1.96e-04 elapsed=16082s
+[2026-05-12 21:39:08,655] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1750/3000 train_loss=0.5044 lr=1.94e-04 elapsed=16311s
+[2026-05-12 21:39:51,017] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1750 VAL_LOSS=1.0768
+[2026-05-12 21:43:36,420] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1775/3000 train_loss=0.4823 lr=1.92e-04 elapsed=16579s
+[2026-05-12 21:47:14,099] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1800/3000 train_loss=0.5003 lr=1.90e-04 elapsed=16796s
+[2026-05-12 21:51:03,800] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1825/3000 train_loss=0.5277 lr=1.88e-04 elapsed=17026s
+[2026-05-12 21:54:51,706] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1850/3000 train_loss=0.5162 lr=1.85e-04 elapsed=17254s
+[2026-05-12 21:57:33,181] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1875/3000 train_loss=0.4983 lr=1.82e-04 elapsed=17416s
+[2026-05-12 21:59:18,603] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1900/3000 train_loss=0.4129 lr=1.78e-04 elapsed=17521s
+[2026-05-12 22:00:58,502] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1925/3000 train_loss=0.3944 lr=1.75e-04 elapsed=17621s
+[2026-05-12 22:02:39,722] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1950/3000 train_loss=0.4121 lr=1.71e-04 elapsed=17722s
+[2026-05-12 22:04:19,852] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=1975/3000 train_loss=0.4069 lr=1.67e-04 elapsed=17822s
+[2026-05-12 22:05:58,131] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2000/3000 train_loss=0.3973 lr=1.62e-04 elapsed=17920s
+[2026-05-12 22:06:17,206] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2000 VAL_LOSS=1.1833
+[2026-05-12 22:06:28,095] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2000 mean_ER=1457.31 mean_CN=1.10e+05
+[2026-05-12 22:06:28,095] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - === MERGE EVENT 4 at step 2000 (method=relora_diag_gated_S3neg) ===
+[2026-05-12 22:06:31,729] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - merge: total=3136 kept=2137 drop_rate=0.319
+[2026-05-12 22:07:01,546] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2000 POST-MERGE VAL_LOSS=1.1927 (first_eval=0.9105674700737)
+[2026-05-12 22:08:42,504] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2025/3000 train_loss=0.4379 lr=5.00e-05 elapsed=18085s
+[2026-05-12 22:10:20,300] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2050/3000 train_loss=0.4254 lr=1.00e-04 elapsed=18183s
+[2026-05-12 22:11:57,242] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2075/3000 train_loss=0.4264 lr=1.50e-04 elapsed=18280s
+[2026-05-12 22:13:39,942] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2100/3000 train_loss=0.4265 lr=2.00e-04 elapsed=18382s
+[2026-05-12 22:15:23,639] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2125/3000 train_loss=0.4418 lr=2.00e-04 elapsed=18486s
+[2026-05-12 22:17:05,437] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2150/3000 train_loss=0.4327 lr=1.98e-04 elapsed=18588s
+[2026-05-12 22:18:48,611] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2175/3000 train_loss=0.4543 lr=1.97e-04 elapsed=18691s
+[2026-05-12 22:20:28,369] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2200/3000 train_loss=0.4012 lr=1.94e-04 elapsed=18791s
+[2026-05-12 22:22:03,375] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2225/3000 train_loss=0.3562 lr=1.91e-04 elapsed=18886s
+[2026-05-12 22:23:46,469] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2250/3000 train_loss=0.3714 lr=1.87e-04 elapsed=18989s
+[2026-05-12 22:24:05,584] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2250 VAL_LOSS=1.2152
+[2026-05-12 22:25:46,602] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2275/3000 train_loss=0.3599 lr=1.82e-04 elapsed=19109s
+[2026-05-12 22:27:29,564] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2300/3000 train_loss=0.3510 lr=1.77e-04 elapsed=19212s
+[2026-05-12 22:29:07,962] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2325/3000 train_loss=0.3736 lr=1.71e-04 elapsed=19310s
+[2026-05-12 22:30:50,044] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2350/3000 train_loss=0.3624 lr=1.64e-04 elapsed=19412s
+[2026-05-12 22:32:32,016] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2375/3000 train_loss=0.3536 lr=1.57e-04 elapsed=19514s
+[2026-05-12 22:34:12,514] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2400/3000 train_loss=0.3410 lr=1.50e-04 elapsed=19615s
+[2026-05-12 22:35:49,669] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2425/3000 train_loss=0.3695 lr=1.42e-04 elapsed=19712s
+[2026-05-12 22:37:34,435] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2450/3000 train_loss=0.3773 lr=1.34e-04 elapsed=19817s
+[2026-05-12 22:39:17,804] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2475/3000 train_loss=0.3647 lr=1.26e-04 elapsed=19920s
+[2026-05-12 22:41:02,176] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2500/3000 train_loss=0.3651 lr=1.17e-04 elapsed=20025s
+[2026-05-12 22:41:21,250] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2500 VAL_LOSS=1.2373
+[2026-05-12 22:41:32,054] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2500 mean_ER=1457.41 mean_CN=4.93e+05
+[2026-05-12 22:41:32,054] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - === MERGE EVENT 5 at step 2500 (method=relora_diag_gated_S3neg) ===
+[2026-05-12 22:41:34,801] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - merge: total=3136 kept=1775 drop_rate=0.434
+[2026-05-12 22:42:04,813] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2500 POST-MERGE VAL_LOSS=1.2588 (first_eval=0.9105674700737)
+[2026-05-12 22:43:44,035] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2525/3000 train_loss=0.3281 lr=5.00e-05 elapsed=20186s
+[2026-05-12 22:45:22,624] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2550/3000 train_loss=0.2951 lr=1.00e-04 elapsed=20285s
+[2026-05-12 22:47:03,352] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2575/3000 train_loss=0.3141 lr=1.50e-04 elapsed=20386s
+[2026-05-12 22:48:47,387] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2600/3000 train_loss=0.3233 lr=2.00e-04 elapsed=20490s
+[2026-05-12 22:50:28,041] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2625/3000 train_loss=0.3271 lr=1.98e-04 elapsed=20590s
+[2026-05-12 22:52:09,179] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2650/3000 train_loss=0.3076 lr=1.92e-04 elapsed=20692s
+[2026-05-12 22:53:50,504] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2675/3000 train_loss=0.3180 lr=1.83e-04 elapsed=20793s
+[2026-05-12 22:55:32,340] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2700/3000 train_loss=0.3140 lr=1.71e-04 elapsed=20895s
+[2026-05-12 22:57:15,240] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2725/3000 train_loss=0.3554 lr=1.56e-04 elapsed=20998s
+[2026-05-12 22:58:58,419] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2750/3000 train_loss=0.3017 lr=1.38e-04 elapsed=21101s
+[2026-05-12 22:59:17,509] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2750 VAL_LOSS=1.2961
+[2026-05-12 23:00:57,688] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2775/3000 train_loss=0.3214 lr=1.20e-04 elapsed=21220s
+[2026-05-12 23:02:39,782] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2800/3000 train_loss=0.3408 lr=1.00e-04 elapsed=21322s
+[2026-05-12 23:04:17,769] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2825/3000 train_loss=0.2862 lr=8.05e-05 elapsed=21420s
+[2026-05-12 23:05:58,471] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2850/3000 train_loss=0.2599 lr=6.17e-05 elapsed=21521s
+[2026-05-12 23:07:38,311] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2875/3000 train_loss=0.2641 lr=4.44e-05 elapsed=21621s
+[2026-05-12 23:09:19,838] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2900/3000 train_loss=0.2655 lr=2.93e-05 elapsed=21722s
+[2026-05-12 23:11:03,346] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2925/3000 train_loss=0.2567 lr=1.69e-05 elapsed=21826s
+[2026-05-12 23:12:47,121] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2950/3000 train_loss=0.2660 lr=7.61e-06 elapsed=21929s
+[2026-05-12 23:14:25,526] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=2975/3000 train_loss=0.2418 lr=1.92e-06 elapsed=22028s
+[2026-05-12 23:16:07,188] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=3000/3000 train_loss=0.2652 lr=0.00e+00 elapsed=22130s
+[2026-05-12 23:16:26,255] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=3000 VAL_LOSS=1.3877
+[2026-05-12 23:16:37,102] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=3000 mean_ER=1457.44 mean_CN=7.31e+04
+[2026-05-12 23:16:37,102] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - === MERGE EVENT 6 at step 3000 (method=relora_diag_gated_S3neg) ===
+[2026-05-12 23:16:39,758] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - merge: total=3136 kept=2091 drop_rate=0.333
+[2026-05-12 23:17:09,836] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - step=3000 POST-MERGE VAL_LOSS=1.3990 (first_eval=0.9105674700737)
+[2026-05-12 23:17:09,836] WARNING stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - ABORT: post-merge val_loss=1.3990 > first_eval=0.9106 * 1.5
+[2026-05-12 23:17:09,854] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - training ABORTED in 22192.2s
+[2026-05-12 23:17:28,707] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - FINAL VAL_LOSS=1.3990
+[2026-05-12 23:17:39,513] INFO stage3.qwen25-7b.alpaca.relora_diag_gated_S3neg - summary.json written

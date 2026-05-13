@@ -1,0 +1,36 @@
+{
+  "go": false,
+  "label": "ambiguous",
+  "verdict": "AMBIGUOUS_neither",
+  "delta_rho_fisher_mean": 0.045796711246145635,
+  "delta_rho_fisher_ci95": [
+    0.0078624202000199,
+    0.08754660273625767
+  ],
+  "delta_rho_fo_mean": 0.2464888008753131,
+  "delta_rho_fo_ci95": [
+    0.12033867801047123,
+    0.3729510281311885
+  ],
+  "n_positive_fisher": 10,
+  "n_positive_fo": 11,
+  "n_pairs": 15,
+  "auc_s3_signed_sym_per_task_at_latest": {
+    "sst2": 0.5865928975810603,
+    "mrpc": 0.7756210126238631,
+    "rte": 0.7589141599413058
+  },
+  "auc_s3_unsigned_per_task_at_latest": {
+    "sst2": 0.5828615542974781,
+    "mrpc": 0.7024569024026062,
+    "rte": 0.6931768158473955
+  },
+  "rationale": [
+    "mean(delta_rho_fisher)=0.046 (CI95 [0.008,0.088]); threshold>=0.10 -> FAIL",
+    "mean(delta_rho_fo)=0.246 (CI95 [0.120,0.373]); threshold>=0.05 -> OK",
+    "sign test fisher: 10/15 positive (need >=10) -> OK",
+    "sign test fo: 11/15 positive -> OK",
+    "sym AUC per task @ latest: {'sst2': 0.5865928975810603, 'mrpc': 0.7756210126238631, 'rte': 0.7589141599413058}; any>=0.65 -> OK",
+    "all sym AUCs<0.55 -> no"
+  ]
+}

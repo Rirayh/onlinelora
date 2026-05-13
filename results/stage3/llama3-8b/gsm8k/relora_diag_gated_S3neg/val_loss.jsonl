@@ -1,0 +1,10 @@
+{"step": 250, "val_loss": 0.45911298384742133}
+{"step": 500, "val_loss": 0.4864798727489653}
+{"step": 500, "val_loss": 0.5062272681130303, "post_merge": true}
+{"step": 750, "val_loss": 0.5189516217935652}
+{"step": 1000, "val_loss": 0.6351584692796072}
+{"step": 1000, "val_loss": 0.6512187392938704, "post_merge": true}
+{"step": 1250, "val_loss": 0.7164760742868695}
+{"step": 1500, "val_loss": 0.8461196905090695}
+{"step": 1500, "val_loss": 0.9015923185007912, "post_merge": true}
+{"step": 3000, "val_loss": 0.9015923185007912, "final": true}

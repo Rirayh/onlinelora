@@ -1,0 +1,12 @@
+{
+  "S1_mag_rho_vs_delta": 0.0001458101619510078,
+  "S1_mag_rho_vs_abs_delta": 0.14772603966036407,
+  "S2_fo_tr_rho_vs_delta": -0.288678688658004,
+  "S2_fo_tr_rho_vs_abs_delta": 0.332771003445189,
+  "S3_fo_val_rho_vs_delta": -0.21205375308574995,
+  "S3_fo_val_rho_vs_abs_delta": 0.4036873016303611,
+  "S4_fisher_tr_rho_vs_delta": -0.45560758755391595,
+  "S4_fisher_tr_rho_vs_abs_delta": 0.6153917885142284,
+  "S5_fisher_val_rho_vs_delta": -0.40155440414507776,
+  "S5_fisher_val_rho_vs_abs_delta": 0.5705619455822912
+}

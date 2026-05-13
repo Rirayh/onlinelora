@@ -1,0 +1,16 @@
+{
+  "size": "11M",
+  "method": "relora_baseline",
+  "run_name": "relora_baseline",
+  "effective_gate": "none",
+  "gate_sign": "S3pos_drops",
+  "total_steps": 5000,
+  "merge_every": 1000,
+  "final_val_loss": 10.117038992584728,
+  "final_mean_effective_rank": 95.62052635825052,
+  "final_mean_condition_number": 163134.54230032358,
+  "elapsed_sec": 194.2093346118927,
+  "n_params_total": 14372736,
+  "n_trainable": 393216,
+  "aborted": false
+}

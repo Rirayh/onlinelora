@@ -1,0 +1,24 @@
+[2026-05-12 09:53:02,567] INFO stage0 - device=cuda, gpu_count=1
+[2026-05-12 09:53:12,618] INFO stage0 - trainable params = 887,042
+[2026-05-12 09:54:59,960] INFO stage0 - #train_main=53880, #diag=13469, #test_holdout=872
+[2026-05-12 09:55:10,314] INFO stage0 - step=100 loss=0.6689 lr=2.00e-04
+[2026-05-12 09:55:20,187] INFO stage0 - step=200 loss=0.3365 lr=1.86e-04
+[2026-05-12 09:55:30,062] INFO stage0 - step=300 loss=0.2627 lr=1.71e-04
+[2026-05-12 09:55:39,050] INFO stage0 - [eval @ step 375] loss=0.2279 acc=0.9197
+[2026-05-12 09:55:41,526] INFO stage0 - step=400 loss=0.2702 lr=1.57e-04
+[2026-05-12 09:55:51,418] INFO stage0 - step=500 loss=0.2630 lr=1.43e-04
+[2026-05-12 09:56:01,306] INFO stage0 - step=600 loss=0.2746 lr=1.29e-04
+[2026-05-12 09:56:11,182] INFO stage0 - step=700 loss=0.2350 lr=1.14e-04
+[2026-05-12 09:56:17,374] INFO stage0 - [eval @ step 750] loss=0.2051 acc=0.9266
+[2026-05-12 09:56:22,312] INFO stage0 - step=800 loss=0.2346 lr=1.00e-04
+[2026-05-12 09:56:32,186] INFO stage0 - step=900 loss=0.2634 lr=8.57e-05
+[2026-05-12 09:56:42,067] INFO stage0 - step=1000 loss=0.2494 lr=7.14e-05
+[2026-05-12 09:56:51,941] INFO stage0 - step=1100 loss=0.2421 lr=5.71e-05
+[2026-05-12 09:56:55,664] INFO stage0 - [eval @ step 1125] loss=0.2058 acc=0.9266
+[2026-05-12 09:57:03,078] INFO stage0 - step=1200 loss=0.2409 lr=4.29e-05
+[2026-05-12 09:57:12,966] INFO stage0 - step=1300 loss=0.2347 lr=2.86e-05
+[2026-05-12 09:57:22,842] INFO stage0 - step=1400 loss=0.2308 lr=1.43e-05
+[2026-05-12 09:57:32,719] INFO stage0 - step=1500 loss=0.2320 lr=0.00e+00
+[2026-05-12 09:57:33,976] INFO stage0 - [eval @ step 1500] loss=0.2020 acc=0.9232
+[2026-05-12 09:57:35,233] INFO stage0 - [final eval] loss=0.2020 acc=0.9232  best=0.9266  elapsed=154.0s
+[2026-05-12 09:57:35,251] INFO stage0 - smoke.json -> results/stage0/smoke.json

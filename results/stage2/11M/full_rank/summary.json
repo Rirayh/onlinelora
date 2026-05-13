@@ -1,0 +1,16 @@
+{
+  "size": "11M",
+  "method": "full_rank",
+  "run_name": "full_rank",
+  "effective_gate": "none",
+  "gate_sign": "S3pos_drops",
+  "total_steps": 5000,
+  "merge_every": 1000,
+  "final_val_loss": 5.46745297947868,
+  "final_mean_effective_rank": 144.98612480164934,
+  "final_mean_condition_number": 15999.53142254716,
+  "elapsed_sec": 222.66885685920715,
+  "n_params_total": 14372736,
+  "n_trainable": 14372736,
+  "aborted": false
+}

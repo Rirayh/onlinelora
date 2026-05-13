@@ -1,0 +1,7 @@
+[2026-05-12 09:45:16,408] INFO stage0 - device=cuda, gpu_count=1
+[2026-05-12 09:50:02,888] INFO stage0 - trainable params = 887,042
+[2026-05-12 09:52:00,510] INFO stage0 - #train_main=53880, #diag=13469, #test_holdout=872
+[2026-05-12 09:52:11,738] INFO stage0 - step=100 loss=0.6689 lr=0.00e+00
+[2026-05-12 09:52:13,025] INFO stage0 - [eval @ step 100] loss=0.3366 acc=0.8739
+[2026-05-12 09:52:14,284] INFO stage0 - [final eval] loss=0.3366 acc=0.8739  best=0.8739  elapsed=12.5s
+[2026-05-12 09:52:14,302] INFO stage0 - smoke.json -> results/stage0_quick/smoke.json

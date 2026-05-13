@@ -1,0 +1,158 @@
+[2026-05-12 12:46:06,009] INFO stage2.11M.relora_diag_gated_S3pos_drops - size=11M method=relora_diag_gated effective_gate=S3_fo_val_signed gate_sign=S3pos_drops out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage2/11M/relora_diag_gated_S3pos_drops
+[2026-05-12 12:46:11,510] INFO stage2.11M.relora_diag_gated_S3pos_drops - loading wikitext-2-raw-v1
+Token indices sequence length is longer than the specified maximum sequence length for this model (2391884 > 512). Running this sequence through the model will result in indexing errors
+[2026-05-12 12:49:56,244] INFO stage2.11M.relora_diag_gated_S3pos_drops - train tokens=2,391,884  val tokens=247,289
+[2026-05-12 12:49:56,247] INFO stage2.11M.relora_diag_gated_S3pos_drops - #train_windows=9343  #val_windows=965
+[2026-05-12 12:49:56,475] INFO stage2.11M.relora_diag_gated_S3pos_drops - tiny_lm 11M: total params=14.37M (incl. embedding)
+[2026-05-12 12:49:59,830] INFO stage2.11M.relora_diag_gated_S3pos_drops - #LoRA layers=16 #components=1024
+[2026-05-12 12:49:59,831] INFO stage2.11M.relora_diag_gated_S3pos_drops - #trainable params=0.39M
+[2026-05-12 12:50:00,285] INFO stage2.11M.relora_diag_gated_S3pos_drops - [step 0] mean_effective_rank=154.273 mean_condition_number=1.27e+03
+[2026-05-12 12:50:00,285] INFO stage2.11M.relora_diag_gated_S3pos_drops - merge events scheduled at steps: [1000, 2000, 3000, 4000, 5000]
+[2026-05-12 12:50:02,348] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=50/5000 train_loss=10.8446 lr=7.50e-05 elapsed=2s
+[2026-05-12 12:50:04,102] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=100/5000 train_loss=10.6575 lr=1.50e-04 elapsed=4s
+[2026-05-12 12:50:05,848] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=150/5000 train_loss=10.5345 lr=2.25e-04 elapsed=6s
+[2026-05-12 12:50:07,580] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=200/5000 train_loss=10.5201 lr=3.00e-04 elapsed=7s
+[2026-05-12 12:50:09,309] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=250/5000 train_loss=10.5184 lr=3.00e-04 elapsed=9s
+[2026-05-12 12:50:09,992] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=250 VAL_LOSS=10.5105  ppl=36698.59
+[2026-05-12 12:50:11,725] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=300/5000 train_loss=10.5173 lr=3.00e-04 elapsed=11s
+[2026-05-12 12:50:13,453] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=350/5000 train_loss=10.5209 lr=2.99e-04 elapsed=13s
+[2026-05-12 12:50:15,178] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=400/5000 train_loss=10.5142 lr=2.99e-04 elapsed=15s
+[2026-05-12 12:50:16,904] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=450/5000 train_loss=10.5045 lr=2.98e-04 elapsed=17s
+[2026-05-12 12:50:18,630] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=500/5000 train_loss=10.4569 lr=2.97e-04 elapsed=18s
+[2026-05-12 12:50:19,315] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=500 VAL_LOSS=10.4159  ppl=33386.35
+[2026-05-12 12:50:19,553] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=500 mean_effective_rank=120.429 mean_condition_number=9.76e+04
+[2026-05-12 12:50:21,275] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=550/5000 train_loss=10.4075 lr=2.96e-04 elapsed=21s
+[2026-05-12 12:50:23,004] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=600/5000 train_loss=10.3703 lr=2.95e-04 elapsed=23s
+[2026-05-12 12:50:24,728] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=650/5000 train_loss=10.3382 lr=2.94e-04 elapsed=24s
+[2026-05-12 12:50:26,457] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=700/5000 train_loss=10.3099 lr=2.92e-04 elapsed=26s
+[2026-05-12 12:50:28,185] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=750/5000 train_loss=10.2849 lr=2.90e-04 elapsed=28s
+[2026-05-12 12:50:28,871] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=750 VAL_LOSS=10.2646  ppl=28699.70
+[2026-05-12 12:50:30,613] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=800/5000 train_loss=10.2759 lr=2.89e-04 elapsed=30s
+[2026-05-12 12:50:32,349] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=850/5000 train_loss=10.2659 lr=2.87e-04 elapsed=32s
+[2026-05-12 12:50:34,080] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=900/5000 train_loss=10.2558 lr=2.85e-04 elapsed=34s
+[2026-05-12 12:50:35,807] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=950/5000 train_loss=10.2511 lr=2.82e-04 elapsed=36s
+[2026-05-12 12:50:37,538] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1000/5000 train_loss=10.2421 lr=2.80e-04 elapsed=37s
+[2026-05-12 12:50:38,222] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1000 VAL_LOSS=10.2205  ppl=27461.11
+[2026-05-12 12:50:38,456] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1000 mean_effective_rank=98.167 mean_condition_number=4.07e+04
+[2026-05-12 12:50:38,456] INFO stage2.11M.relora_diag_gated_S3pos_drops - === MERGE EVENT 1 at step 1000 (gate=S3_fo_val_signed) ===
+[2026-05-12 12:50:39,015] INFO stage2.11M.relora_diag_gated_S3pos_drops - merge stats: total=1024 kept=572 dropped=452 drop_rate=0.441
+[2026-05-12 12:50:39,938] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1000 POST-MERGE VAL_LOSS=10.7076
+[2026-05-12 12:50:41,662] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1050/5000 train_loss=10.6208 lr=7.50e-05 elapsed=41s
+[2026-05-12 12:50:43,415] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1100/5000 train_loss=10.4981 lr=1.50e-04 elapsed=43s
+[2026-05-12 12:50:45,145] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1150/5000 train_loss=10.4515 lr=2.25e-04 elapsed=45s
+[2026-05-12 12:50:46,878] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1200/5000 train_loss=10.3749 lr=3.00e-04 elapsed=47s
+[2026-05-12 12:50:48,617] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1250/5000 train_loss=10.2834 lr=3.00e-04 elapsed=48s
+[2026-05-12 12:50:49,303] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1250 VAL_LOSS=10.2499  ppl=28280.19
+[2026-05-12 12:50:51,033] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1300/5000 train_loss=10.2578 lr=2.99e-04 elapsed=51s
+[2026-05-12 12:50:52,763] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1350/5000 train_loss=10.2446 lr=2.99e-04 elapsed=52s
+[2026-05-12 12:50:54,495] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1400/5000 train_loss=10.2444 lr=2.98e-04 elapsed=54s
+[2026-05-12 12:50:56,225] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1450/5000 train_loss=10.2393 lr=2.97e-04 elapsed=56s
+[2026-05-12 12:50:57,955] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1500/5000 train_loss=10.2262 lr=2.95e-04 elapsed=58s
+[2026-05-12 12:50:58,640] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1500 VAL_LOSS=10.2085  ppl=27132.24
+[2026-05-12 12:50:58,875] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1500 mean_effective_rank=105.242 mean_condition_number=1.40e+04
+[2026-05-12 12:51:00,604] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1550/5000 train_loss=10.2281 lr=2.94e-04 elapsed=60s
+[2026-05-12 12:51:02,336] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1600/5000 train_loss=10.2172 lr=2.92e-04 elapsed=62s
+[2026-05-12 12:51:04,069] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1650/5000 train_loss=10.2095 lr=2.90e-04 elapsed=64s
+[2026-05-12 12:51:05,799] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1700/5000 train_loss=10.2132 lr=2.87e-04 elapsed=66s
+[2026-05-12 12:51:07,530] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1750/5000 train_loss=10.2081 lr=2.85e-04 elapsed=67s
+[2026-05-12 12:51:08,215] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1750 VAL_LOSS=10.1892  ppl=26613.55
+[2026-05-12 12:51:09,946] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1800/5000 train_loss=10.2023 lr=2.82e-04 elapsed=70s
+[2026-05-12 12:51:11,676] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1850/5000 train_loss=10.2026 lr=2.79e-04 elapsed=71s
+[2026-05-12 12:51:13,413] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1900/5000 train_loss=10.1932 lr=2.76e-04 elapsed=73s
+[2026-05-12 12:51:15,145] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=1950/5000 train_loss=10.1922 lr=2.72e-04 elapsed=75s
+[2026-05-12 12:51:16,878] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2000/5000 train_loss=10.1908 lr=2.68e-04 elapsed=77s
+[2026-05-12 12:51:17,563] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2000 VAL_LOSS=10.1740  ppl=26213.50
+[2026-05-12 12:51:17,801] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2000 mean_effective_rank=99.656 mean_condition_number=1.47e+04
+[2026-05-12 12:51:17,801] INFO stage2.11M.relora_diag_gated_S3pos_drops - === MERGE EVENT 2 at step 2000 (gate=S3_fo_val_signed) ===
+[2026-05-12 12:51:18,349] INFO stage2.11M.relora_diag_gated_S3pos_drops - merge stats: total=1024 kept=688 dropped=336 drop_rate=0.328
+[2026-05-12 12:51:19,264] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2000 POST-MERGE VAL_LOSS=10.3488
+[2026-05-12 12:51:20,992] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2050/5000 train_loss=10.2978 lr=7.50e-05 elapsed=81s
+[2026-05-12 12:51:22,730] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2100/5000 train_loss=10.2361 lr=1.50e-04 elapsed=82s
+[2026-05-12 12:51:24,466] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2150/5000 train_loss=10.2213 lr=2.25e-04 elapsed=84s
+[2026-05-12 12:51:26,200] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2200/5000 train_loss=10.2034 lr=3.00e-04 elapsed=86s
+[2026-05-12 12:51:27,931] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2250/5000 train_loss=10.2016 lr=3.00e-04 elapsed=88s
+[2026-05-12 12:51:28,616] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2250 VAL_LOSS=10.1824  ppl=26432.61
+[2026-05-12 12:51:30,351] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2300/5000 train_loss=10.1960 lr=2.99e-04 elapsed=90s
+[2026-05-12 12:51:32,088] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2350/5000 train_loss=10.1971 lr=2.98e-04 elapsed=92s
+[2026-05-12 12:51:33,820] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2400/5000 train_loss=10.1863 lr=2.96e-04 elapsed=94s
+[2026-05-12 12:51:35,552] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2450/5000 train_loss=10.1877 lr=2.94e-04 elapsed=95s
+[2026-05-12 12:51:37,282] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2500/5000 train_loss=10.1878 lr=2.92e-04 elapsed=97s
+[2026-05-12 12:51:37,966] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2500 VAL_LOSS=10.1683  ppl=26062.45
+[2026-05-12 12:51:38,200] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2500 mean_effective_rank=103.247 mean_condition_number=2.40e+04
+[2026-05-12 12:51:39,927] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2550/5000 train_loss=10.1824 lr=2.89e-04 elapsed=100s
+[2026-05-12 12:51:41,657] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2600/5000 train_loss=10.1824 lr=2.85e-04 elapsed=101s
+[2026-05-12 12:51:43,387] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2650/5000 train_loss=10.1842 lr=2.81e-04 elapsed=103s
+[2026-05-12 12:51:45,117] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2700/5000 train_loss=10.1737 lr=2.77e-04 elapsed=105s
+[2026-05-12 12:51:46,846] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2750/5000 train_loss=10.1768 lr=2.72e-04 elapsed=107s
+[2026-05-12 12:51:47,531] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2750 VAL_LOSS=10.1559  ppl=25743.33
+[2026-05-12 12:51:49,259] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2800/5000 train_loss=10.1773 lr=2.67e-04 elapsed=109s
+[2026-05-12 12:51:50,985] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2850/5000 train_loss=10.1665 lr=2.62e-04 elapsed=111s
+[2026-05-12 12:51:52,711] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2900/5000 train_loss=10.1751 lr=2.56e-04 elapsed=112s
+[2026-05-12 12:51:54,446] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=2950/5000 train_loss=10.1599 lr=2.50e-04 elapsed=114s
+[2026-05-12 12:51:56,179] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3000/5000 train_loss=10.1607 lr=2.44e-04 elapsed=116s
+[2026-05-12 12:51:56,864] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3000 VAL_LOSS=10.1462  ppl=25494.11
+[2026-05-12 12:51:57,103] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3000 mean_effective_rank=100.669 mean_condition_number=5.17e+04
+[2026-05-12 12:51:57,103] INFO stage2.11M.relora_diag_gated_S3pos_drops - === MERGE EVENT 3 at step 3000 (gate=S3_fo_val_signed) ===
+[2026-05-12 12:51:57,653] INFO stage2.11M.relora_diag_gated_S3pos_drops - merge stats: total=1024 kept=564 dropped=460 drop_rate=0.449
+[2026-05-12 12:51:58,567] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3000 POST-MERGE VAL_LOSS=10.2490
+[2026-05-12 12:52:00,295] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3050/5000 train_loss=10.2297 lr=7.50e-05 elapsed=120s
+[2026-05-12 12:52:02,030] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3100/5000 train_loss=10.1847 lr=1.50e-04 elapsed=122s
+[2026-05-12 12:52:03,765] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3150/5000 train_loss=10.1723 lr=2.25e-04 elapsed=123s
+[2026-05-12 12:52:05,500] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3200/5000 train_loss=10.1794 lr=3.00e-04 elapsed=125s
+[2026-05-12 12:52:07,237] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3250/5000 train_loss=10.1745 lr=2.99e-04 elapsed=127s
+[2026-05-12 12:52:07,922] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3250 VAL_LOSS=10.1570  ppl=25770.19
+[2026-05-12 12:52:09,656] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3300/5000 train_loss=10.1739 lr=2.98e-04 elapsed=129s
+[2026-05-12 12:52:11,388] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3350/5000 train_loss=10.1655 lr=2.95e-04 elapsed=131s
+[2026-05-12 12:52:13,125] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3400/5000 train_loss=10.1794 lr=2.91e-04 elapsed=133s
+[2026-05-12 12:52:14,858] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3450/5000 train_loss=10.1623 lr=2.86e-04 elapsed=135s
+[2026-05-12 12:52:16,591] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3500/5000 train_loss=10.1751 lr=2.80e-04 elapsed=136s
+[2026-05-12 12:52:17,276] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3500 VAL_LOSS=10.1485  ppl=25553.35
+[2026-05-12 12:52:17,512] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3500 mean_effective_rank=102.470 mean_condition_number=7.81e+04
+[2026-05-12 12:52:19,241] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3550/5000 train_loss=10.1500 lr=2.73e-04 elapsed=139s
+[2026-05-12 12:52:20,974] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3600/5000 train_loss=10.1631 lr=2.65e-04 elapsed=141s
+[2026-05-12 12:52:22,712] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3650/5000 train_loss=10.1607 lr=2.56e-04 elapsed=142s
+[2026-05-12 12:52:24,448] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3700/5000 train_loss=10.1582 lr=2.46e-04 elapsed=144s
+[2026-05-12 12:52:26,181] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3750/5000 train_loss=10.1557 lr=2.36e-04 elapsed=146s
+[2026-05-12 12:52:26,866] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3750 VAL_LOSS=10.1402  ppl=25342.63
+[2026-05-12 12:52:28,600] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3800/5000 train_loss=10.1616 lr=2.25e-04 elapsed=148s
+[2026-05-12 12:52:30,333] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3850/5000 train_loss=10.1600 lr=2.13e-04 elapsed=150s
+[2026-05-12 12:52:32,067] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3900/5000 train_loss=10.1550 lr=2.01e-04 elapsed=152s
+[2026-05-12 12:52:33,805] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=3950/5000 train_loss=10.1442 lr=1.89e-04 elapsed=154s
+[2026-05-12 12:52:35,541] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4000/5000 train_loss=10.1541 lr=1.76e-04 elapsed=155s
+[2026-05-12 12:52:36,230] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4000 VAL_LOSS=10.1345  ppl=25197.87
+[2026-05-12 12:52:36,467] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4000 mean_effective_rank=101.379 mean_condition_number=3.06e+04
+[2026-05-12 12:52:36,467] INFO stage2.11M.relora_diag_gated_S3pos_drops - === MERGE EVENT 4 at step 4000 (gate=S3_fo_val_signed) ===
+[2026-05-12 12:52:37,020] INFO stage2.11M.relora_diag_gated_S3pos_drops - merge stats: total=1024 kept=652 dropped=372 drop_rate=0.363
+[2026-05-12 12:52:37,938] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4000 POST-MERGE VAL_LOSS=10.1754
+[2026-05-12 12:52:39,671] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4050/5000 train_loss=10.1714 lr=7.50e-05 elapsed=159s
+[2026-05-12 12:52:41,404] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4100/5000 train_loss=10.1634 lr=1.50e-04 elapsed=161s
+[2026-05-12 12:52:43,142] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4150/5000 train_loss=10.1692 lr=2.25e-04 elapsed=163s
+[2026-05-12 12:52:44,875] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4200/5000 train_loss=10.1477 lr=3.00e-04 elapsed=165s
+[2026-05-12 12:52:46,607] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4250/5000 train_loss=10.1567 lr=2.97e-04 elapsed=166s
+[2026-05-12 12:52:47,296] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4250 VAL_LOSS=10.1390  ppl=25312.30
+[2026-05-12 12:52:49,040] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4300/5000 train_loss=10.1552 lr=2.89e-04 elapsed=169s
+[2026-05-12 12:52:50,771] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4350/5000 train_loss=10.1601 lr=2.75e-04 elapsed=170s
+[2026-05-12 12:52:52,507] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4400/5000 train_loss=10.1439 lr=2.56e-04 elapsed=172s
+[2026-05-12 12:52:54,247] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4450/5000 train_loss=10.1450 lr=2.33e-04 elapsed=174s
+[2026-05-12 12:52:55,979] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4500/5000 train_loss=10.1450 lr=2.07e-04 elapsed=176s
+[2026-05-12 12:52:56,664] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4500 VAL_LOSS=10.1330  ppl=25160.75
+[2026-05-12 12:52:56,905] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4500 mean_effective_rank=102.168 mean_condition_number=1.17e+04
+[2026-05-12 12:52:58,631] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4550/5000 train_loss=10.1503 lr=1.79e-04 elapsed=178s
+[2026-05-12 12:53:00,365] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4600/5000 train_loss=10.1455 lr=1.50e-04 elapsed=180s
+[2026-05-12 12:53:02,099] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4650/5000 train_loss=10.1472 lr=1.21e-04 elapsed=182s
+[2026-05-12 12:53:03,835] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4700/5000 train_loss=10.1436 lr=9.26e-05 elapsed=184s
+[2026-05-12 12:53:05,569] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4750/5000 train_loss=10.1431 lr=6.67e-05 elapsed=185s
+[2026-05-12 12:53:06,255] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4750 VAL_LOSS=10.1294  ppl=25069.13
+[2026-05-12 12:53:07,989] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4800/5000 train_loss=10.1443 lr=4.39e-05 elapsed=188s
+[2026-05-12 12:53:09,722] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4850/5000 train_loss=10.1389 lr=2.53e-05 elapsed=189s
+[2026-05-12 12:53:11,457] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4900/5000 train_loss=10.1385 lr=1.14e-05 elapsed=191s
+[2026-05-12 12:53:13,190] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=4950/5000 train_loss=10.1427 lr=2.88e-06 elapsed=193s
+[2026-05-12 12:53:14,922] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=5000/5000 train_loss=10.1458 lr=0.00e+00 elapsed=195s
+[2026-05-12 12:53:15,606] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=5000 VAL_LOSS=10.1284  ppl=25043.12
+[2026-05-12 12:53:15,850] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=5000 mean_effective_rank=101.983 mean_condition_number=2.94e+04
+[2026-05-12 12:53:15,850] INFO stage2.11M.relora_diag_gated_S3pos_drops - === MERGE EVENT 5 at step 5000 (gate=S3_fo_val_signed) ===
+[2026-05-12 12:53:16,402] INFO stage2.11M.relora_diag_gated_S3pos_drops - merge stats: total=1024 kept=531 dropped=493 drop_rate=0.481
+[2026-05-12 12:53:17,318] INFO stage2.11M.relora_diag_gated_S3pos_drops - step=5000 POST-MERGE VAL_LOSS=10.1599
+[2026-05-12 12:53:17,319] INFO stage2.11M.relora_diag_gated_S3pos_drops - training done in 197.0s
+[2026-05-12 12:53:18,144] INFO stage2.11M.relora_diag_gated_S3pos_drops - FINAL VAL_LOSS=10.1652  ppl=25982.76
+[2026-05-12 12:53:18,380] INFO stage2.11M.relora_diag_gated_S3pos_drops - summary.json written

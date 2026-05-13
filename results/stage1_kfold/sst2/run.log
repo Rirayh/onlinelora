@@ -1,0 +1,82 @@
+[2026-05-12 12:46:07,493] INFO stage1.sst2 - K-fold Fisher rerun: k_fold=5 fisher_max_samples=512
+[2026-05-12 12:46:12,245] INFO stage1.sst2 - task=sst2 device=cuda out=results/stage1_kfold/sst2
+[2026-05-12 12:46:17,526] INFO stage1.sst2 - #LoRA layers=24, total rank-1 components=192
+[2026-05-12 12:48:03,695] INFO stage1.sst2 - #train_main=53880, #diag=13469, #test_holdout=872
+[2026-05-12 12:48:03,710] INFO stage1.sst2 - Training 5000 steps; saving diagnostics at [1000, 2000, 3000, 4000, 5000]
+[2026-05-12 12:48:13,832] INFO stage1.sst2 - step=100/5000 loss=0.6689 lr=2.00e-04
+[2026-05-12 12:48:23,728] INFO stage1.sst2 - step=200/5000 loss=0.3366 lr=1.96e-04
+[2026-05-12 12:48:33,617] INFO stage1.sst2 - step=300/5000 loss=0.2629 lr=1.92e-04
+[2026-05-12 12:48:43,503] INFO stage1.sst2 - step=400/5000 loss=0.2711 lr=1.88e-04
+[2026-05-12 12:48:53,389] INFO stage1.sst2 - step=500/5000 loss=0.2638 lr=1.84e-04
+[2026-05-12 12:49:03,272] INFO stage1.sst2 - step=600/5000 loss=0.2747 lr=1.80e-04
+[2026-05-12 12:49:13,153] INFO stage1.sst2 - step=700/5000 loss=0.2344 lr=1.76e-04
+[2026-05-12 12:49:23,034] INFO stage1.sst2 - step=800/5000 loss=0.2347 lr=1.71e-04
+[2026-05-12 12:49:32,920] INFO stage1.sst2 - step=900/5000 loss=0.2663 lr=1.67e-04
+[2026-05-12 12:49:42,801] INFO stage1.sst2 - step=1000/5000 loss=0.2524 lr=1.63e-04
+[2026-05-12 12:49:44,090] INFO stage1.sst2 - [step 1000] baseline test loss=0.1988 acc=0.9278
+[2026-05-12 12:50:47,626] INFO stage1.sst2 - [step 1000] computed 5-fold Fisher val saliency
+[2026-05-12 12:50:47,628] INFO stage1.sst2 - [step 1000] starting oracle ablation over 192 components
+[2026-05-12 12:54:48,580] INFO stage1.sst2 - [step 1000] oracle ablation done in 241.0s
+[2026-05-12 12:54:49,525] INFO stage1.sst2 - [step 1000] rho(S5_fisher_val vs delta)= 0.302, rho(S4_fisher_tr)= 0.382, rho(S3_fo_val)= 0.347, rho(S2_fo_tr)= 0.284, AUC_signed(harmful)= 0.250, harmful%= 31.25%
+[2026-05-12 12:54:59,411] INFO stage1.sst2 - step=1100/5000 loss=0.2406 lr=1.59e-04
+[2026-05-12 12:55:09,291] INFO stage1.sst2 - step=1200/5000 loss=0.2432 lr=1.55e-04
+[2026-05-12 12:55:19,175] INFO stage1.sst2 - step=1300/5000 loss=0.2343 lr=1.51e-04
+[2026-05-12 12:55:29,057] INFO stage1.sst2 - step=1400/5000 loss=0.2315 lr=1.47e-04
+[2026-05-12 12:55:38,942] INFO stage1.sst2 - step=1500/5000 loss=0.2292 lr=1.43e-04
+[2026-05-12 12:55:48,833] INFO stage1.sst2 - step=1600/5000 loss=0.2331 lr=1.39e-04
+[2026-05-12 12:55:58,723] INFO stage1.sst2 - step=1700/5000 loss=0.2303 lr=1.35e-04
+[2026-05-12 12:56:08,608] INFO stage1.sst2 - step=1800/5000 loss=0.2182 lr=1.31e-04
+[2026-05-12 12:56:18,494] INFO stage1.sst2 - step=1900/5000 loss=0.2064 lr=1.27e-04
+[2026-05-12 12:56:28,383] INFO stage1.sst2 - step=2000/5000 loss=0.2158 lr=1.22e-04
+[2026-05-12 12:56:29,672] INFO stage1.sst2 - [step 2000] baseline test loss=0.1997 acc=0.9323
+[2026-05-12 12:57:32,719] INFO stage1.sst2 - [step 2000] computed 5-fold Fisher val saliency
+[2026-05-12 12:57:32,719] INFO stage1.sst2 - [step 2000] starting oracle ablation over 192 components
+[2026-05-12 13:01:33,650] INFO stage1.sst2 - [step 2000] oracle ablation done in 240.9s
+[2026-05-12 13:01:34,596] INFO stage1.sst2 - [step 2000] rho(S5_fisher_val vs delta)= -0.522, rho(S4_fisher_tr)= -0.514, rho(S3_fo_val)= -0.502, rho(S2_fo_tr)= -0.426, AUC_signed(harmful)= 0.436, harmful%= 67.71%
+[2026-05-12 13:01:44,483] INFO stage1.sst2 - step=2100/5000 loss=0.2222 lr=1.18e-04
+[2026-05-12 13:01:54,371] INFO stage1.sst2 - step=2200/5000 loss=0.1971 lr=1.14e-04
+[2026-05-12 13:02:04,255] INFO stage1.sst2 - step=2300/5000 loss=0.2242 lr=1.10e-04
+[2026-05-12 13:02:14,137] INFO stage1.sst2 - step=2400/5000 loss=0.1986 lr=1.06e-04
+[2026-05-12 13:02:24,021] INFO stage1.sst2 - step=2500/5000 loss=0.2113 lr=1.02e-04
+[2026-05-12 13:02:33,905] INFO stage1.sst2 - step=2600/5000 loss=0.2040 lr=9.80e-05
+[2026-05-12 13:02:43,789] INFO stage1.sst2 - step=2700/5000 loss=0.2181 lr=9.39e-05
+[2026-05-12 13:02:53,671] INFO stage1.sst2 - step=2800/5000 loss=0.2095 lr=8.98e-05
+[2026-05-12 13:03:03,555] INFO stage1.sst2 - step=2900/5000 loss=0.1983 lr=8.57e-05
+[2026-05-12 13:03:13,439] INFO stage1.sst2 - step=3000/5000 loss=0.2073 lr=8.16e-05
+[2026-05-12 13:03:14,722] INFO stage1.sst2 - [step 3000] baseline test loss=0.1968 acc=0.9335
+[2026-05-12 13:04:17,538] INFO stage1.sst2 - [step 3000] computed 5-fold Fisher val saliency
+[2026-05-12 13:04:17,540] INFO stage1.sst2 - [step 3000] starting oracle ablation over 192 components
+[2026-05-12 13:08:18,598] INFO stage1.sst2 - [step 3000] oracle ablation done in 241.1s
+[2026-05-12 13:08:19,544] INFO stage1.sst2 - [step 3000] rho(S5_fisher_val vs delta)= -0.489, rho(S4_fisher_tr)= -0.520, rho(S3_fo_val)= -0.412, rho(S2_fo_tr)= -0.413, AUC_signed(harmful)= 0.644, harmful%= 69.27%
+[2026-05-12 13:08:29,430] INFO stage1.sst2 - step=3100/5000 loss=0.2049 lr=7.76e-05
+[2026-05-12 13:08:39,313] INFO stage1.sst2 - step=3200/5000 loss=0.1994 lr=7.35e-05
+[2026-05-12 13:08:49,202] INFO stage1.sst2 - step=3300/5000 loss=0.1987 lr=6.94e-05
+[2026-05-12 13:08:59,090] INFO stage1.sst2 - step=3400/5000 loss=0.1984 lr=6.53e-05
+[2026-05-12 13:09:08,971] INFO stage1.sst2 - step=3500/5000 loss=0.1828 lr=6.12e-05
+[2026-05-12 13:09:18,852] INFO stage1.sst2 - step=3600/5000 loss=0.1966 lr=5.71e-05
+[2026-05-12 13:09:28,733] INFO stage1.sst2 - step=3700/5000 loss=0.1985 lr=5.31e-05
+[2026-05-12 13:09:38,616] INFO stage1.sst2 - step=3800/5000 loss=0.1839 lr=4.90e-05
+[2026-05-12 13:09:48,495] INFO stage1.sst2 - step=3900/5000 loss=0.1892 lr=4.49e-05
+[2026-05-12 13:09:58,379] INFO stage1.sst2 - step=4000/5000 loss=0.2001 lr=4.08e-05
+[2026-05-12 13:09:59,665] INFO stage1.sst2 - [step 4000] baseline test loss=0.1975 acc=0.9289
+[2026-05-12 13:11:02,859] INFO stage1.sst2 - [step 4000] computed 5-fold Fisher val saliency
+[2026-05-12 13:11:02,861] INFO stage1.sst2 - [step 4000] starting oracle ablation over 192 components
+[2026-05-12 13:15:03,775] INFO stage1.sst2 - [step 4000] oracle ablation done in 240.9s
+[2026-05-12 13:15:04,716] INFO stage1.sst2 - [step 4000] rho(S5_fisher_val vs delta)= -0.412, rho(S4_fisher_tr)= -0.508, rho(S3_fo_val)= -0.362, rho(S2_fo_tr)= -0.255, AUC_signed(harmful)= 0.475, harmful%= 68.23%
+[2026-05-12 13:15:14,615] INFO stage1.sst2 - step=4100/5000 loss=0.1898 lr=3.67e-05
+[2026-05-12 13:15:24,518] INFO stage1.sst2 - step=4200/5000 loss=0.1694 lr=3.27e-05
+[2026-05-12 13:15:34,432] INFO stage1.sst2 - step=4300/5000 loss=0.1971 lr=2.86e-05
+[2026-05-12 13:15:44,333] INFO stage1.sst2 - step=4400/5000 loss=0.1675 lr=2.45e-05
+[2026-05-12 13:15:54,237] INFO stage1.sst2 - step=4500/5000 loss=0.1912 lr=2.04e-05
+[2026-05-12 13:16:04,117] INFO stage1.sst2 - step=4600/5000 loss=0.1744 lr=1.63e-05
+[2026-05-12 13:16:13,999] INFO stage1.sst2 - step=4700/5000 loss=0.1979 lr=1.22e-05
+[2026-05-12 13:16:23,881] INFO stage1.sst2 - step=4800/5000 loss=0.1758 lr=8.16e-06
+[2026-05-12 13:16:33,761] INFO stage1.sst2 - step=4900/5000 loss=0.1711 lr=4.08e-06
+[2026-05-12 13:16:43,643] INFO stage1.sst2 - step=5000/5000 loss=0.1950 lr=0.00e+00
+[2026-05-12 13:16:44,929] INFO stage1.sst2 - [step 5000] baseline test loss=0.2001 acc=0.9300
+[2026-05-12 13:17:47,506] INFO stage1.sst2 - [step 5000] computed 5-fold Fisher val saliency
+[2026-05-12 13:17:47,508] INFO stage1.sst2 - [step 5000] starting oracle ablation over 192 components
+[2026-05-12 13:21:48,370] INFO stage1.sst2 - [step 5000] oracle ablation done in 240.9s
+[2026-05-12 13:21:49,320] INFO stage1.sst2 - [step 5000] rho(S5_fisher_val vs delta)= -0.459, rho(S4_fisher_tr)= -0.539, rho(S3_fo_val)= -0.329, rho(S2_fo_tr)= -0.388, AUC_signed(harmful)= 0.502, harmful%= 67.71%
+[2026-05-12 13:21:49,329] INFO stage1.sst2 - training+diagnostics done in 2025.6s
+[2026-05-12 13:21:49,336] INFO stage1.sst2 - summary.json -> results/stage1_kfold/sst2/summary.json

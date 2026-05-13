@@ -1,0 +1,18 @@
+{
+  "model_key": "llama3-8b",
+  "model_path": "/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B",
+  "dataset": "gsm8k",
+  "method": "relora_diag_gated_S3pos",
+  "gate_sign": "S3pos_drops",
+  "total_steps": 3000,
+  "merge_every": 500,
+  "final_val_loss": 0.4674967432778979,
+  "first_eval_val_loss": 0.45911298384742133,
+  "final_mean_effective_rank": 1623.8342649718593,
+  "final_mean_condition_number": 8170556.833535004,
+  "sampled_layers": 8,
+  "elapsed_sec": 14653.656059026718,
+  "n_trainable_M": 41.94304,
+  "n_lora_components": 3584,
+  "aborted": false
+}

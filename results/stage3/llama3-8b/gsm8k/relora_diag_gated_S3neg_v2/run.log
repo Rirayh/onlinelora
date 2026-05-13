@@ -1,0 +1,124 @@
+[2026-05-13 06:49:28,916] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - START stage3 model=/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B dataset=gsm8k method=relora_diag_gated_S3neg out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2
+[2026-05-13 06:49:30,806] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - tokenizer loaded in 0.3s, vocab=128000
+[2026-05-13 06:49:32,393] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - loading gsm8k (config=main)
+[2026-05-13 06:51:18,037] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - gsm8k train=7223 val=250 test=1319
+[2026-05-13 06:51:20,382] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - gsm8k tokenized: train 7223 val 250
+[2026-05-13 06:51:20,384] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - data prepared in 109.6s
+[2026-05-13 06:51:23,172] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - model loaded in 2.8s
+[2026-05-13 06:51:58,315] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - #LoRA layers=224 #components=3584
+[2026-05-13 06:51:58,320] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - #trainable params=41.94M
+[2026-05-13 06:52:14,924] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - [step 0] mean_ER=1622.41 mean_CN=1.18e+07 (sampled 8 layers)
+[2026-05-13 06:52:14,925] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - merge events scheduled at: [500, 1000, 1500, 2000, 2500, 3000]
+[2026-05-13 06:53:41,143] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=25/3000 train_loss=1.0372 lr=5.00e-05 elapsed=86s
+[2026-05-13 06:55:01,853] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=50/3000 train_loss=0.5707 lr=1.00e-04 elapsed=167s
+[2026-05-13 06:55:02,351] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000050
+[2026-05-13 06:56:23,566] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=75/3000 train_loss=0.5293 lr=1.50e-04 elapsed=249s
+[2026-05-13 06:57:47,177] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=100/3000 train_loss=0.4964 lr=2.00e-04 elapsed=332s
+[2026-05-13 06:57:47,649] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000100
+[2026-05-13 06:59:10,369] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=125/3000 train_loss=0.5109 lr=2.00e-04 elapsed=415s
+[2026-05-13 07:00:34,177] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=150/3000 train_loss=0.4967 lr=2.00e-04 elapsed=499s
+[2026-05-13 07:00:34,653] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000150
+[2026-05-13 07:01:58,567] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=175/3000 train_loss=0.4818 lr=2.00e-04 elapsed=584s
+[2026-05-13 07:03:20,343] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=200/3000 train_loss=0.4672 lr=1.99e-04 elapsed=665s
+[2026-05-13 07:03:20,803] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000200
+[2026-05-13 07:04:43,965] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=225/3000 train_loss=0.4650 lr=1.99e-04 elapsed=749s
+[2026-05-13 07:06:04,416] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=250/3000 train_loss=0.4047 lr=1.99e-04 elapsed=829s
+[2026-05-13 07:06:04,882] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000250
+[2026-05-13 07:06:12,237] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=250 VAL_LOSS=0.4591
+[2026-05-13 07:06:12,704] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - best ckpt updated: step=250 val_loss=0.4591
+[2026-05-13 07:07:36,258] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=275/3000 train_loss=0.4014 lr=1.98e-04 elapsed=921s
+[2026-05-13 07:08:59,139] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=300/3000 train_loss=0.3968 lr=1.98e-04 elapsed=1004s
+[2026-05-13 07:08:59,608] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000300
+[2026-05-13 07:10:19,863] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=325/3000 train_loss=0.3958 lr=1.97e-04 elapsed=1085s
+[2026-05-13 07:11:43,009] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=350/3000 train_loss=0.4074 lr=1.96e-04 elapsed=1168s
+[2026-05-13 07:11:43,470] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000350
+[2026-05-13 07:13:05,662] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=375/3000 train_loss=0.3991 lr=1.96e-04 elapsed=1251s
+[2026-05-13 07:14:29,162] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=400/3000 train_loss=0.3919 lr=1.95e-04 elapsed=1334s
+[2026-05-13 07:14:29,631] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000400
+[2026-05-13 07:15:50,887] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=425/3000 train_loss=0.3911 lr=1.94e-04 elapsed=1416s
+[2026-05-13 07:17:13,957] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=450/3000 train_loss=0.3997 lr=1.93e-04 elapsed=1499s
+[2026-05-13 07:17:14,432] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000450
+[2026-05-13 07:18:36,854] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=475/3000 train_loss=0.2878 lr=1.92e-04 elapsed=1582s
+[2026-05-13 07:19:57,769] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=500/3000 train_loss=0.2755 lr=1.91e-04 elapsed=1663s
+[2026-05-13 07:19:58,232] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000500
+[2026-05-13 07:20:05,592] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=500 VAL_LOSS=0.4865
+[2026-05-13 07:20:22,088] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=500 mean_ER=1622.99 mean_CN=3.20e+08
+[2026-05-13 07:20:22,089] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - === MERGE EVENT 1 at step 500 (method=relora_diag_gated_S3neg) ===
+[2026-05-13 07:20:24,448] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - merge: total=3584 kept=2292 drop_rate=0.360
+[2026-05-13 07:20:47,802] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=500 POST-MERGE VAL_LOSS=0.5062 (first_eval=0.45911298384742133)
+[2026-05-13 07:22:10,136] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=525/3000 train_loss=0.3217 lr=5.00e-05 elapsed=1795s
+[2026-05-13 07:23:32,558] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=550/3000 train_loss=0.3101 lr=1.00e-04 elapsed=1878s
+[2026-05-13 07:23:33,022] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000550
+[2026-05-13 07:24:55,733] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=575/3000 train_loss=0.2999 lr=1.50e-04 elapsed=1961s
+[2026-05-13 07:26:19,092] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=600/3000 train_loss=0.3029 lr=2.00e-04 elapsed=2044s
+[2026-05-13 07:26:19,543] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000600
+[2026-05-13 07:27:40,992] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=625/3000 train_loss=0.3060 lr=2.00e-04 elapsed=2126s
+[2026-05-13 07:29:04,438] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=650/3000 train_loss=0.2992 lr=2.00e-04 elapsed=2210s
+[2026-05-13 07:29:04,910] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000650
+[2026-05-13 07:30:27,048] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=675/3000 train_loss=0.3055 lr=2.00e-04 elapsed=2292s
+[2026-05-13 07:31:49,592] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=700/3000 train_loss=0.2238 lr=1.99e-04 elapsed=2375s
+[2026-05-13 07:31:50,048] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000700
+[2026-05-13 07:33:11,404] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=725/3000 train_loss=0.2217 lr=1.99e-04 elapsed=2456s
+[2026-05-13 07:34:36,067] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=750/3000 train_loss=0.2272 lr=1.98e-04 elapsed=2541s
+[2026-05-13 07:34:36,546] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000750
+[2026-05-13 07:34:43,903] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=750 VAL_LOSS=0.5190
+[2026-05-13 07:36:09,078] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=775/3000 train_loss=0.2333 lr=1.97e-04 elapsed=2634s
+[2026-05-13 07:37:33,303] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=800/3000 train_loss=0.2235 lr=1.97e-04 elapsed=2718s
+[2026-05-13 07:37:33,792] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000800
+[2026-05-13 07:38:55,060] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=825/3000 train_loss=0.2301 lr=1.96e-04 elapsed=2800s
+[2026-05-13 07:40:17,301] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=850/3000 train_loss=0.2317 lr=1.95e-04 elapsed=2882s
+[2026-05-13 07:40:17,780] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000850
+[2026-05-13 07:41:39,956] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=875/3000 train_loss=0.2399 lr=1.94e-04 elapsed=2965s
+[2026-05-13 07:43:02,409] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=900/3000 train_loss=0.2324 lr=1.92e-04 elapsed=3047s
+[2026-05-13 07:43:02,931] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000900
+[2026-05-13 07:44:23,735] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=925/3000 train_loss=0.1271 lr=1.91e-04 elapsed=3129s
+[2026-05-13 07:45:46,115] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=950/3000 train_loss=0.1200 lr=1.90e-04 elapsed=3211s
+[2026-05-13 07:45:46,590] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_000950
+[2026-05-13 07:47:09,688] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=975/3000 train_loss=0.1223 lr=1.88e-04 elapsed=3295s
+[2026-05-13 07:48:32,298] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1000/3000 train_loss=0.1233 lr=1.87e-04 elapsed=3377s
+[2026-05-13 07:48:32,780] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_001000
+[2026-05-13 07:48:40,133] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1000 VAL_LOSS=0.6352
+[2026-05-13 07:48:56,503] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1000 mean_ER=1623.51 mean_CN=3.82e+07
+[2026-05-13 07:48:56,503] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - === MERGE EVENT 2 at step 1000 (method=relora_diag_gated_S3neg) ===
+[2026-05-13 07:48:59,128] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - merge: total=3584 kept=2514 drop_rate=0.299
+[2026-05-13 07:49:22,950] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1000 POST-MERGE VAL_LOSS=0.6512 (first_eval=0.45911298384742133)
+[2026-05-13 07:50:47,118] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1025/3000 train_loss=0.1367 lr=5.00e-05 elapsed=3512s
+[2026-05-13 07:52:11,082] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1050/3000 train_loss=0.1360 lr=1.00e-04 elapsed=3596s
+[2026-05-13 07:52:11,595] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_001050
+[2026-05-13 07:53:33,892] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1075/3000 train_loss=0.1316 lr=1.50e-04 elapsed=3679s
+[2026-05-13 07:54:55,888] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1100/3000 train_loss=0.1308 lr=2.00e-04 elapsed=3761s
+[2026-05-13 07:54:56,386] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_001100
+[2026-05-13 07:56:18,627] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1125/3000 train_loss=0.1340 lr=2.00e-04 elapsed=3844s
+[2026-05-13 07:57:41,784] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1150/3000 train_loss=0.0841 lr=2.00e-04 elapsed=3927s
+[2026-05-13 07:57:42,290] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_001150
+[2026-05-13 07:59:05,228] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1175/3000 train_loss=0.0705 lr=1.99e-04 elapsed=4010s
+[2026-05-13 08:00:28,864] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1200/3000 train_loss=0.0754 lr=1.99e-04 elapsed=4094s
+[2026-05-13 08:00:29,381] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_001200
+[2026-05-13 08:01:50,823] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1225/3000 train_loss=0.0781 lr=1.98e-04 elapsed=4176s
+[2026-05-13 08:03:12,590] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1250/3000 train_loss=0.0759 lr=1.97e-04 elapsed=4258s
+[2026-05-13 08:03:13,099] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_001250
+[2026-05-13 08:03:20,459] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1250 VAL_LOSS=0.7165
+[2026-05-13 08:04:46,898] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1275/3000 train_loss=0.0855 lr=1.96e-04 elapsed=4352s
+[2026-05-13 08:06:10,890] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1300/3000 train_loss=0.0810 lr=1.95e-04 elapsed=4436s
+[2026-05-13 08:06:11,370] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_001300
+[2026-05-13 08:07:33,943] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1325/3000 train_loss=0.0818 lr=1.93e-04 elapsed=4519s
+[2026-05-13 08:08:55,474] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1350/3000 train_loss=0.0819 lr=1.92e-04 elapsed=4601s
+[2026-05-13 08:08:55,976] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_001350
+[2026-05-13 08:10:18,313] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1375/3000 train_loss=0.0442 lr=1.90e-04 elapsed=4683s
+[2026-05-13 08:11:42,711] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1400/3000 train_loss=0.0353 lr=1.88e-04 elapsed=4768s
+[2026-05-13 08:11:43,187] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_001400
+[2026-05-13 08:13:04,454] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1425/3000 train_loss=0.0351 lr=1.86e-04 elapsed=4850s
+[2026-05-13 08:14:27,623] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1450/3000 train_loss=0.0356 lr=1.84e-04 elapsed=4933s
+[2026-05-13 08:14:28,106] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_001450
+[2026-05-13 08:15:52,333] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1475/3000 train_loss=0.0384 lr=1.81e-04 elapsed=5017s
+[2026-05-13 08:17:12,972] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1500/3000 train_loss=0.0386 lr=1.79e-04 elapsed=5098s
+[2026-05-13 08:17:13,477] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3/llama3-8b/gsm8k/relora_diag_gated_S3neg_v2/checkpoints/step_001500
+[2026-05-13 08:17:20,849] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1500 VAL_LOSS=0.8461
+[2026-05-13 08:17:37,585] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1500 mean_ER=1623.78 mean_CN=3.86e+08
+[2026-05-13 08:17:37,585] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - === MERGE EVENT 3 at step 1500 (method=relora_diag_gated_S3neg) ===
+[2026-05-13 08:17:42,042] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - merge: total=3584 kept=2193 drop_rate=0.388
+[2026-05-13 08:18:06,933] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - step=1500 POST-MERGE VAL_LOSS=0.9016 (first_eval=0.45911298384742133)
+[2026-05-13 08:18:06,934] WARNING stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - ABORT: post-merge val_loss=0.9016 > first_eval=0.4591 * 1.5
+[2026-05-13 08:18:06,950] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - training ABORTED in 5152.0s
+[2026-05-13 08:18:14,294] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - FINAL VAL_LOSS=0.9016
+[2026-05-13 08:18:30,318] INFO stage3.llama3-8b.gsm8k.relora_diag_gated_S3neg - summary.json written

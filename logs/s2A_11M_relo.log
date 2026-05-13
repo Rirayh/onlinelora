@@ -1,0 +1,158 @@
+[2026-05-12 12:46:06,008] INFO stage2.11M.relora_baseline - size=11M method=relora_baseline effective_gate=none gate_sign=S3pos_drops out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage2/11M/relora_baseline
+[2026-05-12 12:46:11,134] INFO stage2.11M.relora_baseline - loading wikitext-2-raw-v1
+Token indices sequence length is longer than the specified maximum sequence length for this model (2391884 > 512). Running this sequence through the model will result in indexing errors
+[2026-05-12 12:49:55,697] INFO stage2.11M.relora_baseline - train tokens=2,391,884  val tokens=247,289
+[2026-05-12 12:49:55,700] INFO stage2.11M.relora_baseline - #train_windows=9343  #val_windows=965
+[2026-05-12 12:49:55,924] INFO stage2.11M.relora_baseline - tiny_lm 11M: total params=14.37M (incl. embedding)
+[2026-05-12 12:49:59,824] INFO stage2.11M.relora_baseline - #LoRA layers=16 #components=1024
+[2026-05-12 12:49:59,824] INFO stage2.11M.relora_baseline - #trainable params=0.39M
+[2026-05-12 12:50:00,263] INFO stage2.11M.relora_baseline - [step 0] mean_effective_rank=154.273 mean_condition_number=1.27e+03
+[2026-05-12 12:50:00,263] INFO stage2.11M.relora_baseline - merge events scheduled at steps: [1000, 2000, 3000, 4000, 5000]
+[2026-05-12 12:50:02,212] INFO stage2.11M.relora_baseline - step=50/5000 train_loss=10.8446 lr=7.50e-05 elapsed=2s
+[2026-05-12 12:50:03,952] INFO stage2.11M.relora_baseline - step=100/5000 train_loss=10.6575 lr=1.50e-04 elapsed=4s
+[2026-05-12 12:50:05,685] INFO stage2.11M.relora_baseline - step=150/5000 train_loss=10.5345 lr=2.25e-04 elapsed=5s
+[2026-05-12 12:50:07,418] INFO stage2.11M.relora_baseline - step=200/5000 train_loss=10.5201 lr=3.00e-04 elapsed=7s
+[2026-05-12 12:50:09,186] INFO stage2.11M.relora_baseline - step=250/5000 train_loss=10.5184 lr=3.00e-04 elapsed=9s
+[2026-05-12 12:50:09,872] INFO stage2.11M.relora_baseline - step=250 VAL_LOSS=10.5105  ppl=36698.59
+[2026-05-12 12:50:11,604] INFO stage2.11M.relora_baseline - step=300/5000 train_loss=10.5174 lr=3.00e-04 elapsed=11s
+[2026-05-12 12:50:13,334] INFO stage2.11M.relora_baseline - step=350/5000 train_loss=10.5210 lr=2.99e-04 elapsed=13s
+[2026-05-12 12:50:15,064] INFO stage2.11M.relora_baseline - step=400/5000 train_loss=10.5145 lr=2.99e-04 elapsed=15s
+[2026-05-12 12:50:16,793] INFO stage2.11M.relora_baseline - step=450/5000 train_loss=10.5055 lr=2.98e-04 elapsed=17s
+[2026-05-12 12:50:18,569] INFO stage2.11M.relora_baseline - step=500/5000 train_loss=10.4595 lr=2.97e-04 elapsed=18s
+[2026-05-12 12:50:19,257] INFO stage2.11M.relora_baseline - step=500 VAL_LOSS=10.4188  ppl=33481.87
+[2026-05-12 12:50:19,499] INFO stage2.11M.relora_baseline - step=500 mean_effective_rank=121.380 mean_condition_number=1.05e+04
+[2026-05-12 12:50:21,231] INFO stage2.11M.relora_baseline - step=550/5000 train_loss=10.4095 lr=2.96e-04 elapsed=21s
+[2026-05-12 12:50:22,966] INFO stage2.11M.relora_baseline - step=600/5000 train_loss=10.3728 lr=2.95e-04 elapsed=23s
+[2026-05-12 12:50:24,700] INFO stage2.11M.relora_baseline - step=650/5000 train_loss=10.3412 lr=2.94e-04 elapsed=24s
+[2026-05-12 12:50:26,435] INFO stage2.11M.relora_baseline - step=700/5000 train_loss=10.3132 lr=2.92e-04 elapsed=26s
+[2026-05-12 12:50:28,168] INFO stage2.11M.relora_baseline - step=750/5000 train_loss=10.2878 lr=2.90e-04 elapsed=28s
+[2026-05-12 12:50:28,855] INFO stage2.11M.relora_baseline - step=750 VAL_LOSS=10.2672  ppl=28774.23
+[2026-05-12 12:50:30,590] INFO stage2.11M.relora_baseline - step=800/5000 train_loss=10.2780 lr=2.89e-04 elapsed=30s
+[2026-05-12 12:50:32,325] INFO stage2.11M.relora_baseline - step=850/5000 train_loss=10.2672 lr=2.87e-04 elapsed=32s
+[2026-05-12 12:50:34,057] INFO stage2.11M.relora_baseline - step=900/5000 train_loss=10.2568 lr=2.85e-04 elapsed=34s
+[2026-05-12 12:50:35,789] INFO stage2.11M.relora_baseline - step=950/5000 train_loss=10.2527 lr=2.82e-04 elapsed=36s
+[2026-05-12 12:50:37,517] INFO stage2.11M.relora_baseline - step=1000/5000 train_loss=10.2432 lr=2.80e-04 elapsed=37s
+[2026-05-12 12:50:38,203] INFO stage2.11M.relora_baseline - step=1000 VAL_LOSS=10.2213  ppl=27483.09
+[2026-05-12 12:50:38,441] INFO stage2.11M.relora_baseline - step=1000 mean_effective_rank=98.232 mean_condition_number=6.27e+05
+[2026-05-12 12:50:38,441] INFO stage2.11M.relora_baseline - === MERGE EVENT 1 at step 1000 (gate=none) ===
+[2026-05-12 12:50:38,463] INFO stage2.11M.relora_baseline - merge stats: total=1024 kept=1024 dropped=0 drop_rate=0.000
+[2026-05-12 12:50:39,390] INFO stage2.11M.relora_baseline - step=1000 POST-MERGE VAL_LOSS=10.2213
+[2026-05-12 12:50:41,117] INFO stage2.11M.relora_baseline - step=1050/5000 train_loss=10.2382 lr=7.50e-05 elapsed=41s
+[2026-05-12 12:50:42,851] INFO stage2.11M.relora_baseline - step=1100/5000 train_loss=10.2345 lr=1.50e-04 elapsed=43s
+[2026-05-12 12:50:44,582] INFO stage2.11M.relora_baseline - step=1150/5000 train_loss=10.2357 lr=2.25e-04 elapsed=44s
+[2026-05-12 12:50:46,314] INFO stage2.11M.relora_baseline - step=1200/5000 train_loss=10.2299 lr=3.00e-04 elapsed=46s
+[2026-05-12 12:50:48,044] INFO stage2.11M.relora_baseline - step=1250/5000 train_loss=10.2258 lr=3.00e-04 elapsed=48s
+[2026-05-12 12:50:48,730] INFO stage2.11M.relora_baseline - step=1250 VAL_LOSS=10.2078  ppl=27112.73
+[2026-05-12 12:50:50,461] INFO stage2.11M.relora_baseline - step=1300/5000 train_loss=10.2190 lr=2.99e-04 elapsed=50s
+[2026-05-12 12:50:52,194] INFO stage2.11M.relora_baseline - step=1350/5000 train_loss=10.2229 lr=2.99e-04 elapsed=52s
+[2026-05-12 12:50:53,925] INFO stage2.11M.relora_baseline - step=1400/5000 train_loss=10.2228 lr=2.98e-04 elapsed=54s
+[2026-05-12 12:50:55,653] INFO stage2.11M.relora_baseline - step=1450/5000 train_loss=10.2163 lr=2.97e-04 elapsed=55s
+[2026-05-12 12:50:57,379] INFO stage2.11M.relora_baseline - step=1500/5000 train_loss=10.2063 lr=2.95e-04 elapsed=57s
+[2026-05-12 12:50:58,064] INFO stage2.11M.relora_baseline - step=1500 VAL_LOSS=10.1872  ppl=26560.78
+[2026-05-12 12:50:58,301] INFO stage2.11M.relora_baseline - step=1500 mean_effective_rank=97.594 mean_condition_number=1.10e+05
+[2026-05-12 12:51:00,021] INFO stage2.11M.relora_baseline - step=1550/5000 train_loss=10.1993 lr=2.94e-04 elapsed=60s
+[2026-05-12 12:51:01,784] INFO stage2.11M.relora_baseline - step=1600/5000 train_loss=10.2039 lr=2.92e-04 elapsed=62s
+[2026-05-12 12:51:03,517] INFO stage2.11M.relora_baseline - step=1650/5000 train_loss=10.1956 lr=2.90e-04 elapsed=63s
+[2026-05-12 12:51:05,250] INFO stage2.11M.relora_baseline - step=1700/5000 train_loss=10.1932 lr=2.87e-04 elapsed=65s
+[2026-05-12 12:51:06,983] INFO stage2.11M.relora_baseline - step=1750/5000 train_loss=10.1878 lr=2.85e-04 elapsed=67s
+[2026-05-12 12:51:07,671] INFO stage2.11M.relora_baseline - step=1750 VAL_LOSS=10.1693  ppl=26091.07
+[2026-05-12 12:51:09,402] INFO stage2.11M.relora_baseline - step=1800/5000 train_loss=10.1823 lr=2.82e-04 elapsed=69s
+[2026-05-12 12:51:11,134] INFO stage2.11M.relora_baseline - step=1850/5000 train_loss=10.1798 lr=2.79e-04 elapsed=71s
+[2026-05-12 12:51:12,870] INFO stage2.11M.relora_baseline - step=1900/5000 train_loss=10.1865 lr=2.76e-04 elapsed=73s
+[2026-05-12 12:51:14,605] INFO stage2.11M.relora_baseline - step=1950/5000 train_loss=10.1849 lr=2.72e-04 elapsed=74s
+[2026-05-12 12:51:16,341] INFO stage2.11M.relora_baseline - step=2000/5000 train_loss=10.1805 lr=2.68e-04 elapsed=76s
+[2026-05-12 12:51:17,029] INFO stage2.11M.relora_baseline - step=2000 VAL_LOSS=10.1588  ppl=25816.92
+[2026-05-12 12:51:17,271] INFO stage2.11M.relora_baseline - step=2000 mean_effective_rank=94.622 mean_condition_number=2.26e+04
+[2026-05-12 12:51:17,271] INFO stage2.11M.relora_baseline - === MERGE EVENT 2 at step 2000 (gate=none) ===
+[2026-05-12 12:51:17,284] INFO stage2.11M.relora_baseline - merge stats: total=1024 kept=1024 dropped=0 drop_rate=0.000
+[2026-05-12 12:51:18,209] INFO stage2.11M.relora_baseline - step=2000 POST-MERGE VAL_LOSS=10.1588
+[2026-05-12 12:51:19,940] INFO stage2.11M.relora_baseline - step=2050/5000 train_loss=10.1696 lr=7.50e-05 elapsed=80s
+[2026-05-12 12:51:21,671] INFO stage2.11M.relora_baseline - step=2100/5000 train_loss=10.1775 lr=1.50e-04 elapsed=81s
+[2026-05-12 12:51:23,407] INFO stage2.11M.relora_baseline - step=2150/5000 train_loss=10.1714 lr=2.25e-04 elapsed=83s
+[2026-05-12 12:51:25,138] INFO stage2.11M.relora_baseline - step=2200/5000 train_loss=10.1720 lr=3.00e-04 elapsed=85s
+[2026-05-12 12:51:26,874] INFO stage2.11M.relora_baseline - step=2250/5000 train_loss=10.1728 lr=3.00e-04 elapsed=87s
+[2026-05-12 12:51:27,564] INFO stage2.11M.relora_baseline - step=2250 VAL_LOSS=10.1545  ppl=25707.52
+[2026-05-12 12:51:29,300] INFO stage2.11M.relora_baseline - step=2300/5000 train_loss=10.1739 lr=2.99e-04 elapsed=89s
+[2026-05-12 12:51:31,028] INFO stage2.11M.relora_baseline - step=2350/5000 train_loss=10.1648 lr=2.98e-04 elapsed=91s
+[2026-05-12 12:51:32,754] INFO stage2.11M.relora_baseline - step=2400/5000 train_loss=10.1675 lr=2.96e-04 elapsed=92s
+[2026-05-12 12:51:34,478] INFO stage2.11M.relora_baseline - step=2450/5000 train_loss=10.1679 lr=2.94e-04 elapsed=94s
+[2026-05-12 12:51:36,205] INFO stage2.11M.relora_baseline - step=2500/5000 train_loss=10.1568 lr=2.92e-04 elapsed=96s
+[2026-05-12 12:51:36,889] INFO stage2.11M.relora_baseline - step=2500 VAL_LOSS=10.1481  ppl=25541.27
+[2026-05-12 12:51:37,131] INFO stage2.11M.relora_baseline - step=2500 mean_effective_rank=94.964 mean_condition_number=4.48e+04
+[2026-05-12 12:51:38,853] INFO stage2.11M.relora_baseline - step=2550/5000 train_loss=10.1641 lr=2.89e-04 elapsed=99s
+[2026-05-12 12:51:40,579] INFO stage2.11M.relora_baseline - step=2600/5000 train_loss=10.1556 lr=2.85e-04 elapsed=100s
+[2026-05-12 12:51:42,304] INFO stage2.11M.relora_baseline - step=2650/5000 train_loss=10.1605 lr=2.81e-04 elapsed=102s
+[2026-05-12 12:51:44,029] INFO stage2.11M.relora_baseline - step=2700/5000 train_loss=10.1575 lr=2.77e-04 elapsed=104s
+[2026-05-12 12:51:45,770] INFO stage2.11M.relora_baseline - step=2750/5000 train_loss=10.1633 lr=2.72e-04 elapsed=106s
+[2026-05-12 12:51:46,456] INFO stage2.11M.relora_baseline - step=2750 VAL_LOSS=10.1412  ppl=25365.73
+[2026-05-12 12:51:48,187] INFO stage2.11M.relora_baseline - step=2800/5000 train_loss=10.1601 lr=2.67e-04 elapsed=108s
+[2026-05-12 12:51:49,917] INFO stage2.11M.relora_baseline - step=2850/5000 train_loss=10.1644 lr=2.62e-04 elapsed=110s
+[2026-05-12 12:51:51,645] INFO stage2.11M.relora_baseline - step=2900/5000 train_loss=10.1532 lr=2.56e-04 elapsed=111s
+[2026-05-12 12:51:53,372] INFO stage2.11M.relora_baseline - step=2950/5000 train_loss=10.1460 lr=2.50e-04 elapsed=113s
+[2026-05-12 12:51:55,097] INFO stage2.11M.relora_baseline - step=3000/5000 train_loss=10.1483 lr=2.44e-04 elapsed=115s
+[2026-05-12 12:51:55,783] INFO stage2.11M.relora_baseline - step=3000 VAL_LOSS=10.1348  ppl=25204.82
+[2026-05-12 12:51:56,026] INFO stage2.11M.relora_baseline - step=3000 mean_effective_rank=94.907 mean_condition_number=1.54e+05
+[2026-05-12 12:51:56,026] INFO stage2.11M.relora_baseline - === MERGE EVENT 3 at step 3000 (gate=none) ===
+[2026-05-12 12:51:56,037] INFO stage2.11M.relora_baseline - merge stats: total=1024 kept=1024 dropped=0 drop_rate=0.000
+[2026-05-12 12:51:56,958] INFO stage2.11M.relora_baseline - step=3000 POST-MERGE VAL_LOSS=10.1348
+[2026-05-12 12:51:58,691] INFO stage2.11M.relora_baseline - step=3050/5000 train_loss=10.1519 lr=7.50e-05 elapsed=118s
+[2026-05-12 12:52:00,437] INFO stage2.11M.relora_baseline - step=3100/5000 train_loss=10.1474 lr=1.50e-04 elapsed=120s
+[2026-05-12 12:52:02,168] INFO stage2.11M.relora_baseline - step=3150/5000 train_loss=10.1413 lr=2.25e-04 elapsed=122s
+[2026-05-12 12:52:03,896] INFO stage2.11M.relora_baseline - step=3200/5000 train_loss=10.1496 lr=3.00e-04 elapsed=124s
+[2026-05-12 12:52:05,624] INFO stage2.11M.relora_baseline - step=3250/5000 train_loss=10.1422 lr=2.99e-04 elapsed=125s
+[2026-05-12 12:52:06,311] INFO stage2.11M.relora_baseline - step=3250 VAL_LOSS=10.1320  ppl=25135.03
+[2026-05-12 12:52:08,044] INFO stage2.11M.relora_baseline - step=3300/5000 train_loss=10.1463 lr=2.98e-04 elapsed=128s
+[2026-05-12 12:52:09,778] INFO stage2.11M.relora_baseline - step=3350/5000 train_loss=10.1510 lr=2.95e-04 elapsed=130s
+[2026-05-12 12:52:11,512] INFO stage2.11M.relora_baseline - step=3400/5000 train_loss=10.1491 lr=2.91e-04 elapsed=131s
+[2026-05-12 12:52:13,246] INFO stage2.11M.relora_baseline - step=3450/5000 train_loss=10.1412 lr=2.86e-04 elapsed=133s
+[2026-05-12 12:52:14,975] INFO stage2.11M.relora_baseline - step=3500/5000 train_loss=10.1482 lr=2.80e-04 elapsed=135s
+[2026-05-12 12:52:15,660] INFO stage2.11M.relora_baseline - step=3500 VAL_LOSS=10.1277  ppl=25025.80
+[2026-05-12 12:52:15,901] INFO stage2.11M.relora_baseline - step=3500 mean_effective_rank=95.140 mean_condition_number=2.16e+04
+[2026-05-12 12:52:17,627] INFO stage2.11M.relora_baseline - step=3550/5000 train_loss=10.1379 lr=2.73e-04 elapsed=137s
+[2026-05-12 12:52:19,355] INFO stage2.11M.relora_baseline - step=3600/5000 train_loss=10.1328 lr=2.65e-04 elapsed=139s
+[2026-05-12 12:52:21,085] INFO stage2.11M.relora_baseline - step=3650/5000 train_loss=10.1457 lr=2.56e-04 elapsed=141s
+[2026-05-12 12:52:22,821] INFO stage2.11M.relora_baseline - step=3700/5000 train_loss=10.1373 lr=2.46e-04 elapsed=143s
+[2026-05-12 12:52:24,544] INFO stage2.11M.relora_baseline - step=3750/5000 train_loss=10.1322 lr=2.36e-04 elapsed=144s
+[2026-05-12 12:52:25,229] INFO stage2.11M.relora_baseline - step=3750 VAL_LOSS=10.1234  ppl=24919.38
+[2026-05-12 12:52:26,958] INFO stage2.11M.relora_baseline - step=3800/5000 train_loss=10.1336 lr=2.25e-04 elapsed=147s
+[2026-05-12 12:52:28,684] INFO stage2.11M.relora_baseline - step=3850/5000 train_loss=10.1346 lr=2.13e-04 elapsed=148s
+[2026-05-12 12:52:30,411] INFO stage2.11M.relora_baseline - step=3900/5000 train_loss=10.1359 lr=2.01e-04 elapsed=150s
+[2026-05-12 12:52:32,139] INFO stage2.11M.relora_baseline - step=3950/5000 train_loss=10.1352 lr=1.89e-04 elapsed=152s
+[2026-05-12 12:52:33,867] INFO stage2.11M.relora_baseline - step=4000/5000 train_loss=10.1442 lr=1.76e-04 elapsed=154s
+[2026-05-12 12:52:34,553] INFO stage2.11M.relora_baseline - step=4000 VAL_LOSS=10.1194  ppl=24821.06
+[2026-05-12 12:52:34,793] INFO stage2.11M.relora_baseline - step=4000 mean_effective_rank=95.348 mean_condition_number=2.48e+04
+[2026-05-12 12:52:34,793] INFO stage2.11M.relora_baseline - === MERGE EVENT 4 at step 4000 (gate=none) ===
+[2026-05-12 12:52:34,808] INFO stage2.11M.relora_baseline - merge stats: total=1024 kept=1024 dropped=0 drop_rate=0.000
+[2026-05-12 12:52:35,729] INFO stage2.11M.relora_baseline - step=4000 POST-MERGE VAL_LOSS=10.1194
+[2026-05-12 12:52:37,452] INFO stage2.11M.relora_baseline - step=4050/5000 train_loss=10.1398 lr=7.50e-05 elapsed=157s
+[2026-05-12 12:52:39,180] INFO stage2.11M.relora_baseline - step=4100/5000 train_loss=10.1290 lr=1.50e-04 elapsed=159s
+[2026-05-12 12:52:40,909] INFO stage2.11M.relora_baseline - step=4150/5000 train_loss=10.1296 lr=2.25e-04 elapsed=161s
+[2026-05-12 12:52:42,639] INFO stage2.11M.relora_baseline - step=4200/5000 train_loss=10.1304 lr=3.00e-04 elapsed=162s
+[2026-05-12 12:52:44,367] INFO stage2.11M.relora_baseline - step=4250/5000 train_loss=10.1327 lr=2.97e-04 elapsed=164s
+[2026-05-12 12:52:45,058] INFO stage2.11M.relora_baseline - step=4250 VAL_LOSS=10.1173  ppl=24768.62
+[2026-05-12 12:52:46,783] INFO stage2.11M.relora_baseline - step=4300/5000 train_loss=10.1295 lr=2.89e-04 elapsed=167s
+[2026-05-12 12:52:48,513] INFO stage2.11M.relora_baseline - step=4350/5000 train_loss=10.1271 lr=2.75e-04 elapsed=168s
+[2026-05-12 12:52:50,244] INFO stage2.11M.relora_baseline - step=4400/5000 train_loss=10.1327 lr=2.56e-04 elapsed=170s
+[2026-05-12 12:52:51,976] INFO stage2.11M.relora_baseline - step=4450/5000 train_loss=10.1327 lr=2.33e-04 elapsed=172s
+[2026-05-12 12:52:53,705] INFO stage2.11M.relora_baseline - step=4500/5000 train_loss=10.1259 lr=2.07e-04 elapsed=173s
+[2026-05-12 12:52:54,391] INFO stage2.11M.relora_baseline - step=4500 VAL_LOSS=10.1146  ppl=24701.12
+[2026-05-12 12:52:54,634] INFO stage2.11M.relora_baseline - step=4500 mean_effective_rank=95.528 mean_condition_number=4.58e+04
+[2026-05-12 12:52:56,358] INFO stage2.11M.relora_baseline - step=4550/5000 train_loss=10.1294 lr=1.79e-04 elapsed=176s
+[2026-05-12 12:52:58,087] INFO stage2.11M.relora_baseline - step=4600/5000 train_loss=10.1272 lr=1.50e-04 elapsed=178s
+[2026-05-12 12:52:59,815] INFO stage2.11M.relora_baseline - step=4650/5000 train_loss=10.1254 lr=1.21e-04 elapsed=180s
+[2026-05-12 12:53:01,546] INFO stage2.11M.relora_baseline - step=4700/5000 train_loss=10.1307 lr=9.26e-05 elapsed=181s
+[2026-05-12 12:53:03,278] INFO stage2.11M.relora_baseline - step=4750/5000 train_loss=10.1315 lr=6.67e-05 elapsed=183s
+[2026-05-12 12:53:03,964] INFO stage2.11M.relora_baseline - step=4750 VAL_LOSS=10.1122  ppl=24641.10
+[2026-05-12 12:53:05,695] INFO stage2.11M.relora_baseline - step=4800/5000 train_loss=10.1165 lr=4.39e-05 elapsed=185s
+[2026-05-12 12:53:07,426] INFO stage2.11M.relora_baseline - step=4850/5000 train_loss=10.1270 lr=2.53e-05 elapsed=187s
+[2026-05-12 12:53:09,158] INFO stage2.11M.relora_baseline - step=4900/5000 train_loss=10.1262 lr=1.14e-05 elapsed=189s
+[2026-05-12 12:53:10,883] INFO stage2.11M.relora_baseline - step=4950/5000 train_loss=10.1285 lr=2.88e-06 elapsed=191s
+[2026-05-12 12:53:12,607] INFO stage2.11M.relora_baseline - step=5000/5000 train_loss=10.1199 lr=0.00e+00 elapsed=192s
+[2026-05-12 12:53:13,292] INFO stage2.11M.relora_baseline - step=5000 VAL_LOSS=10.1116  ppl=24627.79
+[2026-05-12 12:53:13,541] INFO stage2.11M.relora_baseline - step=5000 mean_effective_rank=95.621 mean_condition_number=1.63e+05
+[2026-05-12 12:53:13,541] INFO stage2.11M.relora_baseline - === MERGE EVENT 5 at step 5000 (gate=none) ===
+[2026-05-12 12:53:13,553] INFO stage2.11M.relora_baseline - merge stats: total=1024 kept=1024 dropped=0 drop_rate=0.000
+[2026-05-12 12:53:14,474] INFO stage2.11M.relora_baseline - step=5000 POST-MERGE VAL_LOSS=10.1116
+[2026-05-12 12:53:14,475] INFO stage2.11M.relora_baseline - training done in 194.2s
+[2026-05-12 12:53:15,300] INFO stage2.11M.relora_baseline - FINAL VAL_LOSS=10.1170  ppl=24761.34
+[2026-05-12 12:53:15,539] INFO stage2.11M.relora_baseline - summary.json written

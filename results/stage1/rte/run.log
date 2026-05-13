@@ -1,0 +1,66 @@
+[2026-05-12 10:13:30,275] INFO stage1.rte - task=rte device=cuda out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage1/rte
+[2026-05-12 10:13:36,172] INFO stage1.rte - #LoRA layers=24, total rank-1 components=192
+[2026-05-12 10:15:22,451] INFO stage1.rte - #train_main=1992, #diag=498, #test_holdout=277
+[2026-05-12 10:15:22,466] INFO stage1.rte - Training 2000 steps; saving diagnostics at [400, 800, 1200, 1600, 2000]
+[2026-05-12 10:15:25,422] INFO stage1.rte - step=50/2000 loss=0.6933 lr=2.00e-04
+[2026-05-12 10:15:28,081] INFO stage1.rte - step=100/2000 loss=0.7043 lr=4.00e-04
+[2026-05-12 10:15:30,741] INFO stage1.rte - step=150/2000 loss=0.6998 lr=3.89e-04
+[2026-05-12 10:15:33,399] INFO stage1.rte - step=200/2000 loss=0.6978 lr=3.79e-04
+[2026-05-12 10:15:36,056] INFO stage1.rte - step=250/2000 loss=0.6780 lr=3.68e-04
+[2026-05-12 10:15:38,712] INFO stage1.rte - step=300/2000 loss=0.5820 lr=3.58e-04
+[2026-05-12 10:15:41,377] INFO stage1.rte - step=350/2000 loss=0.6246 lr=3.47e-04
+[2026-05-12 10:15:44,037] INFO stage1.rte - step=400/2000 loss=0.5537 lr=3.37e-04
+[2026-05-12 10:15:44,479] INFO stage1.rte - [step 400] baseline test loss=0.6298 acc=0.7076
+[2026-05-12 10:15:57,922] INFO stage1.rte - [step 400] starting oracle ablation over 192 components
+[2026-05-12 10:17:15,579] INFO stage1.rte - [step 400] oracle ablation done in 77.7s
+[2026-05-12 10:17:16,533] INFO stage1.rte - [step 400] rho(S5_fisher_val vs delta)= -0.622, rho(S4_fisher_tr)= -0.536, rho(S3_fo_val)= -0.781, rho(S2_fo_tr)= -0.656, AUC_signed(harmful)= 0.156, harmful%= 79.69%
+[2026-05-12 10:17:19,199] INFO stage1.rte - step=450/2000 loss=0.5074 lr=3.26e-04
+[2026-05-12 10:17:21,860] INFO stage1.rte - step=500/2000 loss=0.4789 lr=3.16e-04
+[2026-05-12 10:17:24,520] INFO stage1.rte - step=550/2000 loss=0.3925 lr=3.05e-04
+[2026-05-12 10:17:27,179] INFO stage1.rte - step=600/2000 loss=0.4534 lr=2.95e-04
+[2026-05-12 10:17:29,837] INFO stage1.rte - step=650/2000 loss=0.3715 lr=2.84e-04
+[2026-05-12 10:17:32,495] INFO stage1.rte - step=700/2000 loss=0.3801 lr=2.74e-04
+[2026-05-12 10:17:35,153] INFO stage1.rte - step=750/2000 loss=0.3393 lr=2.63e-04
+[2026-05-12 10:17:37,811] INFO stage1.rte - step=800/2000 loss=0.2744 lr=2.53e-04
+[2026-05-12 10:17:38,243] INFO stage1.rte - [step 800] baseline test loss=0.7621 acc=0.7365
+[2026-05-12 10:17:51,203] INFO stage1.rte - [step 800] starting oracle ablation over 192 components
+[2026-05-12 10:19:08,842] INFO stage1.rte - [step 800] oracle ablation done in 77.6s
+[2026-05-12 10:19:09,824] INFO stage1.rte - [step 800] rho(S5_fisher_val vs delta)= -0.557, rho(S4_fisher_tr)= -0.497, rho(S3_fo_val)= -0.670, rho(S2_fo_tr)= -0.422, AUC_signed(harmful)= 0.160, harmful%= 86.46%
+[2026-05-12 10:19:12,489] INFO stage1.rte - step=850/2000 loss=0.2772 lr=2.42e-04
+[2026-05-12 10:19:15,151] INFO stage1.rte - step=900/2000 loss=0.2213 lr=2.32e-04
+[2026-05-12 10:19:17,808] INFO stage1.rte - step=950/2000 loss=0.1992 lr=2.21e-04
+[2026-05-12 10:19:20,463] INFO stage1.rte - step=1000/2000 loss=0.2481 lr=2.11e-04
+[2026-05-12 10:19:23,120] INFO stage1.rte - step=1050/2000 loss=0.1490 lr=2.00e-04
+[2026-05-12 10:19:25,774] INFO stage1.rte - step=1100/2000 loss=0.1936 lr=1.89e-04
+[2026-05-12 10:19:28,430] INFO stage1.rte - step=1150/2000 loss=0.1664 lr=1.79e-04
+[2026-05-12 10:19:31,085] INFO stage1.rte - step=1200/2000 loss=0.1502 lr=1.68e-04
+[2026-05-12 10:19:31,519] INFO stage1.rte - [step 1200] baseline test loss=0.7827 acc=0.7581
+[2026-05-12 10:19:44,398] INFO stage1.rte - [step 1200] starting oracle ablation over 192 components
+[2026-05-12 10:21:02,025] INFO stage1.rte - [step 1200] oracle ablation done in 77.6s
+[2026-05-12 10:21:03,008] INFO stage1.rte - [step 1200] rho(S5_fisher_val vs delta)= -0.339, rho(S4_fisher_tr)= -0.264, rho(S3_fo_val)= -0.560, rho(S2_fo_tr)= 0.000, AUC_signed(harmful)= 0.212, harmful%= 69.79%
+[2026-05-12 10:21:05,668] INFO stage1.rte - step=1250/2000 loss=0.1264 lr=1.58e-04
+[2026-05-12 10:21:08,325] INFO stage1.rte - step=1300/2000 loss=0.0926 lr=1.47e-04
+[2026-05-12 10:21:10,981] INFO stage1.rte - step=1350/2000 loss=0.1661 lr=1.37e-04
+[2026-05-12 10:21:13,638] INFO stage1.rte - step=1400/2000 loss=0.0765 lr=1.26e-04
+[2026-05-12 10:21:16,292] INFO stage1.rte - step=1450/2000 loss=0.1119 lr=1.16e-04
+[2026-05-12 10:21:18,947] INFO stage1.rte - step=1500/2000 loss=0.0886 lr=1.05e-04
+[2026-05-12 10:21:21,605] INFO stage1.rte - step=1550/2000 loss=0.0909 lr=9.47e-05
+[2026-05-12 10:21:24,264] INFO stage1.rte - step=1600/2000 loss=0.0775 lr=8.42e-05
+[2026-05-12 10:21:24,696] INFO stage1.rte - [step 1600] baseline test loss=1.0630 acc=0.7509
+[2026-05-12 10:21:37,664] INFO stage1.rte - [step 1600] starting oracle ablation over 192 components
+[2026-05-12 10:22:55,303] INFO stage1.rte - [step 1600] oracle ablation done in 77.6s
+[2026-05-12 10:22:56,267] INFO stage1.rte - [step 1600] rho(S5_fisher_val vs delta)= -0.426, rho(S4_fisher_tr)= -0.262, rho(S3_fo_val)= -0.688, rho(S2_fo_tr)= -0.234, AUC_signed(harmful)= 0.209, harmful%= 78.12%
+[2026-05-12 10:22:58,928] INFO stage1.rte - step=1650/2000 loss=0.0772 lr=7.37e-05
+[2026-05-12 10:23:01,587] INFO stage1.rte - step=1700/2000 loss=0.0896 lr=6.32e-05
+[2026-05-12 10:23:04,249] INFO stage1.rte - step=1750/2000 loss=0.0759 lr=5.26e-05
+[2026-05-12 10:23:06,906] INFO stage1.rte - step=1800/2000 loss=0.0473 lr=4.21e-05
+[2026-05-12 10:23:09,568] INFO stage1.rte - step=1850/2000 loss=0.0661 lr=3.16e-05
+[2026-05-12 10:23:12,231] INFO stage1.rte - step=1900/2000 loss=0.0654 lr=2.11e-05
+[2026-05-12 10:23:14,888] INFO stage1.rte - step=1950/2000 loss=0.0488 lr=1.05e-05
+[2026-05-12 10:23:17,548] INFO stage1.rte - step=2000/2000 loss=0.0441 lr=0.00e+00
+[2026-05-12 10:23:17,981] INFO stage1.rte - [step 2000] baseline test loss=1.1091 acc=0.7581
+[2026-05-12 10:23:30,883] INFO stage1.rte - [step 2000] starting oracle ablation over 192 components
+[2026-05-12 10:24:48,554] INFO stage1.rte - [step 2000] oracle ablation done in 77.7s
+[2026-05-12 10:24:49,523] INFO stage1.rte - [step 2000] rho(S5_fisher_val vs delta)= -0.369, rho(S4_fisher_tr)= -0.240, rho(S3_fo_val)= -0.593, rho(S2_fo_tr)= -0.165, AUC_signed(harmful)= 0.241, harmful%= 75.52%
+[2026-05-12 10:24:49,532] INFO stage1.rte - training+diagnostics done in 567.1s
+[2026-05-12 10:24:49,541] INFO stage1.rte - summary.json -> /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage1/rte/summary.json
