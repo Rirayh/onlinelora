@@ -30,3 +30,13 @@ Thumbs.db
 
 # PID tracking (local-only)
 .stage*_pids
+
+# Baseline upstream repos (re-clone via baselines/setup_baselines.sh; see MANIFEST.md)
+baselines/*_official/
+baselines/*_reference/
+# Keep manifest, PDFs of reimpl-only baselines, and the setup script tracked:
+!baselines/MANIFEST.md
+!baselines/setup_baselines.sh
+!baselines/*_reimpl/
+!baselines/*_reimpl/PAPER.pdf
+!baselines/*_reimpl/IMPLEMENTATION_NOTES.md
