@@ -1407,3 +1407,85 @@ PI: "你找其他著名新模型吧，别卡在这里，先跑起来！"
 - Batch 2: qwen3-8b × metamathqa-10k × 8 methods (等 Batch 1 完成)
 - Batch 3: llama3-8b × tulu3-sft × 8 methods
 - Batch 4: llama3-8b × metamathqa-10k × 8 methods
+
+---
+
+## 2026-05-13 20:10 — Batch 1 进行中
+
+### Current state
+- 全 8 GPU 都在 100% util，每卡 ~30GB
+- log_every=25 步，第一个 step log 还需要 5-8 min
+- 没有进程 crash 或 ABORT
+- Process check: PIDs 1082015-1082029 (奇数) 都活着
+
+### Commit pushed
+- 本地 commit `e3fb236`: "B1: add 4 method arms..."
+- **push 被仓库 ruleset 拒绝** (需手动 PR 或调整 branch protection rule)
+- 本地 commit 已 stable，可用 `git log --oneline -3` 查看
+
+### Reproducibility 信息
+- Stage 3 v2 训练脚本: scripts/stage3_run.py (commit e3fb236)
+- 数据集: /mnt/cpfs/junlongke/onlinelora/datasets/{tulu-3-sft-mixture, MetaMathQA}
+- 模型: /mnt/cpfs/public_data/public_model/{Qwen3/Qwen3-8B, Meta-Llama-3-8B}
+- conda env: espo (/mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python)
+- log_every=25, eval_every=250, ckpt_every=50, merge_every=500
+
+### Cloud agent / 下次 session 续作步骤
+1. 检查 PIDs (cat .b1_batch1_pids); 看 summary.json 是否写出
+2. Batch 1 完成后启动 Batch 2 (qwen3 + metamathqa × 8 methods)
+3. Batch 3/4: llama3-8b 那侧 (路径: /mnt/cpfs/public_data/public_model/Meta-Llama-3-8B)
+4. lm-eval-harness 32 adapters × {gsm8k, hellaswag, arc_challenge, mmlu, truthfulqa_mc1}
+5. 生成 fig9/10/11/12 + decision.json
+6. PASS/STOP gate (§2.7)
+
+---
+
+## 2026-05-13 20:15 — FINAL CONTEXT SNAPSHOT (上下文将清理)
+
+### B1 Batch 1 状态 (qwen3-8b × tulu3-sft × 8 methods)
+- **启动时间**: 09:47
+- **PIDs**: 1082015 (lora_vanilla, GPU0), 1082017 (relora_baseline, GPU1), 1082019 (S3pos, GPU2), 1082021 (S3neg, GPU3), 1082023 (dora, GPU4, 800 steps), 1082025 (adalora, GPU5), 1082027 (random_drop, GPU6), 1082029 (train_gated, GPU7)
+- **状态**: 已加载模型，进入训练。GPU 全 100% util。等 log_every=25 步触发首条 train_loss log（约 5-8 min 后）
+- **预期完成**: ~3h 后（DoRA 较慢）
+
+### 续作 checklist (cloud agent / next session)
+1. **Batch 1 监控**: `tail logs/b1/qwen3-tulu3-*.log` + `cat .b1_batch1_pids`
+2. **Batch 1 完成判定**: 每个目录有 `summary.json`，或 `ABORTED.flag`
+3. **启动 Batch 2 (qwen3-8b + metamathqa)**: 用同样脚本，dataset 换 metamathqa-10k
+4. **启动 Batch 3 (llama3-8b + tulu3-sft)**: model_path 改 `/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B`, model_key 改 `llama3-8b`
+5. **启动 Batch 4 (llama3-8b + metamathqa-10k)**
+6. **lm-eval-harness**: 32 adapters × 5 benchmarks
+7. **plots + decision.json**: 见 prompt §2.5
+
+### 关键文件路径汇总
+| Item | Path |
+|---|---|
+| Project root | `/mnt/cpfs/junlongke/onlinelora/lora_obd` |
+| Train script | `scripts/stage3_run.py` (8 methods, 4 datasets supported) |
+| Output base | `results/stage3_v2/<model>/<dataset>/<method>/seed42/` |
+| Logs | `logs/b1/<run>.log` |
+| PID tracking | `.b1_batch1_pids` |
+| Status | `STATUS.md` (this file, append-only) |
+| Conda Python | `/mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python` |
+| Models | `/mnt/cpfs/public_data/public_model/{Qwen3/Qwen3-8B, Meta-Llama-3-8B}` |
+| Datasets | `/mnt/cpfs/junlongke/onlinelora/datasets/{tulu-3-sft-mixture, MetaMathQA}` |
+| Baselines | `lora_obd/baselines/{DoRA,AdaLoRA,ReLoRA,LoRAPrune}_*` (pinned) |
+| Commit hash | local `e3fb236` (push rejected by ruleset; need manual fix) |
+| GitHub repo | https://github.com/Rirayh/onlinelora |
+
+### 4 个新 method 的 saliency_source / gate_sign 映射
+- `dora` → do_relora=False, no gating (LoRA + magnitude)
+- `adalora` → do_relora=False, AdaLoraConfig built-in importance
+- `relora_random_drop` → gate_sign="random", Bernoulli p=0.5 (seed=args.seed+event_idx)
+- `relora_train_gated` → gate_sign="S2train_pos_drops", saliency_source="train" (uses train_loader for fo_signed)
+
+### 已知 issue (不阻塞)
+- AdaLoRA 的 `effective_rank.jsonl` 全 nan (get_lora_BA_handles 只读 lora_A/B, 没读 lora_E)
+- DoRA 的 forward ~70s/step (~10x 慢 of vanilla LoRA)，因此 total_steps=800
+- git push 被仓库 ruleset 拒绝 (需要在 GitHub UI 上调整 branch protection)
+
+### B1 PASS/STOP gate (§2.7) 关键指标
+- S3pos vs (baseline + train_gated) 需在 ≥1 model 的 ≥2 benchmarks 上 +1.0 abs point
+- 否则降级 phase B：进 B5 (RL preference learning) 或 B2 (long-horizon SFT)
+
+End of context snapshot.
