@@ -47,6 +47,12 @@ sys.path.insert(0, str(ROOT))
 
 from peft import LoraConfig, get_peft_model
 
+try:
+    from peft import AdaLoraConfig
+    _HAS_ADALORA = True
+except ImportError:
+    _HAS_ADALORA = False
+
 from src.effective_rank import condition_number, effective_rank
 from src.model import LoraHandle, count_lora_components, get_lora_BA_handles
 from src.saliency import first_order_saliency
@@ -58,8 +64,14 @@ METHOD_CHOICES = [
     "relora_baseline",
     "relora_diag_gated_S3pos",
     "relora_diag_gated_S3neg",
+    "dora",
+    "adalora",
+    "relora_random_drop",
+    "relora_train_gated",
 ]
-DATASET_CHOICES = ["gsm8k", "alpaca"]
+DATASET_CHOICES = ["gsm8k", "alpaca", "tulu3-sft", "metamathqa-10k"]
+LOCAL_TULU3_PATH = "/mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture"
+LOCAL_METAMATH_PATH = "/mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA"
 TARGET_MODULES_DEFAULT = [
     "q_proj", "k_proj", "v_proj", "o_proj",
     "gate_proj", "up_proj", "down_proj",
@@ -174,13 +186,88 @@ def build_alpaca(tok, max_len: int, log, n_train: int = 10_000, n_val: int = 500
     return SFTDataset(train_ex), SFTDataset(val_ex)
 
 
+def build_tulu3(tok, max_len: int, log, n_train: int = 10_000, n_val: int = 500) -> tuple[SFTDataset, SFTDataset]:
+    """Tulu-3 SFT mixture. Local parquet at LOCAL_TULU3_PATH/data/*.parquet.
+    Schema: {'id', 'messages': List[{'role','content'}], 'source'}.
+    We use the FIRST user turn + FIRST assistant turn (most samples are single-turn)."""
+    import pandas as pd
+    import glob
+    log.info(f"loading tulu-3-sft-mixture from {LOCAL_TULU3_PATH}")
+    files = sorted(glob.glob(f"{LOCAL_TULU3_PATH}/data/train-*.parquet"))
+    # only load enough for n_train+n_val with a buffer; each shard ~26k samples
+    needed_shards = max(1, (n_train + n_val) // 20000 + 1)
+    dfs = [pd.read_parquet(f) for f in files[:needed_shards]]
+    df = pd.concat(dfs, ignore_index=True)
+    raw = df.to_dict("records")
+    rng = random.Random(42)
+    rng.shuffle(raw)
+    val_split = raw[:n_val]
+    train_split = raw[n_val : n_val + n_train]
+    log.info(f"tulu3-sft train={len(train_split)} val={len(val_split)}")
+
+    def _fmt(ex):
+        msgs = ex["messages"]
+        user = next((m["content"] for m in msgs if m["role"] == "user"), None)
+        asst = next((m["content"] for m in msgs if m["role"] == "assistant"), None)
+        if user is None or asst is None:
+            return None
+        prompt = f"### Instruction:\n{user}\n\n### Response:\n"
+        response = asst
+        return _tokenize_pair(tok, prompt, response, max_len)
+    train_ex = [r for r in (_fmt(e) for e in train_split) if r is not None]
+    val_ex = [r for r in (_fmt(e) for e in val_split) if r is not None]
+    log.info(f"tulu3-sft tokenized: train {len(train_ex)} val {len(val_ex)}")
+    return SFTDataset(train_ex), SFTDataset(val_ex)
+
+
+def build_metamathqa(tok, max_len: int, log, n_train: int = 10_000, n_val: int = 500) -> tuple[SFTDataset, SFTDataset]:
+    """MetaMathQA-395K local JSON. Schema: {'query','response','type','original_question'}."""
+    log.info(f"loading MetaMathQA from {LOCAL_METAMATH_PATH}")
+    with open(f"{LOCAL_METAMATH_PATH}/MetaMathQA-395K.json") as f:
+        raw = json.load(f)
+    rng = random.Random(42)
+    rng.shuffle(raw)
+    val_split = raw[:n_val]
+    train_split = raw[n_val : n_val + n_train]
+    log.info(f"metamathqa train={len(train_split)} val={len(val_split)}")
+
+    def _fmt(ex):
+        prompt = f"Question: {ex['query']}\nAnswer:"
+        response = " " + ex["response"]
+        return _tokenize_pair(tok, prompt, response, max_len)
+    train_ex = [_fmt(e) for e in train_split]
+    val_ex = [_fmt(e) for e in val_split]
+    log.info(f"metamathqa tokenized: train {len(train_ex)} val {len(val_ex)}")
+    return SFTDataset(train_ex), SFTDataset(val_ex)
+
+
 # -----------------------------------------------------------------------------
 # LoRA helpers (reuse stage2 conventions)
 # -----------------------------------------------------------------------------
 def wrap_lora(model: nn.Module, r: int, alpha: int, dropout: float,
-              target_modules: list[str]) -> nn.Module:
-    cfg = LoraConfig(r=r, lora_alpha=alpha, lora_dropout=dropout,
-                     target_modules=target_modules, bias="none")
+              target_modules: list[str], method: str = "lora_vanilla",
+              total_steps: int = 3000) -> nn.Module:
+    if method == "dora":
+        cfg = LoraConfig(r=r, lora_alpha=alpha, lora_dropout=dropout,
+                         target_modules=target_modules, bias="none",
+                         use_dora=True)
+    elif method == "adalora":
+        if not _HAS_ADALORA:
+            raise RuntimeError("peft AdaLoraConfig not available")
+        cfg = AdaLoraConfig(
+            init_r=r * 2,
+            target_r=r,
+            beta1=0.85, beta2=0.85,
+            tinit=200,
+            tfinal=total_steps - 500,
+            deltaT=10,
+            lora_alpha=alpha, lora_dropout=dropout,
+            target_modules=target_modules, bias="none",
+            total_step=total_steps,
+        )
+    else:
+        cfg = LoraConfig(r=r, lora_alpha=alpha, lora_dropout=dropout,
+                         target_modules=target_modules, bias="none")
     return get_peft_model(model, cfg)
 
 
@@ -289,30 +376,51 @@ def evaluate_lm(model, loader, device, max_batches: int = 200) -> float:
 # Gate predicate
 # -----------------------------------------------------------------------------
 def build_keep_mask(handles: list[LoraHandle], gate_sign: str,
-                    fo_val_signed: dict[str, torch.Tensor]) -> tuple[dict[str, torch.Tensor], dict[str, Any]]:
+                    fo_val_signed: dict[str, torch.Tensor],
+                    target_drop_rate: float | None = None,
+                    rng_seed: int | None = None) -> tuple[dict[str, torch.Tensor], dict[str, Any]]:
     """gate_sign='S3pos_drops' -> keep if s<0 (drop if s>0).
        gate_sign='S3neg_drops' -> keep if s>0 (drop if s<0).
+       gate_sign='S2train_pos_drops' -> same as S3pos_drops but uses train-gradient saliency.
+       gate_sign='random' -> drop uniformly Bernoulli with prob `target_drop_rate`
+                              (or 0.5 if None).
     """
     masks = {}
     all_scores = []
     total = 0
     kept = 0
     per_layer_keep = {}
-    for h in handles:
-        s = fo_val_signed[h.name]
-        if gate_sign == "S3pos_drops":
-            m = s < 0.0
-        elif gate_sign == "S3neg_drops":
-            m = s > 0.0
-        else:
-            raise ValueError(gate_sign)
-        masks[h.name] = m
-        all_scores.extend([float(v) for v in s.tolist()])
-        n_kept = int(m.sum().item())
-        per_layer_keep[h.name] = n_kept
-        total += h.r
-        kept += n_kept
-    qs = [float(np.quantile(all_scores, q)) for q in (0.05, 0.25, 0.5, 0.75, 0.95)] if all_scores else []
+    if gate_sign == "random":
+        gen = torch.Generator()
+        if rng_seed is not None:
+            gen.manual_seed(rng_seed)
+        drop_p = target_drop_rate if target_drop_rate is not None else 0.5
+        for h in handles:
+            r = h.r
+            # Bernoulli keep mask
+            m = torch.rand(r, generator=gen) >= drop_p
+            masks[h.name] = m
+            n_kept = int(m.sum().item())
+            per_layer_keep[h.name] = n_kept
+            total += r
+            kept += n_kept
+        qs = []
+    else:
+        for h in handles:
+            s = fo_val_signed[h.name]
+            if gate_sign in ("S3pos_drops", "S2train_pos_drops"):
+                m = s < 0.0
+            elif gate_sign == "S3neg_drops":
+                m = s > 0.0
+            else:
+                raise ValueError(gate_sign)
+            masks[h.name] = m
+            all_scores.extend([float(v) for v in s.tolist()])
+            n_kept = int(m.sum().item())
+            per_layer_keep[h.name] = n_kept
+            total += h.r
+            kept += n_kept
+        qs = [float(np.quantile(all_scores, q)) for q in (0.05, 0.25, 0.5, 0.75, 0.95)] if all_scores else []
     return masks, {
         "components_total": total, "components_kept": kept,
         "components_dropped": total - kept,
@@ -378,6 +486,7 @@ def main() -> int:
         args.ckpt_every = 0
 
     # Method -> gate
+    saliency_source = "val"   # default for S3pos/S3neg
     if args.method == "lora_vanilla":
         do_relora = False
         gate_sign = None
@@ -390,6 +499,19 @@ def main() -> int:
     elif args.method == "relora_diag_gated_S3neg":
         do_relora = True
         gate_sign = "S3neg_drops"
+    elif args.method == "relora_random_drop":
+        do_relora = True
+        gate_sign = "random"
+    elif args.method == "relora_train_gated":
+        do_relora = True
+        gate_sign = "S2train_pos_drops"
+        saliency_source = "train"
+    elif args.method == "dora":
+        do_relora = False    # DoRA = no ReLoRA merges
+        gate_sign = None
+    elif args.method == "adalora":
+        do_relora = False    # AdaLoRA has its own importance-driven rank reduction
+        gate_sign = None
     else:
         raise ValueError(args.method)
 
@@ -417,9 +539,17 @@ def main() -> int:
     t0 = time.time()
     if args.dataset == "gsm8k":
         train_ds, val_ds = build_gsm8k(tok, args.seq_len, log, val_size=args.gsm8k_n_val)
-    else:
+    elif args.dataset == "alpaca":
         train_ds, val_ds = build_alpaca(tok, args.seq_len, log,
                                          n_train=args.alpaca_n_train, n_val=args.alpaca_n_val)
+    elif args.dataset == "tulu3-sft":
+        train_ds, val_ds = build_tulu3(tok, args.seq_len, log,
+                                        n_train=args.alpaca_n_train, n_val=args.alpaca_n_val)
+    elif args.dataset == "metamathqa-10k":
+        train_ds, val_ds = build_metamathqa(tok, args.seq_len, log,
+                                             n_train=args.alpaca_n_train, n_val=args.alpaca_n_val)
+    else:
+        raise ValueError(args.dataset)
     log.info(f"data prepared in {time.time()-t0:.1f}s")
     collate = _pad_collate(tok.pad_token_id)
     train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True,
@@ -440,7 +570,8 @@ def main() -> int:
     log.info(f"model loaded in {time.time()-t0:.1f}s")
     base.gradient_checkpointing_enable()
     model = wrap_lora(base, r=args.lora_r, alpha=args.lora_alpha,
-                      dropout=args.lora_dropout, target_modules=args.target_modules)
+                      dropout=args.lora_dropout, target_modules=args.target_modules,
+                      method=args.method, total_steps=args.total_steps)
     model.enable_input_require_grads()
     model = model.to(device)
     handles = get_lora_BA_handles(model)
@@ -457,10 +588,19 @@ def main() -> int:
     )
 
     # Persist config
+    import subprocess
+    try:
+        commit_hash = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=str(ROOT), stderr=subprocess.DEVNULL
+        ).decode().strip()
+    except Exception:
+        commit_hash = "unknown"
+    wall_clock_start = time.time()
     dump_yaml({
         "model_path": args.model_path, "model_key": args.model_key,
         "dataset": args.dataset, "method": args.method,
         "gate_sign": gate_sign, "do_relora": do_relora,
+        "saliency_source": saliency_source,
         "lora_r": args.lora_r, "lora_alpha": args.lora_alpha,
         "lora_dropout": args.lora_dropout, "target_modules": args.target_modules,
         "seq_len": args.seq_len, "batch_size": args.batch_size,
@@ -473,6 +613,8 @@ def main() -> int:
         "seed": args.seed, "diag_batches": args.diag_batches,
         "abort_factor": args.abort_factor,
         "n_lora_components": n_components, "n_trainable_M": n_trainable / 1e6,
+        "commit_hash": commit_hash,
+        "wall_clock_start": wall_clock_start,
     }, str(out_root / "config.yaml"))
 
     # Empty out output files
@@ -481,9 +623,15 @@ def main() -> int:
     er_path = out_root / "effective_rank.jsonl"
     cn_path = out_root / "condition_number.jsonl"
     merge_path = out_root / "saliency_at_merge.jsonl"
-    for f in [train_loss_path, val_loss_path, er_path, cn_path, merge_path]:
+    cumrank_path = out_root / "cumulative_rank.jsonl"
+    dropped_path = out_root / "dropped_components.jsonl"
+    for f in [train_loss_path, val_loss_path, er_path, cn_path, merge_path,
+              cumrank_path, dropped_path]:
         if f.exists():
             f.unlink()
+
+    cumulative_merged_total = 0
+    cumulative_dropped_total = 0
 
     # Baseline rank stats
     rs0 = compute_rank_stats(model)
@@ -598,12 +746,21 @@ def main() -> int:
                                  "components_dropped": 0, "drop_rate": 0.0,
                                  "score_quantiles": [],
                                  "per_layer_keep_counts": {h.name: h.r for h in handles}}
+                    elif gate_sign == "random":
+                        # Bernoulli random drop at fixed rate 0.5 (matches median S3pos drop_rate empirically)
+                        keep_masks, stats = build_keep_mask(
+                            handles, "random", fo_val_signed={},
+                            target_drop_rate=0.5,
+                            rng_seed=args.seed + event_idx,
+                        )
                     else:
-                        fo_val_signed = first_order_saliency(
-                            model, handles, diag_loader, device,
+                        # gated: compute first-order saliency on val OR train batch
+                        sal_loader = diag_loader if saliency_source == "val" else train_loader
+                        fo_signed = first_order_saliency(
+                            model, handles, sal_loader, device,
                             max_batches=args.diag_batches, signed=True,
                         )
-                        keep_masks, stats = build_keep_mask(handles, gate_sign, fo_val_signed)
+                        keep_masks, stats = build_keep_mask(handles, gate_sign, fo_signed)
                     merge_stats = merge_and_reset_lora(model, handles, keep_masks, log)
                     # reset optimizer (Lialin protocol)
                     optim = AdamW(trainable, lr=args.lr, weight_decay=args.weight_decay,
@@ -621,6 +778,24 @@ def main() -> int:
                     append_jsonl(str(merge_path), rec)
                     log.info(f"merge: total={stats['components_total']} "
                              f"kept={stats['components_kept']} drop_rate={stats['drop_rate']:.3f}")
+
+                    cumulative_merged_total += merge_stats["merged_total"]
+                    cumulative_dropped_total += stats["components_dropped"]
+                    append_jsonl(str(cumrank_path), {
+                        "step": step, "merge_event": event_idx,
+                        "cumulative_merged_total": cumulative_merged_total,
+                        "cumulative_dropped_total": cumulative_dropped_total,
+                        "components_kept_this_event": stats["components_kept"],
+                        "components_dropped_this_event": stats["components_dropped"],
+                    })
+                    append_jsonl(str(dropped_path), {
+                        "step": step, "merge_event": event_idx,
+                        "drop_rate": stats["drop_rate"],
+                        "per_layer_keep_counts": {
+                            k: int(v) for k, v in stats["per_layer_keep_counts"].items()
+                        },
+                        "score_quantiles": stats.get("score_quantiles", []),
+                    })
 
                     # post-merge rank stats
                     rs_post = compute_rank_stats(model)
@@ -694,6 +869,11 @@ def main() -> int:
         "final_mean_condition_number": rs_final["mean_condition_number"],
         "sampled_layers": rs_final["sampled_layers"],
         "elapsed_sec": elapsed,
+        "wall_clock_start": wall_clock_start,
+        "wall_clock_end": time.time(),
+        "commit_hash": commit_hash,
+        "cumulative_merged_total": cumulative_merged_total,
+        "cumulative_dropped_total": cumulative_dropped_total,
         "n_trainable_M": n_trainable / 1e6,
         "n_lora_components": n_components,
         "aborted": aborted,

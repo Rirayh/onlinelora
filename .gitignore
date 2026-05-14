@@ -40,3 +40,5 @@ baselines/*_reference/
 !baselines/*_reimpl/
 !baselines/*_reimpl/PAPER.pdf
 !baselines/*_reimpl/IMPLEMENTATION_NOTES.md
+logs/
+.b1_download_pids

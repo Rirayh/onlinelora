@@ -1,0 +1,10 @@
+batch=qwen3-8b/tulu3-sft
+start_time=2026-05-14 09:47
+GPU0 lora_vanilla              PID=1082015 steps=3000
+GPU1 relora_baseline           PID=1082017 steps=3000
+GPU2 relora_diag_gated_S3pos   PID=1082019 steps=3000
+GPU3 relora_diag_gated_S3neg   PID=1082021 steps=3000
+GPU4 dora                      PID=1082023 steps=800
+GPU5 adalora                   PID=1082025 steps=3000
+GPU6 relora_random_drop        PID=1082027 steps=3000
+GPU7 relora_train_gated        PID=1082029 steps=3000

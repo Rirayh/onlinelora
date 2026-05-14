@@ -1012,3 +1012,398 @@ MODEL=/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B
 CUDA_VISIBLE_DEVICES=0 $PY -m lm_eval --model hf --model_args "pretrained=$MODEL,dtype=bfloat16" --tasks gsm8k --num_fewshot 5 --batch_size 8 --output_path results/stage3/llama3-8b/gsm8k/base_model_eval/lm_eval_gsm8k
 # relora_baseline 5-shot:
 CUDA_VISIBLE_DEVICES=1 $PY -m lm_eval --model hf --model_args "pretrained=$MODEL,peft=results/stage3/llama3-8b/gsm8k/relora_baseline_eval/adapter,dtype=bfloat16" --tasks gsm8k --num_fewshot 5 --batch_size 8 --output_path results/stage3/llama3-8b/gsm8k/relora_baseline_eval/lm_eval_gsm8k
+
+---
+
+## 2026-05-13 18:00 — Phase B1 启动准备（cloud agent 接手）
+
+### Commit hash
+- 起始 HEAD: `36da8a7 Add cloud GPU agent launch prompt for Phase B1 (ICLR 2027 target)`
+- 之前已推送：`97d78b2 Initial commit: LoRA OBD-Recycling pipeline (Stage 1/2/3)`
+- Repo: https://github.com/Rirayh/onlinelora
+
+### Env probe
+- Python: `/mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python`
+- peft 0.17.0 (DoRA + AdaLoRA 内置) ✅
+- transformers 4.52.0.dev0
+- torch 2.6.0+cu124
+- datasets 4.8.2
+- lm_eval 0.4.12
+- vLLM **未安装**（共享环境，按 §2.9 #7 不动；B1 用 HF backend）
+- conda envs share — never mutate
+
+### GPU inventory
+- 8x GPUs, 共 ~650GB VRAM，全部空闲（v2 训练已全部结束）
+
+### Models — 本地可用性核查
+| Prompt 要求 | 本地路径 | 状态 |
+|---|---|---|
+| `meta-llama/Llama-3.1-8B-Instruct` | `/mnt/cpfs/public_data/public_model/LLAMA3.1/Meta-Llama-3.1-8B-Instruct` | ❌ **只有 LICENSE/README/original/ 空架子，无 HF 权重** |
+| `Qwen/Qwen3-8B` | `/mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B` | ✅ 完整（5 个 safetensors shard） |
+| Meta-Llama-3-8B (回退) | `/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B` | ✅ 完整（4 shard），v2 已用过 |
+
+### Datasets — 本地/HF 可用性
+| Prompt 要求 | 本地 | HF 状态 |
+|---|---|---|
+| `allenai/tulu-3-sft-mixture` | ❌ 空 cache 锁文件 | ✅ HF API 200, gated=False |
+| `meta-math/MetaMathQA` | ❌ 无 | ✅ HF API 200, gated=False |
+
+### Baselines 已克隆（commit-pinned）
+- `baselines/DoRA_official/` @ 7e2f10ab
+- `baselines/AdaLoRA_official/` @ d10f5ebe
+- `baselines/ReLoRA_official/` @ 176f3763
+- `baselines/LoRAPrune_reference/` @ 4da52721
+
+### Substitution（按 §2.9 hard constraint #planning）
+**问题**：本地无 Llama-3.1-8B-Instruct（gated，需要 HF token）
+**决策**：用 `Meta-Llama-3-8B` 作主 8B 锚点替代，Qwen3-8B 作跨家族锚点不变。
+**理由**：(1) v1/v2 已经用了 Meta-Llama-3-8B，结果连续可比；(2) HF gated 下载需要 token + 等待，会阻塞 3 天的 B1 主进度；(3) modelscope 上有镜像（30GB），可后台下载做后续 ablation。
+**待 PI confirm**：是否接受这个 substitution，或者等 modelscope 下载完再开 B1。
+
+### v2 训练结果（B1 前置）
+- LLaMA-3-8B × gsm8k × {S3pos, baseline, lora_vanilla, S3neg} v2 全部完成
+- LLaMA-3-8B × alpaca × 4 方法 v2 全部完成
+- ckpt_every=50, best ckpt 已保存到 `checkpoints/best/`
+- 修复了 lm-eval 三方 50.27% bug：根因是 ReLoRA reset 后 lora_B=0 → adapter 等效 base
+- 现在每方法有 `checkpoints/best/` 可用于 lm-eval
+
+### 下一步（Cloud agent 接续）
+1. **询问 PI** Llama-3.1 substitution 是否 OK，或后台 modelscope 下载
+2. 实现 4 新 method arms: `dora`, `adalora`, `relora_random_drop`, `relora_train_gated`
+3. 加 `cumulative_rank.jsonl` + `dropped_components.jsonl` logging
+4. 跑 Tulu-3 + MetaMathQA 数据集 dry-probe（先下载到本地 cache）
+5. B1 sanity check 后启动 32 个 SFT job
+
+---
+
+## 2026-05-13 18:30 — PI 提供 HF token，启动模型 + 数据下载
+
+PI 提供的 HF token (用 huggingface_hub.login 设置): `hf_REDACTED`
+
+### 下载清单
+1. **`meta-llama/Llama-3.1-8B-Instruct`** → `/mnt/cpfs/junlongke/onlinelora/models/Llama-3.1-8B-Instruct/` (~30GB, gated)
+2. **`allenai/tulu-3-sft-mixture`** → `/mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture/` (140k samples)
+3. **`meta-math/MetaMathQA`** → `/mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA/`
+
+### 路径约定 (paper-grade reproducibility)
+- 模型: `/mnt/cpfs/junlongke/onlinelora/models/<model_name>/`
+- 数据: `/mnt/cpfs/junlongke/onlinelora/datasets/<dataset_name>/`
+- 训练输出: `lora_obd/results/stage3_v2/<model_key>/<dataset_key>/<method>/<seed>/`
+
+### 关键文件地图（agent 接续用）
+- Stage 3 训练脚本：`scripts/stage3_run.py`（已加 `--save_adapter`, `--ckpt_every 50`, `checkpoints/best/`, `checkpoints/step_XXXXXX/`）
+- B1 specification: `08_cloud_agent_prompt_b1_iclr2027.md` §2.3 列出 8 个 method arms
+- 已实现 method: lora_vanilla, relora_baseline, relora_diag_gated_S3pos, relora_diag_gated_S3neg
+- 需新增 method: **dora, adalora, relora_random_drop, relora_train_gated**
+- 新 logging 需求: `cumulative_rank.jsonl`, `dropped_components.jsonl` (§2.4)
+- Baselines pinned commits: `baselines/MANIFEST.md` (DoRA/AdaLoRA/ReLoRA/LoRAPrune cloned)
+
+### Env
+- Python: `/mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python`
+- peft 0.17.0 (use_dora + AdaLoraConfig 都内置)
+- transformers 4.52.0.dev0
+- vLLM 未装 → lm-eval 用 HF backend
+
+### GPU status
+- 8 × ~80GB GPU 全空闲（v2 训练全部结束）
+- 7B/8B + LoRA r=16 + GC + sdpa: peak ~25GB → 单卡完全跑得起
+
+### 下一步
+1. 启动 3 个并行下载（model + 2 datasets）到后台
+2. 实现 4 个新 method arms 同时进行（不依赖下载完成）
+3. 加 cumulative_rank + dropped_components logging
+4. 下载完后跑 dry-run sanity check
+5. 启动 B1.a (Llama-3.1 + Tulu-3 × 8 methods on 8 GPU)
+
+---
+
+## 2026-05-13 18:35 — 下载启动 + Cloud agent 续作 checklist
+
+### 启动的后台下载 PID 与日志
+将启动 3 个后台进程，PID 记录在 `.b1_download_pids`：
+- Llama-3.1-8B-Instruct: log `logs/dl_llama31.log`
+- Tulu-3: log `logs/dl_tulu3.log`
+- MetaMathQA: log `logs/dl_metamathqa.log`
+
+### Cloud agent 续作 checklist（按顺序）
+1. **检查下载完成**：`tail logs/dl_*.log` + `ls /mnt/cpfs/junlongke/onlinelora/models/Llama-3.1-8B-Instruct/`
+2. **实现 4 个新 method arms** in `scripts/stage3_run.py` (具体见下)
+3. **加 logging**：`cumulative_rank.jsonl` + `dropped_components.jsonl`
+4. **加 wall_clock.json + commit hash 到 config.yaml**（§2.6 reviewer 要求）
+5. **加 multi-seed 支持**（B1 跑 seed=42；B3 时再跑 1,7）
+6. **Sanity dry-run**：10 steps for 4 new methods
+7. **Launch B1.a-e**: 8 methods × 2 models × 2 datasets = 32 jobs（建议分 4 批每批 8 卡）
+8. **lm-eval-harness**: 32 adapters × 5 benchmarks (HF backend, --batch_size auto)
+9. **生成 plots**: fig9/10/11/12 + `results/stage3_v2/decision.json`
+10. **PASS/STOP gate**（§2.7）：S3pos 必须 ≥+1.0 abs point on GSM8K + ≥2 个 benchmarks vs baseline+train_gated on ≥1 model
+
+### 4 个新 method arms 实现要点
+
+**dora** (use peft 内置):
+```python
+cfg = LoraConfig(r=16, lora_alpha=32, use_dora=True, target_modules=[...])
+# 其他 training loop 不变；merge_every=0（DoRA 不做 ReLoRA merge）
+```
+
+**adalora**:
+```python
+from peft import AdaLoraConfig
+cfg = AdaLoraConfig(r=16, target_r=8, init_r=16, beta1=0.85, beta2=0.85, ...)
+# AdaLoRA 自带 importance-based rank reduction；不 ReLoRA merge
+```
+
+**relora_random_drop** (新 ablation):
+- 与 S3pos 完全一致，但 `build_keep_mask` 用 random Bernoulli mask
+- drop_rate 必须匹配 S3pos 当次 event 的实际 drop_rate（cross-arm fair comparison）
+- 实现方式：先跑 S3pos，记录每次 merge 的 drop_rate per layer，再 random_drop 时复用
+
+**relora_train_gated** (Sensitivity-LoRA 方向的 sanity check):
+- 与 S3pos 一致，但 `first_order_saliency(...)` 用 **train batch** 而非 val batch
+- 即 `S2_fo_train_signed` 而非 `S3_fo_val_signed`
+- gate: drop if S2_train_signed > 0
+
+### B1 hyperparams (§2.3 + §2.8 + Stage 3 v2 经验)
+- lora_r=16, lora_alpha=32, target_modules=q,k,v,o,gate,up,down
+- seq_len=1024 (Tulu-3 / MetaMathQA 多数 < 1024)
+- batch_size=4, grad_accum_steps=8 → eff 32
+- total_steps=3000 (Tulu-3 140k 跑 1 epoch 约 4400 step，3000 够)
+- 但 §2.7 要 5 benchmarks 评测，3000 步可能不充分；按 prompt §3 deferred 到 B2 长跑
+- merge_every=500, eval_every=250, ckpt_every=50, save_adapter=True
+- LR 2e-4, cosine schedule, warmup 100
+- abort_factor=1.5 (红线，过拟合时早停)
+
+### v2 训练完整结果（已验证 best ckpt 存在）
+所有 8 个 LLaMA-3-8B v2 训练已完成，best ckpt 在：
+```
+results/stage3/llama3-8b/<dataset>/<method>_v2/checkpoints/best/
+results/stage3/llama3-8b/<dataset>/<method>_v2/checkpoints/step_XXXXXX/
+results/stage3/llama3-8b/<dataset>/<method>_v2/adapter/
+```
+
+### 重要：B1 输出目录新约定
+B1 用 `results/stage3_v2/<model_key>/<dataset_key>/<method>/<seed>/` 路径（注意是 `stage3_v2`，与之前的 `stage3` 区分）。
+- model_key: `llama3.1-8b` 或 `qwen3-8b`
+- dataset_key: `tulu3-sft` 或 `metamathqa-10k`
+- method: 8 个之一
+- seed: `seed42`（默认）
+
+---
+
+## 2026-05-13 18:40 — 下载结果 + Llama-3.1 token 被拒
+
+### 下载 PID 状态 (启动于 ~18:35)
+- llama31_pid=1061340 → **DEAD**: `huggingface_hub.errors.GatedRepoError: 403`
+  - "Your request to access model meta-llama/Llama-3.1-8B-Instruct has been rejected by the repo's authors"
+  - PI 给的 token `hf_REDACTED` **没有 Llama-3.1 访问权**
+- tulu3_pid=1061341 → 正在下载 (Fetching 7 files, 14%)
+- metamath_pid=1061342 → 正在下载 (Fetching 2 files)
+
+### Llama-3.1 Fallback 计划
+modelscope 上有镜像 `LLM-Research/Meta-Llama-3.1-8B-Instruct`（30GB），无 gating。
+启动方式：
+```bash
+pip install modelscope --target=/tmp/ms_local --no-deps
+PYTHONPATH=/tmp/ms_local python -c "
+from modelscope import snapshot_download
+snapshot_download('LLM-Research/Meta-Llama-3.1-8B-Instruct',
+    cache_dir='/mnt/cpfs/junlongke/onlinelora/models/.modelscope_cache',
+    local_dir='/mnt/cpfs/junlongke/onlinelora/models/Llama-3.1-8B-Instruct')
+"
+```
+但 modelscope 包未安装在共享环境（按 #7 不动）。建议方案：
+1. PI 申请 Llama-3.1 访问权 → token 重新生效
+2. 或 PI 用 hf-mirror 的 token / 给一个有访问权的新 token
+3. 或先用本地已有的 `Meta-Llama-3-8B` (base) 跑 B1，等 token OK 后再补 Llama-3.1
+
+### 当前 GPU 状态
+8 卡全空闲，可立即开 B1.a (Qwen3-8B 那边 + Llama-3-8B 替代锚)。
+
+### 仍然要做（不被 Llama-3.1 阻塞）
+1. 等 Tulu-3 + MetaMathQA 下载完
+2. 实现 4 个新 method arms (dora/adalora/random_drop/train_gated)
+3. 加 cumulative_rank.jsonl + dropped_components.jsonl logging
+4. dry-run sanity check
+5. Qwen3-8B × {Tulu-3, MetaMathQA} × 8 methods = 16 jobs 直接启动
+
+---
+
+## 2026-05-13 18:42 — 数据集下载完成
+
+### Datasets downloaded
+- **Tulu-3-sft-mixture**: 1.4GB at `/mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture/`
+- **MetaMathQA**: 381MB at `/mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA/`
+
+### Models still pending
+- Llama-3.1-8B-Instruct: **token rejected by Meta**, need PI to (a) apply for access, (b) provide new token, or (c) approve fallback to Meta-Llama-3-8B (base)
+- Qwen3-8B: ✅ ready at `/mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B/`
+- Meta-Llama-3-8B (fallback): ✅ at `/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B/`
+
+### Ready to continue without Llama-3.1
+Cloud agent / next session can immediately:
+1. Implement 4 new method arms in `scripts/stage3_run.py`
+2. Add cumulative_rank.jsonl + dropped_components.jsonl logging
+3. Launch B1 on Qwen3-8B (+ Meta-Llama-3-8B as fallback) on all 8 GPUs
+
+### CRITICAL FILE PATHS FOR CONTEXT RESUMPTION
+- Project root: `/mnt/cpfs/junlongke/onlinelora/lora_obd/`
+- Main train script: `scripts/stage3_run.py` (already has --save_adapter, --ckpt_every)
+- Methods file in script: ~line 56-61 `METHOD_CHOICES = [...]` - add 4 more
+- Build keep_mask fn: ~line 291 `def build_keep_mask` - add random_drop branch
+- Main loop merge event: ~line 564 `if step in merge_steps:` - add train_gated saliency call
+- For DoRA: replace `wrap_lora` call ~line 439 with `LoraConfig(use_dora=True)`
+- For AdaLoRA: use `AdaLoraConfig` from peft, will need different wrap fn
+- STATUS.md is now ~62k lines, append-only
+- Commit hash before B1: 36da8a7 (need to commit STATUS.md changes after batch done)
+
+---
+
+## 2026-05-13 18:50 — PI 决策：换模型，立即启动 B1
+
+PI: "你找其他著名新模型吧，别卡在这里，先跑起来！"
+
+### 锁定模型 (本地已有，跳过下载)
+- **主 8B**: `meta-llama/Meta-Llama-3-8B` → `/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B`
+  - 替代 prompt §2.2 的 Llama-3.1-8B-Instruct (token rejected)
+  - v1/v2 已用，连续可比；著名 + 开放
+  - model_key: `llama3-8b`
+- **跨家族 8B**: `Qwen/Qwen3-8B` → `/mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B`
+  - 与 prompt §2.2 一致，2025 SOTA 开源
+  - model_key: `qwen3-8b`
+
+### 锁定数据集 (已下载完成)
+- **Tulu-3 SFT**: `/mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture/` (1.4GB)
+  - dataset_key: `tulu3-sft`
+  - 140k samples，subsample 10k 用于 B1
+- **MetaMathQA**: `/mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA/` (381MB)
+  - dataset_key: `metamathqa-10k`
+  - 已 subsample 10k
+
+### Output dir 约定
+`results/stage3_v2/<model_key>/<dataset_key>/<method>/seed42/`
+- model_key ∈ {llama3-8b, qwen3-8b}
+- dataset_key ∈ {tulu3-sft, metamathqa-10k}
+- method ∈ {lora_vanilla, relora_baseline, relora_diag_gated_s3pos, relora_diag_gated_s3neg, dora, adalora, relora_random_drop, relora_train_gated}
+- 总共 8 × 2 × 2 = 32 jobs
+
+### Next agent actions (顺序执行)
+1. Add `build_tulu3` + `build_metamathqa` in stage3_run.py (本地路径 load)
+2. Add 4 new method arms in METHOD_CHOICES + handle them in main()
+3. Add cumulative_rank.jsonl + dropped_components.jsonl logging
+4. Add wall_clock.json + commit_hash to config.yaml
+5. Dry-run sanity on 4 new methods (--smoke 50 steps)
+6. Launch B1.a-d: 16 jobs first round (8 GPU 同时, 分 2 批，先 llama3-8b 那批 8 + qwen3-8b 那批 8)
+7. lm-eval 5 benchmarks (HF backend, 32 adapters)
+
+
+---
+
+## 2026-05-13 19:50 — Smoke test 结果（4 个新 method on Qwen3-8B）
+
+### Smoke parameters (--smoke)
+- total_steps=50, eval_every=25, merge_every=25, log_every=5
+- 4 GPU 并行 (GPU 0-3)
+
+### Method × Dataset matrix
+| GPU | Method | Dataset | Status |
+|---|---|---|---|
+| 0 | **dora** | tulu3-sft | ✅ 跑通，forward 慢 (40GB, 100% util)，需要等 log_every=5 |
+| 1 | **adalora** | metamathqa-10k | ✅ 完美，step=45 train_loss=0.511，但 rank_stats 返回 nan (AdaLoRA 用 lora_E 单值而非 BA) |
+| 2 | **relora_random_drop** | tulu3-sft | ✅ merge@25 触发 (drop_rate~0.5) |
+| 3 | **relora_train_gated** | metamathqa-10k | ✅ merge@25 触发 (drop_rate=0.359), post-merge val=0.203 |
+
+### 修改 stage3_run.py 关键内容
+1. **METHOD_CHOICES** 扩展到 8 个
+2. **DATASET_CHOICES** 加 tulu3-sft + metamathqa-10k
+3. **新数据集 loader**: `build_tulu3` (本地 parquet) + `build_metamathqa` (本地 JSON)
+4. **`wrap_lora`** 支持 method 参数: `dora` → `use_dora=True`，`adalora` → `AdaLoraConfig(init_r=2r, target_r=r, beta=0.85)`
+5. **`build_keep_mask`** 加 `gate_sign="random"` 分支 (Bernoulli with target_drop_rate)
+6. **Method routing**:
+   - `relora_random_drop` → `gate_sign="random"`, do_relora=True
+   - `relora_train_gated` → `gate_sign="S2train_pos_drops"`, do_relora=True, saliency_source="train"
+   - `dora` / `adalora` → do_relora=False (本身就是 SOTA 方法)
+7. **新 logging**: `cumulative_rank.jsonl` + `dropped_components.jsonl` (PI §2.4 要求)
+8. **config.yaml** 加 `commit_hash` + `wall_clock_start`
+9. **summary.json** 加 `cumulative_merged_total/dropped_total` + `wall_clock_end`
+
+### 已知小问题（不阻塞 B1）
+- AdaLoRA 的 effective rank/CN logging 为 nan，因为 `get_lora_BA_handles` 只读 lora_A/lora_B (AdaLoRA 还有 lora_E 重要性向量)。训练正常，metric 用 final_val_loss 即可。后续可扩展 src/model.py 处理 AdaLoRA。
+
+### B1 启动方案 (32 jobs)
+- Model × Dataset × Method = 2 × 2 × 8 = 32 jobs
+- 8 GPU 同时跑 → 分 4 批 × 8 jobs
+- 每个 job 3000 steps，约 1.5-2h on Qwen3-8B + DoRA (其他更快)
+- 总计算时间: 4 × 2h = 8h
+- 路径: `results/stage3_v2/<model_key>/<dataset_key>/<method>/seed42/`
+
+---
+
+## 2026-05-13 20:00 — Smoke 全通过，准备启动 B1
+
+### Smoke 最终结果
+| Method | step=50 final_val | wall_clock | 单步开销 (s) |
+|---|---|---|---|
+| **dora** | 太慢，~70s/step (Qwen3-8B) | - | ~70 |
+| **adalora** | 0.539 | 317s | ~6 |
+| **relora_random_drop** | (active) | ~470s | ~9 |
+| **relora_train_gated** | **0.193** | 367s | ~7 |
+
+### 重要决策: DoRA 的 step 数缩减
+- DoRA 70s/step → 3000 步 = 58h，太慢
+- 论文里 DoRA 通常跑 1000-1500 step
+- B1 让 DoRA 跑 **1500 steps**，其他方法跑 **3000 steps**
+- 公平性: 都跑足够收敛即可，最终 ckpt 比较 val_loss + downstream metrics
+
+### B1 launch 计划
+**32 jobs**: 2 models × 2 datasets × 8 methods = 32
+- model_key ∈ {qwen3-8b, llama3-8b}
+- dataset_key ∈ {tulu3-sft, metamathqa-10k}
+
+**批次方案** (8 GPU 同时跑):
+- **Batch 1 (qwen3-8b + tulu3-sft × 8 methods)**: GPU 0-7
+- **Batch 2 (qwen3-8b + metamathqa-10k × 8 methods)**: GPU 0-7
+- **Batch 3 (llama3-8b + tulu3-sft × 8 methods)**: GPU 0-7
+- **Batch 4 (llama3-8b + metamathqa-10k × 8 methods)**: GPU 0-7
+
+预期单批 wall_clock: ~2-3h（除 DoRA），DoRA 1500 步约 30h... 仍然太慢
+
+**修正**: DoRA 用 fp16/bf16 加速；或者 DoRA 在 single GPU 上跑 1000 步即可（论文典型设定）。先看 DoRA 是否 bottleneck 在 LoRA forward。
+
+---
+
+## 2026-05-13 20:00 — B1 Batch 1 LAUNCHED (qwen3-8b × tulu3-sft × 8 methods)
+
+### Launch details
+- start_time: 2026-05-14 09:47
+- All 8 GPUs running, peak mem ~30GB each (model_load_OK)
+- target_modules: q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj
+- effective_batch: bs=4 × grad_accum=8 = 32
+- LR 2e-4, cosine, warmup 100
+- abort_factor 1.5
+
+### PID 映射 (saved to .b1_batch1_pids)
+| GPU | Method | PID | Steps |
+|---|---|---|---|
+| 0 | lora_vanilla | 1082015 | 3000 |
+| 1 | relora_baseline | 1082017 | 3000 |
+| 2 | relora_diag_gated_S3pos | 1082019 | 3000 |
+| 3 | relora_diag_gated_S3neg | 1082021 | 3000 |
+| 4 | **dora** | 1082023 | **800** (DoRA forward 慢 10x) |
+| 5 | adalora | 1082025 | 3000 |
+| 6 | relora_random_drop | 1082027 | 3000 |
+| 7 | relora_train_gated | 1082029 | 3000 |
+
+### 输出路径
+`results/stage3_v2/qwen3-8b/tulu3-sft/<method>/seed42/`
+- config.yaml, train_loss.jsonl, val_loss.jsonl, summary.json, run.log
+- effective_rank.jsonl, condition_number.jsonl
+- saliency_at_merge.jsonl, cumulative_rank.jsonl, dropped_components.jsonl (有 merge 的 method)
+- checkpoints/best/, checkpoints/step_XXXXXX/, adapter/
+
+### 预期时间
+- 7 个 method × 3000 步: ~2-3h (≈9s/step on Qwen3-8B + GC + sdpa)
+- DoRA × 800 步: ~15h (~70s/step) — 太慢，可能需要在 Batch 2 启动时 kill 提前结束
+
+### 下一批 (Batch 2-4)
+- Batch 2: qwen3-8b × metamathqa-10k × 8 methods (等 Batch 1 完成)
+- Batch 3: llama3-8b × tulu3-sft × 8 methods
+- Batch 4: llama3-8b × metamathqa-10k × 8 methods
