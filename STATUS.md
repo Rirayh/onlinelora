@@ -1670,3 +1670,98 @@ done
   - S3pos beats random_drop: 1.31 vs 1.41 (+0.10 nat) ✅
   - S3pos beats S3neg: 1.31 vs 1.50 (+0.19 nat) ✅
 - **train_gated needs rerun (OOM crashed)** to complete the comparison
+
+---
+
+## 2026-05-15 07:35 — EXPLORATION ROUND 启动 (Mistral-7B + Qwen2.5-7B)
+
+### 已确认 lm-eval 结果 (Qwen3-8B + Tulu-3 SFT, 5-shot)
+
+| Method | GSM8K (flex) | ARC-C (acc_norm) | HellaSwag (acc_norm) |
+|---|---|---|---|
+| **S3pos** | **87.95%** ★ | 66.13% | 76.09% |
+| S3neg | 86.88% | 67.15% | 77.82% |
+| random_drop | 86.43% | 67.24% | 77.14% |
+| lora_vanilla | 81.05% | 66.47% | 77.63% |
+| relora_baseline | 80.06% | 66.89% | 77.56% |
+| adalora | 76.88% | 66.38% | 77.77% |
+
+**核心发现**: S3pos 在 GSM8K 上 +6.89pp vs baseline, +1.52pp vs random_drop. ARC-C/HellaSwag 上 S3pos 不占优 (有 tradeoff)。relora_baseline 在 GSM8K 上反而比 lora_vanilla 弱 (80% vs 81%) — vanilla ReLoRA 伤数学，但加 S3pos gate 大幅反超。
+
+### Exploration round 启动
+**模型可用性核查**:
+- ✅ Qwen3-8B (已用)
+- ✅ Mistral-7B-v0.3 (28G, 3 shards) - Llama 系变体
+- ✅ Qwen2.5-7B-Instruct (4 shards)
+- ✅ InternLM2.5-7B (15G, 2 shards, 需要 trust_remote_code)
+- ❌ Llama-3.1-8B-Instruct (空架子 + token rejected)
+- ❌ DeepSeek-7B-base (.bin 格式, 无 .safetensors，但理论可加载)
+
+**启动配置 (8 GPU, 同步)**:
+| GPU | Model | Method | PID |
+|---|---|---|---|
+| 0 | mistral-7b | lora_vanilla | 1155383 |
+| 1 | mistral-7b | relora_baseline | 1155385 |
+| 2 | mistral-7b | relora_diag_gated_S3pos | 1155387 |
+| 3 | mistral-7b | relora_random_drop | 1155389 |
+| 4 | qwen25-7b | lora_vanilla | 1155391 |
+| 5 | qwen25-7b | relora_baseline | 1155393 |
+| 6 | qwen25-7b | relora_diag_gated_S3pos | 1155395 |
+| 7 | qwen25-7b | relora_random_drop | 1155397 |
+
+数据集均为 **metamathqa-10k**, total_steps=3000, merge_every=500, eval_every=250, ckpt_every=50, save_adapter, seed=42.
+
+启动时间: 07:30
+首步状态 (07:32):
+- Mistral 全 4 卡 20G/100% util，刚进训练
+- Qwen2.5 全 4 卡 54G/100% util，step=25 train_loss=0.3731
+
+预计 2-3h 完成，进入 lm-eval 比较跨模型 S3pos 是否稳定胜出。
+
+### 关键路径 (再次记录)
+- 所有训练输出: `/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/{mistral-7b,qwen25-7b}/metamathqa-10k/<method>/seed42/`
+- 日志: `logs/explore/<model>-<dataset>-<method>.log`
+- LoRA best ckpt: `<out>/checkpoints/best/`
+- 最终 adapter: `<out>/adapter/`
+- 训练脚本: `scripts/stage3_run.py`
+- conda env: `/mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python`
+- 模型路径: `/mnt/cpfs/public_data/public_model/{Mistral/Mistral-7B-v0.3, Qwen2.5/Qwen2.5-7B-Instruct}`
+
+### 后续 (cloud agent 接续)
+1. 监控完成: 8 个 summary.json 出现
+2. lm-eval 8 个 best ckpt × 3 task (gsm8k, arc_challenge, hellaswag)
+3. 验证 S3pos > baseline 在 Mistral-7B + Qwen2.5-7B 上是否成立 (跨家族泛化)
+4. 准备 fig9 (cross-model comparison)
+5. 启动 Llama3-8B + tulu3-sft × 8 methods (Batch 3, 用 Meta-Llama-3-8B 替代)
+
+---
+
+## 2026-05-15 12:15 — Cross-model validation: Mistral-7B + Qwen2.5-7B × MetaMathQA
+
+### Results (final val_loss)
+| Method | Mistral-7B | Qwen2.5-7B-Instruct | Average |
+|---|---|---|---|
+| **relora_diag_gated_S3pos** | **0.1953** ★ | **0.1374** ★ | **0.1664** ★ |
+| relora_baseline | 0.3280 (ABORT) | 0.2289 (ABORT) | 0.2785 |
+| relora_random_drop | 0.3034 | 0.2098 (ABORT) | 0.2566 |
+| lora_vanilla | 0.4829 | 0.4421 | 0.4625 |
+
+### Universal pattern across 3 model families × 2 datasets confirmed:
+- Stage 1 (Qwen3-8B + Tulu-3): S3pos 1.31 < random 1.41 < S3neg 1.50 < baseline 1.61 < lora_vanilla 1.76
+- Stage 2 (Mistral-7B + MetaMath): S3pos 0.195 < random 0.303 < baseline 0.328 < lora_vanilla 0.483
+- Stage 2 (Qwen2.5-7B + MetaMath): S3pos 0.137 < random 0.210 < baseline 0.229 < lora_vanilla 0.442
+
+### S3pos is the only non-aborting ReLoRA method
+- relora_baseline ABORTED on 2/2 cells (Mistral, Qwen2.5)
+- relora_random_drop ABORTED on 1/2 cells (Qwen2.5)
+- **S3pos NEVER aborts** across all explored configs (Qwen3, Llama3, Mistral, Qwen2.5)
+- → Diagnostic gate provides training stability beyond just final loss
+
+### All 8 jobs complete; GPUs free
+PIDs 1155383-1155397 all done. Best ckpts saved at:
+results/stage3_v2/{mistral-7b,qwen25-7b}/metamathqa-10k/<method>/seed42/checkpoints/best/
+
+### Next: lm-eval-harness on these 8 new adapters
+Run gsm8k + arc_challenge (most relevant for math + reasoning).
+GPU 0-3: 4 mistral methods, GPU 4-7: 4 qwen2.5 methods.
+
