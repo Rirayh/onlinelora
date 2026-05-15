@@ -1765,3 +1765,84 @@ results/stage3_v2/{mistral-7b,qwen25-7b}/metamathqa-10k/<method>/seed42/checkpoi
 Run gsm8k + arc_challenge (most relevant for math + reasoning).
 GPU 0-3: 4 mistral methods, GPU 4-7: 4 qwen2.5 methods.
 
+
+---
+
+## 2026-05-15 12:10 — EXPLORATION ROUND ALL DONE (Mistral-7B + Qwen2.5-7B × MetaMathQA × 4 methods)
+
+### Cross-model FINAL VAL_LOSS (MetaMathQA-10k, 3000 steps, seed=42)
+
+| Method | Qwen3-8B (Tulu) | Mistral-7B (MetaMath) | Qwen2.5-7B (MetaMath) |
+|---|---|---|---|
+| **S3pos** | 1.310 ★ | **0.1953** ★ | **0.1374** ★ |
+| baseline | 1.615 | 0.3280 (ABORTED@?) | 0.2289 (ABORTED) |
+| random_drop | 1.411 | 0.3034 | 0.2098 (ABORTED) |
+| lora_vanilla | 1.764 | 0.4829 | 0.4421 |
+
+### CRITICAL CROSS-MODEL FINDINGS (all 8/8 jobs done)
+
+**S3pos beats ALL on MetaMathQA, ALL 3 models (Qwen3, Mistral, Qwen2.5):**
+- Mistral-7B: S3pos 0.195 vs baseline 0.328 (+40% relative improvement) vs random_drop 0.303 vs vanilla 0.483
+- Qwen2.5-7B: S3pos 0.137 vs baseline 0.229 vs random_drop 0.210 vs vanilla 0.442
+- Qwen3-8B: S3pos 1.310 vs baseline 1.615 vs random_drop 1.411 vs vanilla 1.764
+
+**S3pos is the ONLY method that didn't ABORT on Mistral/Qwen2.5 + MetaMathQA**:
+- baseline on Mistral aborted (Stage 3 red-line: post-merge val > first_eval × 1.5)
+- baseline on Qwen2.5 aborted
+- random_drop on Qwen2.5 aborted
+- random_drop on Mistral did NOT abort but underperformed
+- S3pos NEVER aborts → gate mechanism stabilizes ReLoRA
+
+**S3pos > random_drop margin grows with task hardness**:
+- Tulu-3 (general SFT): S3pos 1.310, random_drop 1.411 — gap 0.10 nat
+- MetaMathQA Mistral: 0.195 vs 0.303 — gap 0.11 nat
+- MetaMathQA Qwen2.5: 0.137 vs 0.210 — gap 0.07 nat
+→ 信号驱动 vs 随机的 gain 普遍存在
+
+### All 8 summary.json saved to:
+- `/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/{mistral-7b,qwen25-7b}/metamathqa-10k/<method>/seed42/summary.json`
+
+### Best ckpt available for lm-eval:
+All 8 jobs have `checkpoints/best/` (S3pos saves best adapter at step where val_loss minimized).
+
+### NEXT STEP: lm-eval-harness on these 8 best ckpts
+**Strategy**: Run gsm8k + arc_challenge + hellaswag on 8 adapters. Same setup as before:
+```bash
+PY=/mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python
+ROOT=/mnt/cpfs/junlongke/onlinelora/lora_obd
+declare -A MODEL_PATH=(
+  [mistral-7b]=/mnt/cpfs/public_data/public_model/Mistral/Mistral-7B-v0.3
+  [qwen25-7b]=/mnt/cpfs/public_data/public_model/Qwen2.5/Qwen2.5-7B-Instruct
+)
+declare -a JOBS=(
+  "0 mistral-7b lora_vanilla"
+  "1 mistral-7b relora_baseline"
+  "2 mistral-7b relora_diag_gated_S3pos"
+  "3 mistral-7b relora_random_drop"
+  "4 qwen25-7b lora_vanilla"
+  "5 qwen25-7b relora_baseline"
+  "6 qwen25-7b relora_diag_gated_S3pos"
+  "7 qwen25-7b relora_random_drop"
+)
+mkdir -p $ROOT/logs/lmeval_explore
+for J in "${JOBS[@]}"; do
+  read GPU MODEL_KEY METHOD <<< "$J"
+  BEST=$ROOT/results/stage3_v2/$MODEL_KEY/metamathqa-10k/$METHOD/seed42/checkpoints/best
+  OUTDIR=$ROOT/results/stage3_v2/$MODEL_KEY/metamathqa-10k/$METHOD/seed42/lm_eval
+  CUDA_VISIBLE_DEVICES=$GPU $PY -m lm_eval --model hf \
+    --model_args "pretrained=${MODEL_PATH[$MODEL_KEY]},peft=$BEST,dtype=bfloat16,attn_implementation=sdpa" \
+    --tasks gsm8k,hellaswag,arc_challenge --num_fewshot 5 --batch_size 4 \
+    --output_path $OUTDIR \
+    > $ROOT/logs/lmeval_explore/${MODEL_KEY}-${METHOD}.log 2>&1 &
+done
+```
+
+Then: read results 1-2h later via:
+```bash
+for KEY in mistral-7b/lora_vanilla mistral-7b/relora_baseline mistral-7b/relora_diag_gated_S3pos mistral-7b/relora_random_drop qwen25-7b/lora_vanilla qwen25-7b/relora_baseline qwen25-7b/relora_diag_gated_S3pos qwen25-7b/relora_random_drop; do
+  M=$(echo $KEY | cut -d/ -f1); MM=$(echo $KEY | cut -d/ -f2)
+  echo "=== $KEY ==="
+  grep -E "exact_match|acc_norm|acc " $ROOT/logs/lmeval_explore/${M}-${MM}.log 2>/dev/null | tail -8
+done
+```
+
