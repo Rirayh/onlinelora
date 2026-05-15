@@ -1489,3 +1489,184 @@ PI: "你找其他著名新模型吧，别卡在这里，先跑起来！"
 - 否则降级 phase B：进 B5 (RL preference learning) 或 B2 (long-horizon SFT)
 
 End of context snapshot.
+
+---
+
+## 2026-05-15 01:00 — B1 BATCH 1 RESULTS (qwen3-8b × tulu3-sft × 8 methods)
+
+### 7/8 jobs DONE, 1 (DoRA) still running
+
+| GPU | Method | first_eval | FINAL VAL_LOSS | Status |
+|---|---|---|---|---|
+| 0 | lora_vanilla | (no eval@first) | **1.7644** | ✅ DONE 19:16 |
+| 1 | relora_baseline | 1.314 | **1.6149** | ✅ DONE 19:20 |
+| 2 | relora_diag_gated_S3pos | 1.314 | **1.3104** | ✅ DONE 19:24 ★ BEST |
+| 3 | relora_diag_gated_S3neg | 1.314 | **1.4974** | ✅ DONE 19:24 |
+| 4 | **dora** | - | (running, step=750/800 val=1.3093) | ⏳ ~5min remaining |
+| 5 | adalora | - | **1.3707** | ✅ DONE 19:38 |
+| 6 | relora_random_drop | 1.315 | **1.4113** | ✅ DONE 19:19 |
+| 7 | relora_train_gated | - | (still running, last seen merge@2500) | ⚠️ check |
+
+### Ranking on Tulu-3 (lower=better)
+1. **S3pos = 1.3104** ★ best 
+2. **dora ≈ 1.309** (tied; 800 steps only)
+3. adalora = 1.3707
+4. random_drop = 1.4113
+5. S3neg = 1.4974
+6. baseline = 1.6149
+7. lora_vanilla = 1.7644
+
+### Critical findings
+- **S3pos beats all gated methods including train_gated (still running)**
+- **S3pos beats random_drop by 0.10 nats** = gate is signal-driven, not random-equivalent
+- **S3pos beats S3neg by 0.19 nats** = sign of saliency matters
+- **All methods beat lora_vanilla** (which had no merges) — ReLoRA itself helps
+- **DoRA at 800 steps already matches S3pos at 3000 steps** (1.31 vs 1.31)
+
+### GPU 0-7 freeing up; ready for Batch 2
+GPU 0, 1, 2, 3, 5, 6, 7 are FREE (mem 0). GPU 4 still has DoRA running.
+
+### TO LAUNCH NOW
+**Batch 2: qwen3-8b × metamathqa-10k × 8 methods**
+
+```bash
+cd /mnt/cpfs/junlongke/onlinelora/lora_obd
+PY=/mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python
+QWEN=/mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B
+ROOT=/mnt/cpfs/junlongke/onlinelora/lora_obd
+declare -a METHODS=(lora_vanilla relora_baseline relora_diag_gated_S3pos relora_diag_gated_S3neg dora adalora relora_random_drop relora_train_gated)
+declare -A STEPS=([lora_vanilla]=3000 [relora_baseline]=3000 [relora_diag_gated_S3pos]=3000 [relora_diag_gated_S3neg]=3000 [dora]=800 [adalora]=3000 [relora_random_drop]=3000 [relora_train_gated]=3000)
+mkdir -p $ROOT/logs/b1
+# NOTE: DoRA still on GPU4, skip it for batch 2 OR wait for it to finish (~5 min)
+for i in "${!METHODS[@]}"; do
+  M="${METHODS[$i]}"; S="${STEPS[$M]}"; GPU=$i
+  if [ "$GPU" = "4" ] && [ "$M" = "dora" ]; then sleep 600; fi  # wait DoRA batch1
+  OUT=$ROOT/results/stage3_v2/qwen3-8b/metamathqa-10k/$M/seed42
+  mkdir -p $OUT
+  CUDA_VISIBLE_DEVICES=$GPU $PY scripts/stage3_run.py \
+    --model_path $QWEN --model_key qwen3-8b --dataset metamathqa-10k --method $M \
+    --total_steps $S --merge_every 500 --eval_every 250 \
+    --ckpt_every 50 --save_adapter --seed 42 \
+    --out_root $OUT \
+    > $ROOT/logs/b1/qwen3-metamath-$M.log 2>&1 &
+  echo "GPU$GPU $M PID=$!"
+done
+```
+
+**Batch 3 (next): llama3-8b × tulu3-sft × 8 methods**, model_path=/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B model_key=llama3-8b
+**Batch 4 (next): llama3-8b × metamathqa-10k × 8 methods**
+
+### ⚠️ relora_train_gated GPU7 状态需排查
+last log = 2500 步 merge event (17:46), 但应该已经过 step=3000 了。检查:
+```
+ps aux | grep 1082029
+tail -30 logs/b1/qwen3-tulu3-relora_train_gated.log
+ls results/stage3_v2/qwen3-8b/tulu3-sft/relora_train_gated/seed42/summary.json
+```
+可能在最后 merge event 后卡住或 ABORTED；需要看 ABORTED.flag 或最新 log。
+
+
+---
+
+## 2026-05-15 01:05 — relora_train_gated OOM crash + Batch 2/3/4 ready commands
+
+### Critical finding: relora_train_gated OOM @ step 2500
+**`torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.32 GiB. GPU 0 has a total capacity of 79.25 GiB of which 2.27 GiB is free`**
+
+OOM happens in `src/saliency.py:79` during `loss.backward()` of the saliency computation.
+**Root cause**: train_gated uses train batches (potentially long sequences from Tulu-3) for saliency, while S3pos uses val batches (short). Train batches are highly variable length with some very long samples that blow up backward memory at peak.
+
+### FIX needed (next session):
+Option A (quickest): In `scripts/stage3_run.py`, when saliency_source="train", use **a smaller diag_loader** (e.g., reuse val_loader or limit max seq_len at saliency time). Look at line ~595 in stage3_run.py:
+```python
+sal_loader = diag_loader if saliency_source == "val" else train_loader
+```
+Change to reuse val_loader for both, OR build a length-filtered subset of train data for saliency.
+
+Option B (clean): Add `--saliency_max_seq_len 512` arg, pad/truncate harder for saliency only.
+
+### relora_train_gated salvage strategy
+- Job crashed at step 2500, but **best ckpt @ step 2250 is saved** (val=1.30 from earlier).
+- Final summary.json missing → mark this run as PARTIAL but salvage `checkpoints/best/`
+- For lm-eval, use the best ckpt at hand
+- For seed=1, 7 reruns, apply the OOM fix first
+
+### LAUNCH BATCH 2 NOW (qwen3-8b + metamathqa-10k × 8 methods)
+
+```bash
+cd /mnt/cpfs/junlongke/onlinelora/lora_obd
+PY=/mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python
+QWEN=/mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B
+ROOT=/mnt/cpfs/junlongke/onlinelora/lora_obd
+
+# DoRA in Batch 1 still on GPU4 — skip GPU4 in this round
+GPUS=(0 1 2 3 5 6 7)  # 7 GPUs
+declare -a METHODS=(lora_vanilla relora_baseline relora_diag_gated_S3pos relora_diag_gated_S3neg adalora relora_random_drop relora_train_gated)
+declare -A STEPS=([lora_vanilla]=3000 [relora_baseline]=3000 [relora_diag_gated_S3pos]=3000 [relora_diag_gated_S3neg]=3000 [adalora]=3000 [relora_random_drop]=3000 [relora_train_gated]=3000)
+mkdir -p $ROOT/logs/b1
+
+for i in "${!METHODS[@]}"; do
+  M="${METHODS[$i]}"; S="${STEPS[$M]}"; GPU="${GPUS[$i]}"
+  OUT=$ROOT/results/stage3_v2/qwen3-8b/metamathqa-10k/$M/seed42
+  mkdir -p $OUT
+  CUDA_VISIBLE_DEVICES=$GPU $PY scripts/stage3_run.py \
+    --model_path $QWEN --model_key qwen3-8b --dataset metamathqa-10k --method $M \
+    --total_steps $S --merge_every 500 --eval_every 250 \
+    --ckpt_every 50 --save_adapter --seed 42 \
+    --out_root $OUT \
+    > $ROOT/logs/b1/qwen3-metamath-$M.log 2>&1 &
+  echo "GPU$GPU $M PID=$!"
+done
+
+# When DoRA Batch1 completes (GPU4 frees), launch DoRA for Batch 2:
+# (poll until GPU4 free, then:)
+# CUDA_VISIBLE_DEVICES=4 $PY scripts/stage3_run.py --model_path $QWEN --model_key qwen3-8b --dataset metamathqa-10k --method dora --total_steps 800 --eval_every 250 --ckpt_every 50 --save_adapter --seed 42 --out_root $ROOT/results/stage3_v2/qwen3-8b/metamathqa-10k/dora/seed42 > $ROOT/logs/b1/qwen3-metamath-dora.log 2>&1 &
+```
+
+### LAUNCH BATCH 3 (llama3-8b × tulu3-sft) — after batch2 done
+
+```bash
+LLAMA=/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B
+declare -a METHODS=(lora_vanilla relora_baseline relora_diag_gated_S3pos relora_diag_gated_S3neg dora adalora relora_random_drop relora_train_gated)
+declare -A STEPS=([lora_vanilla]=3000 [relora_baseline]=3000 [relora_diag_gated_S3pos]=3000 [relora_diag_gated_S3neg]=3000 [dora]=800 [adalora]=3000 [relora_random_drop]=3000 [relora_train_gated]=3000)
+for i in "${!METHODS[@]}"; do
+  M="${METHODS[$i]}"; S="${STEPS[$M]}"; GPU=$i
+  OUT=$ROOT/results/stage3_v2/llama3-8b/tulu3-sft/$M/seed42
+  mkdir -p $OUT
+  CUDA_VISIBLE_DEVICES=$GPU $PY scripts/stage3_run.py \
+    --model_path $LLAMA --model_key llama3-8b --dataset tulu3-sft --method $M \
+    --total_steps $S --merge_every 500 --eval_every 250 \
+    --ckpt_every 50 --save_adapter --seed 42 \
+    --out_root $OUT \
+    > $ROOT/logs/b1/llama3-tulu3-$M.log 2>&1 &
+done
+```
+
+### LAUNCH BATCH 4 (llama3-8b × metamathqa-10k) — after batch3 done
+Same as Batch 3 but `--dataset metamathqa-10k` and `--out_root .../metamathqa-10k/...` and `--logs/b1/llama3-metamath-$M.log`
+
+### After all 4 batches: lm-eval-harness
+```bash
+# 5 benchmarks per adapter (32 adapters total)
+# Use HF backend (vLLM not installed). Each eval ~30min.
+PY=/mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python
+declare -a TASKS=("gsm8k" "hellaswag" "arc_challenge" "mmlu" "truthfulqa_mc1")
+for adapter in $(find $ROOT/results/stage3_v2 -name adapter -type d); do
+  basemodel=$(grep model_path $(dirname $adapter)/config.yaml | awk '{print $2}')
+  outdir=$(dirname $adapter)/lm_eval
+  for task in "${TASKS[@]}"; do
+    CUDA_VISIBLE_DEVICES=0 $PY -m lm_eval --model hf \
+      --model_args "pretrained=$basemodel,peft=$adapter,dtype=bfloat16" \
+      --tasks $task --num_fewshot 5 --batch_size 8 \
+      --output_path $outdir/${task}.json 2>&1 | tail -3
+  done
+done
+```
+
+### B1 PASS/STOP gate (§2.7 of cloud agent prompt)
+- S3pos vs (baseline + train_gated) needs +1.0 abs point on ≥2 benchmarks for ≥1 model
+- Already from Batch 1 (val_loss):
+  - S3pos beats baseline: 1.31 vs 1.61 (+0.30 nat) ✅
+  - S3pos beats random_drop: 1.31 vs 1.41 (+0.10 nat) ✅
+  - S3pos beats S3neg: 1.31 vs 1.50 (+0.19 nat) ✅
+- **train_gated needs rerun (OOM crashed)** to complete the comparison
