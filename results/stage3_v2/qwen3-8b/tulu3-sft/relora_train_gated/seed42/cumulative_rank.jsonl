@@ -1,0 +1,3 @@
+{"step": 500, "merge_event": 1, "cumulative_merged_total": 2427, "cumulative_dropped_total": 1605, "components_kept_this_event": 2427, "components_dropped_this_event": 1605}
+{"step": 1000, "merge_event": 2, "cumulative_merged_total": 4590, "cumulative_dropped_total": 3474, "components_kept_this_event": 2163, "components_dropped_this_event": 1869}
+{"step": 1500, "merge_event": 3, "cumulative_merged_total": 7735, "cumulative_dropped_total": 4361, "components_kept_this_event": 3145, "components_dropped_this_event": 887}

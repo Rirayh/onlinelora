@@ -1,0 +1,124 @@
+[2026-05-16 01:12:17,769] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - START stage3 model=/mnt/cpfs/public_data/public_model/Qwen2.5/Qwen2.5-7B-Instruct dataset=metamathqa-10k method=relora_diag_gated_S3neg out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42
+[2026-05-16 01:12:21,858] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - tokenizer loaded in 0.3s, vocab=151643
+[2026-05-16 01:12:21,860] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - loading MetaMathQA from /mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA
+[2026-05-16 01:12:23,311] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - metamathqa train=10000 val=500
+[2026-05-16 01:12:28,874] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - metamathqa tokenized: train 10000 val 500
+[2026-05-16 01:12:29,175] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - data prepared in 7.3s
+[2026-05-16 01:12:30,975] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - model loaded in 1.8s
+[2026-05-16 01:12:40,213] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - #LoRA layers=196 #components=3136
+[2026-05-16 01:12:40,219] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - #trainable params=40.37M
+[2026-05-16 01:12:53,368] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - [step 0] mean_ER=1456.79 mean_CN=2.57e+05 (sampled 8 layers)
+[2026-05-16 01:12:53,369] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - merge events scheduled at: [500, 1000, 1500, 2000, 2500, 3000]
+[2026-05-16 01:14:51,741] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=25/3000 train_loss=0.3731 lr=5.00e-05 elapsed=118s
+[2026-05-16 01:16:51,483] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=50/3000 train_loss=0.1550 lr=1.00e-04 elapsed=238s
+[2026-05-16 01:16:51,944] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000050
+[2026-05-16 01:18:55,463] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=75/3000 train_loss=0.1415 lr=1.50e-04 elapsed=362s
+[2026-05-16 01:20:56,593] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=100/3000 train_loss=0.1301 lr=2.00e-04 elapsed=483s
+[2026-05-16 01:20:57,045] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000100
+[2026-05-16 01:22:51,457] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=125/3000 train_loss=0.1362 lr=2.00e-04 elapsed=598s
+[2026-05-16 01:24:49,638] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=150/3000 train_loss=0.1386 lr=2.00e-04 elapsed=716s
+[2026-05-16 01:24:50,091] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000150
+[2026-05-16 01:26:47,404] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=175/3000 train_loss=0.1333 lr=2.00e-04 elapsed=834s
+[2026-05-16 01:28:45,049] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=200/3000 train_loss=0.1339 lr=1.99e-04 elapsed=952s
+[2026-05-16 01:28:45,501] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000200
+[2026-05-16 01:30:40,009] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=225/3000 train_loss=0.1372 lr=1.99e-04 elapsed=1067s
+[2026-05-16 01:32:38,286] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=250/3000 train_loss=0.1357 lr=1.99e-04 elapsed=1185s
+[2026-05-16 01:32:38,745] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000250
+[2026-05-16 01:33:01,653] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=250 VAL_LOSS=0.1350
+[2026-05-16 01:33:02,083] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - best ckpt updated: step=250 val_loss=0.1350
+[2026-05-16 01:35:02,616] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=275/3000 train_loss=0.1380 lr=1.98e-04 elapsed=1329s
+[2026-05-16 01:36:57,960] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=300/3000 train_loss=0.1330 lr=1.98e-04 elapsed=1445s
+[2026-05-16 01:36:58,397] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000300
+[2026-05-16 01:38:57,608] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=325/3000 train_loss=0.1199 lr=1.97e-04 elapsed=1564s
+[2026-05-16 01:40:56,455] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=350/3000 train_loss=0.1119 lr=1.96e-04 elapsed=1683s
+[2026-05-16 01:40:56,906] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000350
+[2026-05-16 01:42:56,706] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=375/3000 train_loss=0.1096 lr=1.96e-04 elapsed=1803s
+[2026-05-16 01:44:52,068] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=400/3000 train_loss=0.1078 lr=1.95e-04 elapsed=1919s
+[2026-05-16 01:44:52,532] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000400
+[2026-05-16 01:46:51,843] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=425/3000 train_loss=0.1019 lr=1.94e-04 elapsed=2038s
+[2026-05-16 01:48:47,434] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=450/3000 train_loss=0.1059 lr=1.93e-04 elapsed=2154s
+[2026-05-16 01:48:47,863] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000450
+[2026-05-16 01:50:45,811] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=475/3000 train_loss=0.1098 lr=1.92e-04 elapsed=2272s
+[2026-05-16 01:52:46,284] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=500/3000 train_loss=0.1122 lr=1.91e-04 elapsed=2393s
+[2026-05-16 01:52:46,720] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000500
+[2026-05-16 01:53:09,626] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=500 VAL_LOSS=0.1417
+[2026-05-16 01:53:20,529] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=500 mean_ER=1456.96 mean_CN=8.69e+05
+[2026-05-16 01:53:20,529] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - === MERGE EVENT 1 at step 500 (method=relora_diag_gated_S3neg) ===
+[2026-05-16 01:53:23,805] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - merge: total=3136 kept=1909 drop_rate=0.391
+[2026-05-16 01:53:57,483] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=500 POST-MERGE VAL_LOSS=0.1447 (first_eval=0.13500128918886184)
+[2026-05-16 01:55:53,853] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=525/3000 train_loss=0.1093 lr=5.00e-05 elapsed=2580s
+[2026-05-16 01:57:56,659] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=550/3000 train_loss=0.1154 lr=1.00e-04 elapsed=2703s
+[2026-05-16 01:57:57,135] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000550
+[2026-05-16 01:59:59,159] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=575/3000 train_loss=0.1166 lr=1.50e-04 elapsed=2826s
+[2026-05-16 02:01:51,548] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=600/3000 train_loss=0.1102 lr=2.00e-04 elapsed=2938s
+[2026-05-16 02:01:51,987] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000600
+[2026-05-16 02:03:52,945] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=625/3000 train_loss=0.1123 lr=2.00e-04 elapsed=3060s
+[2026-05-16 02:05:52,657] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=650/3000 train_loss=0.0893 lr=2.00e-04 elapsed=3179s
+[2026-05-16 02:05:53,087] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000650
+[2026-05-16 02:07:55,033] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=675/3000 train_loss=0.0861 lr=2.00e-04 elapsed=3302s
+[2026-05-16 02:09:53,809] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=700/3000 train_loss=0.0826 lr=1.99e-04 elapsed=3420s
+[2026-05-16 02:09:54,221] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000700
+[2026-05-16 02:11:48,285] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=725/3000 train_loss=0.0858 lr=1.99e-04 elapsed=3535s
+[2026-05-16 02:13:42,647] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=750/3000 train_loss=0.0877 lr=1.98e-04 elapsed=3649s
+[2026-05-16 02:13:43,093] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000750
+[2026-05-16 02:14:05,993] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=750 VAL_LOSS=0.1462
+[2026-05-16 02:16:03,035] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=775/3000 train_loss=0.0871 lr=1.97e-04 elapsed=3790s
+[2026-05-16 02:17:59,375] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=800/3000 train_loss=0.0897 lr=1.97e-04 elapsed=3906s
+[2026-05-16 02:17:59,816] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000800
+[2026-05-16 02:19:52,310] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=825/3000 train_loss=0.0902 lr=1.96e-04 elapsed=4019s
+[2026-05-16 02:21:50,168] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=850/3000 train_loss=0.0893 lr=1.95e-04 elapsed=4137s
+[2026-05-16 02:21:50,597] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000850
+[2026-05-16 02:23:45,648] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=875/3000 train_loss=0.0850 lr=1.94e-04 elapsed=4252s
+[2026-05-16 02:25:47,588] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=900/3000 train_loss=0.0915 lr=1.92e-04 elapsed=4374s
+[2026-05-16 02:25:48,037] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000900
+[2026-05-16 02:27:47,450] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=925/3000 train_loss=0.0920 lr=1.91e-04 elapsed=4494s
+[2026-05-16 02:29:47,625] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=950/3000 train_loss=0.0797 lr=1.90e-04 elapsed=4614s
+[2026-05-16 02:29:48,054] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_000950
+[2026-05-16 02:31:42,049] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=975/3000 train_loss=0.0523 lr=1.88e-04 elapsed=4729s
+[2026-05-16 02:33:40,716] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1000/3000 train_loss=0.0581 lr=1.87e-04 elapsed=4847s
+[2026-05-16 02:33:41,165] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_001000
+[2026-05-16 02:34:04,074] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1000 VAL_LOSS=0.1763
+[2026-05-16 02:34:14,967] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1000 mean_ER=1457.07 mean_CN=1.43e+05
+[2026-05-16 02:34:14,968] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - === MERGE EVENT 2 at step 1000 (method=relora_diag_gated_S3neg) ===
+[2026-05-16 02:34:17,909] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - merge: total=3136 kept=2098 drop_rate=0.331
+[2026-05-16 02:34:51,588] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1000 POST-MERGE VAL_LOSS=0.1751 (first_eval=0.13500128918886184)
+[2026-05-16 02:36:51,823] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1025/3000 train_loss=0.0593 lr=5.00e-05 elapsed=5038s
+[2026-05-16 02:38:48,772] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1050/3000 train_loss=0.0572 lr=1.00e-04 elapsed=5155s
+[2026-05-16 02:38:49,233] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_001050
+[2026-05-16 02:40:47,554] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1075/3000 train_loss=0.0598 lr=1.50e-04 elapsed=5274s
+[2026-05-16 02:42:50,727] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1100/3000 train_loss=0.0612 lr=2.00e-04 elapsed=5397s
+[2026-05-16 02:42:51,184] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_001100
+[2026-05-16 02:44:49,476] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1125/3000 train_loss=0.0628 lr=2.00e-04 elapsed=5516s
+[2026-05-16 02:46:48,478] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1150/3000 train_loss=0.0636 lr=2.00e-04 elapsed=5635s
+[2026-05-16 02:46:48,919] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_001150
+[2026-05-16 02:48:49,790] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1175/3000 train_loss=0.0623 lr=1.99e-04 elapsed=5756s
+[2026-05-16 02:50:47,717] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1200/3000 train_loss=0.0629 lr=1.99e-04 elapsed=5874s
+[2026-05-16 02:50:48,173] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_001200
+[2026-05-16 02:52:40,956] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1225/3000 train_loss=0.0604 lr=1.98e-04 elapsed=5988s
+[2026-05-16 02:54:38,098] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1250/3000 train_loss=0.0638 lr=1.97e-04 elapsed=6105s
+[2026-05-16 02:54:38,541] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_001250
+[2026-05-16 02:55:01,456] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1250 VAL_LOSS=0.1743
+[2026-05-16 02:56:56,374] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1275/3000 train_loss=0.0414 lr=1.96e-04 elapsed=6243s
+[2026-05-16 02:58:47,533] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1300/3000 train_loss=0.0392 lr=1.95e-04 elapsed=6354s
+[2026-05-16 02:58:47,965] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_001300
+[2026-05-16 03:00:50,962] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1325/3000 train_loss=0.0444 lr=1.93e-04 elapsed=6478s
+[2026-05-16 03:02:49,597] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1350/3000 train_loss=0.0456 lr=1.92e-04 elapsed=6596s
+[2026-05-16 03:02:50,013] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_001350
+[2026-05-16 03:04:48,747] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1375/3000 train_loss=0.0457 lr=1.90e-04 elapsed=6715s
+[2026-05-16 03:06:49,093] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1400/3000 train_loss=0.0447 lr=1.88e-04 elapsed=6836s
+[2026-05-16 03:06:49,538] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_001400
+[2026-05-16 03:08:42,111] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1425/3000 train_loss=0.0419 lr=1.86e-04 elapsed=6949s
+[2026-05-16 03:10:38,140] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1450/3000 train_loss=0.0512 lr=1.84e-04 elapsed=7065s
+[2026-05-16 03:10:38,779] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_001450
+[2026-05-16 03:12:44,230] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1475/3000 train_loss=0.0475 lr=1.81e-04 elapsed=7191s
+[2026-05-16 03:14:44,402] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1500/3000 train_loss=0.0464 lr=1.79e-04 elapsed=7311s
+[2026-05-16 03:14:44,859] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/checkpoints/step_001500
+[2026-05-16 03:15:07,776] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1500 VAL_LOSS=0.2019
+[2026-05-16 03:15:18,974] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1500 mean_ER=1457.18 mean_CN=1.06e+05
+[2026-05-16 03:15:18,974] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - === MERGE EVENT 3 at step 1500 (method=relora_diag_gated_S3neg) ===
+[2026-05-16 03:15:22,601] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - merge: total=3136 kept=2015 drop_rate=0.357
+[2026-05-16 03:15:56,947] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - step=1500 POST-MERGE VAL_LOSS=0.2070 (first_eval=0.13500128918886184)
+[2026-05-16 03:15:56,947] WARNING stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - ABORT: post-merge val_loss=0.2070 > first_eval=0.1350 * 1.5
+[2026-05-16 03:15:56,963] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - training ABORTED in 7383.6s
+[2026-05-16 03:16:19,758] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - FINAL VAL_LOSS=0.2070
+[2026-05-16 03:16:30,612] INFO stage3.qwen25-7b.metamathqa-10k.relora_diag_gated_S3neg - summary.json written

@@ -1,0 +1,234 @@
+[2026-05-15 07:29:53,920] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - START stage3 model=/mnt/cpfs/public_data/public_model/Mistral/Mistral-7B-v0.3 dataset=metamathqa-10k method=relora_random_drop out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42
+[2026-05-15 07:29:57,996] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - tokenizer loaded in 0.8s, vocab=32768
+[2026-05-15 07:29:57,996] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - loading MetaMathQA from /mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA
+[2026-05-15 07:29:59,391] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - metamathqa train=10000 val=500
+[2026-05-15 07:30:03,090] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - metamathqa tokenized: train 10000 val 500
+[2026-05-15 07:30:03,377] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - data prepared in 5.4s
+[2026-05-15 07:30:05,637] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - model loaded in 2.3s
+[2026-05-15 07:32:37,143] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - #LoRA layers=224 #components=3584
+[2026-05-15 07:32:37,150] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - #trainable params=41.94M
+[2026-05-15 07:32:53,420] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - [step 0] mean_ER=1447.36 mean_CN=1.08e+08 (sampled 8 layers)
+[2026-05-15 07:32:53,422] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - merge events scheduled at: [500, 1000, 1500, 2000, 2500, 3000]
+[2026-05-15 07:35:11,916] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=25/3000 train_loss=0.4506 lr=5.00e-05 elapsed=138s
+[2026-05-15 07:37:27,127] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=50/3000 train_loss=0.2619 lr=1.00e-04 elapsed=274s
+[2026-05-15 07:37:27,515] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000050
+[2026-05-15 07:39:39,868] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=75/3000 train_loss=0.2305 lr=1.50e-04 elapsed=406s
+[2026-05-15 07:41:51,838] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=100/3000 train_loss=0.2305 lr=2.00e-04 elapsed=538s
+[2026-05-15 07:41:52,225] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000100
+[2026-05-15 07:43:58,667] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=125/3000 train_loss=0.2308 lr=2.00e-04 elapsed=665s
+[2026-05-15 07:46:09,687] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=150/3000 train_loss=0.2169 lr=2.00e-04 elapsed=796s
+[2026-05-15 07:46:10,061] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000150
+[2026-05-15 07:48:26,416] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=175/3000 train_loss=0.2191 lr=2.00e-04 elapsed=933s
+[2026-05-15 07:50:39,484] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=200/3000 train_loss=0.2186 lr=1.99e-04 elapsed=1066s
+[2026-05-15 07:50:39,866] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000200
+[2026-05-15 07:52:53,270] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=225/3000 train_loss=0.2177 lr=1.99e-04 elapsed=1200s
+[2026-05-15 07:55:06,526] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=250/3000 train_loss=0.2127 lr=1.99e-04 elapsed=1333s
+[2026-05-15 07:55:06,901] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000250
+[2026-05-15 07:55:32,118] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=250 VAL_LOSS=0.2133
+[2026-05-15 07:55:32,490] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - best ckpt updated: step=250 val_loss=0.2133
+[2026-05-15 07:57:41,192] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=275/3000 train_loss=0.2087 lr=1.98e-04 elapsed=1488s
+[2026-05-15 07:59:52,103] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=300/3000 train_loss=0.2147 lr=1.98e-04 elapsed=1619s
+[2026-05-15 07:59:52,480] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000300
+[2026-05-15 08:02:05,336] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=325/3000 train_loss=0.1760 lr=1.97e-04 elapsed=1752s
+[2026-05-15 08:04:16,499] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=350/3000 train_loss=0.1424 lr=1.96e-04 elapsed=1883s
+[2026-05-15 08:04:16,875] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000350
+[2026-05-15 08:06:28,291] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=375/3000 train_loss=0.1431 lr=1.96e-04 elapsed=2015s
+[2026-05-15 08:08:41,609] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=400/3000 train_loss=0.1484 lr=1.95e-04 elapsed=2148s
+[2026-05-15 08:08:42,006] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000400
+[2026-05-15 08:10:56,440] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=425/3000 train_loss=0.1462 lr=1.94e-04 elapsed=2283s
+[2026-05-15 08:13:04,962] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=450/3000 train_loss=0.1452 lr=1.93e-04 elapsed=2412s
+[2026-05-15 08:13:05,335] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000450
+[2026-05-15 08:15:17,925] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=475/3000 train_loss=0.1526 lr=1.92e-04 elapsed=2544s
+[2026-05-15 08:17:28,902] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=500/3000 train_loss=0.1518 lr=1.91e-04 elapsed=2675s
+[2026-05-15 08:17:29,302] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000500
+[2026-05-15 08:17:54,538] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=500 VAL_LOSS=0.2120
+[2026-05-15 08:17:54,922] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - best ckpt updated: step=500 val_loss=0.2120
+[2026-05-15 08:18:11,337] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=500 mean_ER=1447.20 mean_CN=1.14e+08
+[2026-05-15 08:18:11,337] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - === MERGE EVENT 1 at step 500 (method=relora_random_drop) ===
+[2026-05-15 08:18:11,512] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - merge: total=3584 kept=1816 drop_rate=0.493
+[2026-05-15 08:18:52,984] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=500 POST-MERGE VAL_LOSS=0.2210 (first_eval=0.21331661707162858)
+[2026-05-15 08:21:11,277] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=525/3000 train_loss=0.1679 lr=5.00e-05 elapsed=2898s
+[2026-05-15 08:23:26,027] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=550/3000 train_loss=0.1528 lr=1.00e-04 elapsed=3033s
+[2026-05-15 08:23:26,410] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000550
+[2026-05-15 08:25:42,110] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=575/3000 train_loss=0.1590 lr=1.50e-04 elapsed=3169s
+[2026-05-15 08:27:50,987] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=600/3000 train_loss=0.1550 lr=2.00e-04 elapsed=3298s
+[2026-05-15 08:27:51,357] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000600
+[2026-05-15 08:30:04,211] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=625/3000 train_loss=0.1682 lr=2.00e-04 elapsed=3431s
+[2026-05-15 08:32:13,413] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=650/3000 train_loss=0.1130 lr=2.00e-04 elapsed=3560s
+[2026-05-15 08:32:13,806] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000650
+[2026-05-15 08:34:22,547] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=675/3000 train_loss=0.1081 lr=2.00e-04 elapsed=3689s
+[2026-05-15 08:36:36,901] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=700/3000 train_loss=0.1124 lr=1.99e-04 elapsed=3823s
+[2026-05-15 08:36:37,305] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000700
+[2026-05-15 08:38:49,041] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=725/3000 train_loss=0.1156 lr=1.99e-04 elapsed=3956s
+[2026-05-15 08:41:01,381] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=750/3000 train_loss=0.1171 lr=1.98e-04 elapsed=4088s
+[2026-05-15 08:41:01,780] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000750
+[2026-05-15 08:41:27,007] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=750 VAL_LOSS=0.2195
+[2026-05-15 08:43:39,354] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=775/3000 train_loss=0.1203 lr=1.97e-04 elapsed=4246s
+[2026-05-15 08:45:53,788] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=800/3000 train_loss=0.1179 lr=1.97e-04 elapsed=4380s
+[2026-05-15 08:45:54,169] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000800
+[2026-05-15 08:48:09,549] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=825/3000 train_loss=0.1200 lr=1.96e-04 elapsed=4516s
+[2026-05-15 08:50:18,997] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=850/3000 train_loss=0.1231 lr=1.95e-04 elapsed=4646s
+[2026-05-15 08:50:19,390] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000850
+[2026-05-15 08:52:32,986] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=875/3000 train_loss=0.1248 lr=1.94e-04 elapsed=4780s
+[2026-05-15 08:54:49,225] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=900/3000 train_loss=0.1221 lr=1.92e-04 elapsed=4916s
+[2026-05-15 08:54:49,607] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000900
+[2026-05-15 08:57:04,803] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=925/3000 train_loss=0.1228 lr=1.91e-04 elapsed=5051s
+[2026-05-15 08:59:19,552] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=950/3000 train_loss=0.0990 lr=1.90e-04 elapsed=5186s
+[2026-05-15 08:59:19,938] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_000950
+[2026-05-15 09:01:30,443] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=975/3000 train_loss=0.0663 lr=1.88e-04 elapsed=5317s
+[2026-05-15 09:03:46,142] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1000/3000 train_loss=0.0683 lr=1.87e-04 elapsed=5453s
+[2026-05-15 09:03:46,526] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001000
+[2026-05-15 09:04:11,756] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1000 VAL_LOSS=0.2455
+[2026-05-15 09:04:28,399] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1000 mean_ER=1448.20 mean_CN=1.51e+08
+[2026-05-15 09:04:28,399] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - === MERGE EVENT 2 at step 1000 (method=relora_random_drop) ===
+[2026-05-15 09:04:28,572] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - merge: total=3584 kept=1803 drop_rate=0.497
+[2026-05-15 09:05:09,757] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1000 POST-MERGE VAL_LOSS=0.2096 (first_eval=0.21331661707162858)
+[2026-05-15 09:05:10,136] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - best ckpt updated (post-merge): step=1000 val_loss=0.2096
+[2026-05-15 09:07:23,572] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1025/3000 train_loss=0.0813 lr=5.00e-05 elapsed=5670s
+[2026-05-15 09:09:38,239] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1050/3000 train_loss=0.0728 lr=1.00e-04 elapsed=5805s
+[2026-05-15 09:09:38,656] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001050
+[2026-05-15 09:11:53,548] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1075/3000 train_loss=0.0732 lr=1.50e-04 elapsed=5940s
+[2026-05-15 09:14:03,453] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1100/3000 train_loss=0.0813 lr=2.00e-04 elapsed=6070s
+[2026-05-15 09:14:03,834] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001100
+[2026-05-15 09:16:14,805] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1125/3000 train_loss=0.0831 lr=2.00e-04 elapsed=6201s
+[2026-05-15 09:18:27,477] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1150/3000 train_loss=0.0893 lr=2.00e-04 elapsed=6334s
+[2026-05-15 09:18:27,858] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001150
+[2026-05-15 09:20:38,196] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1175/3000 train_loss=0.0862 lr=1.99e-04 elapsed=6465s
+[2026-05-15 09:22:50,849] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1200/3000 train_loss=0.0913 lr=1.99e-04 elapsed=6597s
+[2026-05-15 09:22:51,230] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001200
+[2026-05-15 09:25:06,805] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1225/3000 train_loss=0.0921 lr=1.98e-04 elapsed=6733s
+[2026-05-15 09:27:20,492] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1250/3000 train_loss=0.0904 lr=1.97e-04 elapsed=6867s
+[2026-05-15 09:27:20,876] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001250
+[2026-05-15 09:27:46,083] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1250 VAL_LOSS=0.2336
+[2026-05-15 09:29:59,929] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1275/3000 train_loss=0.0572 lr=1.96e-04 elapsed=7026s
+[2026-05-15 09:32:10,621] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1300/3000 train_loss=0.0573 lr=1.95e-04 elapsed=7157s
+[2026-05-15 09:32:11,008] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001300
+[2026-05-15 09:34:27,156] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1325/3000 train_loss=0.0567 lr=1.93e-04 elapsed=7294s
+[2026-05-15 09:36:41,130] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1350/3000 train_loss=0.0609 lr=1.92e-04 elapsed=7428s
+[2026-05-15 09:36:41,533] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001350
+[2026-05-15 09:38:55,440] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1375/3000 train_loss=0.0603 lr=1.90e-04 elapsed=7562s
+[2026-05-15 09:41:06,241] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1400/3000 train_loss=0.0627 lr=1.88e-04 elapsed=7693s
+[2026-05-15 09:41:06,621] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001400
+[2026-05-15 09:43:22,504] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1425/3000 train_loss=0.0617 lr=1.86e-04 elapsed=7829s
+[2026-05-15 09:45:29,767] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1450/3000 train_loss=0.0659 lr=1.84e-04 elapsed=7956s
+[2026-05-15 09:45:30,130] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001450
+[2026-05-15 09:47:48,596] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1475/3000 train_loss=0.0694 lr=1.81e-04 elapsed=8095s
+[2026-05-15 09:49:56,406] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1500/3000 train_loss=0.0690 lr=1.79e-04 elapsed=8223s
+[2026-05-15 09:49:56,772] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001500
+[2026-05-15 09:50:22,023] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1500 VAL_LOSS=0.2569
+[2026-05-15 09:50:38,396] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1500 mean_ER=1448.78 mean_CN=4.91e+07
+[2026-05-15 09:50:38,396] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - === MERGE EVENT 3 at step 1500 (method=relora_random_drop) ===
+[2026-05-15 09:50:38,921] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - merge: total=3584 kept=1801 drop_rate=0.497
+[2026-05-15 09:51:19,762] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1500 POST-MERGE VAL_LOSS=0.2228 (first_eval=0.21331661707162858)
+[2026-05-15 09:53:30,267] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1525/3000 train_loss=0.0608 lr=5.00e-05 elapsed=8437s
+[2026-05-15 09:55:43,724] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1550/3000 train_loss=0.0554 lr=1.00e-04 elapsed=8570s
+[2026-05-15 09:55:44,105] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001550
+[2026-05-15 09:57:55,522] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1575/3000 train_loss=0.0460 lr=1.50e-04 elapsed=8702s
+[2026-05-15 10:00:09,553] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1600/3000 train_loss=0.0363 lr=2.00e-04 elapsed=8836s
+[2026-05-15 10:00:09,944] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001600
+[2026-05-15 10:02:22,387] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1625/3000 train_loss=0.0441 lr=2.00e-04 elapsed=8969s
+[2026-05-15 10:04:38,812] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1650/3000 train_loss=0.0460 lr=1.99e-04 elapsed=9105s
+[2026-05-15 10:04:39,202] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001650
+[2026-05-15 10:06:48,128] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1675/3000 train_loss=0.0501 lr=1.99e-04 elapsed=9235s
+[2026-05-15 10:09:07,485] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1700/3000 train_loss=0.0501 lr=1.97e-04 elapsed=9374s
+[2026-05-15 10:09:07,878] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001700
+[2026-05-15 10:11:15,852] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1725/3000 train_loss=0.0521 lr=1.96e-04 elapsed=9502s
+[2026-05-15 10:13:29,385] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1750/3000 train_loss=0.0532 lr=1.94e-04 elapsed=9636s
+[2026-05-15 10:13:29,768] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001750
+[2026-05-15 10:13:55,013] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1750 VAL_LOSS=0.2691
+[2026-05-15 10:16:09,246] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1775/3000 train_loss=0.0568 lr=1.92e-04 elapsed=9796s
+[2026-05-15 10:18:22,969] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1800/3000 train_loss=0.0533 lr=1.90e-04 elapsed=9930s
+[2026-05-15 10:18:23,352] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001800
+[2026-05-15 10:20:35,004] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1825/3000 train_loss=0.0573 lr=1.88e-04 elapsed=10062s
+[2026-05-15 10:22:47,382] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1850/3000 train_loss=0.0577 lr=1.85e-04 elapsed=10194s
+[2026-05-15 10:22:47,756] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001850
+[2026-05-15 10:25:00,542] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1875/3000 train_loss=0.0605 lr=1.82e-04 elapsed=10327s
+[2026-05-15 10:27:11,948] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1900/3000 train_loss=0.0338 lr=1.78e-04 elapsed=10459s
+[2026-05-15 10:27:12,333] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001900
+[2026-05-15 10:29:22,235] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1925/3000 train_loss=0.0337 lr=1.75e-04 elapsed=10589s
+[2026-05-15 10:31:31,956] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1950/3000 train_loss=0.0348 lr=1.71e-04 elapsed=10719s
+[2026-05-15 10:31:32,347] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_001950
+[2026-05-15 10:33:46,551] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=1975/3000 train_loss=0.0363 lr=1.67e-04 elapsed=10853s
+[2026-05-15 10:36:05,783] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2000/3000 train_loss=0.0370 lr=1.62e-04 elapsed=10992s
+[2026-05-15 10:36:06,137] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002000
+[2026-05-15 10:36:31,379] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2000 VAL_LOSS=0.2953
+[2026-05-15 10:36:47,345] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2000 mean_ER=1449.41 mean_CN=6.06e+07
+[2026-05-15 10:36:47,345] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - === MERGE EVENT 4 at step 2000 (method=relora_random_drop) ===
+[2026-05-15 10:36:47,514] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - merge: total=3584 kept=1772 drop_rate=0.506
+[2026-05-15 10:37:28,349] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2000 POST-MERGE VAL_LOSS=0.2481 (first_eval=0.21331661707162858)
+[2026-05-15 10:39:40,683] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2025/3000 train_loss=0.0277 lr=5.00e-05 elapsed=11207s
+[2026-05-15 10:41:57,399] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2050/3000 train_loss=0.0251 lr=1.00e-04 elapsed=11344s
+[2026-05-15 10:41:57,792] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002050
+[2026-05-15 10:44:07,991] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2075/3000 train_loss=0.0262 lr=1.50e-04 elapsed=11475s
+[2026-05-15 10:46:22,789] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2100/3000 train_loss=0.0305 lr=2.00e-04 elapsed=11609s
+[2026-05-15 10:46:23,177] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002100
+[2026-05-15 10:48:33,874] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2125/3000 train_loss=0.0368 lr=2.00e-04 elapsed=11740s
+[2026-05-15 10:50:43,415] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2150/3000 train_loss=0.0385 lr=1.98e-04 elapsed=11870s
+[2026-05-15 10:50:43,791] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002150
+[2026-05-15 10:52:54,285] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2175/3000 train_loss=0.0418 lr=1.97e-04 elapsed=12001s
+[2026-05-15 10:55:05,783] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2200/3000 train_loss=0.0340 lr=1.94e-04 elapsed=12132s
+[2026-05-15 10:55:06,161] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002200
+[2026-05-15 10:57:19,327] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2225/3000 train_loss=0.0276 lr=1.91e-04 elapsed=12266s
+[2026-05-15 10:59:29,848] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2250/3000 train_loss=0.0310 lr=1.87e-04 elapsed=12396s
+[2026-05-15 10:59:30,233] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002250
+[2026-05-15 10:59:55,457] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2250 VAL_LOSS=0.3154
+[2026-05-15 11:02:11,874] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2275/3000 train_loss=0.0329 lr=1.82e-04 elapsed=12558s
+[2026-05-15 11:04:20,388] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2300/3000 train_loss=0.0327 lr=1.77e-04 elapsed=12687s
+[2026-05-15 11:04:20,798] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002300
+[2026-05-15 11:06:24,710] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2325/3000 train_loss=0.0335 lr=1.71e-04 elapsed=12811s
+[2026-05-15 11:08:40,189] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2350/3000 train_loss=0.0349 lr=1.64e-04 elapsed=12947s
+[2026-05-15 11:08:40,576] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002350
+[2026-05-15 11:10:56,521] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2375/3000 train_loss=0.0331 lr=1.57e-04 elapsed=13083s
+[2026-05-15 11:13:10,064] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2400/3000 train_loss=0.0346 lr=1.50e-04 elapsed=13217s
+[2026-05-15 11:13:10,463] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002400
+[2026-05-15 11:15:20,859] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2425/3000 train_loss=0.0334 lr=1.42e-04 elapsed=13347s
+[2026-05-15 11:17:32,810] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2450/3000 train_loss=0.0334 lr=1.34e-04 elapsed=13479s
+[2026-05-15 11:17:33,192] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002450
+[2026-05-15 11:19:48,024] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2475/3000 train_loss=0.0327 lr=1.26e-04 elapsed=13615s
+[2026-05-15 11:22:06,067] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2500/3000 train_loss=0.0337 lr=1.17e-04 elapsed=13753s
+[2026-05-15 11:22:06,451] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002500
+[2026-05-15 11:22:31,681] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2500 VAL_LOSS=0.2923
+[2026-05-15 11:22:47,630] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2500 mean_ER=1450.22 mean_CN=6.97e+07
+[2026-05-15 11:22:47,631] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - === MERGE EVENT 5 at step 2500 (method=relora_random_drop) ===
+[2026-05-15 11:22:47,792] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - merge: total=3584 kept=1749 drop_rate=0.512
+[2026-05-15 11:23:28,866] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2500 POST-MERGE VAL_LOSS=0.2641 (first_eval=0.21331661707162858)
+[2026-05-15 11:25:42,760] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2525/3000 train_loss=0.0129 lr=5.00e-05 elapsed=13969s
+[2026-05-15 11:27:53,694] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2550/3000 train_loss=0.0129 lr=1.00e-04 elapsed=14100s
+[2026-05-15 11:27:54,083] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002550
+[2026-05-15 11:30:03,415] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2575/3000 train_loss=0.0155 lr=1.50e-04 elapsed=14230s
+[2026-05-15 11:32:16,111] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2600/3000 train_loss=0.0187 lr=2.00e-04 elapsed=14363s
+[2026-05-15 11:32:16,490] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002600
+[2026-05-15 11:34:31,134] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2625/3000 train_loss=0.0224 lr=1.98e-04 elapsed=14498s
+[2026-05-15 11:36:45,454] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2650/3000 train_loss=0.0261 lr=1.92e-04 elapsed=14632s
+[2026-05-15 11:36:45,858] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002650
+[2026-05-15 11:38:57,127] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2675/3000 train_loss=0.0264 lr=1.83e-04 elapsed=14764s
+[2026-05-15 11:41:14,070] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2700/3000 train_loss=0.0269 lr=1.71e-04 elapsed=14901s
+[2026-05-15 11:41:14,460] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002700
+[2026-05-15 11:43:23,083] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2725/3000 train_loss=0.0285 lr=1.56e-04 elapsed=15030s
+[2026-05-15 11:45:35,686] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2750/3000 train_loss=0.0268 lr=1.38e-04 elapsed=15162s
+[2026-05-15 11:45:36,086] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002750
+[2026-05-15 11:46:01,323] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2750 VAL_LOSS=0.3102
+[2026-05-15 11:48:14,843] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2775/3000 train_loss=0.0262 lr=1.20e-04 elapsed=15321s
+[2026-05-15 11:50:27,424] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2800/3000 train_loss=0.0252 lr=1.00e-04 elapsed=15454s
+[2026-05-15 11:50:27,827] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002800
+[2026-05-15 11:52:40,600] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2825/3000 train_loss=0.0188 lr=8.05e-05 elapsed=15587s
+[2026-05-15 11:54:56,901] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2850/3000 train_loss=0.0150 lr=6.17e-05 elapsed=15723s
+[2026-05-15 11:54:57,285] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002850
+[2026-05-15 11:57:08,598] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2875/3000 train_loss=0.0129 lr=4.44e-05 elapsed=15855s
+[2026-05-15 11:59:26,419] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2900/3000 train_loss=0.0139 lr=2.93e-05 elapsed=15993s
+[2026-05-15 11:59:26,826] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002900
+[2026-05-15 12:01:36,607] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2925/3000 train_loss=0.0119 lr=1.69e-05 elapsed=16123s
+[2026-05-15 12:03:49,527] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2950/3000 train_loss=0.0108 lr=7.61e-06 elapsed=16256s
+[2026-05-15 12:03:49,920] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002950
+[2026-05-15 12:05:58,935] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=2975/3000 train_loss=0.0103 lr=1.92e-06 elapsed=16386s
+[2026-05-15 12:08:13,051] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=3000/3000 train_loss=0.0120 lr=0.00e+00 elapsed=16520s
+[2026-05-15 12:08:13,438] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_003000
+[2026-05-15 12:08:38,618] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=3000 VAL_LOSS=0.3554
+[2026-05-15 12:08:54,416] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=3000 mean_ER=1450.82 mean_CN=1.26e+07
+[2026-05-15 12:08:54,416] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - === MERGE EVENT 6 at step 3000 (method=relora_random_drop) ===
+[2026-05-15 12:08:54,589] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - merge: total=3584 kept=1794 drop_rate=0.499
+[2026-05-15 12:09:35,569] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - step=3000 POST-MERGE VAL_LOSS=0.3034 (first_eval=0.21331661707162858)
+[2026-05-15 12:09:35,575] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - training done in 16602.1s
+[2026-05-15 12:10:00,579] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - FINAL VAL_LOSS=0.3034
+[2026-05-15 12:10:16,261] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - summary.json written
+[2026-05-15 12:10:16,645] INFO stage3.mistral-7b.metamathqa-10k.relora_random_drop - adapter saved to /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/adapter

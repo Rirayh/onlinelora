@@ -430,6 +430,27 @@ def build_keep_mask(handles: list[LoraHandle], gate_sign: str,
     }
 
 
+def build_truncated_loader(loader, max_len: int, max_batches: int):
+    """F1 fix for relora_train_gated OOM.
+
+    Returns a list of dicts (compatible with `for batch in loader`) where every
+    2-D tensor is truncated to `max_len` along the sequence axis. Materializes
+    only the first `max_batches` batches to avoid memory blowup.
+    """
+    truncated = []
+    for batch in loader:
+        if len(truncated) >= max_batches:
+            break
+        new_batch = {}
+        for k, v in batch.items():
+            if isinstance(v, torch.Tensor) and v.dim() == 2:
+                new_batch[k] = v[:, :max_len].contiguous()
+            else:
+                new_batch[k] = v
+        truncated.append(new_batch)
+    return truncated
+
+
 # -----------------------------------------------------------------------------
 # Main
 # -----------------------------------------------------------------------------
@@ -468,6 +489,8 @@ def main() -> int:
                    help="save peft adapter to out_root/adapter/ after training")
     p.add_argument("--ckpt_every", type=int, default=50,
                    help="save adapter checkpoint every N steps (0 = disabled)")
+    p.add_argument("--saliency_max_seq_len", type=int, default=2048,
+                   help="truncate batches to this length when computing saliency on long-seq train batches (F1 fix for relora_train_gated OOM); only triggers if < args.seq_len")
     p.add_argument("--smoke", action="store_true",
                    help="quick smoke: total_steps=50 eval_every=25 rank_stat_every=25")
     args = p.parse_args()
@@ -601,6 +624,7 @@ def main() -> int:
         "dataset": args.dataset, "method": args.method,
         "gate_sign": gate_sign, "do_relora": do_relora,
         "saliency_source": saliency_source,
+        "saliency_max_seq_len": args.saliency_max_seq_len,
         "lora_r": args.lora_r, "lora_alpha": args.lora_alpha,
         "lora_dropout": args.lora_dropout, "target_modules": args.target_modules,
         "seq_len": args.seq_len, "batch_size": args.batch_size,
@@ -756,6 +780,14 @@ def main() -> int:
                     else:
                         # gated: compute first-order saliency on val OR train batch
                         sal_loader = diag_loader if saliency_source == "val" else train_loader
+                        if saliency_source == "train" and args.saliency_max_seq_len < args.seq_len:
+                            sal_loader = build_truncated_loader(
+                                sal_loader,
+                                max_len=args.saliency_max_seq_len,
+                                max_batches=args.diag_batches,
+                            )
+                            log.info(f"saliency train loader truncated to seq_len={args.saliency_max_seq_len} "
+                                     f"(diag_batches={args.diag_batches}) [F1 OOM fix]")
                         fo_signed = first_order_saliency(
                             model, handles, sal_loader, device,
                             max_batches=args.diag_batches, signed=True,
@@ -817,16 +849,15 @@ def main() -> int:
                                                        "post_merge": True})
                     log.info(f"step={step} POST-MERGE VAL_LOSS={vl_post:.4f} "
                              f"(first_eval={first_eval_val_loss})")
-                    if vl_post < best_val_loss:
-                        best_val_loss = vl_post
-                        best_step = step
-                        best_dir = ckpt_dir / "best"
-                        best_dir.mkdir(exist_ok=True)
-                        model.save_pretrained(str(best_dir))
-                        tok.save_pretrained(str(best_dir))
-                        write_json(str(best_dir / "meta.json"),
-                                   {"step": step, "val_loss": vl_post, "post_merge": True})
-                        log.info(f"best ckpt updated (post-merge): step={step} val_loss={vl_post:.4f}")
+                    # NOTE: do NOT update best ckpt from post-merge val_loss.
+                    # Right after a ReLoRA merge, lora_B has just been zeroed
+                    # (the trained delta is now baked into the frozen base
+                    # weights). Saving model.save_pretrained() at this instant
+                    # serializes a PEFT adapter with lora_B=0, which is
+                    # numerically identical to the base model -> downstream
+                    # lm-eval would reflect base model performance, not the
+                    # learned adapter. Best ckpts come exclusively from the
+                    # eval_every branch above (training-state evals).
 
                     # red-line abort
                     if first_eval_val_loss is not None and vl_post > first_eval_val_loss * args.abort_factor:

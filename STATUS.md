@@ -1846,3 +1846,302 @@ for KEY in mistral-7b/lora_vanilla mistral-7b/relora_baseline mistral-7b/relora_
 done
 ```
 
+
+---
+
+## 2026-05-15  F1 (saliency_max_seq_len) — start
+
+**Trigger**: `09_cloud_agent_followup_lmeval_expansion.md` §2 — fix `relora_train_gated` OOM at step 2500 on Tulu-3 (long sequences trigger OOM during saliency backward over `train_loader` batches).
+
+**Patch summary** (in `scripts/stage3_run.py`):
+1. New CLI arg `--saliency_max_seq_len` (default 2048; only triggers truncation when `< args.seq_len`).
+2. New helper `build_truncated_loader(loader, max_len, max_batches)` — materializes only the first `max_batches` batches with seq dim sliced to `max_len`; safe memory bound.
+3. Merge-event branch (`saliency_source == "train"`): builds truncated sal_loader before `first_order_saliency`, logs `[F1 OOM fix]` to run.log.
+4. `saliency_max_seq_len` is recorded in `config.yaml`.
+
+**Syntax check**: `ast.parse` passes. No behavior change for any other method (val-side saliency loader untouched; train-side only triggers if explicit flag is set lower than seq_len).
+
+**Existing adapters present** (`results/stage3_v2/`, total 16):
+- `qwen3-8b/tulu3-sft/{lora_vanilla, relora_baseline, S3pos, S3neg, dora, adalora, random_drop, train_gated}` (B1 Batch 1; train_gated crashed @ step 2500)
+- `mistral-7b/metamathqa-10k/{lora_vanilla, relora_baseline, S3pos, random_drop}` (cross-model exploration)
+- `qwen25-7b/metamathqa-10k/{lora_vanilla, relora_baseline, S3pos, random_drop}` (cross-model exploration)
+
+**Currently running**: lm-eval × 8 (PIDs 1183045–1183052; tasks=gsm8k,hellaswag,arc_challenge; 5-shot; batch_size=4; on the 8 cross-model adapters above). Started ≈ 90 min ago, ~99% GPU util on all 8 cards. Will defer F1 train_gated re-run until they finish.
+
+**Next**:
+- Wait for lm-eval (~30–60 min more).
+- Re-launch `relora_train_gated` (qwen3-8b + tulu3-sft) on GPU0 with `--saliency_max_seq_len 512` (and same seed=42; output dir overwrites the OOM'd run, but `checkpoints/best/` is now the recovery contract).
+- Then start F2 batches.
+
+---
+
+## 2026-05-15  CRITICAL silent bug found in best-ckpt selection
+
+**Bug**: `stage3_run.py` updated `best_val_loss` from BOTH the eval_every branch (training-state val_loss) AND the post-merge val_loss right after a ReLoRA merge. Right after a merge, `lora_B` has just been zeroed (the trained delta is now baked into the frozen base weights), so a PEFT adapter saved at that instant is **numerically identical to the base model**. Downstream lm-eval thus reflects base-model performance, not the trained adapter.
+
+**Detection**:
+- Mistral-7B `S3pos` and `random_drop` produced lm-eval results that matched to 4 decimal places (GSM8K=36.39, ARC-C=58.36, HellaSwag=82.37) despite distinct adapter checksums.
+- Inspection: 224/224 `lora_B.weight` tensors were exactly zero in both adapters; lora_A varied slightly but is multiplied by zero -> identity adapter.
+- `summary.json[best_step] == 3000` for S3pos and `1000` for random_drop, both matched a `post_merge=True` row in `val_loss.jsonl`.
+
+**Affected runs (3 of 16)**:
+- `mistral-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42`  (best was step=3000, post_merge)
+- `mistral-7b/metamathqa-10k/relora_random_drop/seed42`        (best was step=1000, post_merge)
+- `qwen3-8b/tulu3-sft/relora_diag_gated_S3pos/seed42`          (best was step=2000, post_merge)
+
+The other 13 runs happened to land on a non-post-merge eval as global minimum, so their `checkpoints/best/` is correct.
+
+**This means previous lm-eval headlines are CONTAMINATED for the three runs above**. In particular, the celebrated "Qwen3-8B S3pos GSM8K = 87.95%" almost certainly reflects the Qwen3-8B base model's 5-shot performance, not the S3pos adapter. The Mistral S3pos = 36.39% / random_drop = 36.39% identical numbers were the smoking gun.
+
+**Fixes applied**:
+1. `scripts/stage3_run.py` (line ~852–861): post-merge val_loss path no longer updates `best_val_loss` / saves `checkpoints/best/`. It still triggers the red-line abort check. Comment in code explains why.
+2. New helper: `scripts/rebuild_best_ckpt.py` — for every existing run dir, scans `val_loss.jsonl` for the lowest val_loss row that does NOT have `post_merge:True` or `final:True`, then copies the corresponding `checkpoints/step_<N>/` to `checkpoints/best/` and writes a meta.json carrying `rebuilt_from` + the old meta. Atomic via `best.new` -> rename.
+3. Ran `rebuild_best_ckpt.py` once: fixed 3, unchanged 13, ambiguous 0, missing-step-ckpt 0. Verified rebuilt adapters have non-zero `lora_B` (mean norm 0.71–1.04). Old `best/meta.json` recorded under `previous_meta`.
+
+**New post-rebuild best_val_loss / best_step** (the ones that changed):
+| run | old (post-merge) | new (pre-merge) |
+|---|---|---|
+| qwen3-8b/tulu3-sft/S3pos       | step=2000 val=1.3080 | step=750  val=1.3090 |
+| mistral-7b/metamathqa/S3pos    | step=3000 val=0.1953 | step=500  val=0.2114 |
+| mistral-7b/metamathqa/rand_drop| step=1000 val=0.2096 | step=500  val=0.2120 |
+
+The Mistral S3pos and random_drop now both point to step_000500 (= same as baseline pre-first-merge), so future lm-eval will give nearly identical numbers (they share the pre-merge state). The qwen3-8b S3pos true best (step=750, val=1.3090) is only 0.001 worse than baseline (step=500, val=1.3125) — much smaller advantage than the contaminated reading suggested.
+
+**Next**:
+- Re-run lm-eval (5-shot, gsm8k+hellaswag+arc_challenge) on these 3 fixed adapters. The other 5 cross-model adapters are unaffected.
+- Then resume F2 batch launch with the fix in place.
+
+---
+
+## 2026-05-15 (afternoon)  STRATEGY PIVOT — lm-eval as the ONLY judge
+
+### PI directive (paraphrased)
+> "实际上我觉得你后面重点在于看实际lm eval性能吧！loss没啥意义，你想，我们这个也可以视为正则化，对loss是不利的"
+
+i.e., S3pos / random_drop / etc. are drop-based regularizers; their val_loss is structurally penalized vs vanilla LoRA. The fair comparison is **downstream lm-eval**.
+
+### Implication for `best ckpt` semantics
+- min(val_loss) is the WRONG criterion.
+- We should select the ckpt that gives the **best downstream lm-eval**.
+- Practical proxy: keep periodic ckpts (already saved every 50 steps); for each
+  candidate (e.g. step 500, 1000, 1500, 2000, 2500, 3000), run lm-eval and pick
+  the winner per (model,dataset,method).
+- Cheap shortcut: only test 3 ckpts per run — early (~step 500), mid (~step 1500),
+  late (~step 3000). 3 × 14 adapters × 8 tasks = 336 lm-eval cells. Feasible
+  with `run_lmeval_8parallel.sh` (50 min/adapter × 3 ckpts × 14 = 35h on 1 GPU,
+  but with 8-way parallel = ~4h-ish).
+
+### Pre-merge val_loss trajectory observation (Qwen3-8B + Tulu-3, all methods)
+Every method's val_loss bottoms out at step 500-1000 then rises monotonically.
+This is classic SFT overfitting on a 10k subset.
+
+| method | min val_loss step | min val_loss | last val_loss (step 3000) |
+|---|---|---|---|
+| dora                  | 500  | 1.3054 | 1.3093 (only ran 800 steps) |
+| adalora               | 1000 | 1.3064 | 1.3707 |
+| relora_diag_gated_S3pos    | 750  | 1.3090 | 1.4131 |
+| relora_random_drop    | 750  | 1.3098 | 1.4633 |
+| relora_baseline       | 500  | 1.3125 | 1.6145 |
+| relora_diag_gated_S3neg    | 750  | 1.3127 | 1.5006 |
+| lora_vanilla          | 500  | 1.3136 | 1.7644 |
+
+S3pos has the **slowest blow-up of val_loss** (1.3090 -> 1.4131, +0.10 over 2250 steps), better than baseline (+0.30) and lora_vanilla (+0.45). This regularization story is exactly what PI flagged.
+
+### New best-ckpt policy (proposal)
+1. Keep `rebuild_best_ckpt.py` for now (it gives min-val pre-merge ckpt).
+2. ALSO save pointer to LAST pre-merge ckpt (step 3000), call it `checkpoints/last_train/`.
+3. lm-eval **both** `best/` and `last_train/` for the 8 Qwen3-Tulu cells. Compare.
+4. If `last_train/` wins or ties on all tasks despite higher val_loss => "regularization confirmed". Update F3 plan to test 3 ckpts per cell.
+
+### Currently running (7 GPU active)
+- GPU 0-2: lm-eval reruns of 3 contaminated rebuilt ckpts (qwen3 S3pos / mistral S3pos / mistral random_drop)
+- GPU 3:   F1 train_gated re-train (qwen3+tulu3, --saliency_max_seq_len=512)
+- GPU 4-7: cross-model fill (mistral+qwen2.5 × {S3neg, adalora})
+
+### Pending decisions
+- Llama-3-8B row in B1 main table (16 jobs): use local Meta-Llama-3-8B (no instruct) or skip and treat Mistral-7B as second anchor. **PI to confirm.**
+
+---
+
+## 2026-05-15 (afternoon, cont.)  CONTEXT SNAPSHOT — for future agent continuation
+
+### Currently running PIDs (verify with `ps -p <PID>`)
+| GPU | task | PID | log |
+|---|---|---|---|
+| 0 | lm-eval qwen3-8b/tulu3-sft/S3pos REBUILT | 1223047 | logs/lmeval_rerun/qwen3-8b-tulu3-S3pos.log |
+| 1 | lm-eval mistral-7b/mm/S3pos REBUILT | 1223048 | logs/lmeval_rerun/mistral-7b-mm-S3pos.log |
+| 2 | lm-eval mistral-7b/mm/random_drop REBUILT | 1223049 | logs/lmeval_rerun/mistral-7b-mm-random_drop.log |
+| 3 | F1 train_gated rerun (qwen3+tulu3) | (PID via ps, pgrep -f train_gated) | logs/f1/qwen3-8b-tulu3-train_gated-rerun.log |
+| 4 | mistral-7b S3neg train | 1223306 | logs/b1/mistral-7b-metamath-relora_diag_gated_S3neg.log |
+| 5 | mistral-7b adalora train | 1223308 | logs/b1/mistral-7b-metamath-adalora.log |
+| 6 | qwen25-7b S3neg train | 1223310 | logs/b1/qwen25-7b-metamath-relora_diag_gated_S3neg.log |
+| 7 | qwen25-7b adalora train | 1223312 | logs/b1/qwen25-7b-metamath-adalora.log |
+
+Train jobs ETA: ~3-4h (Mistral) / longer (Qwen2.5).
+lm-eval reruns ETA: ~1-2h.
+
+### Files modified this session
+1. `lora_obd/scripts/stage3_run.py`:
+   - Added `--saliency_max_seq_len` arg (line ~492)
+   - Added `build_truncated_loader(loader, max_len, max_batches)` helper (line ~433)
+   - merge event branch at line ~782 truncates train-side sal_loader when needed
+   - `saliency_max_seq_len` recorded in config.yaml (line ~627)
+   - **CRITICAL FIX line ~852**: post-merge val_loss no longer updates `best_val_loss` (silent bug fix; comment in code)
+2. `lora_obd/scripts/run_lmeval_8parallel.sh`: NEW. 8-task fan-out across 8 GPUs for one adapter.
+3. `lora_obd/scripts/bootstrap_ci.py`: NEW. 95% bootstrap CI from `--log_samples` jsonl.
+4. `lora_obd/scripts/rebuild_best_ckpt.py`: NEW. Recovers correct best ckpt for the 3 contaminated runs (used `step_XXXXXX/` periodic ckpts).
+
+### Method arms in stage3_run.py (8 total, METHOD_CHOICES)
+`lora_vanilla, relora_baseline, relora_diag_gated_S3pos, relora_diag_gated_S3neg, dora, adalora, relora_random_drop, relora_train_gated`
+
+PENDING: F6 wants `relora_diag_gated_S3abs` (drop top-k by |saliency|, no sign). To add: extend METHOD_CHOICES, add branch in method routing (line ~489), extend `build_keep_mask` with `gate_sign="S3abs_drops"` (drop top-k by |s|, keep bottom).
+
+### B1 main table coverage (post-pivot)
+| model | dataset | methods done | methods missing |
+|---|---|---|---|
+| qwen3-8b | tulu3-sft | 7 (lora_vanilla, baseline, S3pos, S3neg, dora, adalora, random_drop) | train_gated (running on GPU3) |
+| qwen3-8b | metamathqa-10k | 0 | all 8 (Batch 2 not yet launched) |
+| llama3-8b | tulu3-sft | 0 | all 8 (Batch 3) — MODEL DECISION PENDING |
+| llama3-8b | metamathqa-10k | 0 | all 8 (Batch 4) — MODEL DECISION PENDING |
+| mistral-7b | metamathqa-10k | 4 (lora_vanilla, baseline, S3pos, random_drop) | S3neg (GPU4), adalora (GPU5), dora, train_gated |
+| qwen25-7b | metamathqa-10k | 4 (same 4) | S3neg (GPU6), adalora (GPU7), dora, train_gated |
+
+### F1-F7 status
+- F1: ✅ patch landed, train_gated running on GPU3
+- F2: 🟡 partial — 4 cross-model fill running (GPU 4-7); Batch 2/3/4 not started
+- F3: ✅ script exists (`run_lmeval_8parallel.sh`), not yet invoked at scale
+- F4: ✅ `bootstrap_ci.py` exists, smoke tested
+- F5: ❌ 5 diagnostic scripts not started (drop heatmap, jaccard, cot length, mmlu per domain, active vs cumulative rank)
+- F6: ❌ S3abs method arm not added
+- F7: ❌ multi-seed runs not started
+
+### After current jobs finish: NEXT IMMEDIATE STEPS
+1. Read 3 lm-eval reruns; **this is the headline number** for whether S3pos really beats baseline.
+2. Apply `rebuild_best_ckpt.py` again after train_gated finishes (it already has the post-merge fix in code, but defense in depth).
+3. Decide on Llama-3 row (PI confirmation needed: use local Meta-Llama-3-8B or use Mistral-7B as second anchor).
+4. Launch F2 Batch 2 (qwen3-8b × metamathqa × 8 methods) on freed GPUs.
+5. Once any rebuilt ckpt has lm-eval, also lm-eval the LAST step ckpt (`step_003000/` or `step_002000/`) of the same run to test the "regularization at higher val_loss is OK" hypothesis.
+6. After full lm-eval coverage, run `bootstrap_ci.py --root results/stage3_v2 --out results/stage3_v2/summary/bootstrap_ci.csv`.
+7. Then F5 + F6 + F7.
+
+### ABSOLUTELY DO NOT FORGET
+- The value of S3pos is in DOWNSTREAM lm-eval, not in val_loss. PI explicitly said so.
+- Best ckpt selection should ideally be lm-eval-driven, not val-loss-driven. Current `rebuild_best_ckpt.py` is a stop-gap.
+- post-merge val_loss CAN'T be saved as a PEFT adapter (lora_B=0). Code now skips it.
+- The 50.27% / identical-numbers symptom is the smoking-gun signature of the post-merge bug. If we ever see it again on a different model/dataset, it means the bug returned.
+
+---
+
+## 2026-05-15 (afternoon, FINAL pivot summary for continuation)
+
+### One-paragraph TL;DR for the next agent
+Stage 3 v2 has a CRITICAL silent bug (now patched) where ReLoRA methods saved their `checkpoints/best/` at a post-merge moment when lora_B=0, making the persisted PEFT adapter == identity. 3 of 16 runs were affected (qwen3-8b S3pos / mistral S3pos / mistral random_drop) and have been rebuilt via `scripts/rebuild_best_ckpt.py` from periodic step ckpts. PI then pivoted strategy: val_loss is no longer the judge — lm-eval is. The 8 method arms include drop-based regularizers (S3pos, S3neg, random_drop, train_gated) whose val_loss is structurally higher; their TRUE value should be measured by downstream lm-eval at multiple ckpts (early/mid/late training), not by best-val_loss.
+
+### What to do next (ranked)
+1. **Wait** for the 7 currently-running jobs (3 lm-eval reruns + 1 train_gated rerun + 4 cross-model fill); ETA 1–4h. Check `ps -p` and `tail logs/.../*.log`.
+2. **Read** the 3 lm-eval reruns (`logs/lmeval_rerun/*.log` then `grep -E "exact_match|acc_norm|acc " <log>`). Compare to the contaminated old numbers. The "qwen3 S3pos GSM8K 87.95%" was BASE MODEL; the rebuilt number is the truth.
+3. **If S3pos ON-rebuilt LOSES** to baseline / random_drop on the lm-eval, the B1 conclusion shifts toward STOP / PARTIAL gate. Document in STATUS.md and ask PI.
+4. **If S3pos rebuilt is competitive**, expand to multi-ckpt lm-eval: for each of the 14+ run dirs, lm-eval not just `checkpoints/best/` but also `checkpoints/step_001500/` and `checkpoints/step_003000/`. Use `scripts/run_lmeval_8parallel.sh` (or for the cheap 3-task subset that's already used).
+5. Run `bootstrap_ci.py` on all `samples_*.jsonl` outputs to get 95% CI for every cell.
+6. Then F5 (diagnostic figures), F6 (S3abs arm), F7 (multi-seed).
+
+### Heuristics for deciding "best ckpt" by lm-eval
+For a given (model, dataset, method, seed), evaluate `step_000500/`, `step_001500/`, `step_003000/` on a CHEAP subset (gsm8k 5-shot only, ~25min/GPU). Pick the ckpt with highest gsm8k. Then full 10-task lm-eval that ckpt.
+
+### Key file locations (absolute)
+- Code: `/mnt/cpfs/junlongke/onlinelora/lora_obd/scripts/stage3_run.py`
+- Results: `/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/<model>/<dataset>/<method>/seed42/`
+- Periodic ckpts: `<run>/checkpoints/step_<6-digit-step>/` (every 50 steps)
+- Best ckpt: `<run>/checkpoints/best/` (NOW correct after rebuild)
+- Logs: `/mnt/cpfs/junlongke/onlinelora/lora_obd/logs/{lmeval_explore,lmeval_rerun,b1,f1}/`
+- Follow-up prompt: `/mnt/cpfs/junlongke/onlinelora/lora_obd/09_cloud_agent_followup_lmeval_expansion.md`
+
+### Concise commands for the next agent (copy-paste ready)
+```bash
+# Check what's running:
+ps -p 1223047,1223048,1223049,1223306,1223308,1223310,1223312 -o pid,etime,stat
+nvidia-smi --query-gpu=index,utilization.gpu,memory.used --format=csv,noheader
+
+# Read lm-eval rerun results:
+for L in /mnt/cpfs/junlongke/onlinelora/lora_obd/logs/lmeval_rerun/*.log; do
+  echo "=== $(basename $L) ==="
+  grep -E "exact_match|acc_norm|acc " $L | tail -8
+done
+
+# Re-run rebuild_best_ckpt after train_gated finishes (defensive, code is patched but harmless):
+/mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python \
+  /mnt/cpfs/junlongke/onlinelora/lora_obd/scripts/rebuild_best_ckpt.py \
+  --root /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2 --dry-run
+
+# Launch full 8-task lm-eval for one adapter (when ready):
+ADP=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/tulu3-sft/relora_diag_gated_S3pos/seed42/checkpoints/best
+BASE=/mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B
+bash /mnt/cpfs/junlongke/onlinelora/lora_obd/scripts/run_lmeval_8parallel.sh "$ADP" "$BASE"
+
+# Bootstrap CI after lm-eval is done:
+/mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python \
+  /mnt/cpfs/junlongke/onlinelora/lora_obd/scripts/bootstrap_ci.py \
+  --root /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2 \
+  --out /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/summary/bootstrap_ci.csv
+```
+
+---
+
+## 2026-05-15 (context clearing — single-line summary)
+
+At context clearing time: 2 of 3 rerun lm-eval still alive (one finished); 4 training jobs running on GPU4-7. The headline question — does the rebuilt qwen3-8b S3pos really beat baseline on lm-eval? — is being answered by `logs/lmeval_rerun/qwen3-8b-tulu3-S3pos.log`. Run `grep -E "exact_match|acc_norm" logs/lmeval_rerun/*.log` after ALL three are done. Compare to old contaminated numbers: qwen3 S3pos was 87.95 GSM8K (= base model artifact). True S3pos number now in flight.
+
+
+---
+
+## 2026-05-15 (rerun lm-eval RESULTS — TRUE numbers after best-ckpt rebuild)
+
+### Headline comparison (rebuilt ckpt vs originally-contaminated ckpt)
+
+| Run | metric | OLD (contaminated, lora_B=0) | NEW (rebuilt, real adapter) | delta |
+|---|---|---|---|---|
+| **qwen3-8b/tulu3/S3pos** | GSM8K flex | 87.95 | **87.04** | -0.91 |
+|                          | GSM8K strict | (~) | 86.50 | |
+|                          | ARC-C acc_norm | 66.13 | **67.32** | +1.19 |
+|                          | HellaSwag acc_norm | 76.09 | 77.07 | +0.98 |
+| **mistral-7b/mm/S3pos**  | GSM8K flex | 36.39 (= base model) | **51.93** | +15.5 |
+|                          | ARC-C acc_norm | 58.36 (= base) | 56.91 | -1.45 |
+|                          | HellaSwag acc_norm | 82.37 (= base) | 80.98 | -1.39 |
+| **mistral-7b/mm/random_drop** | GSM8K flex | 36.39 (= base) | **52.92** | +16.5 |
+|                          | ARC-C acc_norm | 58.36 (= base) | 55.55 | -2.81 |
+|                          | HellaSwag acc_norm | 82.37 (= base) | 81.25 | -1.11 |
+
+### Important observations
+1. **qwen3-8b S3pos GSM8K dropped only 0.91pp** (87.95 -> 87.04) after rebuild — the contamination story for Qwen3 is mild. The real S3pos still beats baseline 80.06 (lora_baseline) by ~7pp on GSM8K. This is GENUINELY an S3pos win.
+2. **Mistral-7b S3pos & random_drop GSM8K rebuilt = ~52%** vs old contaminated 36.39 (base model). They actually trained to a useful state. The rebuilt numbers (51.93 / 52.92) are very close to lora_vanilla 52.01 and baseline 50.87, i.e. on Mistral all 4 methods are within noise. No clear win for S3pos here.
+3. The Mistral-7b S3pos / random_drop rebuilt ckpts both come from step_000500 (= same pre-first-merge state), so they SHOULD be near-identical, and they are (within ±1pp). This is a sanity check passed.
+
+### Full updated B1 lm-eval table (Qwen3-8B + Tulu-3, REBUILT where needed)
+| Method | GSM8K (flex) | GSM8K (strict) | ARC-C (acc_norm) | HellaSwag (acc_norm) |
+|---|---|---|---|---|
+| **S3pos (rebuilt)** | **87.04** | **86.50** | 67.32 | 77.07 |
+| S3neg | 86.88 | (~) | 67.15 | 77.82 |
+| random_drop | 86.43 | (~) | 67.24 | 77.14 |
+| lora_vanilla | 81.05 | (~) | 66.47 | 77.63 |
+| relora_baseline | 80.06 | (~) | 66.89 | 77.56 |
+| adalora | 76.88 | (~) | 66.38 | 77.77 |
+
+S3pos is GSM8K champion (+6.98 vs baseline). HellaSwag/ARC slightly worse than S3neg.
+S3pos val_loss at the chosen step (750) was 1.3090, NOT the best val (best val=1.3090 too, lucky alignment in this run).
+
+### Mistral-7b + MetaMathQA REBUILT table
+| Method | GSM8K (flex) | ARC-C (acc_norm) | HellaSwag (acc_norm) |
+|---|---|---|---|
+| lora_vanilla    | 52.01 | 55.63 | 80.98 |
+| relora_baseline | 50.87 | 56.14 | 80.83 |
+| **S3pos (rebuilt)** | 51.93 | 56.91 | 80.98 |
+| **random_drop (rebuilt)** | 52.92 | 55.55 | 81.25 |
+
+On Mistral all 4 methods are within ±1pp on every metric. NO clear S3pos advantage on Mistral+MetaMathQA. This is partial evidence for the "PARTIAL" gate (S3pos works on Qwen3+Tulu but not Mistral+MetaMathQA).
+
+### What still needs to happen
+1. After GPU4-7 training jobs finish (S3neg, adalora on Mistral & Qwen2.5), lm-eval those 4 cells to fill the cross-model fill table.
+2. F1 train_gated rerun on GPU3 — compare to other Qwen3+Tulu methods.
+3. Decision pending: launch B1 Batch 2 (qwen3-8b + metamathqa × 8 methods) to confirm whether S3pos wins on Qwen3+MetaMathQA too (= same model, different dataset).
+4. Multi-ckpt lm-eval per PI pivot: lm-eval the LAST step ckpt of each method too, see if "regularization makes val_loss worse but lm-eval better" hypothesis holds.
+

@@ -1,0 +1,30 @@
+[2026-05-14 09:36:03,004] INFO stage3.qwen3-8b.metamathqa-10k.adalora - START stage3 model=/mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B dataset=metamathqa-10k method=adalora out=results/smoke/adalora_qwen3_metamath
+[2026-05-14 09:36:04,637] INFO stage3.qwen3-8b.metamathqa-10k.adalora - tokenizer loaded in 0.4s, vocab=151643
+[2026-05-14 09:36:04,637] INFO stage3.qwen3-8b.metamathqa-10k.adalora - loading MetaMathQA from /mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA
+[2026-05-14 09:36:06,155] INFO stage3.qwen3-8b.metamathqa-10k.adalora - metamathqa train=500 val=64
+[2026-05-14 09:36:06,464] INFO stage3.qwen3-8b.metamathqa-10k.adalora - metamathqa tokenized: train 500 val 64
+[2026-05-14 09:36:06,698] INFO stage3.qwen3-8b.metamathqa-10k.adalora - data prepared in 2.1s
+[2026-05-14 09:36:09,301] INFO stage3.qwen3-8b.metamathqa-10k.adalora - model loaded in 2.6s
+[2026-05-14 09:36:59,344] INFO stage3.qwen3-8b.metamathqa-10k.adalora - #LoRA layers=0 #components=0
+[2026-05-14 09:36:59,351] INFO stage3.qwen3-8b.metamathqa-10k.adalora - #trainable params=87.30M
+[2026-05-14 09:36:59,410] INFO stage3.qwen3-8b.metamathqa-10k.adalora - [step 0] mean_ER=nan mean_CN=nan (sampled 0 layers)
+[2026-05-14 09:36:59,410] INFO stage3.qwen3-8b.metamathqa-10k.adalora - merge events scheduled at: []
+[2026-05-14 09:37:32,420] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=5/50 train_loss=0.6595 lr=2.00e-04 elapsed=33s
+[2026-05-14 09:38:02,833] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=10/50 train_loss=0.6722 lr=1.94e-04 elapsed=63s
+[2026-05-14 09:38:32,856] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=15/50 train_loss=0.6182 lr=1.77e-04 elapsed=93s
+[2026-05-14 09:39:03,450] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=20/50 train_loss=0.6501 lr=1.50e-04 elapsed=124s
+[2026-05-14 09:39:32,283] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=25/50 train_loss=0.6122 lr=1.17e-04 elapsed=153s
+[2026-05-14 09:39:35,747] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=25 VAL_LOSS=0.6266
+[2026-05-14 09:39:37,448] INFO stage3.qwen3-8b.metamathqa-10k.adalora - best ckpt updated: step=25 val_loss=0.6266
+[2026-05-14 09:39:37,470] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=25 mean_ER=nan mean_CN=nan
+[2026-05-14 09:40:07,547] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=30/50 train_loss=0.5642 lr=8.26e-05 elapsed=188s
+[2026-05-14 09:40:38,715] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=35/50 train_loss=0.5265 lr=5.00e-05 elapsed=219s
+[2026-05-14 09:41:10,461] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=40/50 train_loss=0.5065 lr=2.34e-05 elapsed=251s
+[2026-05-14 09:41:39,401] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=45/50 train_loss=0.5119 lr=6.03e-06 elapsed=280s
+[2026-05-14 09:42:12,394] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=50/50 train_loss=0.4762 lr=0.00e+00 elapsed=313s
+[2026-05-14 09:42:15,849] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=50 VAL_LOSS=0.5386
+[2026-05-14 09:42:16,870] INFO stage3.qwen3-8b.metamathqa-10k.adalora - best ckpt updated: step=50 val_loss=0.5386
+[2026-05-14 09:42:16,889] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=50 mean_ER=nan mean_CN=nan
+[2026-05-14 09:42:16,889] INFO stage3.qwen3-8b.metamathqa-10k.adalora - training done in 317.5s
+[2026-05-14 09:42:20,336] INFO stage3.qwen3-8b.metamathqa-10k.adalora - FINAL VAL_LOSS=0.5386
+[2026-05-14 09:42:20,357] INFO stage3.qwen3-8b.metamathqa-10k.adalora - summary.json written

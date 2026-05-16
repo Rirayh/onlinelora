@@ -1,0 +1,24 @@
+[2026-05-14 09:36:03,005] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - START stage3 model=/mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B dataset=tulu3-sft method=relora_random_drop out=results/smoke/randrop_qwen3_tulu3
+[2026-05-14 09:36:05,228] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - tokenizer loaded in 0.3s, vocab=151643
+[2026-05-14 09:36:05,228] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - loading tulu-3-sft-mixture from /mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture
+[2026-05-14 09:36:06,976] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - tulu3-sft train=500 val=64
+[2026-05-14 09:36:08,080] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - tulu3-sft tokenized: train 500 val 64
+[2026-05-14 09:36:08,256] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - data prepared in 3.0s
+[2026-05-14 09:36:09,834] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - model loaded in 1.6s
+[2026-05-14 09:36:59,410] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - #LoRA layers=252 #components=4032
+[2026-05-14 09:36:59,417] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - #trainable params=43.65M
+[2026-05-14 09:37:14,800] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [step 0] mean_ER=1926.51 mean_CN=9.34e+04 (sampled 8 layers)
+[2026-05-14 09:37:14,802] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - merge events scheduled at: [25, 50]
+[2026-05-14 09:38:09,749] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=5/50 train_loss=1.9528 lr=2.00e-04 elapsed=55s
+[2026-05-14 09:39:04,493] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=10/50 train_loss=1.6574 lr=1.94e-04 elapsed=110s
+[2026-05-14 09:39:57,891] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=15/50 train_loss=1.4170 lr=1.77e-04 elapsed=163s
+[2026-05-14 09:40:54,425] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=20/50 train_loss=1.3265 lr=1.50e-04 elapsed=220s
+[2026-05-14 09:41:46,038] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=25/50 train_loss=1.2916 lr=1.17e-04 elapsed=271s
+[2026-05-14 09:41:52,606] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=25 VAL_LOSS=1.3177
+[2026-05-14 09:41:53,314] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - best ckpt updated: step=25 val_loss=1.3177
+[2026-05-14 09:42:07,965] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=25 mean_ER=1926.52 mean_CN=1.64e+05
+[2026-05-14 09:42:07,966] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - === MERGE EVENT 1 at step 25 (method=relora_random_drop) ===
+[2026-05-14 09:42:08,134] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - merge: total=4032 kept=2035 drop_rate=0.495
+[2026-05-14 09:42:29,260] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=25 POST-MERGE VAL_LOSS=1.3703 (first_eval=1.3177085183560848)
+[2026-05-14 09:43:27,368] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=30/50 train_loss=1.5969 lr=2.00e-04 elapsed=373s
+[2026-05-14 09:44:23,217] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=35/50 train_loss=1.3121 lr=1.71e-04 elapsed=428s

@@ -1,0 +1,5 @@
+{"step": 25, "val_loss": 0.19892598036676645}
+{"step": 25, "val_loss": 0.20305754197761416, "post_merge": true}
+{"step": 50, "val_loss": 0.19274784484878182}
+{"step": 50, "val_loss": 0.1932176253758371, "post_merge": true}
+{"step": 50, "val_loss": 0.1932176253758371, "final": true}

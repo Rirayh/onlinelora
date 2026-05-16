@@ -1,0 +1,124 @@
+[2026-05-15 07:29:53,918] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - START stage3 model=/mnt/cpfs/public_data/public_model/Qwen2.5/Qwen2.5-7B-Instruct dataset=metamathqa-10k method=relora_baseline out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42
+[2026-05-15 07:29:57,721] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - tokenizer loaded in 0.3s, vocab=151643
+[2026-05-15 07:29:57,721] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - loading MetaMathQA from /mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA
+[2026-05-15 07:29:59,129] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - metamathqa train=10000 val=500
+[2026-05-15 07:30:04,928] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - metamathqa tokenized: train 10000 val 500
+[2026-05-15 07:30:05,226] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - data prepared in 7.5s
+[2026-05-15 07:30:06,856] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - model loaded in 1.6s
+[2026-05-15 07:30:39,277] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - #LoRA layers=196 #components=3136
+[2026-05-15 07:30:39,282] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - #trainable params=40.37M
+[2026-05-15 07:30:50,518] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - [step 0] mean_ER=1456.79 mean_CN=2.57e+05 (sampled 8 layers)
+[2026-05-15 07:30:50,518] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - merge events scheduled at: [500, 1000, 1500, 2000, 2500, 3000]
+[2026-05-15 07:32:50,026] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=25/3000 train_loss=0.3731 lr=5.00e-05 elapsed=120s
+[2026-05-15 07:34:50,073] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=50/3000 train_loss=0.1549 lr=1.00e-04 elapsed=240s
+[2026-05-15 07:34:50,545] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000050
+[2026-05-15 07:36:54,297] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=75/3000 train_loss=0.1415 lr=1.50e-04 elapsed=364s
+[2026-05-15 07:38:55,726] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=100/3000 train_loss=0.1301 lr=2.00e-04 elapsed=485s
+[2026-05-15 07:38:56,141] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000100
+[2026-05-15 07:40:50,795] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=125/3000 train_loss=0.1361 lr=2.00e-04 elapsed=600s
+[2026-05-15 07:42:49,260] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=150/3000 train_loss=0.1386 lr=2.00e-04 elapsed=719s
+[2026-05-15 07:42:49,704] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000150
+[2026-05-15 07:44:47,276] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=175/3000 train_loss=0.1333 lr=2.00e-04 elapsed=837s
+[2026-05-15 07:46:45,183] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=200/3000 train_loss=0.1339 lr=1.99e-04 elapsed=955s
+[2026-05-15 07:46:45,595] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000200
+[2026-05-15 07:48:40,365] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=225/3000 train_loss=0.1373 lr=1.99e-04 elapsed=1070s
+[2026-05-15 07:50:38,861] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=250/3000 train_loss=0.1356 lr=1.99e-04 elapsed=1188s
+[2026-05-15 07:50:39,269] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000250
+[2026-05-15 07:51:02,278] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=250 VAL_LOSS=0.1349
+[2026-05-15 07:51:02,704] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - best ckpt updated: step=250 val_loss=0.1349
+[2026-05-15 07:53:03,490] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=275/3000 train_loss=0.1380 lr=1.98e-04 elapsed=1333s
+[2026-05-15 07:54:59,105] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=300/3000 train_loss=0.1331 lr=1.98e-04 elapsed=1449s
+[2026-05-15 07:54:59,527] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000300
+[2026-05-15 07:56:58,997] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=325/3000 train_loss=0.1199 lr=1.97e-04 elapsed=1568s
+[2026-05-15 07:58:58,092] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=350/3000 train_loss=0.1119 lr=1.96e-04 elapsed=1688s
+[2026-05-15 07:58:58,501] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000350
+[2026-05-15 08:00:58,590] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=375/3000 train_loss=0.1096 lr=1.96e-04 elapsed=1808s
+[2026-05-15 08:02:54,240] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=400/3000 train_loss=0.1078 lr=1.95e-04 elapsed=1924s
+[2026-05-15 08:02:54,673] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000400
+[2026-05-15 08:04:54,272] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=425/3000 train_loss=0.1020 lr=1.94e-04 elapsed=2044s
+[2026-05-15 08:06:50,131] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=450/3000 train_loss=0.1059 lr=1.93e-04 elapsed=2160s
+[2026-05-15 08:06:50,572] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000450
+[2026-05-15 08:08:48,782] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=475/3000 train_loss=0.1098 lr=1.92e-04 elapsed=2278s
+[2026-05-15 08:10:49,540] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=500/3000 train_loss=0.1123 lr=1.91e-04 elapsed=2399s
+[2026-05-15 08:10:49,964] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000500
+[2026-05-15 08:11:12,989] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=500 VAL_LOSS=0.1417
+[2026-05-15 08:11:23,944] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=500 mean_ER=1456.95 mean_CN=1.34e+05
+[2026-05-15 08:11:23,944] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - === MERGE EVENT 1 at step 500 (method=relora_baseline) ===
+[2026-05-15 08:11:24,104] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - merge: total=3136 kept=3136 drop_rate=0.000
+[2026-05-15 08:11:57,984] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=500 POST-MERGE VAL_LOSS=0.1416 (first_eval=0.13493365225195886)
+[2026-05-15 08:13:55,572] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=525/3000 train_loss=0.1030 lr=5.00e-05 elapsed=2585s
+[2026-05-15 08:15:58,625] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=550/3000 train_loss=0.1101 lr=1.00e-04 elapsed=2708s
+[2026-05-15 08:15:59,028] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000550
+[2026-05-15 08:18:01,291] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=575/3000 train_loss=0.1110 lr=1.50e-04 elapsed=2831s
+[2026-05-15 08:19:53,935] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=600/3000 train_loss=0.1047 lr=2.00e-04 elapsed=2943s
+[2026-05-15 08:19:54,360] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000600
+[2026-05-15 08:21:55,567] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=625/3000 train_loss=0.1067 lr=2.00e-04 elapsed=3065s
+[2026-05-15 08:23:48,954] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=650/3000 train_loss=0.0724 lr=2.00e-04 elapsed=3178s
+[2026-05-15 08:23:49,378] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000650
+[2026-05-15 08:25:47,339] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=675/3000 train_loss=0.0744 lr=2.00e-04 elapsed=3297s
+[2026-05-15 08:27:41,749] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=700/3000 train_loss=0.0717 lr=1.99e-04 elapsed=3411s
+[2026-05-15 08:27:42,208] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000700
+[2026-05-15 08:29:47,184] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=725/3000 train_loss=0.0752 lr=1.99e-04 elapsed=3537s
+[2026-05-15 08:31:44,646] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=750/3000 train_loss=0.0745 lr=1.98e-04 elapsed=3654s
+[2026-05-15 08:31:45,063] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000750
+[2026-05-15 08:32:08,075] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=750 VAL_LOSS=0.1564
+[2026-05-15 08:34:08,624] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=775/3000 train_loss=0.0748 lr=1.97e-04 elapsed=3798s
+[2026-05-15 08:36:10,892] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=800/3000 train_loss=0.0737 lr=1.97e-04 elapsed=3920s
+[2026-05-15 08:36:11,301] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000800
+[2026-05-15 08:38:06,748] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=825/3000 train_loss=0.0800 lr=1.96e-04 elapsed=4036s
+[2026-05-15 08:40:11,663] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=850/3000 train_loss=0.0784 lr=1.95e-04 elapsed=4161s
+[2026-05-15 08:40:12,076] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000850
+[2026-05-15 08:42:09,166] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=875/3000 train_loss=0.0797 lr=1.94e-04 elapsed=4279s
+[2026-05-15 08:44:07,626] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=900/3000 train_loss=0.0787 lr=1.92e-04 elapsed=4397s
+[2026-05-15 08:44:08,043] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000900
+[2026-05-15 08:46:08,989] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=925/3000 train_loss=0.0776 lr=1.91e-04 elapsed=4518s
+[2026-05-15 08:48:08,329] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=950/3000 train_loss=0.0643 lr=1.90e-04 elapsed=4638s
+[2026-05-15 08:48:08,747] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_000950
+[2026-05-15 08:50:04,831] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=975/3000 train_loss=0.0437 lr=1.88e-04 elapsed=4754s
+[2026-05-15 08:52:07,841] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1000/3000 train_loss=0.0469 lr=1.87e-04 elapsed=4877s
+[2026-05-15 08:52:08,246] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_001000
+[2026-05-15 08:52:31,269] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1000 VAL_LOSS=0.1850
+[2026-05-15 08:52:42,644] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1000 mean_ER=1457.16 mean_CN=3.17e+05
+[2026-05-15 08:52:42,644] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - === MERGE EVENT 2 at step 1000 (method=relora_baseline) ===
+[2026-05-15 08:52:42,794] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - merge: total=3136 kept=3136 drop_rate=0.000
+[2026-05-15 08:53:16,698] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1000 POST-MERGE VAL_LOSS=0.1857 (first_eval=0.13493365225195886)
+[2026-05-15 08:55:15,030] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1025/3000 train_loss=0.0437 lr=5.00e-05 elapsed=5065s
+[2026-05-15 08:57:07,359] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1050/3000 train_loss=0.0424 lr=1.00e-04 elapsed=5177s
+[2026-05-15 08:57:07,833] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_001050
+[2026-05-15 08:59:13,724] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1075/3000 train_loss=0.0438 lr=1.50e-04 elapsed=5303s
+[2026-05-15 09:01:10,814] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1100/3000 train_loss=0.0462 lr=2.00e-04 elapsed=5420s
+[2026-05-15 09:01:11,255] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_001100
+[2026-05-15 09:03:14,294] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1125/3000 train_loss=0.0491 lr=2.00e-04 elapsed=5544s
+[2026-05-15 09:05:11,530] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1150/3000 train_loss=0.0487 lr=2.00e-04 elapsed=5661s
+[2026-05-15 09:05:11,939] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_001150
+[2026-05-15 09:07:12,562] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1175/3000 train_loss=0.0494 lr=1.99e-04 elapsed=5782s
+[2026-05-15 09:09:08,567] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1200/3000 train_loss=0.0469 lr=1.99e-04 elapsed=5898s
+[2026-05-15 09:09:09,005] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_001200
+[2026-05-15 09:11:05,953] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1225/3000 train_loss=0.0457 lr=1.98e-04 elapsed=6015s
+[2026-05-15 09:13:02,133] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1250/3000 train_loss=0.0446 lr=1.97e-04 elapsed=6132s
+[2026-05-15 09:13:02,563] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_001250
+[2026-05-15 09:13:25,588] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1250 VAL_LOSS=0.1848
+[2026-05-15 09:15:22,119] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1275/3000 train_loss=0.0270 lr=1.96e-04 elapsed=6272s
+[2026-05-15 09:17:23,285] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1300/3000 train_loss=0.0280 lr=1.95e-04 elapsed=6393s
+[2026-05-15 09:17:23,732] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_001300
+[2026-05-15 09:19:22,859] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1325/3000 train_loss=0.0310 lr=1.93e-04 elapsed=6512s
+[2026-05-15 09:21:21,318] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1350/3000 train_loss=0.0289 lr=1.92e-04 elapsed=6631s
+[2026-05-15 09:21:21,745] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_001350
+[2026-05-15 09:23:17,467] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1375/3000 train_loss=0.0319 lr=1.90e-04 elapsed=6747s
+[2026-05-15 09:25:19,132] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1400/3000 train_loss=0.0303 lr=1.88e-04 elapsed=6869s
+[2026-05-15 09:25:19,554] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_001400
+[2026-05-15 09:27:17,397] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1425/3000 train_loss=0.0327 lr=1.86e-04 elapsed=6987s
+[2026-05-15 09:29:12,831] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1450/3000 train_loss=0.0315 lr=1.84e-04 elapsed=7102s
+[2026-05-15 09:29:13,254] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_001450
+[2026-05-15 09:31:12,207] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1475/3000 train_loss=0.0312 lr=1.81e-04 elapsed=7222s
+[2026-05-15 09:33:08,291] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1500/3000 train_loss=0.0336 lr=1.79e-04 elapsed=7338s
+[2026-05-15 09:33:08,732] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/checkpoints/step_001500
+[2026-05-15 09:33:31,764] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1500 VAL_LOSS=0.2277
+[2026-05-15 09:33:42,647] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1500 mean_ER=1457.35 mean_CN=5.28e+04
+[2026-05-15 09:33:42,647] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - === MERGE EVENT 3 at step 1500 (method=relora_baseline) ===
+[2026-05-15 09:33:42,796] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - merge: total=3136 kept=3136 drop_rate=0.000
+[2026-05-15 09:34:16,652] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - step=1500 POST-MERGE VAL_LOSS=0.2289 (first_eval=0.13493365225195886)
+[2026-05-15 09:34:16,652] WARNING stage3.qwen25-7b.metamathqa-10k.relora_baseline - ABORT: post-merge val_loss=0.2289 > first_eval=0.1349 * 1.5
+[2026-05-15 09:34:16,667] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - training ABORTED in 7406.1s
+[2026-05-15 09:34:39,536] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - FINAL VAL_LOSS=0.2289
+[2026-05-15 09:34:50,437] INFO stage3.qwen25-7b.metamathqa-10k.relora_baseline - summary.json written
