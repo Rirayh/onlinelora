@@ -1,0 +1,216 @@
+[2026-05-16 12:46:28,047] INFO stage3.qwen3-8b.metamathqa-10k.adalora - START stage3 model=/mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B dataset=metamathqa-10k method=adalora out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42
+[2026-05-16 12:46:29,648] INFO stage3.qwen3-8b.metamathqa-10k.adalora - tokenizer loaded in 0.3s, vocab=151643
+[2026-05-16 12:46:29,648] INFO stage3.qwen3-8b.metamathqa-10k.adalora - loading MetaMathQA from /mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA
+[2026-05-16 12:46:31,034] INFO stage3.qwen3-8b.metamathqa-10k.adalora - metamathqa train=10000 val=500
+[2026-05-16 12:46:36,603] INFO stage3.qwen3-8b.metamathqa-10k.adalora - metamathqa tokenized: train 10000 val 500
+[2026-05-16 12:46:36,880] INFO stage3.qwen3-8b.metamathqa-10k.adalora - data prepared in 7.2s
+[2026-05-16 12:46:38,830] INFO stage3.qwen3-8b.metamathqa-10k.adalora - model loaded in 1.9s
+[2026-05-16 12:46:55,749] INFO stage3.qwen3-8b.metamathqa-10k.adalora - #LoRA layers=0 #components=0
+[2026-05-16 12:46:55,755] INFO stage3.qwen3-8b.metamathqa-10k.adalora - #trainable params=87.30M
+[2026-05-16 12:46:55,808] INFO stage3.qwen3-8b.metamathqa-10k.adalora - [step 0] mean_ER=nan mean_CN=nan (sampled 0 layers)
+[2026-05-16 12:46:55,808] INFO stage3.qwen3-8b.metamathqa-10k.adalora - merge events scheduled at: []
+[2026-05-16 12:49:31,664] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=25/3000 train_loss=0.6606 lr=5.00e-05 elapsed=156s
+[2026-05-16 12:52:02,251] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=50/3000 train_loss=0.6657 lr=1.00e-04 elapsed=306s
+[2026-05-16 12:52:03,010] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000050
+[2026-05-16 12:54:34,438] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=75/3000 train_loss=0.5481 lr=1.50e-04 elapsed=459s
+[2026-05-16 12:57:05,702] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=100/3000 train_loss=0.3263 lr=2.00e-04 elapsed=610s
+[2026-05-16 12:57:06,469] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000100
+[2026-05-16 12:59:38,985] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=125/3000 train_loss=0.2088 lr=2.00e-04 elapsed=763s
+[2026-05-16 13:02:01,125] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=150/3000 train_loss=0.1891 lr=2.00e-04 elapsed=905s
+[2026-05-16 13:02:01,874] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000150
+[2026-05-16 13:04:33,618] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=175/3000 train_loss=0.1706 lr=2.00e-04 elapsed=1058s
+[2026-05-16 13:07:05,810] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=200/3000 train_loss=0.1760 lr=1.99e-04 elapsed=1210s
+[2026-05-16 13:07:06,653] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000200
+[2026-05-16 13:09:34,477] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=225/3000 train_loss=0.1672 lr=1.99e-04 elapsed=1359s
+[2026-05-16 13:12:05,386] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=250/3000 train_loss=0.1657 lr=1.99e-04 elapsed=1510s
+[2026-05-16 13:12:06,217] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000250
+[2026-05-16 13:12:34,132] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=250 VAL_LOSS=0.1612
+[2026-05-16 13:12:34,936] INFO stage3.qwen3-8b.metamathqa-10k.adalora - best ckpt updated: step=250 val_loss=0.1612
+[2026-05-16 13:15:02,126] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=275/3000 train_loss=0.1621 lr=1.98e-04 elapsed=1686s
+[2026-05-16 13:17:27,390] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=300/3000 train_loss=0.1577 lr=1.98e-04 elapsed=1832s
+[2026-05-16 13:17:28,195] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000300
+[2026-05-16 13:19:51,653] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=325/3000 train_loss=0.1572 lr=1.97e-04 elapsed=1976s
+[2026-05-16 13:22:25,816] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=350/3000 train_loss=0.1626 lr=1.96e-04 elapsed=2130s
+[2026-05-16 13:22:26,590] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000350
+[2026-05-16 13:24:54,552] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=375/3000 train_loss=0.1531 lr=1.96e-04 elapsed=2279s
+[2026-05-16 13:27:27,107] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=400/3000 train_loss=0.1524 lr=1.95e-04 elapsed=2431s
+[2026-05-16 13:27:27,860] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000400
+[2026-05-16 13:29:57,048] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=425/3000 train_loss=0.1550 lr=1.94e-04 elapsed=2581s
+[2026-05-16 13:32:23,730] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=450/3000 train_loss=0.1598 lr=1.93e-04 elapsed=2728s
+[2026-05-16 13:32:24,486] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000450
+[2026-05-16 13:34:54,900] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=475/3000 train_loss=0.1536 lr=1.92e-04 elapsed=2879s
+[2026-05-16 13:37:24,034] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=500/3000 train_loss=0.1572 lr=1.91e-04 elapsed=3028s
+[2026-05-16 13:37:24,760] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000500
+[2026-05-16 13:37:52,622] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=500 VAL_LOSS=0.1549
+[2026-05-16 13:37:53,367] INFO stage3.qwen3-8b.metamathqa-10k.adalora - best ckpt updated: step=500 val_loss=0.1549
+[2026-05-16 13:37:53,385] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=500 mean_ER=nan mean_CN=nan
+[2026-05-16 13:40:20,916] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=525/3000 train_loss=0.1508 lr=1.90e-04 elapsed=3205s
+[2026-05-16 13:42:48,003] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=550/3000 train_loss=0.1487 lr=1.88e-04 elapsed=3352s
+[2026-05-16 13:42:48,743] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000550
+[2026-05-16 13:45:22,804] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=575/3000 train_loss=0.1548 lr=1.87e-04 elapsed=3507s
+[2026-05-16 13:47:55,174] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=600/3000 train_loss=0.1521 lr=1.86e-04 elapsed=3659s
+[2026-05-16 13:47:55,938] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000600
+[2026-05-16 13:50:23,321] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=625/3000 train_loss=0.1508 lr=1.84e-04 elapsed=3808s
+[2026-05-16 13:52:49,886] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=650/3000 train_loss=0.1499 lr=1.83e-04 elapsed=3954s
+[2026-05-16 13:52:50,651] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000650
+[2026-05-16 13:55:24,514] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=675/3000 train_loss=0.1480 lr=1.81e-04 elapsed=4109s
+[2026-05-16 13:57:52,047] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=700/3000 train_loss=0.1363 lr=1.80e-04 elapsed=4256s
+[2026-05-16 13:57:52,786] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000700
+[2026-05-16 14:00:26,597] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=725/3000 train_loss=0.1419 lr=1.78e-04 elapsed=4411s
+[2026-05-16 14:02:57,450] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=750/3000 train_loss=0.1458 lr=1.76e-04 elapsed=4562s
+[2026-05-16 14:02:58,192] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000750
+[2026-05-16 14:03:26,089] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=750 VAL_LOSS=0.1539
+[2026-05-16 14:03:26,834] INFO stage3.qwen3-8b.metamathqa-10k.adalora - best ckpt updated: step=750 val_loss=0.1539
+[2026-05-16 14:06:02,467] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=775/3000 train_loss=0.1444 lr=1.74e-04 elapsed=4747s
+[2026-05-16 14:08:28,551] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=800/3000 train_loss=0.1395 lr=1.73e-04 elapsed=4893s
+[2026-05-16 14:08:29,301] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000800
+[2026-05-16 14:11:01,955] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=825/3000 train_loss=0.1409 lr=1.71e-04 elapsed=5046s
+[2026-05-16 14:13:35,946] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=850/3000 train_loss=0.1467 lr=1.69e-04 elapsed=5200s
+[2026-05-16 14:13:36,700] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000850
+[2026-05-16 14:16:01,939] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=875/3000 train_loss=0.1420 lr=1.67e-04 elapsed=5346s
+[2026-05-16 14:18:29,963] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=900/3000 train_loss=0.1447 lr=1.65e-04 elapsed=5494s
+[2026-05-16 14:18:30,682] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000900
+[2026-05-16 14:20:59,730] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=925/3000 train_loss=0.1427 lr=1.63e-04 elapsed=5644s
+[2026-05-16 14:23:31,899] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=950/3000 train_loss=0.1387 lr=1.61e-04 elapsed=5796s
+[2026-05-16 14:23:32,650] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_000950
+[2026-05-16 14:26:04,280] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=975/3000 train_loss=0.1284 lr=1.58e-04 elapsed=5948s
+[2026-05-16 14:28:33,696] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1000/3000 train_loss=0.1311 lr=1.56e-04 elapsed=6098s
+[2026-05-16 14:28:34,434] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001000
+[2026-05-16 14:29:02,332] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1000 VAL_LOSS=0.1552
+[2026-05-16 14:29:02,353] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1000 mean_ER=nan mean_CN=nan
+[2026-05-16 14:31:30,897] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1025/3000 train_loss=0.1291 lr=1.54e-04 elapsed=6275s
+[2026-05-16 14:34:00,511] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1050/3000 train_loss=0.1318 lr=1.52e-04 elapsed=6425s
+[2026-05-16 14:34:01,256] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001050
+[2026-05-16 14:36:27,483] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1075/3000 train_loss=0.1305 lr=1.49e-04 elapsed=6572s
+[2026-05-16 14:38:58,059] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1100/3000 train_loss=0.1292 lr=1.47e-04 elapsed=6722s
+[2026-05-16 14:38:58,797] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001100
+[2026-05-16 14:41:32,953] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1125/3000 train_loss=0.1275 lr=1.44e-04 elapsed=6877s
+[2026-05-16 14:44:03,737] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1150/3000 train_loss=0.1378 lr=1.42e-04 elapsed=7028s
+[2026-05-16 14:44:04,461] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001150
+[2026-05-16 14:46:30,483] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1175/3000 train_loss=0.1291 lr=1.40e-04 elapsed=7175s
+[2026-05-16 14:49:00,153] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1200/3000 train_loss=0.1342 lr=1.37e-04 elapsed=7324s
+[2026-05-16 14:49:00,916] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001200
+[2026-05-16 14:51:33,671] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1225/3000 train_loss=0.1324 lr=1.34e-04 elapsed=7478s
+[2026-05-16 14:54:01,106] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1250/3000 train_loss=0.1308 lr=1.32e-04 elapsed=7625s
+[2026-05-16 14:54:01,825] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001250
+[2026-05-16 14:54:29,718] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1250 VAL_LOSS=0.1556
+[2026-05-16 14:57:01,712] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1275/3000 train_loss=0.1210 lr=1.29e-04 elapsed=7806s
+[2026-05-16 14:59:32,946] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1300/3000 train_loss=0.1218 lr=1.27e-04 elapsed=7957s
+[2026-05-16 14:59:33,661] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001300
+[2026-05-16 15:01:54,695] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1325/3000 train_loss=0.1186 lr=1.24e-04 elapsed=8099s
+[2026-05-16 15:04:20,360] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1350/3000 train_loss=0.1186 lr=1.21e-04 elapsed=8245s
+[2026-05-16 15:04:21,104] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001350
+[2026-05-16 15:06:57,403] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1375/3000 train_loss=0.1213 lr=1.19e-04 elapsed=8402s
+[2026-05-16 15:09:26,919] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1400/3000 train_loss=0.1181 lr=1.16e-04 elapsed=8551s
+[2026-05-16 15:09:27,633] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001400
+[2026-05-16 15:11:53,643] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1425/3000 train_loss=0.1144 lr=1.14e-04 elapsed=8698s
+[2026-05-16 15:14:22,252] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1450/3000 train_loss=0.1162 lr=1.11e-04 elapsed=8846s
+[2026-05-16 15:14:23,004] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001450
+[2026-05-16 15:16:54,524] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1475/3000 train_loss=0.1202 lr=1.08e-04 elapsed=8999s
+[2026-05-16 15:19:26,283] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1500/3000 train_loss=0.1213 lr=1.05e-04 elapsed=9150s
+[2026-05-16 15:19:27,036] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001500
+[2026-05-16 15:19:54,936] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1500 VAL_LOSS=0.1604
+[2026-05-16 15:19:54,963] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1500 mean_ER=nan mean_CN=nan
+[2026-05-16 15:22:25,326] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1525/3000 train_loss=0.1181 lr=1.03e-04 elapsed=9330s
+[2026-05-16 15:24:54,500] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1550/3000 train_loss=0.1160 lr=1.00e-04 elapsed=9479s
+[2026-05-16 15:24:55,216] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001550
+[2026-05-16 15:27:26,497] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1575/3000 train_loss=0.1108 lr=9.73e-05 elapsed=9631s
+[2026-05-16 15:30:00,808] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1600/3000 train_loss=0.1055 lr=9.46e-05 elapsed=9785s
+[2026-05-16 15:30:01,571] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001600
+[2026-05-16 15:32:34,505] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1625/3000 train_loss=0.1027 lr=9.19e-05 elapsed=9939s
+[2026-05-16 15:35:02,746] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1650/3000 train_loss=0.1061 lr=8.92e-05 elapsed=10087s
+[2026-05-16 15:35:03,485] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001650
+[2026-05-16 15:37:34,709] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1675/3000 train_loss=0.1066 lr=8.65e-05 elapsed=10239s
+[2026-05-16 15:40:07,697] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1700/3000 train_loss=0.1063 lr=8.38e-05 elapsed=10392s
+[2026-05-16 15:40:08,483] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001700
+[2026-05-16 15:42:32,255] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1725/3000 train_loss=0.1031 lr=8.12e-05 elapsed=10536s
+[2026-05-16 15:45:05,848] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1750/3000 train_loss=0.1043 lr=7.85e-05 elapsed=10690s
+[2026-05-16 15:45:06,565] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001750
+[2026-05-16 15:45:34,465] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1750 VAL_LOSS=0.1696
+[2026-05-16 15:48:00,800] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1775/3000 train_loss=0.1078 lr=7.59e-05 elapsed=10865s
+[2026-05-16 15:50:30,704] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1800/3000 train_loss=0.1073 lr=7.32e-05 elapsed=11015s
+[2026-05-16 15:50:31,444] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001800
+[2026-05-16 15:53:03,663] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1825/3000 train_loss=0.1057 lr=7.06e-05 elapsed=11168s
+[2026-05-16 15:55:27,787] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1850/3000 train_loss=0.1023 lr=6.81e-05 elapsed=11312s
+[2026-05-16 15:55:28,506] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001850
+[2026-05-16 15:57:57,620] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1875/3000 train_loss=0.1053 lr=6.55e-05 elapsed=11462s
+[2026-05-16 16:00:25,950] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1900/3000 train_loss=0.0871 lr=6.30e-05 elapsed=11610s
+[2026-05-16 16:00:26,675] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001900
+[2026-05-16 16:03:02,816] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1925/3000 train_loss=0.0953 lr=6.05e-05 elapsed=11767s
+[2026-05-16 16:05:30,620] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1950/3000 train_loss=0.0919 lr=5.80e-05 elapsed=11915s
+[2026-05-16 16:05:31,407] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_001950
+[2026-05-16 16:08:06,352] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=1975/3000 train_loss=0.0917 lr=5.56e-05 elapsed=12071s
+[2026-05-16 16:10:36,264] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2000/3000 train_loss=0.0951 lr=5.32e-05 elapsed=12220s
+[2026-05-16 16:10:37,038] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002000
+[2026-05-16 16:11:04,814] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2000 VAL_LOSS=0.1812
+[2026-05-16 16:11:04,836] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2000 mean_ER=nan mean_CN=nan
+[2026-05-16 16:13:33,605] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2025/3000 train_loss=0.0937 lr=5.08e-05 elapsed=12398s
+[2026-05-16 16:16:10,100] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2050/3000 train_loss=0.0937 lr=4.84e-05 elapsed=12554s
+[2026-05-16 16:16:10,912] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002050
+[2026-05-16 16:18:35,535] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2075/3000 train_loss=0.0928 lr=4.61e-05 elapsed=12700s
+[2026-05-16 16:21:08,215] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2100/3000 train_loss=0.0955 lr=4.39e-05 elapsed=12852s
+[2026-05-16 16:21:08,967] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002100
+[2026-05-16 16:23:33,946] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2125/3000 train_loss=0.0932 lr=4.17e-05 elapsed=12998s
+[2026-05-16 16:25:56,153] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2150/3000 train_loss=0.0899 lr=3.95e-05 elapsed=13140s
+[2026-05-16 16:25:56,919] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002150
+[2026-05-16 16:28:28,980] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2175/3000 train_loss=0.0926 lr=3.73e-05 elapsed=13293s
+[2026-05-16 16:30:55,597] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2200/3000 train_loss=0.0906 lr=3.53e-05 elapsed=13440s
+[2026-05-16 16:30:56,328] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002200
+[2026-05-16 16:33:21,942] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2225/3000 train_loss=0.0808 lr=3.32e-05 elapsed=13586s
+[2026-05-16 16:35:49,584] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2250/3000 train_loss=0.0848 lr=3.12e-05 elapsed=13734s
+[2026-05-16 16:35:50,360] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002250
+[2026-05-16 16:36:18,137] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2250 VAL_LOSS=0.1930
+[2026-05-16 16:38:51,600] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2275/3000 train_loss=0.0855 lr=2.93e-05 elapsed=13916s
+[2026-05-16 16:41:27,264] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2300/3000 train_loss=0.0846 lr=2.74e-05 elapsed=14071s
+[2026-05-16 16:41:27,986] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002300
+[2026-05-16 16:43:57,475] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2325/3000 train_loss=0.0864 lr=2.56e-05 elapsed=14222s
+[2026-05-16 16:46:28,230] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2350/3000 train_loss=0.0845 lr=2.38e-05 elapsed=14372s
+[2026-05-16 16:46:28,992] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002350
+[2026-05-16 16:48:59,783] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2375/3000 train_loss=0.0850 lr=2.21e-05 elapsed=14524s
+[2026-05-16 16:51:28,813] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2400/3000 train_loss=0.0798 lr=2.04e-05 elapsed=14673s
+[2026-05-16 16:51:29,550] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002400
+[2026-05-16 16:53:57,709] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2425/3000 train_loss=0.0833 lr=1.88e-05 elapsed=14822s
+[2026-05-16 16:56:24,831] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2450/3000 train_loss=0.0812 lr=1.72e-05 elapsed=14969s
+[2026-05-16 16:56:25,579] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002450
+[2026-05-16 16:58:53,656] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2475/3000 train_loss=0.0859 lr=1.57e-05 elapsed=15118s
+[2026-05-16 17:01:20,924] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2500/3000 train_loss=0.0834 lr=1.43e-05 elapsed=15265s
+[2026-05-16 17:01:21,675] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002500
+[2026-05-16 17:01:49,508] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2500 VAL_LOSS=0.1955
+[2026-05-16 17:01:49,529] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2500 mean_ER=nan mean_CN=nan
+[2026-05-16 17:04:20,100] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2525/3000 train_loss=0.0753 lr=1.29e-05 elapsed=15444s
+[2026-05-16 17:06:48,334] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2550/3000 train_loss=0.0781 lr=1.16e-05 elapsed=15593s
+[2026-05-16 17:06:49,087] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002550
+[2026-05-16 17:09:19,000] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2575/3000 train_loss=0.0797 lr=1.04e-05 elapsed=15743s
+[2026-05-16 17:11:46,684] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2600/3000 train_loss=0.0764 lr=9.24e-06 elapsed=15891s
+[2026-05-16 17:11:47,465] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002600
+[2026-05-16 17:14:12,300] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2625/3000 train_loss=0.0776 lr=8.14e-06 elapsed=16036s
+[2026-05-16 17:16:36,159] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2650/3000 train_loss=0.0772 lr=7.10e-06 elapsed=16180s
+[2026-05-16 17:16:36,899] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002650
+[2026-05-16 17:19:10,875] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2675/3000 train_loss=0.0782 lr=6.13e-06 elapsed=16335s
+[2026-05-16 17:21:41,320] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2700/3000 train_loss=0.0780 lr=5.23e-06 elapsed=16486s
+[2026-05-16 17:21:42,046] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002700
+[2026-05-16 17:24:15,560] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2725/3000 train_loss=0.0834 lr=4.40e-06 elapsed=16640s
+[2026-05-16 17:26:52,692] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2750/3000 train_loss=0.0788 lr=3.65e-06 elapsed=16797s
+[2026-05-16 17:26:53,501] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002750
+[2026-05-16 17:27:21,329] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2750 VAL_LOSS=0.2026
+[2026-05-16 17:29:56,823] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2775/3000 train_loss=0.0770 lr=2.96e-06 elapsed=16981s
+[2026-05-16 17:32:20,040] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2800/3000 train_loss=0.0758 lr=2.34e-06 elapsed=17124s
+[2026-05-16 17:32:21,006] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002800
+[2026-05-16 17:34:52,680] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2825/3000 train_loss=0.0768 lr=1.79e-06 elapsed=17277s
+[2026-05-16 17:37:18,769] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2850/3000 train_loss=0.0730 lr=1.32e-06 elapsed=17423s
+[2026-05-16 17:37:19,544] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002850
+[2026-05-16 17:39:47,275] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2875/3000 train_loss=0.0760 lr=9.15e-07 elapsed=17571s
+[2026-05-16 17:42:13,084] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2900/3000 train_loss=0.0754 lr=5.86e-07 elapsed=17717s
+[2026-05-16 17:42:13,849] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002900
+[2026-05-16 17:44:43,290] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2925/3000 train_loss=0.0754 lr=3.30e-07 elapsed=17867s
+[2026-05-16 17:47:13,094] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2950/3000 train_loss=0.0787 lr=1.47e-07 elapsed=18017s
+[2026-05-16 17:47:13,848] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_002950
+[2026-05-16 17:49:50,382] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=2975/3000 train_loss=0.0739 lr=3.67e-08 elapsed=18175s
+[2026-05-16 17:52:16,853] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=3000/3000 train_loss=0.0737 lr=0.00e+00 elapsed=18321s
+[2026-05-16 17:52:17,614] INFO stage3.qwen3-8b.metamathqa-10k.adalora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/checkpoints/step_003000
+[2026-05-16 17:52:45,504] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=3000 VAL_LOSS=0.2041
+[2026-05-16 17:52:45,525] INFO stage3.qwen3-8b.metamathqa-10k.adalora - step=3000 mean_ER=nan mean_CN=nan
+[2026-05-16 17:52:45,525] INFO stage3.qwen3-8b.metamathqa-10k.adalora - training done in 18349.7s
+[2026-05-16 17:53:13,418] INFO stage3.qwen3-8b.metamathqa-10k.adalora - FINAL VAL_LOSS=0.2041
+[2026-05-16 17:53:13,438] INFO stage3.qwen3-8b.metamathqa-10k.adalora - summary.json written
+[2026-05-16 17:53:14,193] INFO stage3.qwen3-8b.metamathqa-10k.adalora - adapter saved to /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/adapter

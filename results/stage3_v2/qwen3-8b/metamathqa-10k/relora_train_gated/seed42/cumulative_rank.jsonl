@@ -1,0 +1,4 @@
+{"step": 500, "merge_event": 1, "cumulative_merged_total": 2822, "cumulative_dropped_total": 1210, "components_kept_this_event": 2822, "components_dropped_this_event": 1210}
+{"step": 1000, "merge_event": 2, "cumulative_merged_total": 5495, "cumulative_dropped_total": 2569, "components_kept_this_event": 2673, "components_dropped_this_event": 1359}
+{"step": 1500, "merge_event": 3, "cumulative_merged_total": 8669, "cumulative_dropped_total": 3427, "components_kept_this_event": 3174, "components_dropped_this_event": 858}
+{"step": 2000, "merge_event": 4, "cumulative_merged_total": 11186, "cumulative_dropped_total": 4942, "components_kept_this_event": 2517, "components_dropped_this_event": 1515}

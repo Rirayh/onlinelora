@@ -1,0 +1,11 @@
+[2026-05-17 04:22:35,772] INFO stage3.mistral-7b.metamathqa-10k.dora - START stage3 model=/mnt/cpfs/public_data/public_model/Mistral/Mistral-7B-v0.3 dataset=metamathqa-10k method=dora out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/dora/seed42
+[2026-05-17 04:22:37,936] INFO stage3.mistral-7b.metamathqa-10k.dora - tokenizer loaded in 0.6s, vocab=32768
+[2026-05-17 04:22:37,936] INFO stage3.mistral-7b.metamathqa-10k.dora - loading MetaMathQA from /mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA
+[2026-05-17 04:22:39,459] INFO stage3.mistral-7b.metamathqa-10k.dora - metamathqa train=10000 val=500
+[2026-05-17 04:22:43,008] INFO stage3.mistral-7b.metamathqa-10k.dora - metamathqa tokenized: train 10000 val 500
+[2026-05-17 04:22:43,289] INFO stage3.mistral-7b.metamathqa-10k.dora - data prepared in 5.4s
+[2026-05-17 04:22:44,653] INFO stage3.mistral-7b.metamathqa-10k.dora - model loaded in 1.4s
+[2026-05-17 04:22:55,073] INFO stage3.mistral-7b.metamathqa-10k.dora - #LoRA layers=224 #components=3584
+[2026-05-17 04:22:55,079] INFO stage3.mistral-7b.metamathqa-10k.dora - #trainable params=43.32M
+[2026-05-17 04:23:11,700] INFO stage3.mistral-7b.metamathqa-10k.dora - [step 0] mean_ER=1447.36 mean_CN=1.08e+08 (sampled 8 layers)
+[2026-05-17 04:23:11,702] INFO stage3.mistral-7b.metamathqa-10k.dora - merge events scheduled at: []

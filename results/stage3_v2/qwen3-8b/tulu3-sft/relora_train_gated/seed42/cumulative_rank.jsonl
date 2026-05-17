@@ -1,3 +1,6 @@
 {"step": 500, "merge_event": 1, "cumulative_merged_total": 2427, "cumulative_dropped_total": 1605, "components_kept_this_event": 2427, "components_dropped_this_event": 1605}
 {"step": 1000, "merge_event": 2, "cumulative_merged_total": 4590, "cumulative_dropped_total": 3474, "components_kept_this_event": 2163, "components_dropped_this_event": 1869}
 {"step": 1500, "merge_event": 3, "cumulative_merged_total": 7735, "cumulative_dropped_total": 4361, "components_kept_this_event": 3145, "components_dropped_this_event": 887}
+{"step": 2000, "merge_event": 4, "cumulative_merged_total": 10770, "cumulative_dropped_total": 5358, "components_kept_this_event": 3035, "components_dropped_this_event": 997}
+{"step": 2500, "merge_event": 5, "cumulative_merged_total": 13745, "cumulative_dropped_total": 6415, "components_kept_this_event": 2975, "components_dropped_this_event": 1057}
+{"step": 3000, "merge_event": 6, "cumulative_merged_total": 16724, "cumulative_dropped_total": 7468, "components_kept_this_event": 2979, "components_dropped_this_event": 1053}

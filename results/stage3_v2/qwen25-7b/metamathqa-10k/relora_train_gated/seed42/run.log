@@ -1,0 +1,15 @@
+[2026-05-17 04:22:35,765] INFO stage3.qwen25-7b.metamathqa-10k.relora_train_gated - START stage3 model=/mnt/cpfs/public_data/public_model/Qwen2.5/Qwen2.5-7B-Instruct dataset=metamathqa-10k method=relora_train_gated out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_train_gated/seed42
+[2026-05-17 04:22:37,361] INFO stage3.qwen25-7b.metamathqa-10k.relora_train_gated - tokenizer loaded in 0.3s, vocab=151643
+[2026-05-17 04:22:37,361] INFO stage3.qwen25-7b.metamathqa-10k.relora_train_gated - loading MetaMathQA from /mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA
+[2026-05-17 04:22:38,831] INFO stage3.qwen25-7b.metamathqa-10k.relora_train_gated - metamathqa train=10000 val=500
+[2026-05-17 04:22:44,750] INFO stage3.qwen25-7b.metamathqa-10k.relora_train_gated - metamathqa tokenized: train 10000 val 500
+[2026-05-17 04:22:45,059] INFO stage3.qwen25-7b.metamathqa-10k.relora_train_gated - data prepared in 7.7s
+[2026-05-17 04:22:46,503] INFO stage3.qwen25-7b.metamathqa-10k.relora_train_gated - model loaded in 1.4s
+[2026-05-17 04:22:54,541] INFO stage3.qwen25-7b.metamathqa-10k.relora_train_gated - #LoRA layers=196 #components=3136
+[2026-05-17 04:22:54,546] INFO stage3.qwen25-7b.metamathqa-10k.relora_train_gated - #trainable params=40.37M
+[2026-05-17 04:23:05,741] INFO stage3.qwen25-7b.metamathqa-10k.relora_train_gated - [step 0] mean_ER=1456.79 mean_CN=2.57e+05 (sampled 8 layers)
+[2026-05-17 04:23:05,741] INFO stage3.qwen25-7b.metamathqa-10k.relora_train_gated - merge events scheduled at: [500, 1000, 1500, 2000, 2500, 3000]
+[2026-05-17 04:25:05,720] INFO stage3.qwen25-7b.metamathqa-10k.relora_train_gated - step=25/3000 train_loss=0.3731 lr=5.00e-05 elapsed=120s
+[2026-05-17 04:27:05,674] INFO stage3.qwen25-7b.metamathqa-10k.relora_train_gated - step=50/3000 train_loss=0.1549 lr=1.00e-04 elapsed=240s
+[2026-05-17 04:27:06,150] INFO stage3.qwen25-7b.metamathqa-10k.relora_train_gated - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/relora_train_gated/seed42/checkpoints/step_000050
+[2026-05-17 04:29:09,801] INFO stage3.qwen25-7b.metamathqa-10k.relora_train_gated - step=75/3000 train_loss=0.1415 lr=1.50e-04 elapsed=364s
