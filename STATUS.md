@@ -4,6 +4,49 @@ Append-only progress log. Newer entries on top. **READ THIS FIRST WHEN RESUMING.
 
 ---
 
+## 2026-05-17 — F5 diagnostic suite complete (commit 9adc173)
+
+### What's new
+- 6 diagnostic scripts now in `scripts/`:
+  - `analyze_drop_heatmap.py` — per-method (n_merge × n_layers) drop heatmaps (18 PNGs)
+  - `analyze_jaccard.py` — pairwise Jaccard(binary) + cosine over per-layer drop vectors (17 event PNGs + `summary/jaccard.csv`, 362 rows)
+  - `analyze_active_vs_cumulative_rank.py` — dual-axis effective rank vs cumulative merged (4 PNGs)
+  - `build_main_table.py` — sweep all (model,dataset,method,seed) cells, extract lm-eval metrics + train meta into `summary/main_table.csv` (31 rows, 22 with gsm8k) + `summary/main_table.md` (compact per model/dataset table)
+  - `analyze_cot_length.py` — generation-length stats per (cell,task) from `samples_*.jsonl` (only when lm-eval ran with `--log_samples`; currently skips silently)
+  - `analyze_mmlu_per_domain.py` — MMLU per-subject → STEM/Humanities/Social/Other domain rollup (also requires `--log_samples`)
+- 39 figures in `summary/figures/` plus `summary/main_table.{csv,md}` and `summary/jaccard.csv`.
+
+### KNOWN CONTAMINATION (pending lm-eval rerun)
+3 cells still have old contaminated lm-eval JSONs from before the post-merge bug fix:
+| cell | best/ rebuilt | lm_eval json mtime | needs rerun |
+|---|---|---|---|
+| `mistral-7b/metamathqa-10k/relora_diag_gated_S3pos` | 2026-05-16 01:10 | 2026-05-15 16:31 | YES |
+| `mistral-7b/metamathqa-10k/relora_random_drop` | 2026-05-16 01:10 | 2026-05-15 16:33 | YES |
+| `qwen3-8b/tulu3-sft/relora_diag_gated_S3pos` | 2026-05-16 01:10 | 2026-05-15 03:05 | YES |
+
+Numbers in `main_table.md` for these 3 cells are still pollution numbers
+(36.39 / 36.39 / 87.95 → all reflect base-model identity adapter, not real adapter).
+Rerun lm-eval as soon as a GPU is free.
+
+### GPU status (snapshot after F5 commits)
+- GPU 0–4: lm-eval qwen3-8b/metamathqa-10k × {lora_vanilla,S3pos,random_drop,adalora,dora}
+  PIDs 1319955–1319959. Progress 0–8% on gsm8k generate_until. ETA 60–90 min.
+- GPU 5: train qwen25-7b/metamathqa-10k/relora_train_gated (PID 1320480)
+- GPU 6: train mistral-7b/metamathqa-10k/dora 800 steps (PID 1320482)
+- GPU 7: train mistral-7b/metamathqa-10k/relora_train_gated (PID 1319961)
+
+### Next priorities (auto-fill rule active)
+1. As soon as a GPU 0–4 frees: run lm-eval on the 3 contaminated cells (gsm8k+hellaswag+arc_challenge, **add `--log_samples`** so cot_length / mmlu_per_domain become live)
+2. Run main_table after every batch finishes
+3. After mistral/qwen25 dora+train_gated training done → lm-eval
+4. F6 (S3abs method arm) and F7 (multi-seed) still pending
+
+### Commits
+- `519ce76` — F5 part 1: drop heatmap, jaccard, active-vs-cumulative rank scripts + 39 figures
+- `9adc173` — F5 part 2: build_main_table + cot_length + mmlu_per_domain + main_table.{csv,md}
+
+---
+
 ## RESUME INSTRUCTIONS (read first)
 
 ### Project root: `/mnt/cpfs/junlongke/onlinelora/lora_obd/`
