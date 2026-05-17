@@ -40,6 +40,34 @@ def latest_results_json(lm_eval_dir: Path) -> Optional[Path]:
     return max(cands, key=lambda p: p.stat().st_mtime)
 
 
+def best_lm_eval_dir(seed_dir: Path) -> Optional[Path]:
+    """Return the most appropriate lm_eval dir for the canonical best-ckpt result.
+
+    Priority:
+      1. lm_eval_v2/ (contamination-cleared rerun, if newer json exists)
+      2. lm_eval/    (original run)
+    Both must contain at least one results_*.json to qualify.
+    lm_eval_step*/ dirs are multi-ckpt analysis, NOT used as canonical.
+    """
+    candidates = []
+    for d in seed_dir.iterdir():
+        if not d.is_dir():
+            continue
+        if d.name.startswith("lm_eval") and not re.match(r"lm_eval_step\d+", d.name):
+            jsons = list(d.rglob("results_*.json"))
+            if jsons:
+                latest = max(jsons, key=lambda p: p.stat().st_mtime)
+                candidates.append((latest.stat().st_mtime, d))
+    if not candidates:
+        return None
+    # prefer lm_eval_v2 if it has a newer json; otherwise take the newest by mtime
+    v2 = [d for _, d in candidates if d.name == "lm_eval_v2"]
+    if v2:
+        return v2[0]
+    candidates.sort(key=lambda x: x[0], reverse=True)
+    return candidates[0][1]
+
+
 def extract_metrics(res_json: Path) -> dict:
     try:
         d = json.loads(res_json.read_text())
@@ -137,7 +165,7 @@ def discover_cells() -> list[dict]:
                         "method": method_dir.name,
                         "seed": seed,
                         "cell_dir": seed_dir,
-                        "lm_eval_dir": seed_dir / "lm_eval",
+                        "lm_eval_dir": best_lm_eval_dir(seed_dir),
                     })
     return cells
 
@@ -152,7 +180,7 @@ def build_table(cells: list[dict]) -> list[dict]:
             "seed": c["seed"],
         }
         row.update(extract_train_meta(c["cell_dir"]))
-        if c["lm_eval_dir"].exists():
+        if c["lm_eval_dir"] and c["lm_eval_dir"].exists():
             rj = latest_results_json(c["lm_eval_dir"])
             if rj:
                 row.update(extract_metrics(rj))
