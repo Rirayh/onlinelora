@@ -9,6 +9,8 @@
 
 # Eval artifacts (large)
 **/lm_eval_*/
+**/samples_*.jsonl
+**/samples_*.jsonl.gz
 
 # Python
 __pycache__/
