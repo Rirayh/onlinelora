@@ -2145,3 +2145,159 @@ On Mistral all 4 methods are within ±1pp on every metric. NO clear S3pos advant
 3. Decision pending: launch B1 Batch 2 (qwen3-8b + metamathqa × 8 methods) to confirm whether S3pos wins on Qwen3+MetaMathQA too (= same model, different dataset).
 4. Multi-ckpt lm-eval per PI pivot: lm-eval the LAST step ckpt of each method too, see if "regularization makes val_loss worse but lm-eval better" hypothesis holds.
 
+
+---
+
+## 2026-05-16  Full-saturation execution status (PI: "永远卡满载")
+
+### Strategy directive
+PI: "你下次别问了，只要有空卡就自己挂上，只在卡满载下才停止"
+i.e. immediately fill any free GPU. Only stop when all 8 are at full utilization. Don't ask before launching.
+
+### F1 outcome (qwen3-8b/tulu3-sft/relora_train_gated)
+- Successfully completed 3000 steps with `--saliency_max_seq_len 512`. 34541s wall-time. NO OOM. F1 confirmed.
+- best_step (rebuilt by code, NOT post-merge) needs to be verified after rebuild_best_ckpt.py.
+- lm-eval done (this run): GSM8K=86.96 (flex), 86.66 (strict); ARC=66.72; HellaSwag=76.80.
+  Compare to S3pos rebuilt (87.04 / 86.50 / 67.32 / 77.07). train_gated tracks S3pos very closely.
+
+### Cross-model fill lm-eval (4 cells done) — 5-shot, gsm8k+hellaswag+arc_challenge
+| Run | GSM8K (flex) | ARC-C (acc_norm) | HellaSwag (acc_norm) |
+|---|---|---|---|
+| mistral-7b/mm/S3neg     | 52.24 | 56.14 | 81.16 |
+| mistral-7b/mm/adalora   | 54.51 | 55.12 | 81.85 |
+| qwen25-7b/mm/S3neg      | 80.14 | 62.54 | 80.10 |
+| qwen25-7b/mm/adalora    | 80.36 | 63.74 | 80.72 |
+
+### Currently running (8/8 GPU saturated as of session start)
+| GPU | task |
+|---|---|
+| 0 | qwen3+mm dora train (800 steps, ~15h ETA) |
+| 1 | qwen3+mm random_drop train (~step 2300/3000) |
+| 2 | qwen3+mm S3neg lm-eval |
+| 3 | qwen3+mm adalora train (~step 2200) |
+| 4 | qwen3+mm baseline lm-eval |
+| 5 | qwen3+mm lora_vanilla train (~step 2325) |
+| 6 | qwen3+mm train_gated lm-eval |
+| 7 | qwen3+mm S3pos train (~step 2300) |
+
+### qwen3+mm cells finished training (need lm-eval after ckpt rebuild check)
+- relora_baseline:  best=500 val=0.1556  ABORTED  (lm-eval running on GPU4)
+- relora_diag_gated_S3neg:  best=500 val=0.1554  ABORTED  (lm-eval running on GPU2)
+- relora_train_gated:  best=500 val=0.1553  ABORTED  (lm-eval running on GPU6)
+- (lora_vanilla, S3pos, random_drop, adalora still training)
+
+NOTE: best_step=500 for all 3 ABORTED cells -- this is the first eval BEFORE any merge. So no post-merge contamination concern. But it means they all share roughly the same pre-merge state. Their lm-eval numbers should be very close (sanity check).
+
+### B1 main table progress (post-pivot, lm-eval centric)
+| model | dataset | done methods | done lm-eval |
+|---|---|---|---|
+| qwen3-8b | tulu3-sft | 8/8 | 7/8 (train_gated done, ALL DONE)|
+| qwen3-8b | metamathqa-10k | 4/8 trained, 3 ABORTED | 0/8 lm-eval (3 running) |
+| llama3-8b | * | 0 | 0 (PENDING decision: use base Meta-Llama-3-8B or skip) |
+| mistral-7b | metamathqa-10k | 6/8 (lora_vanilla, baseline, S3pos, random_drop, S3neg, adalora) | 6/8 |
+| qwen25-7b | metamathqa-10k | 6/8 same set | 6/8 |
+
+
+---
+
+## 2026-05-17  qwen3+mm 8/8 trained, 3/8 lm-eval done
+
+### Qwen3-8B + MetaMathQA training summary (all 8 cells done)
+| Method | best_step | best_val | final_val | aborted |
+|---|---|---|---|---|
+| lora_vanilla         | 500 | 0.1554 | 0.4661 | False |
+| relora_baseline      | 500 | 0.1556 | 0.2878 | True (post-merge red-line) |
+| relora_diag_gated_S3pos | 750 | 0.1554 | 0.1546 | **False (only ReLoRA-family that ran 3000 with no abort)** |
+| relora_diag_gated_S3neg | 500 | 0.1554 | 0.2382 | True |
+| relora_random_drop   | 750 | 0.1550 | 0.2370 | True |
+| adalora              | 750 | 0.1539 | 0.2041 | False |
+| relora_train_gated   | 500 | 0.1553 | 0.2447 | True |
+| dora                 | 600 | 0.1518 | 0.1581 | False (800 steps, 8.7h) |
+
+KEY observation: All methods plateau at val~0.155 around step 500-750, then val_loss diverges. ALL ReLoRA-based methods abort EXCEPT S3pos. This is the THIRD model where S3pos is the only stable ReLoRA variant (Qwen3-Tulu confirmed; Qwen3-MM confirmed; Mistral-MM and Qwen2.5-MM only S3pos & random_drop & lora_vanilla survived).
+
+### Qwen3-8B + MetaMathQA lm-eval (3/8 done so far; 5 in flight)
+| Method | GSM8K (flex) | ARC-C (acc_norm) | HellaSwag (acc_norm) |
+|---|---|---|---|
+| relora_baseline    | 81.80 | 67.32 | 76.44 |
+| relora_diag_gated_S3neg | 81.88 | 66.98 | 76.43 |
+| relora_train_gated | 81.88 | 67.24 | 76.27 |
+
+These three are nearly identical (within ±0.5pp). All have best_step=500 = first eval before any merge, so they're all at the SAME pre-merge state. This is a sanity check, NOT a real comparison. Real comparison requires the 5 in-flight cells.
+
+### Currently running (8/8 saturated)
+| GPU | task |
+|---|---|
+| 0 | lm-eval qwen3+mm/lora_vanilla |
+| 1 | lm-eval qwen3+mm/S3pos       |
+| 2 | lm-eval qwen3+mm/random_drop |
+| 3 | lm-eval qwen3+mm/adalora     |
+| 4 | lm-eval qwen3+mm/dora        |
+| 5 | train qwen25+mm/train_gated  |
+| 6 | train mistral+mm/dora (800 steps) |
+| 7 | train mistral+mm/train_gated |
+
+### Cross-model fill status
+| | lora_vanilla | baseline | S3pos | S3neg | random_drop | adalora | train_gated | dora |
+|---|---|---|---|---|---|---|---|---|
+| mistral-7b/mm | done+lmeval | done+lmeval | done+lmeval | done+lmeval | done+lmeval | done+lmeval | TRAIN(GPU7) | TRAIN(GPU6) |
+| qwen25-7b/mm  | done+lmeval | done+lmeval | done+lmeval | done+lmeval | done+lmeval | done+lmeval | TRAIN(GPU5) | TODO |
+| qwen3-8b/tulu | done+lmeval | done+lmeval | done+lmeval | done+lmeval | done+lmeval | done+lmeval | done+lmeval | TODO |
+| qwen3-8b/mm   | done+lmeval... | done+lmeval | LMEVAL(GPU1) | done+lmeval | LMEVAL(GPU2) | LMEVAL(GPU3) | done+lmeval | LMEVAL(GPU4) |
+
+### Diagnostic logs schema (for F5)
+1. `dropped_components.jsonl`: per merge event, fields `{step, merge_event, drop_rate, per_layer_keep_counts, score_quantiles}`
+   - `per_layer_keep_counts`: dict of `<full_lora_name> -> int kept`. Names like `base_model.model.model.layers.<N>.<self_attn|mlp>.<q|k|v|o|gate|up|down>_proj.default`
+   - `score_quantiles`: 5-element list (q0.05, q0.25, q0.5, q0.75, q0.95) of fo_signed scores
+2. `saliency_at_merge.jsonl`: per merge event, `{step, merge_event, method, gate_sign, components_total, components_kept, components_dropped, drop_rate, score_quantiles, merged_total, per_layer_keep_counts}`
+3. `cumulative_rank.jsonl`: per merge event, `{step, merge_event, cumulative_merged_total, cumulative_dropped_total, components_kept_this_event, components_dropped_this_event}`
+4. `effective_rank.jsonl`: per eval step, `{step, per_layer_effective_rank}` (dict layer -> int)
+5. `condition_number.jsonl`: per eval step, `{step, per_layer_cond}` (dict layer -> float)
+6. lm-eval `samples_*.jsonl`: per doc, `{doc_id, exact_match | acc_norm | acc | ...}`
+
+### F5 diagnostic scripts to write (no GPU needed)
+- analyze_drop_heatmap.py: read dropped_components per run, build (layer, merge_event) heatmap PNG
+- analyze_jaccard.py: pairwise Jaccard of dropped-set across methods at each merge event
+- analyze_cot_length.py: parse lm-eval gsm8k samples for response length per method
+- analyze_mmlu_per_domain.py: per-MMLU-subject from lm-eval samples
+- analyze_active_vs_cumulative_rank.py: parse cumulative_rank.jsonl + effective_rank.jsonl
+- build_main_table.py: aggregate all results into one CSV/MD table
+
+
+---
+
+## 2026-05-17  context clearing — handoff for next agent
+
+### Active processes (verify with `ps -p`)
+- GPU 0-4: lm-eval qwen3+mm 5 cells: PIDs 1319955-1319959. Each ~30-50min ETA.
+- GPU 5: train qwen25-7b/mm/train_gated, PID 1320480. ~3h ETA.
+- GPU 6: train mistral-7b/mm/dora, PID 1320482. ~6-8h ETA (dora 10x slower).
+- GPU 7: train mistral-7b/mm/train_gated, PID 1319961. ~3h ETA.
+
+### Auto-fill rule (PI directive: "永远卡满载")
+When ANY GPU goes idle, immediately launch the next item from this priority list:
+1. lm-eval any newly-finished training adapter (using rebuilt best/) — check
+   `ls .../checkpoints/best/adapter_model.safetensors` exists, then run with
+   `--tasks gsm8k,hellaswag,arc_challenge --num_fewshot 5 --batch_size 4 --output_path <run>/lm_eval`
+2. Cross-model fill: qwen25-7b/mm/dora is the next missing cell (800 steps, --total_steps 800)
+3. Multi-ckpt lm-eval: re-eval step_001500/ and step_003000/ for already-done cells (PI's regularization hypothesis: lm-eval may keep improving past val_loss minimum)
+4. Llama-3-8B with local Meta-Llama-3-8B base (PI hasn't decided yet; ask before launching 16 jobs)
+
+### Path conventions
+- Run dirs: `/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/<model>/<dataset>/<method>/seed42/`
+- Adapters: `<run>/checkpoints/best/` (the rebuilt one, post-bug-fix)
+- Periodic ckpts: `<run>/checkpoints/step_<6digit>/` every 50 steps
+- Logs: `/mnt/cpfs/junlongke/onlinelora/lora_obd/logs/{b1,lmeval_fill,lmeval_explore,lmeval_rerun,f1}/`
+
+### Key models (local)
+- qwen3-8b: /mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B
+- mistral-7b: /mnt/cpfs/public_data/public_model/Mistral/Mistral-7B-v0.3
+- qwen25-7b: /mnt/cpfs/public_data/public_model/Qwen2.5/Qwen2.5-7B-Instruct
+- llama3-8b: /mnt/cpfs/public_data/public_model/Meta-Llama-3-8B (NOT instruct; may or may not work for SFT)
+
+### Python env
+`/mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python`
+
+### Git
+On main, last commit `528c54f` pushed. STATUS.md updates not yet committed.
+
