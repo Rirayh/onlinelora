@@ -9,3 +9,23 @@
 [2026-05-17 04:22:55,079] INFO stage3.mistral-7b.metamathqa-10k.dora - #trainable params=43.32M
 [2026-05-17 04:23:11,700] INFO stage3.mistral-7b.metamathqa-10k.dora - [step 0] mean_ER=1447.36 mean_CN=1.08e+08 (sampled 8 layers)
 [2026-05-17 04:23:11,702] INFO stage3.mistral-7b.metamathqa-10k.dora - merge events scheduled at: []
+[2026-05-17 04:40:20,079] INFO stage3.mistral-7b.metamathqa-10k.dora - step=25/800 train_loss=0.4396 lr=5.00e-05 elapsed=1028s
+[2026-05-17 04:57:20,895] INFO stage3.mistral-7b.metamathqa-10k.dora - step=50/800 train_loss=0.2602 lr=1.00e-04 elapsed=2049s
+[2026-05-17 04:57:21,312] INFO stage3.mistral-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/dora/seed42/checkpoints/step_000050
+[2026-05-17 05:14:02,390] INFO stage3.mistral-7b.metamathqa-10k.dora - step=75/800 train_loss=0.2299 lr=1.50e-04 elapsed=3051s
+[2026-05-17 05:30:41,246] INFO stage3.mistral-7b.metamathqa-10k.dora - step=100/800 train_loss=0.2305 lr=2.00e-04 elapsed=4050s
+[2026-05-17 05:30:41,664] INFO stage3.mistral-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/dora/seed42/checkpoints/step_000100
+[2026-05-17 05:46:41,738] INFO stage3.mistral-7b.metamathqa-10k.dora - step=125/800 train_loss=0.2309 lr=1.99e-04 elapsed=5010s
+[2026-05-17 06:03:11,558] INFO stage3.mistral-7b.metamathqa-10k.dora - step=150/800 train_loss=0.2166 lr=1.97e-04 elapsed=6000s
+[2026-05-17 06:03:11,988] INFO stage3.mistral-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/dora/seed42/checkpoints/step_000150
+[2026-05-17 06:20:19,908] INFO stage3.mistral-7b.metamathqa-10k.dora - step=175/800 train_loss=0.2193 lr=1.94e-04 elapsed=7028s
+[2026-05-17 06:37:06,165] INFO stage3.mistral-7b.metamathqa-10k.dora - step=200/800 train_loss=0.2180 lr=1.90e-04 elapsed=8034s
+[2026-05-17 06:37:06,588] INFO stage3.mistral-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/dora/seed42/checkpoints/step_000200
+[2026-05-17 06:38:11,577] INFO stage3.mistral-7b.metamathqa-10k.dora - step=200 VAL_LOSS=0.2142
+[2026-05-17 06:38:12,062] INFO stage3.mistral-7b.metamathqa-10k.dora - best ckpt updated: step=200 val_loss=0.2142
+[2026-05-17 06:54:56,998] INFO stage3.mistral-7b.metamathqa-10k.dora - step=225/800 train_loss=0.2168 lr=1.85e-04 elapsed=9105s
+[2026-05-17 07:11:45,962] INFO stage3.mistral-7b.metamathqa-10k.dora - step=250/800 train_loss=0.2109 lr=1.78e-04 elapsed=10114s
+[2026-05-17 07:11:46,396] INFO stage3.mistral-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/dora/seed42/checkpoints/step_000250
+[2026-05-17 07:28:02,683] INFO stage3.mistral-7b.metamathqa-10k.dora - step=275/800 train_loss=0.2076 lr=1.71e-04 elapsed=11091s
+[2026-05-17 07:44:32,889] INFO stage3.mistral-7b.metamathqa-10k.dora - step=300/800 train_loss=0.2114 lr=1.62e-04 elapsed=12081s
+[2026-05-17 07:44:33,327] INFO stage3.mistral-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/dora/seed42/checkpoints/step_000300

@@ -1,0 +1,11 @@
+[2026-05-17 07:57:50,279] INFO stage3.qwen25-7b.metamathqa-10k.dora - START stage3 model=/mnt/cpfs/public_data/public_model/Qwen2.5/Qwen2.5-7B-Instruct dataset=metamathqa-10k method=dora out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/dora/seed42
+[2026-05-17 07:57:51,664] INFO stage3.qwen25-7b.metamathqa-10k.dora - tokenizer loaded in 0.3s, vocab=151643
+[2026-05-17 07:57:51,664] INFO stage3.qwen25-7b.metamathqa-10k.dora - loading MetaMathQA from /mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA
+[2026-05-17 07:57:53,089] INFO stage3.qwen25-7b.metamathqa-10k.dora - metamathqa train=10000 val=500
+[2026-05-17 07:57:58,777] INFO stage3.qwen25-7b.metamathqa-10k.dora - metamathqa tokenized: train 10000 val 500
+[2026-05-17 07:57:59,069] INFO stage3.qwen25-7b.metamathqa-10k.dora - data prepared in 7.4s
+[2026-05-17 07:58:00,511] INFO stage3.qwen25-7b.metamathqa-10k.dora - model loaded in 1.4s
+[2026-05-17 07:58:08,560] INFO stage3.qwen25-7b.metamathqa-10k.dora - #LoRA layers=196 #components=3136
+[2026-05-17 07:58:08,566] INFO stage3.qwen25-7b.metamathqa-10k.dora - #trainable params=41.76M
+[2026-05-17 07:58:19,711] INFO stage3.qwen25-7b.metamathqa-10k.dora - [step 0] mean_ER=1456.79 mean_CN=2.57e+05 (sampled 8 layers)
+[2026-05-17 07:58:19,711] INFO stage3.qwen25-7b.metamathqa-10k.dora - merge events scheduled at: []
