@@ -4,6 +4,50 @@ Append-only progress log. Newer entries on top. **READ THIS FIRST WHEN RESUMING.
 
 ---
 
+## 2026-05-17 ~13:25 — Multi-ckpt lm-eval + mistral/dora training done
+
+### KEY FINDING: S3pos peaks earlier, baseline overtakes at step_1500 (qwen3/mm)
+| method | best | step_1500 | step_3000 |
+|---|---|---|---|
+| relora_baseline | 81.80% | **87.57%** | (pending) |
+| relora_diag_gated_S3pos | **86.13%** | 85.97% | 84.84% |
+
+S3pos advantage is at BEST ckpt (step_750) but baseline overtakes by step_1500.
+Interpretation: S3pos enables faster/better early convergence, but is not a regularizer in the classical sense — the curve simply peaks earlier.
+
+### Completed since last STATUS
+- mistral/mm/relora_train_gated lm-eval: GSM8K=53.60% (best ReLoRA on Mistral)
+- qwen3/mm/dora lm-eval: GSM8K=82.03%
+- qwen3/mm S3pos step_001500: 85.97%, step_003000: 84.84%
+- qwen3/mm baseline step_001500: 87.57%
+- mistral/mm/dora training: DONE (800 steps, step_000750 saved)
+- Commits: 34c8522, ec221ef, 214273a
+
+### Current GPU map (snapshot 13:24)
+| GPU | task | PID |
+|---|---|---|
+| 0 | lm-eval qwen3/tulu/dora (42%) | 1347653 |
+| 1 | lm-eval qwen3/mm/lora_vanilla step_001500 | 1360726 |
+| 2 | lm-eval qwen3/mm/random_drop step_001500 | 1360730 |
+| 3 | train qwen25/mm/dora (step ~400/800) | 1338356 |
+| 4 | lm-eval qwen3/tulu/baseline step_001500 | 1359310 |
+| 5 | lm-eval qwen3/tulu/S3pos step_001500 (hellaswag ~5%) | 1360734 |
+| 6 | lm-eval mistral/mm/dora (just launched) | 1367114 |
+| 7 | lm-eval qwen3/tulu/S3pos step_003000 (hellaswag ~3%) | 1360738 |
+
+### Remaining after current batch:
+1. qwen25/mm/dora lm-eval (after GPU3 training finishes, ~4h)
+2. qwen3/tulu/baseline step_003000 (not yet launched)
+3. random_drop / lora_vanilla step_003000 for full multi-ckpt comparison
+4. F6 (S3abs) + F7 (multi-seed) = pending
+
+### lm-eval coverage audit (post this batch)
+All 4 models × all methods DONE except:
+- qwen25/mm/dora: training (GPU3 step ~400/800)
+- qwen3/tulu/dora: lm-eval in flight (GPU0, 42%)
+
+---
+
 ## 2026-05-17 — F5 diagnostic suite complete (commit 9adc173)
 
 ### What's new
