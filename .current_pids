@@ -1,0 +1,10 @@
+# Active PIDs as of 2026-05-17 13:25
+# Format: PID GPU TASK
+1347653 0 lm-eval qwen3/tulu/dora (lm_eval/)
+1360726 1 lm-eval qwen3/mm/lora_vanilla step_001500 (lm_eval_step001500/)
+1360730 2 lm-eval qwen3/mm/random_drop step_001500 (lm_eval_step001500/)
+1338356 3 train qwen25/mm/dora 800steps (step~400)
+1359310 4 lm-eval qwen3/tulu/baseline step_001500 (lm_eval_step001500/)
+1360734 5 lm-eval qwen3/tulu/S3pos step_001500 (lm_eval_step001500/)
+1367114 6 lm-eval mistral/mm/dora (lm_eval/)
+1360738 7 lm-eval qwen3/tulu/S3pos step_003000 (lm_eval_step003000/)
