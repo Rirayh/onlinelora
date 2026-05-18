@@ -1,0 +1,13 @@
+[2026-05-18 15:04:47,710] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - START stage3 model=/mnt/cpfs/junlongke/onlinelora/models/AceReason-Nemotron-7B dataset=metamathqa-10k method=lora_vanilla out=results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42_smoke
+[2026-05-18 15:04:49,807] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - tokenizer loaded in 0.4s, vocab=151643
+[2026-05-18 15:04:49,808] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - loading MetaMathQA from /mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA
+[2026-05-18 15:04:51,191] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - metamathqa train=10000 val=500
+[2026-05-18 15:04:57,124] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - metamathqa tokenized: train 10000 val 500
+[2026-05-18 15:04:57,442] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - data prepared in 7.6s
+[2026-05-18 15:04:59,696] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - model loaded in 2.3s
+[2026-05-18 15:05:44,481] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - #LoRA layers=196 #components=3136
+[2026-05-18 15:05:44,486] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - #trainable params=40.37M
+[2026-05-18 15:06:06,031] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - [step 0] mean_ER=1464.91 mean_CN=8.22e+04 (sampled 8 layers)
+[2026-05-18 15:06:06,031] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - merge events scheduled at: []
+[2026-05-18 15:09:54,333] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=25/50 train_loss=0.7485 lr=5.00e-05 elapsed=228s
+[2026-05-18 15:13:46,515] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=50/50 train_loss=0.3463 lr=1.00e-04 elapsed=460s

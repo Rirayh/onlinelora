@@ -68,6 +68,7 @@ METHOD_CHOICES = [
     "adalora",
     "relora_random_drop",
     "relora_train_gated",
+    "cola",
 ]
 DATASET_CHOICES = ["gsm8k", "alpaca", "tulu3-sft", "metamathqa-10k"]
 LOCAL_TULU3_PATH = "/mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture"
@@ -460,6 +461,9 @@ def main() -> int:
     p.add_argument("--model_key", required=True, help="short name for output dir")
     p.add_argument("--dataset", choices=DATASET_CHOICES, required=True)
     p.add_argument("--method", choices=METHOD_CHOICES, required=True)
+    p.add_argument("--attn_implementation", default="sdpa",
+                   choices=["sdpa", "eager", "flash_attention_2"],
+                   help="HF attn_implementation. Use 'eager' for Gemma-3 (logit softcapping).")
     p.add_argument("--lora_r", type=int, default=16)
     p.add_argument("--lora_alpha", type=int, default=32)
     p.add_argument("--lora_dropout", type=float, default=0.05)
@@ -535,6 +539,13 @@ def main() -> int:
     elif args.method == "adalora":
         do_relora = False    # AdaLoRA has its own importance-driven rank reduction
         gate_sign = None
+    elif args.method == "cola":
+        # COLA (Chain-of-LoRA, Xia et al. 2024 arxiv:2401.04151).
+        # Functionally: merge-all + LoRA re-init (kaiming A, zero B) + fresh AdamW.
+        # All of these are already implemented identically by `relora_baseline`.
+        # Recommended schedule: K=4 stages of T_k steps (merge_every = total_steps/4).
+        do_relora = True
+        gate_sign = None
     else:
         raise ValueError(args.method)
 
@@ -587,7 +598,7 @@ def main() -> int:
     t0 = time.time()
     base = AutoModelForCausalLM.from_pretrained(
         args.model_path, torch_dtype=torch.bfloat16,
-        attn_implementation="sdpa", low_cpu_mem_usage=True,
+        attn_implementation=args.attn_implementation, low_cpu_mem_usage=True,
     )
     base.config.use_cache = False
     log.info(f"model loaded in {time.time()-t0:.1f}s")

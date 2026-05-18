@@ -1,0 +1,19 @@
+[2026-05-18 14:56:30,645] INFO stage3.qwen3-8b.tulu3-sft.cola - START stage3 model=/mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B dataset=tulu3-sft method=cola out=results/stage3_v2/qwen3-8b/tulu3-sft/cola/seed42_smoke
+[2026-05-18 14:56:31,621] INFO stage3.qwen3-8b.tulu3-sft.cola - tokenizer loaded in 0.3s, vocab=151643
+[2026-05-18 14:56:31,622] INFO stage3.qwen3-8b.tulu3-sft.cola - loading tulu-3-sft-mixture from /mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture
+[2026-05-18 14:56:33,416] INFO stage3.qwen3-8b.tulu3-sft.cola - tulu3-sft train=10000 val=500
+[2026-05-18 14:56:49,398] INFO stage3.qwen3-8b.tulu3-sft.cola - tulu3-sft tokenized: train 10000 val 500
+[2026-05-18 14:56:49,637] INFO stage3.qwen3-8b.tulu3-sft.cola - data prepared in 18.0s
+[2026-05-18 14:56:51,211] INFO stage3.qwen3-8b.tulu3-sft.cola - model loaded in 1.6s
+[2026-05-18 14:56:56,968] INFO stage3.qwen3-8b.tulu3-sft.cola - #LoRA layers=252 #components=4032
+[2026-05-18 14:56:56,972] INFO stage3.qwen3-8b.tulu3-sft.cola - #trainable params=43.65M
+[2026-05-18 14:57:12,624] INFO stage3.qwen3-8b.tulu3-sft.cola - [step 0] mean_ER=1926.51 mean_CN=9.34e+04 (sampled 8 layers)
+[2026-05-18 14:57:12,625] INFO stage3.qwen3-8b.tulu3-sft.cola - merge events scheduled at: [50, 100]
+[2026-05-18 15:01:45,676] INFO stage3.qwen3-8b.tulu3-sft.cola - step=25/100 train_loss=1.8819 lr=5.00e-05 elapsed=273s
+[2026-05-18 15:06:15,889] INFO stage3.qwen3-8b.tulu3-sft.cola - step=50/100 train_loss=1.4081 lr=1.00e-04 elapsed=543s
+[2026-05-18 15:07:05,506] INFO stage3.qwen3-8b.tulu3-sft.cola - step=50 VAL_LOSS=1.3920
+[2026-05-18 15:07:05,979] INFO stage3.qwen3-8b.tulu3-sft.cola - best ckpt updated: step=50 val_loss=1.3920
+[2026-05-18 15:07:05,979] INFO stage3.qwen3-8b.tulu3-sft.cola - === MERGE EVENT 1 at step 50 (method=cola) ===
+[2026-05-18 15:07:06,141] INFO stage3.qwen3-8b.tulu3-sft.cola - merge: total=4032 kept=4032 drop_rate=0.000
+[2026-05-18 15:08:10,257] INFO stage3.qwen3-8b.tulu3-sft.cola - step=50 POST-MERGE VAL_LOSS=1.3927 (first_eval=1.3920238616466523)
+[2026-05-18 15:12:47,233] INFO stage3.qwen3-8b.tulu3-sft.cola - step=75/100 train_loss=1.4114 lr=1.48e-04 elapsed=935s

@@ -1,0 +1,19 @@
+[2026-05-18 15:00:07,549] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - START stage3 model=/mnt/cpfs/junlongke/onlinelora/models/OLMo-2-7B dataset=metamathqa-10k method=lora_vanilla out=results/stage3_v2/olmo2-7b/metamathqa-10k/lora_vanilla/seed42_smoke
+[2026-05-18 15:00:08,639] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - tokenizer loaded in 0.3s, vocab=100278
+[2026-05-18 15:00:08,639] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - loading MetaMathQA from /mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA
+[2026-05-18 15:00:09,998] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - metamathqa train=10000 val=500
+[2026-05-18 15:00:15,190] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - metamathqa tokenized: train 10000 val 500
+[2026-05-18 15:00:15,455] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - data prepared in 6.8s
+[2026-05-18 15:00:17,981] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - model loaded in 2.5s
+[2026-05-18 15:01:18,215] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - #LoRA layers=224 #components=3584
+[2026-05-18 15:01:18,221] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - #trainable params=39.98M
+[2026-05-18 15:01:53,647] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - [step 0] mean_ER=2335.75 mean_CN=3.00e+08 (sampled 8 layers)
+[2026-05-18 15:01:53,647] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - merge events scheduled at: []
+[2026-05-18 15:04:04,595] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - step=25/50 train_loss=0.5659 lr=5.00e-05 elapsed=131s
+[2026-05-18 15:06:08,940] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - step=50/50 train_loss=0.2762 lr=1.00e-04 elapsed=255s
+[2026-05-18 15:06:32,698] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - step=50 VAL_LOSS=0.2354
+[2026-05-18 15:06:33,169] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - best ckpt updated: step=50 val_loss=0.2354
+[2026-05-18 15:06:33,170] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - training done in 279.5s
+[2026-05-18 15:06:56,897] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - FINAL VAL_LOSS=0.2354
+[2026-05-18 15:07:30,755] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - summary.json written
+[2026-05-18 15:07:31,202] INFO stage3.olmo2-7b.metamathqa-10k.lora_vanilla - adapter saved to results/stage3_v2/olmo2-7b/metamathqa-10k/lora_vanilla/seed42_smoke/adapter

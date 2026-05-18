@@ -1,0 +1,12 @@
+[2026-05-18 15:04:47,709] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - START stage3 model=/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B dataset=metamathqa-10k method=lora_vanilla out=results/stage3_v2/llama3-8b/metamathqa-10k/lora_vanilla/seed42_smoke
+[2026-05-18 15:04:49,599] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - tokenizer loaded in 0.3s, vocab=128000
+[2026-05-18 15:04:49,599] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - loading MetaMathQA from /mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA
+[2026-05-18 15:04:50,991] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - metamathqa train=10000 val=500
+[2026-05-18 15:04:56,155] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - metamathqa tokenized: train 10000 val 500
+[2026-05-18 15:04:56,430] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - data prepared in 6.8s
+[2026-05-18 15:04:57,828] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - model loaded in 1.4s
+[2026-05-18 15:05:04,266] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - #LoRA layers=224 #components=3584
+[2026-05-18 15:05:04,271] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - #trainable params=41.94M
+[2026-05-18 15:05:39,743] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - [step 0] mean_ER=1622.41 mean_CN=1.18e+07 (sampled 8 layers)
+[2026-05-18 15:05:39,744] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - merge events scheduled at: []
+[2026-05-18 15:10:12,899] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - step=25/50 train_loss=0.5569 lr=5.00e-05 elapsed=273s
