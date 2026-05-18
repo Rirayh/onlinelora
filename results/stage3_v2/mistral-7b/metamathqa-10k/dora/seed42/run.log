@@ -56,3 +56,16 @@
 [2026-05-17 11:40:59,195] INFO stage3.mistral-7b.metamathqa-10k.dora - step=650/800 train_loss=0.0671 lr=2.18e-05 elapsed=26267s
 [2026-05-17 11:40:59,603] INFO stage3.mistral-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/dora/seed42/checkpoints/step_000650
 [2026-05-17 11:57:16,133] INFO stage3.mistral-7b.metamathqa-10k.dora - step=675/800 train_loss=0.0603 lr=1.53e-05 elapsed=27244s
+[2026-05-17 12:14:08,313] INFO stage3.mistral-7b.metamathqa-10k.dora - step=700/800 train_loss=0.0611 lr=9.90e-06 elapsed=28257s
+[2026-05-17 12:14:08,726] INFO stage3.mistral-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/dora/seed42/checkpoints/step_000700
+[2026-05-17 12:30:44,603] INFO stage3.mistral-7b.metamathqa-10k.dora - step=725/800 train_loss=0.0627 lr=5.61e-06 elapsed=29253s
+[2026-05-17 12:47:26,432] INFO stage3.mistral-7b.metamathqa-10k.dora - step=750/800 train_loss=0.0621 lr=2.51e-06 elapsed=30255s
+[2026-05-17 12:47:27,082] INFO stage3.mistral-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/dora/seed42/checkpoints/step_000750
+[2026-05-17 13:04:09,338] INFO stage3.mistral-7b.metamathqa-10k.dora - step=775/800 train_loss=0.0618 lr=6.29e-07 elapsed=31258s
+[2026-05-17 13:21:05,706] INFO stage3.mistral-7b.metamathqa-10k.dora - step=800/800 train_loss=0.0569 lr=0.00e+00 elapsed=32274s
+[2026-05-17 13:21:06,124] INFO stage3.mistral-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/dora/seed42/checkpoints/step_000800
+[2026-05-17 13:22:11,098] INFO stage3.mistral-7b.metamathqa-10k.dora - step=800 VAL_LOSS=0.2294
+[2026-05-17 13:22:11,111] INFO stage3.mistral-7b.metamathqa-10k.dora - training done in 32339.4s
+[2026-05-17 13:23:16,078] INFO stage3.mistral-7b.metamathqa-10k.dora - FINAL VAL_LOSS=0.2294
+[2026-05-17 13:23:32,055] INFO stage3.mistral-7b.metamathqa-10k.dora - summary.json written
+[2026-05-17 13:23:32,460] INFO stage3.mistral-7b.metamathqa-10k.dora - adapter saved to /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/mistral-7b/metamathqa-10k/dora/seed42/adapter

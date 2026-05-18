@@ -47,3 +47,40 @@
 [2026-05-17 12:06:35,052] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=400/800 train_loss=0.1021 lr=1.22e-04 elapsed=14895s
 [2026-05-17 12:06:35,497] INFO stage3.qwen25-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/dora/seed42/checkpoints/step_000400
 [2026-05-17 12:07:38,786] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=400 VAL_LOSS=0.1383
+[2026-05-17 12:23:12,778] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=425/800 train_loss=0.1120 lr=1.11e-04 elapsed=15893s
+[2026-05-17 12:38:26,456] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=450/800 train_loss=0.1031 lr=1.00e-04 elapsed=16807s
+[2026-05-17 12:38:26,944] INFO stage3.qwen25-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/dora/seed42/checkpoints/step_000450
+[2026-05-17 12:39:30,249] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=450 VAL_LOSS=0.1383
+[2026-05-17 12:55:17,831] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=475/800 train_loss=0.1062 lr=8.88e-05 elapsed=17818s
+[2026-05-17 13:09:41,925] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=500/800 train_loss=0.1050 lr=7.77e-05 elapsed=18682s
+[2026-05-17 13:09:42,382] INFO stage3.qwen25-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/dora/seed42/checkpoints/step_000500
+[2026-05-17 13:10:45,700] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=500 VAL_LOSS=0.1389
+[2026-05-17 13:10:56,655] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=500 mean_ER=1456.92 mean_CN=1.47e+05
+[2026-05-17 13:26:17,065] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=525/800 train_loss=0.1002 lr=6.70e-05 elapsed=19677s
+[2026-05-17 13:41:37,105] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=550/800 train_loss=0.1078 lr=5.66e-05 elapsed=20597s
+[2026-05-17 13:41:37,577] INFO stage3.qwen25-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/dora/seed42/checkpoints/step_000550
+[2026-05-17 13:42:40,911] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=550 VAL_LOSS=0.1379
+[2026-05-17 13:57:58,462] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=575/800 train_loss=0.1085 lr=4.68e-05 elapsed=21579s
+[2026-05-17 14:12:47,424] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=600/800 train_loss=0.1053 lr=3.77e-05 elapsed=22468s
+[2026-05-17 14:12:47,900] INFO stage3.qwen25-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/dora/seed42/checkpoints/step_000600
+[2026-05-17 14:13:51,208] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=600 VAL_LOSS=0.1382
+[2026-05-17 14:29:28,014] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=625/800 train_loss=0.0982 lr=2.93e-05 elapsed=23468s
+[2026-05-17 14:44:39,404] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=650/800 train_loss=0.0768 lr=2.18e-05 elapsed=24380s
+[2026-05-17 14:44:39,873] INFO stage3.qwen25-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/dora/seed42/checkpoints/step_000650
+[2026-05-17 14:45:43,199] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=650 VAL_LOSS=0.1504
+[2026-05-17 15:00:56,012] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=675/800 train_loss=0.0699 lr=1.53e-05 elapsed=25356s
+[2026-05-17 15:15:53,307] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=700/800 train_loss=0.0736 lr=9.90e-06 elapsed=26254s
+[2026-05-17 15:15:53,779] INFO stage3.qwen25-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/dora/seed42/checkpoints/step_000700
+[2026-05-17 15:16:57,061] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=700 VAL_LOSS=0.1514
+[2026-05-17 15:31:34,320] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=725/800 train_loss=0.0757 lr=5.61e-06 elapsed=27195s
+[2026-05-17 15:47:05,497] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=750/800 train_loss=0.0769 lr=2.51e-06 elapsed=28126s
+[2026-05-17 15:47:05,969] INFO stage3.qwen25-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/dora/seed42/checkpoints/step_000750
+[2026-05-17 15:48:09,255] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=750 VAL_LOSS=0.1525
+[2026-05-17 16:02:59,745] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=775/800 train_loss=0.0732 lr=6.29e-07 elapsed=29080s
+[2026-05-17 16:17:52,412] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=800/800 train_loss=0.0704 lr=0.00e+00 elapsed=29973s
+[2026-05-17 16:17:52,878] INFO stage3.qwen25-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/dora/seed42/checkpoints/step_000800
+[2026-05-17 16:18:56,172] INFO stage3.qwen25-7b.metamathqa-10k.dora - step=800 VAL_LOSS=0.1526
+[2026-05-17 16:18:56,185] INFO stage3.qwen25-7b.metamathqa-10k.dora - training done in 30036.5s
+[2026-05-17 16:19:59,462] INFO stage3.qwen25-7b.metamathqa-10k.dora - FINAL VAL_LOSS=0.1526
+[2026-05-17 16:20:10,576] INFO stage3.qwen25-7b.metamathqa-10k.dora - summary.json written
+[2026-05-17 16:20:11,003] INFO stage3.qwen25-7b.metamathqa-10k.dora - adapter saved to /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen25-7b/metamathqa-10k/dora/seed42/adapter
