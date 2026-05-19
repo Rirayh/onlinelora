@@ -1,0 +1,13 @@
+{"step": 250, "val_loss": 0.19570209741592406}
+{"step": 500, "val_loss": 0.19589712005853652}
+{"step": 500, "val_loss": 0.19590458458662033, "post_merge": true}
+{"step": 750, "val_loss": 0.20720318406820298}
+{"step": 1000, "val_loss": 0.24580503541231155}
+{"step": 1000, "val_loss": 0.24580239647626878, "post_merge": true}
+{"step": 1250, "val_loss": 0.245893590927124}
+{"step": 1500, "val_loss": 0.28937576299905776}
+{"step": 1500, "val_loss": 0.2894065022468567, "post_merge": true}
+{"step": 1750, "val_loss": 0.32845482623577116}
+{"step": 2000, "val_loss": 0.36177598440647124}
+{"step": 2000, "val_loss": 0.3618939279317856, "post_merge": true}
+{"step": 3000, "val_loss": 0.3618939279317856, "final": true}

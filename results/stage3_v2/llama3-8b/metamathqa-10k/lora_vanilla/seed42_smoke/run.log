@@ -10,3 +10,10 @@
 [2026-05-18 15:05:39,743] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - [step 0] mean_ER=1622.41 mean_CN=1.18e+07 (sampled 8 layers)
 [2026-05-18 15:05:39,744] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - merge events scheduled at: []
 [2026-05-18 15:10:12,899] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - step=25/50 train_loss=0.5569 lr=5.00e-05 elapsed=273s
+[2026-05-18 15:14:43,499] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - step=50/50 train_loss=0.3138 lr=1.00e-04 elapsed=544s
+[2026-05-18 15:15:34,569] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - step=50 VAL_LOSS=0.2824
+[2026-05-18 15:15:35,090] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - best ckpt updated: step=50 val_loss=0.2824
+[2026-05-18 15:15:35,091] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - training done in 595.3s
+[2026-05-18 15:16:26,151] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - FINAL VAL_LOSS=0.2824
+[2026-05-18 15:17:01,085] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - summary.json written
+[2026-05-18 15:17:01,558] INFO stage3.llama3-8b.metamathqa-10k.lora_vanilla - adapter saved to results/stage3_v2/llama3-8b/metamathqa-10k/lora_vanilla/seed42_smoke/adapter

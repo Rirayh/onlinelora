@@ -11,3 +11,9 @@
 [2026-05-18 15:06:06,031] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - merge events scheduled at: []
 [2026-05-18 15:09:54,333] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=25/50 train_loss=0.7485 lr=5.00e-05 elapsed=228s
 [2026-05-18 15:13:46,515] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=50/50 train_loss=0.3463 lr=1.00e-04 elapsed=460s
+[2026-05-18 15:14:30,272] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=50 VAL_LOSS=0.2551
+[2026-05-18 15:14:30,667] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - best ckpt updated: step=50 val_loss=0.2551
+[2026-05-18 15:14:30,668] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - training done in 504.6s
+[2026-05-18 15:15:14,493] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - FINAL VAL_LOSS=0.2551
+[2026-05-18 15:15:35,241] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - summary.json written
+[2026-05-18 15:15:35,621] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - adapter saved to results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42_smoke/adapter

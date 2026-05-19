@@ -1,5 +1,8 @@
 model,dataset,method,seed,ckpt_step,gsm8k_strict,gsm8k_flex,hellaswag_acc_norm,arc_challenge_acc_norm
 mistral-7b,metamathqa-10k,relora_diag_gated_S3pos,42,1500,0.3753,0.3768,0.8267,0.5913
+qwen25-7b,metamathqa-10k,lora_vanilla,42,1500,0.7900,0.7900,0.7920,0.6092
+qwen25-7b,metamathqa-10k,relora_baseline,42,1500,0.8256,0.8362,0.7970,0.6357
+qwen25-7b,metamathqa-10k,relora_diag_gated_S3pos,42,1500,0.7945,0.8127,0.7964,0.6323
 qwen3-8b,metamathqa-10k,adalora,42,3000,0.7961,0.7983,0.7596,0.6681
 qwen3-8b,metamathqa-10k,lora_vanilla,42,1500,0.8188,0.8241,0.7617,0.6664
 qwen3-8b,metamathqa-10k,lora_vanilla,42,3000,0.8059,0.8105,0.7615,0.6647

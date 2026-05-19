@@ -1,0 +1,56 @@
+[2026-05-19 13:06:06,413] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - START stage3 model=/mnt/cpfs/junlongke/onlinelora/models/AceReason-Nemotron-7B dataset=tulu3-sft method=relora_random_drop out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_random_drop/seed42
+[2026-05-19 13:06:08,001] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - tokenizer loaded in 0.4s, vocab=151643
+[2026-05-19 13:06:08,001] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - loading tulu-3-sft-mixture from /mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture
+[2026-05-19 13:06:09,774] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - tulu3-sft train=10000 val=500
+[2026-05-19 13:06:25,843] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - tulu3-sft tokenized: train 10000 val 500
+[2026-05-19 13:06:26,108] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - data prepared in 18.1s
+[2026-05-19 13:06:27,568] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - model loaded in 1.5s
+[2026-05-19 13:06:34,138] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - #LoRA layers=196 #components=3136
+[2026-05-19 13:06:34,143] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - #trainable params=40.37M
+[2026-05-19 13:06:45,575] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - [step 0] mean_ER=1464.91 mean_CN=8.22e+04 (sampled 8 layers)
+[2026-05-19 13:06:45,576] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - merge events scheduled at: [500, 1000, 1500, 2000, 2500, 3000]
+[2026-05-19 13:10:41,670] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=25/3000 train_loss=2.7072 lr=5.00e-05 elapsed=236s
+[2026-05-19 13:14:42,491] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=50/3000 train_loss=2.0723 lr=1.00e-04 elapsed=477s
+[2026-05-19 13:14:42,877] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000050
+[2026-05-19 13:18:42,247] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=75/3000 train_loss=1.9263 lr=1.50e-04 elapsed=717s
+[2026-05-19 13:22:34,214] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=100/3000 train_loss=1.9643 lr=2.00e-04 elapsed=949s
+[2026-05-19 13:22:34,581] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000100
+[2026-05-19 13:26:19,320] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=125/3000 train_loss=1.8423 lr=2.00e-04 elapsed=1174s
+[2026-05-19 13:30:16,592] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=150/3000 train_loss=1.9191 lr=2.00e-04 elapsed=1411s
+[2026-05-19 13:30:16,940] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000150
+[2026-05-19 13:34:14,655] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=175/3000 train_loss=1.8011 lr=2.00e-04 elapsed=1649s
+[2026-05-19 13:38:01,153] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=200/3000 train_loss=1.8710 lr=1.99e-04 elapsed=1876s
+[2026-05-19 13:38:01,516] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000200
+[2026-05-19 13:42:05,702] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=225/3000 train_loss=1.8265 lr=1.99e-04 elapsed=2120s
+[2026-05-19 13:46:01,571] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=250/3000 train_loss=1.7898 lr=1.99e-04 elapsed=2356s
+[2026-05-19 13:46:01,942] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000250
+[2026-05-19 13:46:44,843] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=250 VAL_LOSS=1.8569
+[2026-05-19 13:46:45,182] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - best ckpt updated: step=250 val_loss=1.8569
+[2026-05-19 13:50:33,360] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=275/3000 train_loss=1.7864 lr=1.98e-04 elapsed=2628s
+[2026-05-19 13:54:26,616] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=300/3000 train_loss=1.8927 lr=1.98e-04 elapsed=2861s
+[2026-05-19 13:54:26,960] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000300
+[2026-05-19 13:58:23,557] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=325/3000 train_loss=1.8232 lr=1.97e-04 elapsed=3098s
+[2026-05-19 14:02:19,461] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=350/3000 train_loss=1.7210 lr=1.96e-04 elapsed=3334s
+[2026-05-19 14:02:19,833] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000350
+[2026-05-19 14:06:13,433] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=375/3000 train_loss=1.7316 lr=1.96e-04 elapsed=3568s
+[2026-05-19 14:10:06,787] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=400/3000 train_loss=1.7122 lr=1.95e-04 elapsed=3801s
+[2026-05-19 14:10:07,159] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000400
+[2026-05-19 14:14:03,367] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=425/3000 train_loss=1.7222 lr=1.94e-04 elapsed=4038s
+[2026-05-19 14:17:55,773] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=450/3000 train_loss=1.7290 lr=1.93e-04 elapsed=4270s
+[2026-05-19 14:17:56,131] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000450
+[2026-05-19 14:21:50,516] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=475/3000 train_loss=1.7146 lr=1.92e-04 elapsed=4505s
+[2026-05-19 14:25:36,011] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=500/3000 train_loss=1.7644 lr=1.91e-04 elapsed=4730s
+[2026-05-19 14:25:36,365] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000500
+[2026-05-19 14:26:19,474] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=500 VAL_LOSS=1.8348
+[2026-05-19 14:26:19,836] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - best ckpt updated: step=500 val_loss=1.8348
+[2026-05-19 14:26:30,803] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=500 mean_ER=1465.00 mean_CN=2.53e+07
+[2026-05-19 14:26:30,803] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - === MERGE EVENT 1 at step 500 (method=relora_random_drop) ===
+[2026-05-19 14:26:31,077] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - merge: total=3136 kept=1598 drop_rate=0.490
+[2026-05-19 14:27:25,660] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=500 POST-MERGE VAL_LOSS=1.9147 (first_eval=1.8569456717967987)
+[2026-05-19 14:31:17,393] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=525/3000 train_loss=1.8494 lr=5.00e-05 elapsed=5072s
+[2026-05-19 14:35:24,656] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=550/3000 train_loss=1.7871 lr=1.00e-04 elapsed=5319s
+[2026-05-19 14:35:25,022] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000550
+[2026-05-19 14:39:15,341] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=575/3000 train_loss=1.7475 lr=1.50e-04 elapsed=5550s
+[2026-05-19 14:43:07,655] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=600/3000 train_loss=1.7502 lr=2.00e-04 elapsed=5782s
+[2026-05-19 14:43:08,012] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000600
+[2026-05-19 14:46:58,149] INFO stage3.acereason-7b.tulu3-sft.relora_random_drop - step=625/3000 train_loss=1.6894 lr=2.00e-04 elapsed=6013s

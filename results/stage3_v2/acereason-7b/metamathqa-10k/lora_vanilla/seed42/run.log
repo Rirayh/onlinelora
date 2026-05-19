@@ -1,0 +1,215 @@
+[2026-05-18 15:57:53,350] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - START stage3 model=/mnt/cpfs/junlongke/onlinelora/models/AceReason-Nemotron-7B dataset=metamathqa-10k method=lora_vanilla out=results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42
+[2026-05-18 15:57:55,171] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - tokenizer loaded in 0.4s, vocab=151643
+[2026-05-18 15:57:55,171] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - loading MetaMathQA from /mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA
+[2026-05-18 15:57:56,676] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - metamathqa train=10000 val=500
+[2026-05-18 15:58:02,578] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - metamathqa tokenized: train 10000 val 500
+[2026-05-18 15:58:02,869] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - data prepared in 7.7s
+[2026-05-18 15:58:04,198] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - model loaded in 1.3s
+[2026-05-18 15:58:11,160] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - #LoRA layers=196 #components=3136
+[2026-05-18 15:58:11,164] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - #trainable params=40.37M
+[2026-05-18 15:58:23,095] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - [step 0] mean_ER=1464.91 mean_CN=8.22e+04 (sampled 8 layers)
+[2026-05-18 15:58:23,095] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - merge events scheduled at: []
+[2026-05-18 16:00:21,116] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=25/3000 train_loss=0.7486 lr=5.00e-05 elapsed=118s
+[2026-05-18 16:02:21,162] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=50/3000 train_loss=0.3463 lr=1.00e-04 elapsed=238s
+[2026-05-18 16:02:21,580] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000050
+[2026-05-18 16:04:25,451] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=75/3000 train_loss=0.2365 lr=1.50e-04 elapsed=362s
+[2026-05-18 16:06:26,931] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=100/3000 train_loss=0.1943 lr=2.00e-04 elapsed=484s
+[2026-05-18 16:06:27,313] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000100
+[2026-05-18 16:08:22,071] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=125/3000 train_loss=0.1919 lr=2.00e-04 elapsed=599s
+[2026-05-18 16:10:20,637] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=150/3000 train_loss=0.1879 lr=2.00e-04 elapsed=718s
+[2026-05-18 16:10:21,009] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000150
+[2026-05-18 16:12:18,697] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=175/3000 train_loss=0.1798 lr=2.00e-04 elapsed=836s
+[2026-05-18 16:14:16,694] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=200/3000 train_loss=0.1773 lr=1.99e-04 elapsed=954s
+[2026-05-18 16:14:17,101] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000200
+[2026-05-18 16:16:11,964] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=225/3000 train_loss=0.1775 lr=1.99e-04 elapsed=1069s
+[2026-05-18 16:18:10,546] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=250/3000 train_loss=0.1759 lr=1.99e-04 elapsed=1187s
+[2026-05-18 16:18:10,922] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000250
+[2026-05-18 16:18:33,977] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=250 VAL_LOSS=0.1729
+[2026-05-18 16:18:34,330] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - best ckpt updated: step=250 val_loss=0.1729
+[2026-05-18 16:20:35,227] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=275/3000 train_loss=0.1764 lr=1.98e-04 elapsed=1332s
+[2026-05-18 16:22:30,877] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=300/3000 train_loss=0.1703 lr=1.98e-04 elapsed=1448s
+[2026-05-18 16:22:31,259] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000300
+[2026-05-18 16:24:30,813] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=325/3000 train_loss=0.1562 lr=1.97e-04 elapsed=1568s
+[2026-05-18 16:26:30,000] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=350/3000 train_loss=0.1495 lr=1.96e-04 elapsed=1687s
+[2026-05-18 16:26:30,369] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000350
+[2026-05-18 16:28:30,535] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=375/3000 train_loss=0.1474 lr=1.96e-04 elapsed=1807s
+[2026-05-18 16:30:26,240] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=400/3000 train_loss=0.1422 lr=1.95e-04 elapsed=1923s
+[2026-05-18 16:30:26,611] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000400
+[2026-05-18 16:32:26,288] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=425/3000 train_loss=0.1363 lr=1.94e-04 elapsed=2043s
+[2026-05-18 16:34:22,106] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=450/3000 train_loss=0.1418 lr=1.93e-04 elapsed=2159s
+[2026-05-18 16:34:22,501] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000450
+[2026-05-18 16:36:20,499] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=475/3000 train_loss=0.1446 lr=1.92e-04 elapsed=2277s
+[2026-05-18 16:38:21,020] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=500/3000 train_loss=0.1485 lr=1.91e-04 elapsed=2398s
+[2026-05-18 16:38:21,400] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000500
+[2026-05-18 16:38:44,352] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=500 VAL_LOSS=0.1677
+[2026-05-18 16:38:44,676] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - best ckpt updated: step=500 val_loss=0.1677
+[2026-05-18 16:38:55,863] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=500 mean_ER=1465.00 mean_CN=1.60e+06
+[2026-05-18 16:40:52,372] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=525/3000 train_loss=0.1352 lr=1.90e-04 elapsed=2549s
+[2026-05-18 16:42:55,521] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=550/3000 train_loss=0.1483 lr=1.88e-04 elapsed=2672s
+[2026-05-18 16:42:55,896] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000550
+[2026-05-18 16:44:58,175] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=575/3000 train_loss=0.1471 lr=1.87e-04 elapsed=2795s
+[2026-05-18 16:46:50,783] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=600/3000 train_loss=0.1405 lr=1.86e-04 elapsed=2908s
+[2026-05-18 16:46:51,154] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000600
+[2026-05-18 16:48:52,421] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=625/3000 train_loss=0.1410 lr=1.84e-04 elapsed=3029s
+[2026-05-18 16:50:52,423] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=650/3000 train_loss=0.1040 lr=1.83e-04 elapsed=3149s
+[2026-05-18 16:50:52,800] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000650
+[2026-05-18 16:52:48,249] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=675/3000 train_loss=0.0992 lr=1.81e-04 elapsed=3265s
+[2026-05-18 16:54:42,465] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=700/3000 train_loss=0.1044 lr=1.80e-04 elapsed=3379s
+[2026-05-18 16:54:42,844] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000700
+[2026-05-18 16:56:41,591] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=725/3000 train_loss=0.0986 lr=1.78e-04 elapsed=3498s
+[2026-05-18 16:58:43,635] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=750/3000 train_loss=0.1024 lr=1.76e-04 elapsed=3621s
+[2026-05-18 16:58:44,017] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000750
+[2026-05-18 16:59:07,091] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=750 VAL_LOSS=0.1839
+[2026-05-18 17:01:02,624] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=775/3000 train_loss=0.1006 lr=1.74e-04 elapsed=3760s
+[2026-05-18 17:03:03,261] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=800/3000 train_loss=0.1026 lr=1.73e-04 elapsed=3880s
+[2026-05-18 17:03:03,624] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000800
+[2026-05-18 17:05:03,800] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=825/3000 train_loss=0.1061 lr=1.71e-04 elapsed=4001s
+[2026-05-18 17:07:08,393] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=850/3000 train_loss=0.1059 lr=1.69e-04 elapsed=4125s
+[2026-05-18 17:07:08,753] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000850
+[2026-05-18 17:09:09,408] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=875/3000 train_loss=0.1070 lr=1.67e-04 elapsed=4246s
+[2026-05-18 17:11:06,499] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=900/3000 train_loss=0.1094 lr=1.65e-04 elapsed=4363s
+[2026-05-18 17:11:06,884] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000900
+[2026-05-18 17:12:59,462] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=925/3000 train_loss=0.1077 lr=1.63e-04 elapsed=4476s
+[2026-05-18 17:15:00,524] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=950/3000 train_loss=0.0844 lr=1.61e-04 elapsed=4597s
+[2026-05-18 17:15:00,898] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_000950
+[2026-05-18 17:17:00,728] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=975/3000 train_loss=0.0632 lr=1.58e-04 elapsed=4718s
+[2026-05-18 17:19:02,987] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1000/3000 train_loss=0.0565 lr=1.56e-04 elapsed=4840s
+[2026-05-18 17:19:03,371] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001000
+[2026-05-18 17:19:26,442] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1000 VAL_LOSS=0.2303
+[2026-05-18 17:19:37,361] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1000 mean_ER=1465.05 mean_CN=1.68e+05
+[2026-05-18 17:21:34,054] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1025/3000 train_loss=0.0598 lr=1.54e-04 elapsed=4991s
+[2026-05-18 17:23:30,735] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1050/3000 train_loss=0.0601 lr=1.52e-04 elapsed=5108s
+[2026-05-18 17:23:31,112] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001050
+[2026-05-18 17:25:25,076] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1075/3000 train_loss=0.0630 lr=1.49e-04 elapsed=5222s
+[2026-05-18 17:27:19,037] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1100/3000 train_loss=0.0656 lr=1.47e-04 elapsed=5336s
+[2026-05-18 17:27:19,433] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001100
+[2026-05-18 17:29:16,128] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1125/3000 train_loss=0.0642 lr=1.44e-04 elapsed=5453s
+[2026-05-18 17:31:11,011] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1150/3000 train_loss=0.0671 lr=1.42e-04 elapsed=5568s
+[2026-05-18 17:31:11,381] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001150
+[2026-05-18 17:33:09,436] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1175/3000 train_loss=0.0656 lr=1.40e-04 elapsed=5686s
+[2026-05-18 17:35:08,038] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1200/3000 train_loss=0.0662 lr=1.37e-04 elapsed=5805s
+[2026-05-18 17:35:08,430] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001200
+[2026-05-18 17:37:08,542] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1225/3000 train_loss=0.0676 lr=1.34e-04 elapsed=5925s
+[2026-05-18 17:39:11,951] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1250/3000 train_loss=0.0703 lr=1.32e-04 elapsed=6049s
+[2026-05-18 17:39:12,340] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001250
+[2026-05-18 17:39:35,405] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1250 VAL_LOSS=0.2204
+[2026-05-18 17:41:32,552] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1275/3000 train_loss=0.0308 lr=1.29e-04 elapsed=6189s
+[2026-05-18 17:43:34,531] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1300/3000 train_loss=0.0326 lr=1.27e-04 elapsed=6311s
+[2026-05-18 17:43:34,942] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001300
+[2026-05-18 17:45:32,067] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1325/3000 train_loss=0.0337 lr=1.24e-04 elapsed=6429s
+[2026-05-18 17:47:30,656] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1350/3000 train_loss=0.0339 lr=1.21e-04 elapsed=6548s
+[2026-05-18 17:47:31,047] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001350
+[2026-05-18 17:49:35,408] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1375/3000 train_loss=0.0345 lr=1.19e-04 elapsed=6672s
+[2026-05-18 17:51:37,051] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1400/3000 train_loss=0.0360 lr=1.16e-04 elapsed=6794s
+[2026-05-18 17:51:37,444] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001400
+[2026-05-18 17:53:36,768] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1425/3000 train_loss=0.0335 lr=1.14e-04 elapsed=6914s
+[2026-05-18 17:55:35,048] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1450/3000 train_loss=0.0358 lr=1.11e-04 elapsed=7032s
+[2026-05-18 17:55:35,431] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001450
+[2026-05-18 17:57:36,491] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1475/3000 train_loss=0.0387 lr=1.08e-04 elapsed=7153s
+[2026-05-18 17:59:33,030] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1500/3000 train_loss=0.0366 lr=1.05e-04 elapsed=7270s
+[2026-05-18 17:59:33,412] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001500
+[2026-05-18 17:59:56,487] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1500 VAL_LOSS=0.2752
+[2026-05-18 18:00:07,428] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1500 mean_ER=1465.06 mean_CN=2.10e+05
+[2026-05-18 18:02:03,873] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1525/3000 train_loss=0.0366 lr=1.03e-04 elapsed=7421s
+[2026-05-18 18:04:05,345] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1550/3000 train_loss=0.0354 lr=1.00e-04 elapsed=7542s
+[2026-05-18 18:04:05,727] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001550
+[2026-05-18 18:06:04,560] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1575/3000 train_loss=0.0260 lr=9.73e-05 elapsed=7661s
+[2026-05-18 18:08:02,109] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1600/3000 train_loss=0.0154 lr=9.46e-05 elapsed=7779s
+[2026-05-18 18:08:02,497] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001600
+[2026-05-18 18:10:00,062] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1625/3000 train_loss=0.0162 lr=9.19e-05 elapsed=7897s
+[2026-05-18 18:11:57,450] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1650/3000 train_loss=0.0177 lr=8.92e-05 elapsed=8014s
+[2026-05-18 18:11:57,814] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001650
+[2026-05-18 18:13:57,856] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1675/3000 train_loss=0.0174 lr=8.65e-05 elapsed=8135s
+[2026-05-18 18:15:56,596] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1700/3000 train_loss=0.0176 lr=8.38e-05 elapsed=8253s
+[2026-05-18 18:15:56,958] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001700
+[2026-05-18 18:17:48,991] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1725/3000 train_loss=0.0188 lr=8.12e-05 elapsed=8366s
+[2026-05-18 18:19:50,611] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1750/3000 train_loss=0.0184 lr=7.85e-05 elapsed=8488s
+[2026-05-18 18:19:50,989] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001750
+[2026-05-18 18:20:14,068] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1750 VAL_LOSS=0.3255
+[2026-05-18 18:22:20,714] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1775/3000 train_loss=0.0194 lr=7.59e-05 elapsed=8638s
+[2026-05-18 18:24:20,621] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1800/3000 train_loss=0.0187 lr=7.32e-05 elapsed=8758s
+[2026-05-18 18:24:20,986] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001800
+[2026-05-18 18:26:17,354] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1825/3000 train_loss=0.0188 lr=7.06e-05 elapsed=8874s
+[2026-05-18 18:28:13,721] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1850/3000 train_loss=0.0181 lr=6.81e-05 elapsed=8991s
+[2026-05-18 18:28:14,101] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001850
+[2026-05-18 18:30:11,639] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1875/3000 train_loss=0.0201 lr=6.55e-05 elapsed=9109s
+[2026-05-18 18:32:06,796] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1900/3000 train_loss=0.0086 lr=6.30e-05 elapsed=9224s
+[2026-05-18 18:32:07,179] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001900
+[2026-05-18 18:33:58,574] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1925/3000 train_loss=0.0076 lr=6.05e-05 elapsed=9335s
+[2026-05-18 18:36:01,975] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1950/3000 train_loss=0.0082 lr=5.80e-05 elapsed=9459s
+[2026-05-18 18:36:02,346] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_001950
+[2026-05-18 18:38:01,337] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=1975/3000 train_loss=0.0088 lr=5.56e-05 elapsed=9578s
+[2026-05-18 18:40:00,467] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2000/3000 train_loss=0.0087 lr=5.32e-05 elapsed=9697s
+[2026-05-18 18:40:00,835] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002000
+[2026-05-18 18:40:23,910] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2000 VAL_LOSS=0.3672
+[2026-05-18 18:40:34,938] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2000 mean_ER=1465.04 mean_CN=9.92e+04
+[2026-05-18 18:42:36,222] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2025/3000 train_loss=0.0091 lr=5.08e-05 elapsed=9853s
+[2026-05-18 18:44:29,060] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2050/3000 train_loss=0.0083 lr=4.84e-05 elapsed=9966s
+[2026-05-18 18:44:29,435] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002050
+[2026-05-18 18:46:25,708] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2075/3000 train_loss=0.0107 lr=4.61e-05 elapsed=10083s
+[2026-05-18 18:48:31,455] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2100/3000 train_loss=0.0105 lr=4.39e-05 elapsed=10208s
+[2026-05-18 18:48:31,840] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002100
+[2026-05-18 18:50:32,404] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2125/3000 train_loss=0.0101 lr=4.17e-05 elapsed=10329s
+[2026-05-18 18:52:32,834] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2150/3000 train_loss=0.0094 lr=3.95e-05 elapsed=10450s
+[2026-05-18 18:52:33,196] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002150
+[2026-05-18 18:54:29,809] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2175/3000 train_loss=0.0093 lr=3.73e-05 elapsed=10567s
+[2026-05-18 18:56:27,557] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2200/3000 train_loss=0.0064 lr=3.53e-05 elapsed=10684s
+[2026-05-18 18:56:27,925] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002200
+[2026-05-18 18:58:27,984] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2225/3000 train_loss=0.0039 lr=3.32e-05 elapsed=10805s
+[2026-05-18 19:00:27,818] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2250/3000 train_loss=0.0048 lr=3.12e-05 elapsed=10925s
+[2026-05-18 19:00:28,172] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002250
+[2026-05-18 19:00:51,257] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2250 VAL_LOSS=0.4145
+[2026-05-18 19:02:52,154] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2275/3000 train_loss=0.0044 lr=2.93e-05 elapsed=11069s
+[2026-05-18 19:04:50,968] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2300/3000 train_loss=0.0043 lr=2.74e-05 elapsed=11188s
+[2026-05-18 19:04:51,362] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002300
+[2026-05-18 19:06:45,422] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2325/3000 train_loss=0.0049 lr=2.56e-05 elapsed=11302s
+[2026-05-18 19:08:44,165] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2350/3000 train_loss=0.0047 lr=2.38e-05 elapsed=11421s
+[2026-05-18 19:08:44,527] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002350
+[2026-05-18 19:10:42,243] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2375/3000 train_loss=0.0047 lr=2.21e-05 elapsed=11539s
+[2026-05-18 19:12:43,542] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2400/3000 train_loss=0.0055 lr=2.04e-05 elapsed=11660s
+[2026-05-18 19:12:43,911] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002400
+[2026-05-18 19:14:42,993] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2425/3000 train_loss=0.0050 lr=1.88e-05 elapsed=11780s
+[2026-05-18 19:16:40,126] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2450/3000 train_loss=0.0060 lr=1.72e-05 elapsed=11897s
+[2026-05-18 19:16:40,505] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002450
+[2026-05-18 19:18:33,479] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2475/3000 train_loss=0.0054 lr=1.57e-05 elapsed=12010s
+[2026-05-18 19:20:36,485] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2500/3000 train_loss=0.0042 lr=1.43e-05 elapsed=12133s
+[2026-05-18 19:20:36,865] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002500
+[2026-05-18 19:20:59,945] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2500 VAL_LOSS=0.4129
+[2026-05-18 19:21:10,830] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2500 mean_ER=1465.04 mean_CN=7.92e+04
+[2026-05-18 19:23:08,840] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2525/3000 train_loss=0.0022 lr=1.29e-05 elapsed=12286s
+[2026-05-18 19:25:06,254] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2550/3000 train_loss=0.0024 lr=1.16e-05 elapsed=12403s
+[2026-05-18 19:25:06,623] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002550
+[2026-05-18 19:27:06,468] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2575/3000 train_loss=0.0024 lr=1.04e-05 elapsed=12523s
+[2026-05-18 19:29:09,355] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2600/3000 train_loss=0.0027 lr=9.24e-06 elapsed=12646s
+[2026-05-18 19:29:09,733] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002600
+[2026-05-18 19:31:08,555] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2625/3000 train_loss=0.0029 lr=8.14e-06 elapsed=12765s
+[2026-05-18 19:33:02,737] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2650/3000 train_loss=0.0027 lr=7.10e-06 elapsed=12880s
+[2026-05-18 19:33:03,119] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002650
+[2026-05-18 19:34:56,714] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2675/3000 train_loss=0.0027 lr=6.13e-06 elapsed=12994s
+[2026-05-18 19:36:53,556] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2700/3000 train_loss=0.0027 lr=5.23e-06 elapsed=13110s
+[2026-05-18 19:36:53,918] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002700
+[2026-05-18 19:38:46,872] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2725/3000 train_loss=0.0025 lr=4.40e-06 elapsed=13224s
+[2026-05-18 19:40:47,010] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2750/3000 train_loss=0.0028 lr=3.65e-06 elapsed=13344s
+[2026-05-18 19:40:47,400] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002750
+[2026-05-18 19:41:10,324] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2750 VAL_LOSS=0.4670
+[2026-05-18 19:43:10,056] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2775/3000 train_loss=0.0028 lr=2.96e-06 elapsed=13487s
+[2026-05-18 19:45:10,824] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2800/3000 train_loss=0.0026 lr=2.34e-06 elapsed=13608s
+[2026-05-18 19:45:11,216] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002800
+[2026-05-18 19:47:13,787] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2825/3000 train_loss=0.0019 lr=1.79e-06 elapsed=13731s
+[2026-05-18 19:49:14,414] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2850/3000 train_loss=0.0016 lr=1.32e-06 elapsed=13851s
+[2026-05-18 19:49:14,788] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002850
+[2026-05-18 19:51:14,866] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2875/3000 train_loss=0.0018 lr=9.15e-07 elapsed=13972s
+[2026-05-18 19:53:17,000] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2900/3000 train_loss=0.0017 lr=5.86e-07 elapsed=14094s
+[2026-05-18 19:53:17,372] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002900
+[2026-05-18 19:55:14,885] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2925/3000 train_loss=0.0016 lr=3.30e-07 elapsed=14212s
+[2026-05-18 19:57:11,943] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2950/3000 train_loss=0.0018 lr=1.47e-07 elapsed=14329s
+[2026-05-18 19:57:12,322] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_002950
+[2026-05-18 19:59:08,428] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=2975/3000 train_loss=0.0017 lr=3.67e-08 elapsed=14445s
+[2026-05-18 20:01:03,868] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=3000/3000 train_loss=0.0018 lr=0.00e+00 elapsed=14561s
+[2026-05-18 20:01:04,245] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - periodic ckpt saved: results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/checkpoints/step_003000
+[2026-05-18 20:01:27,333] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=3000 VAL_LOSS=0.4778
+[2026-05-18 20:01:38,258] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - step=3000 mean_ER=1465.04 mean_CN=7.51e+04
+[2026-05-18 20:01:38,259] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - training done in 14595.2s
+[2026-05-18 20:02:01,450] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - FINAL VAL_LOSS=0.4778
+[2026-05-18 20:02:12,390] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - summary.json written
+[2026-05-18 20:02:12,761] INFO stage3.acereason-7b.metamathqa-10k.lora_vanilla - adapter saved to results/stage3_v2/acereason-7b/metamathqa-10k/lora_vanilla/seed42/adapter

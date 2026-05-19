@@ -1,0 +1,4 @@
+{"step": 250, "val_loss": null}
+{"step": 500, "val_loss": null}
+{"step": 750, "val_loss": null}
+{"step": 800, "val_loss": null, "final": true}

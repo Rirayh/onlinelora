@@ -9,3 +9,11 @@
 [2026-05-18 15:06:21,197] INFO stage3.gemma3-12b.metamathqa-10k.lora_vanilla - #trainable params=68.46M
 [2026-05-18 15:06:42,949] INFO stage3.gemma3-12b.metamathqa-10k.lora_vanilla - [step 0] mean_ER=1515.00 mean_CN=1.01e+06 (sampled 8 layers)
 [2026-05-18 15:06:42,949] INFO stage3.gemma3-12b.metamathqa-10k.lora_vanilla - merge events scheduled at: []
+[2026-05-18 15:14:25,167] INFO stage3.gemma3-12b.metamathqa-10k.lora_vanilla - step=25/50 train_loss=0.9509 lr=5.00e-05 elapsed=462s
+[2026-05-18 15:22:13,913] INFO stage3.gemma3-12b.metamathqa-10k.lora_vanilla - step=50/50 train_loss=0.2984 lr=1.00e-04 elapsed=931s
+[2026-05-18 15:24:01,315] INFO stage3.gemma3-12b.metamathqa-10k.lora_vanilla - step=50 VAL_LOSS=0.2362
+[2026-05-18 15:24:02,152] INFO stage3.gemma3-12b.metamathqa-10k.lora_vanilla - best ckpt updated: step=50 val_loss=0.2362
+[2026-05-18 15:24:02,154] INFO stage3.gemma3-12b.metamathqa-10k.lora_vanilla - training done in 1039.2s
+[2026-05-18 15:25:50,683] INFO stage3.gemma3-12b.metamathqa-10k.lora_vanilla - FINAL VAL_LOSS=0.2362
+[2026-05-18 15:26:11,932] INFO stage3.gemma3-12b.metamathqa-10k.lora_vanilla - summary.json written
+[2026-05-18 15:26:12,771] INFO stage3.gemma3-12b.metamathqa-10k.lora_vanilla - adapter saved to results/stage3_v2/gemma3-12b/metamathqa-10k/lora_vanilla/seed42_smoke/adapter

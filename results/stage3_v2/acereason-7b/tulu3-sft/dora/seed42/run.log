@@ -1,0 +1,12 @@
+[2026-05-19 13:50:27,372] INFO stage3.acereason-7b.tulu3-sft.dora - START stage3 model=/mnt/cpfs/junlongke/onlinelora/models/AceReason-Nemotron-7B dataset=tulu3-sft method=dora out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/dora/seed42
+[2026-05-19 13:50:28,683] INFO stage3.acereason-7b.tulu3-sft.dora - tokenizer loaded in 0.4s, vocab=151643
+[2026-05-19 13:50:28,683] INFO stage3.acereason-7b.tulu3-sft.dora - loading tulu-3-sft-mixture from /mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture
+[2026-05-19 13:50:30,440] INFO stage3.acereason-7b.tulu3-sft.dora - tulu3-sft train=10000 val=500
+[2026-05-19 13:50:46,756] INFO stage3.acereason-7b.tulu3-sft.dora - tulu3-sft tokenized: train 10000 val 500
+[2026-05-19 13:50:47,004] INFO stage3.acereason-7b.tulu3-sft.dora - data prepared in 18.3s
+[2026-05-19 13:50:48,564] INFO stage3.acereason-7b.tulu3-sft.dora - model loaded in 1.6s
+[2026-05-19 13:50:57,534] INFO stage3.acereason-7b.tulu3-sft.dora - #LoRA layers=196 #components=3136
+[2026-05-19 13:50:57,539] INFO stage3.acereason-7b.tulu3-sft.dora - #trainable params=41.76M
+[2026-05-19 13:51:09,002] INFO stage3.acereason-7b.tulu3-sft.dora - [step 0] mean_ER=1464.91 mean_CN=8.22e+04 (sampled 8 layers)
+[2026-05-19 13:51:09,003] INFO stage3.acereason-7b.tulu3-sft.dora - merge events scheduled at: []
+[2026-05-19 14:19:13,710] INFO stage3.acereason-7b.tulu3-sft.dora - step=25/800 train_loss=2.6707 lr=5.00e-05 elapsed=1685s
