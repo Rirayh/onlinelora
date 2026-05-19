@@ -47,3 +47,7 @@
 [2026-05-19 14:21:52,154] INFO stage3.acereason-7b.metamathqa-10k.dora - step=525/800 train_loss=0.1300 lr=6.70e-05 elapsed=19145s
 [2026-05-19 14:37:27,992] INFO stage3.acereason-7b.metamathqa-10k.dora - step=550/800 train_loss=0.1423 lr=5.66e-05 elapsed=20081s
 [2026-05-19 14:37:28,386] INFO stage3.acereason-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/metamathqa-10k/dora/seed42/checkpoints/step_000550
+[2026-05-19 14:53:01,875] INFO stage3.acereason-7b.metamathqa-10k.dora - step=575/800 train_loss=0.1403 lr=4.68e-05 elapsed=21015s
+[2026-05-19 15:07:26,008] INFO stage3.acereason-7b.metamathqa-10k.dora - step=600/800 train_loss=0.1338 lr=3.77e-05 elapsed=21879s
+[2026-05-19 15:07:26,416] INFO stage3.acereason-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/metamathqa-10k/dora/seed42/checkpoints/step_000600
+[2026-05-19 15:22:52,622] INFO stage3.acereason-7b.metamathqa-10k.dora - step=625/800 train_loss=0.1336 lr=2.93e-05 elapsed=22806s

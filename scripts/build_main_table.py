@@ -44,9 +44,10 @@ def best_lm_eval_dir(seed_dir: Path) -> Optional[Path]:
     """Return the most appropriate lm_eval dir for the canonical best-ckpt result.
 
     Priority:
-      1. lm_eval_v2/ (contamination-cleared rerun, if newer json exists)
-      2. lm_eval/    (original run)
-    Both must contain at least one results_*.json to qualify.
+      1. lm_eval_v3/ (post-P0-fix rerun: adapter/ now contains valid lora_B!=0)
+      2. lm_eval_v2/ (earlier contamination-cleared rerun)
+      3. lm_eval/    (original run)
+    Each must contain at least one results_*.json to qualify.
     lm_eval_step*/ dirs are multi-ckpt analysis, NOT used as canonical.
     """
     candidates = []
@@ -60,10 +61,11 @@ def best_lm_eval_dir(seed_dir: Path) -> Optional[Path]:
                 candidates.append((latest.stat().st_mtime, d))
     if not candidates:
         return None
-    # prefer lm_eval_v2 if it has a newer json; otherwise take the newest by mtime
-    v2 = [d for _, d in candidates if d.name == "lm_eval_v2"]
-    if v2:
-        return v2[0]
+    # priority: v3 > v2 > newest by mtime (v1 / lm_eval_rebuilt etc.)
+    for prefer in ("lm_eval_v3", "lm_eval_v2"):
+        hits = [d for _, d in candidates if d.name == prefer]
+        if hits:
+            return hits[0]
     candidates.sort(key=lambda x: x[0], reverse=True)
     return candidates[0][1]
 

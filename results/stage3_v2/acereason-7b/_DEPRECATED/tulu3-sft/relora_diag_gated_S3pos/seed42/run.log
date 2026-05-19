@@ -127,3 +127,19 @@
 [2026-05-19 14:41:24,301] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - step=1600/3000 train_loss=1.5579 lr=2.00e-04 elapsed=15497s
 [2026-05-19 14:41:24,667] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_diag_gated_S3pos/seed42/checkpoints/step_001600
 [2026-05-19 14:45:18,663] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - step=1625/3000 train_loss=1.6325 lr=2.00e-04 elapsed=15732s
+[2026-05-19 14:49:17,146] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - step=1650/3000 train_loss=1.5633 lr=1.99e-04 elapsed=15970s
+[2026-05-19 14:49:17,531] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_diag_gated_S3pos/seed42/checkpoints/step_001650
+[2026-05-19 14:53:02,488] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - step=1675/3000 train_loss=1.5352 lr=1.99e-04 elapsed=16195s
+[2026-05-19 14:57:04,304] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - step=1700/3000 train_loss=1.6230 lr=1.97e-04 elapsed=16437s
+[2026-05-19 14:57:04,673] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_diag_gated_S3pos/seed42/checkpoints/step_001700
+[2026-05-19 15:00:57,108] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - step=1725/3000 train_loss=1.5707 lr=1.96e-04 elapsed=16670s
+[2026-05-19 15:04:51,307] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - step=1750/3000 train_loss=1.6248 lr=1.94e-04 elapsed=16904s
+[2026-05-19 15:04:51,687] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_diag_gated_S3pos/seed42/checkpoints/step_001750
+[2026-05-19 15:05:34,674] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - step=1750 VAL_LOSS=1.8358
+[2026-05-19 15:09:26,420] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - step=1775/3000 train_loss=1.5465 lr=1.92e-04 elapsed=17179s
+[2026-05-19 15:13:18,080] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - step=1800/3000 train_loss=1.5408 lr=1.90e-04 elapsed=17411s
+[2026-05-19 15:13:18,463] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_diag_gated_S3pos/seed42/checkpoints/step_001800
+[2026-05-19 15:17:18,255] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - step=1825/3000 train_loss=1.5857 lr=1.88e-04 elapsed=17651s
+[2026-05-19 15:21:16,851] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - step=1850/3000 train_loss=1.6139 lr=1.85e-04 elapsed=17890s
+[2026-05-19 15:21:17,237] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/acereason-7b/tulu3-sft/relora_diag_gated_S3pos/seed42/checkpoints/step_001850
+[2026-05-19 15:25:08,810] INFO stage3.acereason-7b.tulu3-sft.relora_diag_gated_S3pos - step=1875/3000 train_loss=1.5344 lr=1.82e-04 elapsed=18122s

@@ -55,7 +55,6 @@ STOP_FILE = Path("/tmp/auto_fill_daemon.STOP")
 
 MODEL_CFG = {
     "olmo2-7b":      ("/mnt/cpfs/junlongke/onlinelora/models/OLMo-2-7B",                     "sdpa"),
-    "acereason-7b":  ("/mnt/cpfs/junlongke/onlinelora/models/AceReason-Nemotron-7B",         "sdpa"),
     "r1-distill-7b": ("/mnt/cpfs/junlongke/onlinelora/models/R1-Distill-Qwen-7B",            "sdpa"),
     "llama3-8b":     ("/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B",                  "sdpa"),
     "gemma3-12b":    ("/mnt/cpfs/junlongke/onlinelora/models/gemma-3-12b-it",                "eager"),
@@ -65,13 +64,27 @@ MODEL_CFG = {
     "mistral-7b":    ("/mnt/cpfs/public_data/public_model/Mistral/Mistral-7B-v0.3",          "sdpa"),
 }
 
-NEW_MODELS = ["olmo2-7b", "acereason-7b", "r1-distill-7b", "llama3-8b", "gemma3-12b"]
+NEW_MODELS = ["olmo2-7b", "r1-distill-7b", "llama3-8b", "gemma3-12b"]
 DATASETS = ["metamathqa-10k", "tulu3-sft"]
 METHODS = ["lora_vanilla", "relora_baseline", "relora_diag_gated_S3pos",
-           "relora_random_drop", "dora"]
+           "relora_random_drop", "dora", "cola"]
 
 # methods that don't need merge_every (use 9999)
 NO_MERGE = {"lora_vanilla", "dora", "adalora"}
+
+# methods whose adapter/ may have been contaminated by the P0 bug; we
+# require lm_eval_v3/ for these (lm_eval_v2/ is stale post-fix). Other
+# methods (lora_vanilla, dora, adalora) are unaffected -> v2/v1 still valid.
+MERGE_METHODS_FOR_V3 = {
+    "relora_baseline", "relora_diag_gated_S3pos", "relora_diag_gated_S3neg",
+    "relora_random_drop", "relora_train_gated", "cola",
+}
+
+# models needing larger generation budget (R1-Distill emits long <think>
+# scratchpads before the boxed answer).
+EVAL_MAX_NEW_TOKENS = {
+    "r1-distill-7b": 1024,
+}
 
 
 def log(msg: str) -> None:
@@ -116,7 +129,13 @@ class State:
 
 # ============ Queue: missing lm_eval ============
 def pending_lm_evals() -> list[dict]:
-    """Return cells that have summary.json but no lm_eval_v2/."""
+    """Return cells that have summary.json but missing the appropriate eval dir.
+
+    Merge-based methods (relora_*, S3pos/neg, random_drop, train_gated, cola)
+    require lm_eval_v3/ because v1/v2 were produced from a contaminated
+    adapter/ (lora_B=0). Non-merge methods (lora_vanilla, dora, adalora)
+    are unaffected -> any prior lm_eval/ or lm_eval_v2/ counts.
+    """
     busy = _running_eval_outs()
     pending = []
     for model_dir in (ROOT / "results" / "stage3_v2").iterdir():
@@ -134,24 +153,33 @@ def pending_lm_evals() -> list[dict]:
                     continue
                 if not (seed_dir / "summary.json").exists():
                     continue
-                # already has lm_eval_v2 or any lm_eval/?
-                has_eval = any(p.name in ("lm_eval_v2", "lm_eval") for p in seed_dir.iterdir() if p.is_dir())
+                method = method_dir.name
+                is_merge = method in MERGE_METHODS_FOR_V3
+                if is_merge:
+                    target_name = "lm_eval_v3"
+                    has_eval = (seed_dir / target_name).is_dir()
+                else:
+                    target_name = "lm_eval_v2"
+                    has_eval = any(
+                        p.name in ("lm_eval_v3", "lm_eval_v2", "lm_eval")
+                        for p in seed_dir.iterdir() if p.is_dir()
+                    )
                 if has_eval:
                     continue
                 adapter = seed_dir / "adapter"
                 if not adapter.exists():
                     continue
-                out_v2 = seed_dir / "lm_eval_v2"
-                if str(out_v2.resolve()) in busy:
+                out_dir = seed_dir / target_name
+                if str(out_dir.resolve()) in busy:
                     continue
                 pending.append({
                     "kind": "eval",
                     "model": model,
                     "dataset": ds_dir.name,
-                    "method": method_dir.name,
+                    "method": method,
                     "adapter": str(adapter),
-                    "out_dir": str(out_v2),
-                    "name": f"eval-{model}-{ds_dir.name}-{method_dir.name}",
+                    "out_dir": str(out_dir),
+                    "name": f"eval-{model}-{ds_dir.name}-{method}",
                 })
     return pending
 
@@ -264,6 +292,9 @@ def launch_eval(gpu: int, job: dict) -> Optional[int]:
         "--log_samples",
         "--output_path", str(out_dir),
     ]
+    mnt = EVAL_MAX_NEW_TOKENS.get(job["model"])
+    if mnt:
+        cmd.extend(["--gen_kwargs", f"max_new_tokens={mnt}"])
     env = os.environ.copy()
     env["CUDA_VISIBLE_DEVICES"] = str(gpu)
     with log_path.open("w") as f:

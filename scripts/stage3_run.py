@@ -924,10 +924,25 @@ def main() -> int:
 
     if args.save_adapter and not aborted:
         adapter_dir = out_root / "adapter"
-        adapter_dir.mkdir(exist_ok=True)
-        model.save_pretrained(str(adapter_dir))
-        tok.save_pretrained(str(adapter_dir))
-        log.info(f"adapter saved to {adapter_dir}")
+        # P0 FIX: for merge-based methods (do_relora=True), the in-memory model
+        # state at end-of-training has lora_B=0 (the final merge event zeroed
+        # B and the residual training-after-final-merge often does not happen
+        # because merge_steps include the last step). Saving model.save_pretrained
+        # at this point serializes a B=0 adapter -> lm-eval = base-model score.
+        # Instead, copy the "best/" ckpt (saved exclusively from the eval_every
+        # branch BETWEEN merges) which has valid non-zero lora_B.
+        _best_dir_final = ckpt_dir / "best"
+        if do_relora and _best_dir_final.exists() and (_best_dir_final / "adapter_model.safetensors").exists():
+            import shutil
+            if adapter_dir.exists():
+                shutil.rmtree(adapter_dir)
+            shutil.copytree(str(_best_dir_final), str(adapter_dir))
+            log.info(f"adapter saved (copied from best/ to avoid post-merge B=0) to {adapter_dir}")
+        else:
+            adapter_dir.mkdir(exist_ok=True)
+            model.save_pretrained(str(adapter_dir))
+            tok.save_pretrained(str(adapter_dir))
+            log.info(f"adapter saved to {adapter_dir}")
 
     return 2 if aborted else 0
 
