@@ -244,3 +244,50 @@ DO NOT TOUCH:
   GPU 0 (llama3 dora eval), GPU 3,5,6 (gemma3 cleanup trains).
 
 STATUS DOC: this file logs/PHASE_D_LIVE_STATUS.md is the source of truth across context-trim.
+
+## CONTEXT-TRIM CHECKPOINT 4 (13:05) — 4 QWEN3-1.7B TRAINS LAUNCHED ✅
+
+LAUNCHED on free GPUs at 13:05:
+  PID 1773565: GPU 1 qwen3-1p7b/tulu3-sft/lora_vanilla     (3000 steps, ~1.5h)
+  PID 1773579: GPU 2 qwen3-1p7b/tulu3-sft/relora_baseline  (3000 steps, ~1.5h)
+  PID 1773593: GPU 4 qwen3-1p7b/tulu3-sft/relora_diag_gated_S3pos (3000 steps, ~1.5h)
+  PID 1773607: GPU 7 qwen3-1p7b/tulu3-sft/dora             (800 steps, ~30min)
+
+REMAINING TODO ON RESUME:
+1. When PID 1773607 (dora, fastest) finishes ~13:35, launch on GPU 7:
+   qwen3-1p7b/tulu3-sft/cola  (3000 steps, merge_every=750, total_steps=3000)
+2. After 4 lora_vanilla/baseline/S3pos finish ~14:35, launch on those GPUs:
+   - qwen3-4b/tulu3-sft/{lora_vanilla, relora_baseline, S3pos, dora} 4 parallel
+   - then qwen3-4b/tulu3-sft/cola
+3. After qwen3-4b done, launch qwen3-14b (1 cell at a time, ~5h each on 1 GPU; or 2 GPUs sharded)
+4. While trainings run, in parallel:
+   a. install peft>=0.18 into RRenv (transformers 5.3.0 + new peft)
+      command: /mnt/cpfs/junlongke/miniconda3/envs/RRenv/bin/python -m pip install --upgrade "peft>=0.18"
+      verify: from peft import LoraConfig
+   b. once qwen35-2b finishes downloading, smoke load it in RRenv
+   c. inspect Qwen3.5 module names (q_proj/k_proj? linear_attn? gate proj?)
+   d. write/test scripts/verify_adapter_loaded.py
+   e. if all looks good, adapt scripts/stage3_run.py minimal patches to support Qwen3.5
+
+EVAL: After each cell finishes, launch lm_eval_v3 manually on the freed GPU:
+  /mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python -m lm_eval --model hf \
+    --model_args pretrained=models/qwen3-1p7b,peft=results/stage3_v2/qwen3-1p7b/tulu3-sft/<METHOD>/seed42/adapter,dtype=bfloat16,attn_implementation=sdpa,trust_remote_code=True \
+    --tasks gsm8k,hellaswag,arc_challenge --num_fewshot 5 --batch_size 4 --log_samples \
+    --output_path results/stage3_v2/qwen3-1p7b/tulu3-sft/<METHOD>/seed42/lm_eval_v3
+
+PER-SIZE COMPLETION CHECK (from directive):
+  When 5/5 done on qwen3-1p7b: commit "Phase D qwen3-1p7b: 5/5 done, S3pos vs vanilla = +X.XXpp on GSM8K-flex"
+  Update results/stage3_v2/summary/main_table.md AND summary/phase_d_curve.md
+  phase_d_curve.md columns: size | vanilla | baseline | S3pos | DoRA | COLA | Δ_S3pos_vs_baseline | Δ_S3pos_vs_DoRA
+
+ANY S3pos LOSE >2pp vs baseline → push immediately with [NEGATIVE]: prefix.
+
+DOWNLOAD CONTINUES IN BG: PID 1772667 dl_qwen35_seq.sh
+  log: logs/scout/dl_qwen35_seq.log
+  expected: qwen35-2b (4.6GB), 4B (9.3), 9B (19.3), 27B (55.6) → total ~89GB
+
+P0 CLEANUP IN BG (DO NOT KILL):
+  PID 1733368 GPU3 gemma3/tulu3/lora_vanilla  step 1175/3000
+  PID 1735950 GPU5 gemma3/tulu3/relora_baseline step 1075/3000
+  PID 1762026 GPU6 gemma3/tulu3/S3pos step 500/3000
+  PID 1755167 GPU0 llama3/tulu3/dora lm_eval_v2 ~19% (3-4h ETA)
