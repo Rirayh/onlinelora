@@ -427,3 +427,56 @@ On the 5th GPU it will start qwen35-2b/lora_vanilla. This is intentional paralle
     (much faster). If fla install FAILS, accept ~13h/cell for 0.8B; use parallelism.
 [ ] when first qwen35-0p8b cell finishes -> manually verify_adapter_loaded sanity
     (write sanity script if not yet done)
+
+## CONTEXT-TRIM CHECKPOINT 7 (14:50) — DAEMON LAUNCHED ✅
+
+Phase D daemon PID 1785455 running. Confirmed dry-run output:
+  31 trainings pending across 7 Wave 1 models (in priority order)
+  0 evals pending (no Phase D summary.json yet — first need trainings to finish)
+
+Smoke (qwen35-0p8b PID 1781447) finished naturally, GPU 0 freed.
+
+Daemon will now:
+1. After 5min idle grace on freed GPUs, launch trainings in WAVE1_ORDER priority
+2. First batch will be qwen35-0p8b (5 cells) — but only 1 GPU free initially (GPU 0)
+   so it launches 1 cell, then waits for next free GPU
+3. As qwen3-1p7b trainings finish (3 are at step 1075/3000, ~1.5h ETA),
+   daemon will fill those GPUs with qwen35-* cells
+4. When qwen3-1p7b/dora finishes (~30min), daemon picks up qwen3-1p7b/cola
+5. Daemon stops when all 31 cells have summary.json + no GPU activity for 5min
+   (or via `touch /tmp/phase_d_daemon.STOP`)
+
+DAEMON STATE FILE: /tmp/phase_d_daemon.state.json (machine readable)
+DAEMON LOG: logs/scout/_phase_d_daemon.log
+
+### Quick health check commands (resume usage):
+  ps -eo pid,etime,args | grep phase_d_daemon | grep -v grep
+  tail -30 /mnt/cpfs/junlongke/onlinelora/lora_obd/logs/scout/_phase_d_daemon.log
+  ls /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/ 2>&1
+  ls /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-2b/tulu3-sft/ 2>&1
+
+### To stop daemon:
+  touch /tmp/phase_d_daemon.STOP
+
+### After daemon completes Wave 1:
+  - run scripts/build_main_table.py to refresh summary
+  - check phase_d_curve metric: Δ(S3pos) vs baseline across model sizes
+  - if inverted-U or all-win observed, get PI signoff for Wave 2 (32B/27B)
+  - use the same daemon (it currently does NOT include 32B/27B; would need
+    to add those entries to WAVE1_ORDER)
+
+### KEY ENV REMINDER (for any manual training)
+  Qwen3 dense models: /mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python
+  Qwen3.5 multimodal: /mnt/cpfs/junlongke/miniconda3/envs/RRenv/bin/python
+
+### KEY MODEL PATHS (all downloaded ✅)
+  /mnt/cpfs/junlongke/onlinelora/models/qwen3-1p7b   (3.8GB)
+  /mnt/cpfs/junlongke/onlinelora/models/qwen3-4b     (7.6GB Instruct-2507)
+  /mnt/cpfs/junlongke/onlinelora/models/qwen3-14b    (~30GB)
+  /mnt/cpfs/junlongke/onlinelora/models/qwen3-32b    (62GB)
+  /mnt/cpfs/junlongke/onlinelora/models/qwen35-0p8b  (1.7GB)
+  /mnt/cpfs/junlongke/onlinelora/models/qwen35-2b    (4.3GB)
+  /mnt/cpfs/junlongke/onlinelora/models/qwen35-4b    (8.8GB)
+  /mnt/cpfs/junlongke/onlinelora/models/qwen35-9b    (19GB)
+  /mnt/cpfs/junlongke/onlinelora/models/qwen35-27b   (52GB)
+  Qwen3-8B already at /mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B
