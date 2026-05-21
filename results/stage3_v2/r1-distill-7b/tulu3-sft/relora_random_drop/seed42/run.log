@@ -1,0 +1,233 @@
+[2026-05-20 02:03:28,038] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - START stage3 model=/mnt/cpfs/junlongke/onlinelora/models/R1-Distill-Qwen-7B dataset=tulu3-sft method=relora_random_drop out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42
+[2026-05-20 02:03:29,398] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - tokenizer loaded in 0.4s, vocab=151643
+[2026-05-20 02:03:29,398] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - loading tulu-3-sft-mixture from /mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture
+[2026-05-20 02:03:31,151] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - tulu3-sft train=10000 val=500
+[2026-05-20 02:03:46,495] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - tulu3-sft tokenized: train 10000 val 500
+[2026-05-20 02:03:46,763] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - data prepared in 17.4s
+[2026-05-20 02:03:48,076] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - model loaded in 1.3s
+[2026-05-20 02:03:54,351] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - #LoRA layers=196 #components=3136
+[2026-05-20 02:03:54,356] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - #trainable params=40.37M
+[2026-05-20 02:04:06,267] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - [step 0] mean_ER=1464.91 mean_CN=1.95e+05 (sampled 8 layers)
+[2026-05-20 02:04:06,267] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - merge events scheduled at: [500, 1000, 1500, 2000, 2500, 3000]
+[2026-05-20 02:08:02,582] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=25/3000 train_loss=2.5051 lr=5.00e-05 elapsed=236s
+[2026-05-20 02:12:03,423] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=50/3000 train_loss=2.0416 lr=1.00e-04 elapsed=477s
+[2026-05-20 02:12:03,835] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000050
+[2026-05-20 02:16:03,367] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=75/3000 train_loss=1.9164 lr=1.50e-04 elapsed=717s
+[2026-05-20 02:19:55,538] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=100/3000 train_loss=1.9595 lr=2.00e-04 elapsed=949s
+[2026-05-20 02:19:55,915] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000100
+[2026-05-20 02:23:40,858] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=125/3000 train_loss=1.8386 lr=2.00e-04 elapsed=1175s
+[2026-05-20 02:27:38,336] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=150/3000 train_loss=1.9157 lr=2.00e-04 elapsed=1412s
+[2026-05-20 02:27:40,269] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000150
+[2026-05-20 02:31:38,298] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=175/3000 train_loss=1.7979 lr=2.00e-04 elapsed=1652s
+[2026-05-20 02:35:25,075] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=200/3000 train_loss=1.8670 lr=1.99e-04 elapsed=1879s
+[2026-05-20 02:35:26,998] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000200
+[2026-05-20 02:39:31,497] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=225/3000 train_loss=1.8235 lr=1.99e-04 elapsed=2125s
+[2026-05-20 02:43:27,867] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=250/3000 train_loss=1.7873 lr=1.99e-04 elapsed=2362s
+[2026-05-20 02:43:29,712] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000250
+[2026-05-20 02:44:12,836] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=250 VAL_LOSS=1.8568
+[2026-05-20 02:44:14,601] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - best ckpt updated: step=250 val_loss=1.8568
+[2026-05-20 02:48:03,563] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=275/3000 train_loss=1.7845 lr=1.98e-04 elapsed=2637s
+[2026-05-20 02:51:57,120] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=300/3000 train_loss=1.8903 lr=1.98e-04 elapsed=2871s
+[2026-05-20 02:51:59,091] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000300
+[2026-05-20 02:55:55,515] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=325/3000 train_loss=1.8211 lr=1.97e-04 elapsed=3109s
+[2026-05-20 02:59:51,255] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=350/3000 train_loss=1.7181 lr=1.96e-04 elapsed=3345s
+[2026-05-20 02:59:53,226] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000350
+[2026-05-20 03:03:46,680] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=375/3000 train_loss=1.7291 lr=1.96e-04 elapsed=3580s
+[2026-05-20 03:07:39,850] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=400/3000 train_loss=1.7082 lr=1.95e-04 elapsed=3814s
+[2026-05-20 03:07:47,397] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000400
+[2026-05-20 03:11:43,423] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=425/3000 train_loss=1.7183 lr=1.94e-04 elapsed=4057s
+[2026-05-20 03:15:35,687] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=450/3000 train_loss=1.7260 lr=1.93e-04 elapsed=4289s
+[2026-05-20 03:15:44,326] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000450
+[2026-05-20 03:19:38,654] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=475/3000 train_loss=1.7124 lr=1.92e-04 elapsed=4532s
+[2026-05-20 03:23:24,132] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=500/3000 train_loss=1.7613 lr=1.91e-04 elapsed=4758s
+[2026-05-20 03:23:32,800] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000500
+[2026-05-20 03:24:15,883] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=500 VAL_LOSS=1.8348
+[2026-05-20 03:24:16,230] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - best ckpt updated: step=500 val_loss=1.8348
+[2026-05-20 03:24:27,233] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=500 mean_ER=1464.98 mean_CN=7.65e+05
+[2026-05-20 03:24:27,233] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - === MERGE EVENT 1 at step 500 (method=relora_random_drop) ===
+[2026-05-20 03:24:29,002] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - merge: total=3136 kept=1598 drop_rate=0.490
+[2026-05-20 03:25:24,996] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=500 POST-MERGE VAL_LOSS=1.9090 (first_eval=1.856800613641739)
+[2026-05-20 03:29:16,387] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=525/3000 train_loss=1.8416 lr=5.00e-05 elapsed=5110s
+[2026-05-20 03:33:23,268] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=550/3000 train_loss=1.7836 lr=1.00e-04 elapsed=5357s
+[2026-05-20 03:33:25,033] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000550
+[2026-05-20 03:37:15,333] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=575/3000 train_loss=1.7432 lr=1.50e-04 elapsed=5589s
+[2026-05-20 03:41:07,374] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=600/3000 train_loss=1.7483 lr=2.00e-04 elapsed=5821s
+[2026-05-20 03:41:12,562] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000600
+[2026-05-20 03:45:02,319] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=625/3000 train_loss=1.6872 lr=2.00e-04 elapsed=6056s
+[2026-05-20 03:48:57,525] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=650/3000 train_loss=1.7129 lr=2.00e-04 elapsed=6291s
+[2026-05-20 03:49:06,870] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000650
+[2026-05-20 03:52:55,193] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=675/3000 train_loss=1.6998 lr=2.00e-04 elapsed=6529s
+[2026-05-20 03:56:46,220] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=700/3000 train_loss=1.7029 lr=1.99e-04 elapsed=6760s
+[2026-05-20 03:56:55,331] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000700
+[2026-05-20 04:00:50,582] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=725/3000 train_loss=1.6099 lr=1.99e-04 elapsed=7004s
+[2026-05-20 04:04:44,281] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=750/3000 train_loss=1.6207 lr=1.98e-04 elapsed=7238s
+[2026-05-20 04:04:53,504] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000750
+[2026-05-20 04:05:36,596] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=750 VAL_LOSS=1.8384
+[2026-05-20 04:09:26,620] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=775/3000 train_loss=1.7857 lr=1.97e-04 elapsed=7520s
+[2026-05-20 04:13:12,351] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=800/3000 train_loss=1.7030 lr=1.97e-04 elapsed=7746s
+[2026-05-20 04:13:15,599] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000800
+[2026-05-20 04:17:09,962] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=825/3000 train_loss=1.6614 lr=1.96e-04 elapsed=7984s
+[2026-05-20 04:21:00,673] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=850/3000 train_loss=1.6509 lr=1.95e-04 elapsed=8214s
+[2026-05-20 04:21:07,683] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000850
+[2026-05-20 04:25:03,413] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=875/3000 train_loss=1.5849 lr=1.94e-04 elapsed=8457s
+[2026-05-20 04:29:06,420] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=900/3000 train_loss=1.6649 lr=1.92e-04 elapsed=8700s
+[2026-05-20 04:29:12,717] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000900
+[2026-05-20 04:33:13,516] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=925/3000 train_loss=1.7264 lr=1.91e-04 elapsed=8947s
+[2026-05-20 04:37:07,284] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=950/3000 train_loss=1.6329 lr=1.90e-04 elapsed=9181s
+[2026-05-20 04:37:09,554] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_000950
+[2026-05-20 04:41:11,504] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=975/3000 train_loss=1.5573 lr=1.88e-04 elapsed=9425s
+[2026-05-20 04:45:03,858] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1000/3000 train_loss=1.4624 lr=1.87e-04 elapsed=9658s
+[2026-05-20 04:45:04,238] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001000
+[2026-05-20 04:45:47,336] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1000 VAL_LOSS=1.8542
+[2026-05-20 04:45:58,682] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1000 mean_ER=1465.05 mean_CN=3.06e+05
+[2026-05-20 04:45:58,682] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - === MERGE EVENT 2 at step 1000 (method=relora_random_drop) ===
+[2026-05-20 04:45:58,830] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - merge: total=3136 kept=1581 drop_rate=0.496
+[2026-05-20 04:46:52,670] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1000 POST-MERGE VAL_LOSS=1.8607 (first_eval=1.856800613641739)
+[2026-05-20 04:50:56,422] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1025/3000 train_loss=1.6607 lr=5.00e-05 elapsed=10010s
+[2026-05-20 04:54:55,710] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1050/3000 train_loss=1.6518 lr=1.00e-04 elapsed=10249s
+[2026-05-20 04:54:56,079] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001050
+[2026-05-20 04:58:43,764] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1075/3000 train_loss=1.5814 lr=1.50e-04 elapsed=10477s
+[2026-05-20 05:02:38,024] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1100/3000 train_loss=1.6683 lr=2.00e-04 elapsed=10712s
+[2026-05-20 05:02:38,407] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001100
+[2026-05-20 05:06:35,769] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1125/3000 train_loss=1.6300 lr=2.00e-04 elapsed=10949s
+[2026-05-20 05:10:29,135] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1150/3000 train_loss=1.5864 lr=2.00e-04 elapsed=11183s
+[2026-05-20 05:10:29,492] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001150
+[2026-05-20 05:14:18,796] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1175/3000 train_loss=1.6241 lr=1.99e-04 elapsed=11413s
+[2026-05-20 05:18:11,299] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1200/3000 train_loss=1.5789 lr=1.99e-04 elapsed=11645s
+[2026-05-20 05:18:11,660] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001200
+[2026-05-20 05:21:59,430] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1225/3000 train_loss=1.6127 lr=1.98e-04 elapsed=11873s
+[2026-05-20 05:25:58,763] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1250/3000 train_loss=1.5886 lr=1.97e-04 elapsed=12112s
+[2026-05-20 05:25:59,131] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001250
+[2026-05-20 05:26:42,247] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1250 VAL_LOSS=1.8397
+[2026-05-20 05:30:40,148] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1275/3000 train_loss=1.5812 lr=1.96e-04 elapsed=12394s
+[2026-05-20 05:34:34,404] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1300/3000 train_loss=1.5868 lr=1.95e-04 elapsed=12628s
+[2026-05-20 05:34:34,755] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001300
+[2026-05-20 05:38:26,153] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1325/3000 train_loss=1.4776 lr=1.93e-04 elapsed=12860s
+[2026-05-20 05:42:20,816] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1350/3000 train_loss=1.5734 lr=1.92e-04 elapsed=13095s
+[2026-05-20 05:42:21,170] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001350
+[2026-05-20 05:46:27,257] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1375/3000 train_loss=1.5947 lr=1.90e-04 elapsed=13341s
+[2026-05-20 05:50:22,532] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1400/3000 train_loss=1.5463 lr=1.88e-04 elapsed=13576s
+[2026-05-20 05:50:22,886] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001400
+[2026-05-20 05:54:24,264] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1425/3000 train_loss=1.5959 lr=1.86e-04 elapsed=13818s
+[2026-05-20 05:58:19,552] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1450/3000 train_loss=1.5051 lr=1.84e-04 elapsed=14053s
+[2026-05-20 05:58:19,897] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001450
+[2026-05-20 06:02:06,612] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1475/3000 train_loss=1.5262 lr=1.81e-04 elapsed=14280s
+[2026-05-20 06:06:00,624] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1500/3000 train_loss=1.5165 lr=1.79e-04 elapsed=14514s
+[2026-05-20 06:06:00,992] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001500
+[2026-05-20 06:06:44,150] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1500 VAL_LOSS=1.8597
+[2026-05-20 06:06:55,171] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1500 mean_ER=1465.10 mean_CN=6.54e+04
+[2026-05-20 06:06:55,171] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - === MERGE EVENT 3 at step 1500 (method=relora_random_drop) ===
+[2026-05-20 06:06:55,317] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - merge: total=3136 kept=1580 drop_rate=0.496
+[2026-05-20 06:07:48,989] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1500 POST-MERGE VAL_LOSS=1.8513 (first_eval=1.856800613641739)
+[2026-05-20 06:11:43,725] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1525/3000 train_loss=1.6291 lr=5.00e-05 elapsed=14857s
+[2026-05-20 06:15:37,075] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1550/3000 train_loss=1.5354 lr=1.00e-04 elapsed=15091s
+[2026-05-20 06:15:37,448] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001550
+[2026-05-20 06:19:27,250] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1575/3000 train_loss=1.5541 lr=1.50e-04 elapsed=15321s
+[2026-05-20 06:23:13,331] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1600/3000 train_loss=1.4982 lr=2.00e-04 elapsed=15547s
+[2026-05-20 06:23:13,694] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001600
+[2026-05-20 06:27:08,021] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1625/3000 train_loss=1.5247 lr=2.00e-04 elapsed=15782s
+[2026-05-20 06:31:05,030] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1650/3000 train_loss=1.5654 lr=1.99e-04 elapsed=16019s
+[2026-05-20 06:31:05,388] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001650
+[2026-05-20 06:35:08,495] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1675/3000 train_loss=1.5319 lr=1.99e-04 elapsed=16262s
+[2026-05-20 06:39:15,678] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1700/3000 train_loss=1.5331 lr=1.97e-04 elapsed=16509s
+[2026-05-20 06:39:16,056] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001700
+[2026-05-20 06:43:06,920] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1725/3000 train_loss=1.5020 lr=1.96e-04 elapsed=16741s
+[2026-05-20 06:46:57,375] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1750/3000 train_loss=1.5245 lr=1.94e-04 elapsed=16971s
+[2026-05-20 06:46:57,740] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001750
+[2026-05-20 06:47:40,850] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1750 VAL_LOSS=1.8623
+[2026-05-20 06:51:37,156] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1775/3000 train_loss=1.5333 lr=1.92e-04 elapsed=17251s
+[2026-05-20 06:55:28,121] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1800/3000 train_loss=1.4971 lr=1.90e-04 elapsed=17482s
+[2026-05-20 06:55:28,492] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001800
+[2026-05-20 06:59:27,659] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1825/3000 train_loss=1.5163 lr=1.88e-04 elapsed=17721s
+[2026-05-20 07:03:21,728] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1850/3000 train_loss=1.4542 lr=1.85e-04 elapsed=17955s
+[2026-05-20 07:03:22,087] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001850
+[2026-05-20 07:07:20,751] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1875/3000 train_loss=1.5036 lr=1.82e-04 elapsed=18194s
+[2026-05-20 07:11:10,582] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1900/3000 train_loss=1.4467 lr=1.78e-04 elapsed=18424s
+[2026-05-20 07:11:10,960] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001900
+[2026-05-20 07:15:05,575] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1925/3000 train_loss=1.4249 lr=1.75e-04 elapsed=18659s
+[2026-05-20 07:19:05,488] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1950/3000 train_loss=1.5351 lr=1.71e-04 elapsed=18899s
+[2026-05-20 07:19:05,856] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_001950
+[2026-05-20 07:22:56,756] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=1975/3000 train_loss=1.4456 lr=1.67e-04 elapsed=19130s
+[2026-05-20 07:27:02,066] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2000/3000 train_loss=1.4568 lr=1.62e-04 elapsed=19376s
+[2026-05-20 07:27:02,446] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002000
+[2026-05-20 07:27:45,614] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2000 VAL_LOSS=1.8989
+[2026-05-20 07:27:56,798] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2000 mean_ER=1465.15 mean_CN=6.70e+04
+[2026-05-20 07:27:56,798] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - === MERGE EVENT 4 at step 2000 (method=relora_random_drop) ===
+[2026-05-20 07:27:56,944] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - merge: total=3136 kept=1534 drop_rate=0.511
+[2026-05-20 07:28:50,666] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2000 POST-MERGE VAL_LOSS=1.8649 (first_eval=1.856800613641739)
+[2026-05-20 07:32:48,473] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2025/3000 train_loss=1.5305 lr=5.00e-05 elapsed=19722s
+[2026-05-20 07:36:46,145] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2050/3000 train_loss=1.4026 lr=1.00e-04 elapsed=19960s
+[2026-05-20 07:36:46,508] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002050
+[2026-05-20 07:40:33,791] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2075/3000 train_loss=1.4277 lr=1.50e-04 elapsed=20188s
+[2026-05-20 07:44:15,199] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2100/3000 train_loss=1.4001 lr=2.00e-04 elapsed=20409s
+[2026-05-20 07:44:15,560] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002100
+[2026-05-20 07:48:07,614] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2125/3000 train_loss=1.4949 lr=2.00e-04 elapsed=20641s
+[2026-05-20 07:52:07,656] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2150/3000 train_loss=1.4372 lr=1.98e-04 elapsed=20881s
+[2026-05-20 07:52:08,051] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002150
+[2026-05-20 07:55:58,225] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2175/3000 train_loss=1.4187 lr=1.97e-04 elapsed=21112s
+[2026-05-20 07:59:40,442] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2200/3000 train_loss=1.4393 lr=1.94e-04 elapsed=21334s
+[2026-05-20 07:59:40,829] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002200
+[2026-05-20 08:03:33,721] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2225/3000 train_loss=1.4054 lr=1.91e-04 elapsed=21567s
+[2026-05-20 08:07:24,715] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2250/3000 train_loss=1.4212 lr=1.87e-04 elapsed=21798s
+[2026-05-20 08:07:25,098] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002250
+[2026-05-20 08:08:08,281] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2250 VAL_LOSS=1.9074
+[2026-05-20 08:12:02,960] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2275/3000 train_loss=1.4226 lr=1.82e-04 elapsed=22077s
+[2026-05-20 08:15:55,587] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2300/3000 train_loss=1.3334 lr=1.77e-04 elapsed=22309s
+[2026-05-20 08:15:55,950] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002300
+[2026-05-20 08:19:51,264] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2325/3000 train_loss=1.4866 lr=1.71e-04 elapsed=22545s
+[2026-05-20 08:23:42,320] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2350/3000 train_loss=1.3995 lr=1.64e-04 elapsed=22776s
+[2026-05-20 08:23:42,684] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002350
+[2026-05-20 08:27:43,764] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2375/3000 train_loss=1.4554 lr=1.57e-04 elapsed=23017s
+[2026-05-20 08:31:39,705] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2400/3000 train_loss=1.4208 lr=1.50e-04 elapsed=23253s
+[2026-05-20 08:31:40,068] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002400
+[2026-05-20 08:35:41,283] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2425/3000 train_loss=1.4118 lr=1.42e-04 elapsed=23495s
+[2026-05-20 08:39:37,370] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2450/3000 train_loss=1.4002 lr=1.34e-04 elapsed=23731s
+[2026-05-20 08:39:37,733] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002450
+[2026-05-20 08:43:36,554] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2475/3000 train_loss=1.4408 lr=1.26e-04 elapsed=23970s
+[2026-05-20 08:47:31,156] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2500/3000 train_loss=1.3926 lr=1.17e-04 elapsed=24205s
+[2026-05-20 08:47:31,507] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002500
+[2026-05-20 08:48:14,549] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2500 VAL_LOSS=1.9106
+[2026-05-20 08:48:25,420] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2500 mean_ER=1465.18 mean_CN=6.43e+04
+[2026-05-20 08:48:25,420] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - === MERGE EVENT 5 at step 2500 (method=relora_random_drop) ===
+[2026-05-20 08:48:25,567] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - merge: total=3136 kept=1534 drop_rate=0.511
+[2026-05-20 08:49:19,122] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2500 POST-MERGE VAL_LOSS=1.8808 (first_eval=1.856800613641739)
+[2026-05-20 08:53:18,332] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2525/3000 train_loss=1.4464 lr=5.00e-05 elapsed=24552s
+[2026-05-20 08:57:17,093] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2550/3000 train_loss=1.3834 lr=1.00e-04 elapsed=24791s
+[2026-05-20 08:57:17,460] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002550
+[2026-05-20 09:01:12,570] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2575/3000 train_loss=1.3466 lr=1.50e-04 elapsed=25026s
+[2026-05-20 09:05:04,785] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2600/3000 train_loss=1.4177 lr=2.00e-04 elapsed=25259s
+[2026-05-20 09:05:05,143] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002600
+[2026-05-20 09:09:04,707] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2625/3000 train_loss=1.3580 lr=1.98e-04 elapsed=25498s
+[2026-05-20 09:13:00,208] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2650/3000 train_loss=1.4513 lr=1.92e-04 elapsed=25734s
+[2026-05-20 09:13:00,574] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002650
+[2026-05-20 09:16:45,273] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2675/3000 train_loss=1.3461 lr=1.83e-04 elapsed=25959s
+[2026-05-20 09:20:49,582] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2700/3000 train_loss=1.4586 lr=1.71e-04 elapsed=26203s
+[2026-05-20 09:20:49,957] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002700
+[2026-05-20 09:24:46,978] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2725/3000 train_loss=1.3353 lr=1.56e-04 elapsed=26441s
+[2026-05-20 09:28:39,937] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2750/3000 train_loss=1.3649 lr=1.38e-04 elapsed=26674s
+[2026-05-20 09:28:40,314] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002750
+[2026-05-20 09:29:23,461] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2750 VAL_LOSS=1.9194
+[2026-05-20 09:33:10,842] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2775/3000 train_loss=1.3560 lr=1.20e-04 elapsed=26945s
+[2026-05-20 09:37:04,413] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2800/3000 train_loss=1.3960 lr=1.00e-04 elapsed=27178s
+[2026-05-20 09:37:04,778] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002800
+[2026-05-20 09:40:52,844] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2825/3000 train_loss=1.3278 lr=8.05e-05 elapsed=27407s
+[2026-05-20 09:44:45,478] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2850/3000 train_loss=1.3681 lr=6.17e-05 elapsed=27639s
+[2026-05-20 09:44:45,841] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002850
+[2026-05-20 09:48:29,854] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2875/3000 train_loss=1.1607 lr=4.44e-05 elapsed=27864s
+[2026-05-20 09:52:30,803] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2900/3000 train_loss=1.3878 lr=2.93e-05 elapsed=28105s
+[2026-05-20 09:52:31,163] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002900
+[2026-05-20 09:56:25,606] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2925/3000 train_loss=1.3622 lr=1.69e-05 elapsed=28339s
+[2026-05-20 10:00:31,614] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2950/3000 train_loss=1.3648 lr=7.61e-06 elapsed=28585s
+[2026-05-20 10:00:31,985] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_002950
+[2026-05-20 10:04:29,804] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=2975/3000 train_loss=1.3406 lr=1.92e-06 elapsed=28824s
+[2026-05-20 10:08:30,964] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=3000/3000 train_loss=1.3240 lr=0.00e+00 elapsed=29065s
+[2026-05-20 10:08:31,334] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/checkpoints/step_003000
+[2026-05-20 10:09:14,493] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=3000 VAL_LOSS=1.9675
+[2026-05-20 10:09:25,544] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=3000 mean_ER=1465.19 mean_CN=3.54e+05
+[2026-05-20 10:09:25,544] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - === MERGE EVENT 6 at step 3000 (method=relora_random_drop) ===
+[2026-05-20 10:09:25,692] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - merge: total=3136 kept=1554 drop_rate=0.504
+[2026-05-20 10:10:19,532] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - step=3000 POST-MERGE VAL_LOSS=1.9155 (first_eval=1.856800613641739)
+[2026-05-20 10:10:19,537] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - training done in 29173.3s
+[2026-05-20 10:11:02,353] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - FINAL VAL_LOSS=1.9155
+[2026-05-20 10:11:13,161] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - summary.json written
+[2026-05-20 10:11:14,329] INFO stage3.r1-distill-7b.tulu3-sft.relora_random_drop - adapter saved (copied from best/ to avoid post-merge B=0) to /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/adapter

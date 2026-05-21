@@ -27,3 +27,6 @@
 {"step": 675, "train_loss": null, "lr": 1.5327580077171587e-05}
 {"step": 700, "train_loss": null, "lr": 9.903113209758096e-06}
 {"step": 725, "train_loss": null, "lr": 5.611666969163243e-06}
+{"step": 750, "train_loss": null, "lr": 2.5072087818176382e-06}
+{"step": 775, "train_loss": null, "lr": 6.287790106757396e-07}
+{"step": 800, "train_loss": null, "lr": 0.0}

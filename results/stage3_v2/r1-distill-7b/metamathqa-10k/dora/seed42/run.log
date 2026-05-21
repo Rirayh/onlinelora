@@ -1,0 +1,69 @@
+[2026-05-19 22:29:52,048] INFO stage3.r1-distill-7b.metamathqa-10k.dora - START stage3 model=/mnt/cpfs/junlongke/onlinelora/models/R1-Distill-Qwen-7B dataset=metamathqa-10k method=dora out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42
+[2026-05-19 22:29:54,015] INFO stage3.r1-distill-7b.metamathqa-10k.dora - tokenizer loaded in 0.4s, vocab=151643
+[2026-05-19 22:29:54,015] INFO stage3.r1-distill-7b.metamathqa-10k.dora - loading MetaMathQA from /mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA
+[2026-05-19 22:29:55,493] INFO stage3.r1-distill-7b.metamathqa-10k.dora - metamathqa train=10000 val=500
+[2026-05-19 22:30:01,097] INFO stage3.r1-distill-7b.metamathqa-10k.dora - metamathqa tokenized: train 10000 val 500
+[2026-05-19 22:30:01,400] INFO stage3.r1-distill-7b.metamathqa-10k.dora - data prepared in 7.4s
+[2026-05-19 22:30:02,741] INFO stage3.r1-distill-7b.metamathqa-10k.dora - model loaded in 1.3s
+[2026-05-19 22:30:14,317] INFO stage3.r1-distill-7b.metamathqa-10k.dora - #LoRA layers=196 #components=3136
+[2026-05-19 22:30:14,322] INFO stage3.r1-distill-7b.metamathqa-10k.dora - #trainable params=41.76M
+[2026-05-19 22:30:29,009] INFO stage3.r1-distill-7b.metamathqa-10k.dora - [step 0] mean_ER=1464.91 mean_CN=1.95e+05 (sampled 8 layers)
+[2026-05-19 22:30:29,010] INFO stage3.r1-distill-7b.metamathqa-10k.dora - merge events scheduled at: []
+[2026-05-19 22:45:29,573] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=25/800 train_loss=0.6610 lr=5.00e-05 elapsed=901s
+[2026-05-19 23:00:44,638] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=50/800 train_loss=0.3263 lr=1.00e-04 elapsed=1816s
+[2026-05-19 23:00:45,939] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000050
+[2026-05-19 23:16:26,552] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=75/800 train_loss=0.2311 lr=1.50e-04 elapsed=2758s
+[2026-05-19 23:31:51,441] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=100/800 train_loss=0.1924 lr=2.00e-04 elapsed=3682s
+[2026-05-19 23:31:51,834] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000100
+[2026-05-19 23:46:30,548] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=125/800 train_loss=0.1908 lr=1.99e-04 elapsed=4562s
+[2026-05-20 00:01:34,526] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=150/800 train_loss=0.1870 lr=1.97e-04 elapsed=5466s
+[2026-05-20 00:01:34,920] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000150
+[2026-05-20 00:16:35,749] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=175/800 train_loss=0.1792 lr=1.94e-04 elapsed=6367s
+[2026-05-20 00:31:36,009] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=200/800 train_loss=0.1765 lr=1.90e-04 elapsed=7267s
+[2026-05-20 00:31:36,405] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000200
+[2026-05-20 00:46:15,343] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=225/800 train_loss=0.1769 lr=1.85e-04 elapsed=8146s
+[2026-05-20 01:01:20,492] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=250/800 train_loss=0.1751 lr=1.78e-04 elapsed=9051s
+[2026-05-20 01:01:21,182] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000250
+[2026-05-20 01:02:24,420] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=250 VAL_LOSS=0.1719
+[2026-05-20 01:02:26,211] INFO stage3.r1-distill-7b.metamathqa-10k.dora - best ckpt updated: step=250 val_loss=0.1719
+[2026-05-20 01:17:45,429] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=275/800 train_loss=0.1756 lr=1.71e-04 elapsed=10036s
+[2026-05-20 01:32:29,725] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=300/800 train_loss=0.1692 lr=1.62e-04 elapsed=10921s
+[2026-05-20 01:32:30,128] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000300
+[2026-05-20 01:47:43,867] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=325/800 train_loss=0.1550 lr=1.53e-04 elapsed=11835s
+[2026-05-20 02:02:55,568] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=350/800 train_loss=0.1480 lr=1.43e-04 elapsed=12747s
+[2026-05-20 02:02:55,965] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000350
+[2026-05-20 02:18:10,907] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=375/800 train_loss=0.1455 lr=1.33e-04 elapsed=13662s
+[2026-05-20 02:32:55,163] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=400/800 train_loss=0.1394 lr=1.22e-04 elapsed=14546s
+[2026-05-20 02:32:55,708] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000400
+[2026-05-20 02:48:09,250] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=425/800 train_loss=0.1327 lr=1.11e-04 elapsed=15460s
+[2026-05-20 03:02:55,830] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=450/800 train_loss=0.1380 lr=1.00e-04 elapsed=16347s
+[2026-05-20 03:02:56,316] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000450
+[2026-05-20 03:18:01,243] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=475/800 train_loss=0.1398 lr=8.88e-05 elapsed=17252s
+[2026-05-20 03:33:22,221] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=500/800 train_loss=0.1433 lr=7.77e-05 elapsed=18173s
+[2026-05-20 03:33:25,031] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000500
+[2026-05-20 03:34:28,301] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=500 VAL_LOSS=0.1658
+[2026-05-20 03:34:28,693] INFO stage3.r1-distill-7b.metamathqa-10k.dora - best ckpt updated: step=500 val_loss=0.1658
+[2026-05-20 03:34:40,152] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=500 mean_ER=1464.98 mean_CN=1.89e+05
+[2026-05-20 03:49:32,611] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=525/800 train_loss=0.1296 lr=6.70e-05 elapsed=19144s
+[2026-05-20 04:05:08,168] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=550/800 train_loss=0.1420 lr=5.66e-05 elapsed=20079s
+[2026-05-20 04:05:17,084] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000550
+[2026-05-20 04:20:50,176] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=575/800 train_loss=0.1399 lr=4.68e-05 elapsed=21021s
+[2026-05-20 04:35:14,180] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=600/800 train_loss=0.1335 lr=3.77e-05 elapsed=21885s
+[2026-05-20 04:35:18,794] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000600
+[2026-05-20 04:50:44,717] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=625/800 train_loss=0.1332 lr=2.93e-05 elapsed=22816s
+[2026-05-20 05:05:58,388] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=650/800 train_loss=0.1098 lr=2.18e-05 elapsed=23729s
+[2026-05-20 05:05:58,775] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000650
+[2026-05-20 05:20:45,251] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=675/800 train_loss=0.1061 lr=1.53e-05 elapsed=24616s
+[2026-05-20 05:35:23,941] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=700/800 train_loss=0.1112 lr=9.90e-06 elapsed=25495s
+[2026-05-20 05:35:24,329] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000700
+[2026-05-20 05:50:30,415] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=725/800 train_loss=0.1034 lr=5.61e-06 elapsed=26401s
+[2026-05-20 06:05:58,912] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=750/800 train_loss=0.1043 lr=2.51e-06 elapsed=27330s
+[2026-05-20 06:05:59,296] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000750
+[2026-05-20 06:07:02,555] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=750 VAL_LOSS=0.1741
+[2026-05-20 06:21:47,562] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=775/800 train_loss=0.1022 lr=6.29e-07 elapsed=28279s
+[2026-05-20 06:37:06,635] INFO stage3.r1-distill-7b.metamathqa-10k.dora - step=800/800 train_loss=0.1029 lr=0.00e+00 elapsed=29198s
+[2026-05-20 06:37:07,008] INFO stage3.r1-distill-7b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/checkpoints/step_000800
+[2026-05-20 06:37:07,009] INFO stage3.r1-distill-7b.metamathqa-10k.dora - training done in 29198.0s
+[2026-05-20 06:38:10,245] INFO stage3.r1-distill-7b.metamathqa-10k.dora - FINAL VAL_LOSS=0.1742
+[2026-05-20 06:38:21,233] INFO stage3.r1-distill-7b.metamathqa-10k.dora - summary.json written
+[2026-05-20 06:38:21,614] INFO stage3.r1-distill-7b.metamathqa-10k.dora - adapter saved to /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/adapter

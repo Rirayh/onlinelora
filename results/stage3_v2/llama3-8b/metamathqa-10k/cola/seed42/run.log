@@ -1,0 +1,161 @@
+[2026-05-20 13:14:10,994] INFO stage3.llama3-8b.metamathqa-10k.cola - START stage3 model=/mnt/cpfs/public_data/public_model/Meta-Llama-3-8B dataset=metamathqa-10k method=cola out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42
+[2026-05-20 13:14:12,026] INFO stage3.llama3-8b.metamathqa-10k.cola - tokenizer loaded in 0.3s, vocab=128000
+[2026-05-20 13:14:12,027] INFO stage3.llama3-8b.metamathqa-10k.cola - loading MetaMathQA from /mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA
+[2026-05-20 13:14:13,481] INFO stage3.llama3-8b.metamathqa-10k.cola - metamathqa train=10000 val=500
+[2026-05-20 13:14:18,390] INFO stage3.llama3-8b.metamathqa-10k.cola - metamathqa tokenized: train 10000 val 500
+[2026-05-20 13:14:18,666] INFO stage3.llama3-8b.metamathqa-10k.cola - data prepared in 6.6s
+[2026-05-20 13:14:20,035] INFO stage3.llama3-8b.metamathqa-10k.cola - model loaded in 1.4s
+[2026-05-20 13:14:26,213] INFO stage3.llama3-8b.metamathqa-10k.cola - #LoRA layers=224 #components=3584
+[2026-05-20 13:14:26,218] INFO stage3.llama3-8b.metamathqa-10k.cola - #trainable params=41.94M
+[2026-05-20 13:14:42,357] INFO stage3.llama3-8b.metamathqa-10k.cola - [step 0] mean_ER=1622.41 mean_CN=1.18e+07 (sampled 8 layers)
+[2026-05-20 13:14:42,358] INFO stage3.llama3-8b.metamathqa-10k.cola - merge events scheduled at: [500, 1000, 1500, 2000, 2500, 3000]
+[2026-05-20 13:16:47,028] INFO stage3.llama3-8b.metamathqa-10k.cola - step=25/3000 train_loss=0.5569 lr=5.00e-05 elapsed=125s
+[2026-05-20 13:18:49,677] INFO stage3.llama3-8b.metamathqa-10k.cola - step=50/3000 train_loss=0.3137 lr=1.00e-04 elapsed=247s
+[2026-05-20 13:18:50,139] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000050
+[2026-05-20 13:20:49,387] INFO stage3.llama3-8b.metamathqa-10k.cola - step=75/3000 train_loss=0.2651 lr=1.50e-04 elapsed=367s
+[2026-05-20 13:22:47,765] INFO stage3.llama3-8b.metamathqa-10k.cola - step=100/3000 train_loss=0.2589 lr=2.00e-04 elapsed=485s
+[2026-05-20 13:22:48,223] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000100
+[2026-05-20 13:24:43,627] INFO stage3.llama3-8b.metamathqa-10k.cola - step=125/3000 train_loss=0.2530 lr=2.00e-04 elapsed=601s
+[2026-05-20 13:26:41,930] INFO stage3.llama3-8b.metamathqa-10k.cola - step=150/3000 train_loss=0.2369 lr=2.00e-04 elapsed=720s
+[2026-05-20 13:26:42,411] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000150
+[2026-05-20 13:28:46,581] INFO stage3.llama3-8b.metamathqa-10k.cola - step=175/3000 train_loss=0.2389 lr=2.00e-04 elapsed=844s
+[2026-05-20 13:30:47,124] INFO stage3.llama3-8b.metamathqa-10k.cola - step=200/3000 train_loss=0.2383 lr=1.99e-04 elapsed=965s
+[2026-05-20 13:30:47,574] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000200
+[2026-05-20 13:32:48,588] INFO stage3.llama3-8b.metamathqa-10k.cola - step=225/3000 train_loss=0.2349 lr=1.99e-04 elapsed=1086s
+[2026-05-20 13:34:49,775] INFO stage3.llama3-8b.metamathqa-10k.cola - step=250/3000 train_loss=0.2294 lr=1.99e-04 elapsed=1207s
+[2026-05-20 13:34:50,258] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000250
+[2026-05-20 13:35:13,419] INFO stage3.llama3-8b.metamathqa-10k.cola - step=250 VAL_LOSS=0.2273
+[2026-05-20 13:35:13,883] INFO stage3.llama3-8b.metamathqa-10k.cola - best ckpt updated: step=250 val_loss=0.2273
+[2026-05-20 13:37:10,617] INFO stage3.llama3-8b.metamathqa-10k.cola - step=275/3000 train_loss=0.2241 lr=1.98e-04 elapsed=1348s
+[2026-05-20 13:39:08,353] INFO stage3.llama3-8b.metamathqa-10k.cola - step=300/3000 train_loss=0.2322 lr=1.98e-04 elapsed=1466s
+[2026-05-20 13:39:08,811] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000300
+[2026-05-20 13:41:08,327] INFO stage3.llama3-8b.metamathqa-10k.cola - step=325/3000 train_loss=0.2001 lr=1.97e-04 elapsed=1586s
+[2026-05-20 13:43:06,694] INFO stage3.llama3-8b.metamathqa-10k.cola - step=350/3000 train_loss=0.1728 lr=1.96e-04 elapsed=1704s
+[2026-05-20 13:43:07,182] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000350
+[2026-05-20 13:45:05,960] INFO stage3.llama3-8b.metamathqa-10k.cola - step=375/3000 train_loss=0.1707 lr=1.96e-04 elapsed=1824s
+[2026-05-20 13:47:06,746] INFO stage3.llama3-8b.metamathqa-10k.cola - step=400/3000 train_loss=0.1771 lr=1.95e-04 elapsed=1944s
+[2026-05-20 13:47:07,217] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000400
+[2026-05-20 13:49:08,768] INFO stage3.llama3-8b.metamathqa-10k.cola - step=425/3000 train_loss=0.1729 lr=1.94e-04 elapsed=2066s
+[2026-05-20 13:51:04,593] INFO stage3.llama3-8b.metamathqa-10k.cola - step=450/3000 train_loss=0.1733 lr=1.93e-04 elapsed=2182s
+[2026-05-20 13:51:05,063] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000450
+[2026-05-20 13:53:04,702] INFO stage3.llama3-8b.metamathqa-10k.cola - step=475/3000 train_loss=0.1783 lr=1.92e-04 elapsed=2302s
+[2026-05-20 13:55:03,459] INFO stage3.llama3-8b.metamathqa-10k.cola - step=500/3000 train_loss=0.1793 lr=1.91e-04 elapsed=2421s
+[2026-05-20 13:55:03,915] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000500
+[2026-05-20 13:55:27,109] INFO stage3.llama3-8b.metamathqa-10k.cola - step=500 VAL_LOSS=0.2203
+[2026-05-20 13:55:27,565] INFO stage3.llama3-8b.metamathqa-10k.cola - best ckpt updated: step=500 val_loss=0.2203
+[2026-05-20 13:55:44,026] INFO stage3.llama3-8b.metamathqa-10k.cola - step=500 mean_ER=1623.02 mean_CN=7.26e+07
+[2026-05-20 13:55:44,026] INFO stage3.llama3-8b.metamathqa-10k.cola - === MERGE EVENT 1 at step 500 (method=cola) ===
+[2026-05-20 13:55:44,189] INFO stage3.llama3-8b.metamathqa-10k.cola - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-20 13:56:23,513] INFO stage3.llama3-8b.metamathqa-10k.cola - step=500 POST-MERGE VAL_LOSS=0.2202 (first_eval=0.2273032547235489)
+[2026-05-20 13:58:29,786] INFO stage3.llama3-8b.metamathqa-10k.cola - step=525/3000 train_loss=0.1729 lr=5.00e-05 elapsed=2627s
+[2026-05-20 14:00:31,702] INFO stage3.llama3-8b.metamathqa-10k.cola - step=550/3000 train_loss=0.1631 lr=1.00e-04 elapsed=2749s
+[2026-05-20 14:00:32,177] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000550
+[2026-05-20 14:02:34,823] INFO stage3.llama3-8b.metamathqa-10k.cola - step=575/3000 train_loss=0.1701 lr=1.50e-04 elapsed=2872s
+[2026-05-20 14:04:32,598] INFO stage3.llama3-8b.metamathqa-10k.cola - step=600/3000 train_loss=0.1626 lr=2.00e-04 elapsed=2990s
+[2026-05-20 14:04:33,057] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000600
+[2026-05-20 14:06:34,021] INFO stage3.llama3-8b.metamathqa-10k.cola - step=625/3000 train_loss=0.1716 lr=2.00e-04 elapsed=3112s
+[2026-05-20 14:08:32,104] INFO stage3.llama3-8b.metamathqa-10k.cola - step=650/3000 train_loss=0.1145 lr=2.00e-04 elapsed=3230s
+[2026-05-20 14:08:32,583] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000650
+[2026-05-20 14:10:28,131] INFO stage3.llama3-8b.metamathqa-10k.cola - step=675/3000 train_loss=0.1099 lr=2.00e-04 elapsed=3346s
+[2026-05-20 14:12:30,476] INFO stage3.llama3-8b.metamathqa-10k.cola - step=700/3000 train_loss=0.1118 lr=1.99e-04 elapsed=3468s
+[2026-05-20 14:12:30,941] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000700
+[2026-05-20 14:14:30,015] INFO stage3.llama3-8b.metamathqa-10k.cola - step=725/3000 train_loss=0.1151 lr=1.99e-04 elapsed=3588s
+[2026-05-20 14:16:28,890] INFO stage3.llama3-8b.metamathqa-10k.cola - step=750/3000 train_loss=0.1161 lr=1.98e-04 elapsed=3707s
+[2026-05-20 14:16:29,357] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000750
+[2026-05-20 14:16:52,554] INFO stage3.llama3-8b.metamathqa-10k.cola - step=750 VAL_LOSS=0.2353
+[2026-05-20 14:18:52,155] INFO stage3.llama3-8b.metamathqa-10k.cola - step=775/3000 train_loss=0.1186 lr=1.97e-04 elapsed=3850s
+[2026-05-20 14:20:53,825] INFO stage3.llama3-8b.metamathqa-10k.cola - step=800/3000 train_loss=0.1142 lr=1.97e-04 elapsed=3971s
+[2026-05-20 14:20:54,281] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000800
+[2026-05-20 14:22:56,273] INFO stage3.llama3-8b.metamathqa-10k.cola - step=825/3000 train_loss=0.1177 lr=1.96e-04 elapsed=4094s
+[2026-05-20 14:24:53,468] INFO stage3.llama3-8b.metamathqa-10k.cola - step=850/3000 train_loss=0.1187 lr=1.95e-04 elapsed=4211s
+[2026-05-20 14:24:53,929] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000850
+[2026-05-20 14:26:54,572] INFO stage3.llama3-8b.metamathqa-10k.cola - step=875/3000 train_loss=0.1217 lr=1.94e-04 elapsed=4332s
+[2026-05-20 14:28:57,570] INFO stage3.llama3-8b.metamathqa-10k.cola - step=900/3000 train_loss=0.1209 lr=1.92e-04 elapsed=4455s
+[2026-05-20 14:28:58,041] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000900
+[2026-05-20 14:30:59,565] INFO stage3.llama3-8b.metamathqa-10k.cola - step=925/3000 train_loss=0.1209 lr=1.91e-04 elapsed=4577s
+[2026-05-20 14:33:01,788] INFO stage3.llama3-8b.metamathqa-10k.cola - step=950/3000 train_loss=0.1008 lr=1.90e-04 elapsed=4699s
+[2026-05-20 14:33:02,251] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_000950
+[2026-05-20 14:35:00,307] INFO stage3.llama3-8b.metamathqa-10k.cola - step=975/3000 train_loss=0.0726 lr=1.88e-04 elapsed=4818s
+[2026-05-20 14:37:02,597] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1000/3000 train_loss=0.0738 lr=1.87e-04 elapsed=4940s
+[2026-05-20 14:37:03,068] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001000
+[2026-05-20 14:37:26,232] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1000 VAL_LOSS=0.2740
+[2026-05-20 14:37:42,361] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1000 mean_ER=1623.65 mean_CN=1.15e+07
+[2026-05-20 14:37:42,361] INFO stage3.llama3-8b.metamathqa-10k.cola - === MERGE EVENT 2 at step 1000 (method=cola) ===
+[2026-05-20 14:37:42,521] INFO stage3.llama3-8b.metamathqa-10k.cola - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-20 14:38:21,771] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1000 POST-MERGE VAL_LOSS=0.2747 (first_eval=0.2273032547235489)
+[2026-05-20 14:40:24,397] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1025/3000 train_loss=0.0749 lr=5.00e-05 elapsed=5142s
+[2026-05-20 14:42:26,374] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1050/3000 train_loss=0.0683 lr=1.00e-04 elapsed=5264s
+[2026-05-20 14:42:26,845] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001050
+[2026-05-20 14:44:30,028] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1075/3000 train_loss=0.0671 lr=1.50e-04 elapsed=5388s
+[2026-05-20 14:46:27,783] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1100/3000 train_loss=0.0733 lr=2.00e-04 elapsed=5505s
+[2026-05-20 14:46:28,240] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001100
+[2026-05-20 14:48:25,840] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1125/3000 train_loss=0.0719 lr=2.00e-04 elapsed=5623s
+[2026-05-20 14:50:25,883] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1150/3000 train_loss=0.0757 lr=2.00e-04 elapsed=5744s
+[2026-05-20 14:50:26,357] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001150
+[2026-05-20 14:52:24,163] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1175/3000 train_loss=0.0757 lr=1.99e-04 elapsed=5862s
+[2026-05-20 14:54:23,707] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1200/3000 train_loss=0.0754 lr=1.99e-04 elapsed=5981s
+[2026-05-20 14:54:24,154] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001200
+[2026-05-20 14:56:27,158] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1225/3000 train_loss=0.0768 lr=1.98e-04 elapsed=6105s
+[2026-05-20 14:58:28,919] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1250/3000 train_loss=0.0758 lr=1.97e-04 elapsed=6227s
+[2026-05-20 14:58:29,375] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001250
+[2026-05-20 14:58:52,577] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1250 VAL_LOSS=0.2697
+[2026-05-20 15:00:54,325] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1275/3000 train_loss=0.0471 lr=1.96e-04 elapsed=6372s
+[2026-05-20 15:02:53,663] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1300/3000 train_loss=0.0477 lr=1.95e-04 elapsed=6491s
+[2026-05-20 15:02:54,147] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001300
+[2026-05-20 15:04:57,826] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1325/3000 train_loss=0.0461 lr=1.93e-04 elapsed=6615s
+[2026-05-20 15:06:59,958] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1350/3000 train_loss=0.0477 lr=1.92e-04 elapsed=6738s
+[2026-05-20 15:07:00,413] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001350
+[2026-05-20 15:09:01,171] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1375/3000 train_loss=0.0481 lr=1.90e-04 elapsed=6859s
+[2026-05-20 15:10:58,054] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1400/3000 train_loss=0.0496 lr=1.88e-04 elapsed=6976s
+[2026-05-20 15:10:58,538] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001400
+[2026-05-20 15:13:01,374] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1425/3000 train_loss=0.0495 lr=1.86e-04 elapsed=7099s
+[2026-05-20 15:14:56,182] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1450/3000 train_loss=0.0525 lr=1.84e-04 elapsed=7214s
+[2026-05-20 15:14:56,640] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001450
+[2026-05-20 15:17:02,334] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1475/3000 train_loss=0.0546 lr=1.81e-04 elapsed=7340s
+[2026-05-20 15:18:57,562] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1500/3000 train_loss=0.0538 lr=1.79e-04 elapsed=7455s
+[2026-05-20 15:18:58,015] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001500
+[2026-05-20 15:19:21,205] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1500 VAL_LOSS=0.3173
+[2026-05-20 15:19:37,289] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1500 mean_ER=1624.23 mean_CN=2.19e+07
+[2026-05-20 15:19:37,289] INFO stage3.llama3-8b.metamathqa-10k.cola - === MERGE EVENT 3 at step 1500 (method=cola) ===
+[2026-05-20 15:19:37,445] INFO stage3.llama3-8b.metamathqa-10k.cola - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-20 15:20:16,927] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1500 POST-MERGE VAL_LOSS=0.3192 (first_eval=0.2273032547235489)
+[2026-05-20 15:22:16,758] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1525/3000 train_loss=0.0565 lr=5.00e-05 elapsed=7654s
+[2026-05-20 15:24:18,103] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1550/3000 train_loss=0.0519 lr=1.00e-04 elapsed=7776s
+[2026-05-20 15:24:18,578] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001550
+[2026-05-20 15:26:18,184] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1575/3000 train_loss=0.0415 lr=1.50e-04 elapsed=7896s
+[2026-05-20 15:28:17,850] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1600/3000 train_loss=0.0279 lr=2.00e-04 elapsed=8015s
+[2026-05-20 15:28:18,307] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001600
+[2026-05-20 15:30:18,168] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1625/3000 train_loss=0.0311 lr=2.00e-04 elapsed=8136s
+[2026-05-20 15:32:21,236] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1650/3000 train_loss=0.0329 lr=1.99e-04 elapsed=8259s
+[2026-05-20 15:32:21,687] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001650
+[2026-05-20 15:34:18,890] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1675/3000 train_loss=0.0337 lr=1.99e-04 elapsed=8377s
+[2026-05-20 15:36:24,170] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1700/3000 train_loss=0.0338 lr=1.97e-04 elapsed=8502s
+[2026-05-20 15:36:24,613] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001700
+[2026-05-20 15:38:21,034] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1725/3000 train_loss=0.0349 lr=1.96e-04 elapsed=8619s
+[2026-05-20 15:40:21,814] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1750/3000 train_loss=0.0355 lr=1.94e-04 elapsed=8739s
+[2026-05-20 15:40:22,266] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001750
+[2026-05-20 15:40:45,451] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1750 VAL_LOSS=0.3381
+[2026-05-20 15:42:47,238] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1775/3000 train_loss=0.0392 lr=1.92e-04 elapsed=8885s
+[2026-05-20 15:44:47,513] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1800/3000 train_loss=0.0346 lr=1.90e-04 elapsed=9005s
+[2026-05-20 15:44:47,983] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001800
+[2026-05-20 15:46:46,565] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1825/3000 train_loss=0.0367 lr=1.88e-04 elapsed=9124s
+[2026-05-20 15:48:46,114] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1850/3000 train_loss=0.0368 lr=1.85e-04 elapsed=9244s
+[2026-05-20 15:48:46,579] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001850
+[2026-05-20 15:50:47,434] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1875/3000 train_loss=0.0395 lr=1.82e-04 elapsed=9365s
+[2026-05-20 15:52:45,922] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1900/3000 train_loss=0.0213 lr=1.78e-04 elapsed=9484s
+[2026-05-20 15:52:46,379] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001900
+[2026-05-20 15:54:43,551] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1925/3000 train_loss=0.0222 lr=1.75e-04 elapsed=9601s
+[2026-05-20 15:56:39,975] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1950/3000 train_loss=0.0228 lr=1.71e-04 elapsed=9718s
+[2026-05-20 15:56:40,422] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_001950
+[2026-05-20 15:58:42,994] INFO stage3.llama3-8b.metamathqa-10k.cola - step=1975/3000 train_loss=0.0229 lr=1.67e-04 elapsed=9841s
+[2026-05-20 16:00:49,544] INFO stage3.llama3-8b.metamathqa-10k.cola - step=2000/3000 train_loss=0.0256 lr=1.62e-04 elapsed=9967s
+[2026-05-20 16:00:49,999] INFO stage3.llama3-8b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42/checkpoints/step_002000
+[2026-05-20 16:01:13,151] INFO stage3.llama3-8b.metamathqa-10k.cola - step=2000 VAL_LOSS=0.3883
+[2026-05-20 16:01:29,405] INFO stage3.llama3-8b.metamathqa-10k.cola - step=2000 mean_ER=1624.76 mean_CN=7.33e+07
+[2026-05-20 16:01:29,405] INFO stage3.llama3-8b.metamathqa-10k.cola - === MERGE EVENT 4 at step 2000 (method=cola) ===
+[2026-05-20 16:01:29,562] INFO stage3.llama3-8b.metamathqa-10k.cola - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-20 16:02:08,888] INFO stage3.llama3-8b.metamathqa-10k.cola - step=2000 POST-MERGE VAL_LOSS=0.3909 (first_eval=0.2273032547235489)
+[2026-05-20 16:02:08,888] WARNING stage3.llama3-8b.metamathqa-10k.cola - ABORT: post-merge val_loss=0.3909 > first_eval=0.2273 * 1.5
+[2026-05-20 16:02:08,902] INFO stage3.llama3-8b.metamathqa-10k.cola - training ABORTED in 10046.5s
+[2026-05-20 16:02:31,952] INFO stage3.llama3-8b.metamathqa-10k.cola - FINAL VAL_LOSS=0.3909
+[2026-05-20 16:02:47,878] INFO stage3.llama3-8b.metamathqa-10k.cola - summary.json written

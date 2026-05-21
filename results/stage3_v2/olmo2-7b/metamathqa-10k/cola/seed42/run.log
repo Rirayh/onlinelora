@@ -1,0 +1,160 @@
+[2026-05-19 19:24:34,037] INFO stage3.olmo2-7b.metamathqa-10k.cola - START stage3 model=/mnt/cpfs/junlongke/onlinelora/models/OLMo-2-7B dataset=metamathqa-10k method=cola out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42
+[2026-05-19 19:24:35,236] INFO stage3.olmo2-7b.metamathqa-10k.cola - tokenizer loaded in 0.3s, vocab=100278
+[2026-05-19 19:24:35,236] INFO stage3.olmo2-7b.metamathqa-10k.cola - loading MetaMathQA from /mnt/cpfs/junlongke/onlinelora/datasets/MetaMathQA
+[2026-05-19 19:24:36,737] INFO stage3.olmo2-7b.metamathqa-10k.cola - metamathqa train=10000 val=500
+[2026-05-19 19:24:41,969] INFO stage3.olmo2-7b.metamathqa-10k.cola - metamathqa tokenized: train 10000 val 500
+[2026-05-19 19:24:42,243] INFO stage3.olmo2-7b.metamathqa-10k.cola - data prepared in 7.0s
+[2026-05-19 19:24:43,582] INFO stage3.olmo2-7b.metamathqa-10k.cola - model loaded in 1.3s
+[2026-05-19 19:24:51,099] INFO stage3.olmo2-7b.metamathqa-10k.cola - #LoRA layers=224 #components=3584
+[2026-05-19 19:24:51,103] INFO stage3.olmo2-7b.metamathqa-10k.cola - #trainable params=39.98M
+[2026-05-19 19:25:32,118] INFO stage3.olmo2-7b.metamathqa-10k.cola - [step 0] mean_ER=2335.75 mean_CN=3.00e+08 (sampled 8 layers)
+[2026-05-19 19:25:32,120] INFO stage3.olmo2-7b.metamathqa-10k.cola - merge events scheduled at: [500, 1000, 1500, 2000, 2500, 3000]
+[2026-05-19 19:27:44,006] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=25/3000 train_loss=0.5659 lr=5.00e-05 elapsed=132s
+[2026-05-19 19:29:48,496] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=50/3000 train_loss=0.2766 lr=1.00e-04 elapsed=256s
+[2026-05-19 19:29:57,013] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000050
+[2026-05-19 19:32:05,136] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=75/3000 train_loss=0.2248 lr=1.50e-04 elapsed=393s
+[2026-05-19 19:34:13,514] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=100/3000 train_loss=0.2176 lr=2.00e-04 elapsed=521s
+[2026-05-19 19:34:13,951] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000100
+[2026-05-19 19:36:22,884] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=125/3000 train_loss=0.1965 lr=2.00e-04 elapsed=651s
+[2026-05-19 19:38:30,567] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=150/3000 train_loss=0.2008 lr=2.00e-04 elapsed=778s
+[2026-05-19 19:38:33,859] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000150
+[2026-05-19 19:40:36,397] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=175/3000 train_loss=0.1966 lr=2.00e-04 elapsed=904s
+[2026-05-19 19:42:39,700] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=200/3000 train_loss=0.2021 lr=1.99e-04 elapsed=1028s
+[2026-05-19 19:42:40,164] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000200
+[2026-05-19 19:44:42,250] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=225/3000 train_loss=0.2000 lr=1.99e-04 elapsed=1150s
+[2026-05-19 19:46:48,030] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=250/3000 train_loss=0.1957 lr=1.99e-04 elapsed=1276s
+[2026-05-19 19:46:48,499] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000250
+[2026-05-19 19:47:12,281] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=250 VAL_LOSS=0.1958
+[2026-05-19 19:47:12,724] INFO stage3.olmo2-7b.metamathqa-10k.cola - best ckpt updated: step=250 val_loss=0.1958
+[2026-05-19 19:49:11,461] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=275/3000 train_loss=0.1916 lr=1.98e-04 elapsed=1419s
+[2026-05-19 19:51:15,540] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=300/3000 train_loss=0.1932 lr=1.98e-04 elapsed=1543s
+[2026-05-19 19:51:16,026] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000300
+[2026-05-19 19:53:17,837] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=325/3000 train_loss=0.1769 lr=1.97e-04 elapsed=1666s
+[2026-05-19 19:55:23,912] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=350/3000 train_loss=0.1570 lr=1.96e-04 elapsed=1792s
+[2026-05-19 19:55:25,881] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000350
+[2026-05-19 19:57:34,053] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=375/3000 train_loss=0.1509 lr=1.96e-04 elapsed=1922s
+[2026-05-19 19:59:39,345] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=400/3000 train_loss=0.1549 lr=1.95e-04 elapsed=2047s
+[2026-05-19 19:59:44,946] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000400
+[2026-05-19 20:01:46,248] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=425/3000 train_loss=0.1620 lr=1.94e-04 elapsed=2174s
+[2026-05-19 20:03:51,724] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=450/3000 train_loss=0.1564 lr=1.93e-04 elapsed=2300s
+[2026-05-19 20:03:52,148] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000450
+[2026-05-19 20:06:05,658] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=475/3000 train_loss=0.1552 lr=1.92e-04 elapsed=2434s
+[2026-05-19 20:08:05,907] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=500/3000 train_loss=0.1543 lr=1.91e-04 elapsed=2554s
+[2026-05-19 20:08:06,509] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000500
+[2026-05-19 20:08:30,289] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=500 VAL_LOSS=0.1963
+[2026-05-19 20:09:04,136] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=500 mean_ER=2336.17 mean_CN=5.49e+08
+[2026-05-19 20:09:04,136] INFO stage3.olmo2-7b.metamathqa-10k.cola - === MERGE EVENT 1 at step 500 (method=cola) ===
+[2026-05-19 20:09:04,367] INFO stage3.olmo2-7b.metamathqa-10k.cola - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-19 20:10:02,326] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=500 POST-MERGE VAL_LOSS=0.1963 (first_eval=0.19575632375478744)
+[2026-05-19 20:12:06,985] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=525/3000 train_loss=0.1561 lr=5.00e-05 elapsed=2795s
+[2026-05-19 20:14:14,113] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=550/3000 train_loss=0.1562 lr=1.00e-04 elapsed=2922s
+[2026-05-19 20:14:16,423] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000550
+[2026-05-19 20:16:20,889] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=575/3000 train_loss=0.1614 lr=1.50e-04 elapsed=3049s
+[2026-05-19 20:18:23,372] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=600/3000 train_loss=0.1447 lr=2.00e-04 elapsed=3171s
+[2026-05-19 20:18:26,256] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000600
+[2026-05-19 20:20:28,617] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=625/3000 train_loss=0.1542 lr=2.00e-04 elapsed=3296s
+[2026-05-19 20:22:33,978] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=650/3000 train_loss=0.1077 lr=2.00e-04 elapsed=3422s
+[2026-05-19 20:22:36,556] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000650
+[2026-05-19 20:24:34,863] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=675/3000 train_loss=0.1073 lr=2.00e-04 elapsed=3543s
+[2026-05-19 20:26:38,317] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=700/3000 train_loss=0.1107 lr=1.99e-04 elapsed=3666s
+[2026-05-19 20:26:40,287] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000700
+[2026-05-19 20:28:51,775] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=725/3000 train_loss=0.1191 lr=1.99e-04 elapsed=3800s
+[2026-05-19 20:30:57,754] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=750/3000 train_loss=0.1105 lr=1.98e-04 elapsed=3926s
+[2026-05-19 20:31:00,793] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000750
+[2026-05-19 20:31:24,587] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=750 VAL_LOSS=0.2081
+[2026-05-19 20:33:34,754] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=775/3000 train_loss=0.1112 lr=1.97e-04 elapsed=4083s
+[2026-05-19 20:35:38,084] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=800/3000 train_loss=0.1125 lr=1.97e-04 elapsed=4206s
+[2026-05-19 20:35:38,506] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000800
+[2026-05-19 20:37:39,739] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=825/3000 train_loss=0.1058 lr=1.96e-04 elapsed=4328s
+[2026-05-19 20:39:44,735] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=850/3000 train_loss=0.1134 lr=1.95e-04 elapsed=4453s
+[2026-05-19 20:39:46,597] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000850
+[2026-05-19 20:41:49,049] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=875/3000 train_loss=0.1097 lr=1.94e-04 elapsed=4577s
+[2026-05-19 20:43:56,486] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=900/3000 train_loss=0.1184 lr=1.92e-04 elapsed=4704s
+[2026-05-19 20:43:58,154] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000900
+[2026-05-19 20:46:05,589] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=925/3000 train_loss=0.1107 lr=1.91e-04 elapsed=4833s
+[2026-05-19 20:48:14,298] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=950/3000 train_loss=0.0912 lr=1.90e-04 elapsed=4962s
+[2026-05-19 20:48:14,722] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_000950
+[2026-05-19 20:50:21,156] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=975/3000 train_loss=0.0741 lr=1.88e-04 elapsed=5089s
+[2026-05-19 20:52:28,993] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1000/3000 train_loss=0.0734 lr=1.87e-04 elapsed=5217s
+[2026-05-19 20:52:32,784] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001000
+[2026-05-19 20:52:56,588] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1000 VAL_LOSS=0.2486
+[2026-05-19 20:53:30,053] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1000 mean_ER=2336.63 mean_CN=2.43e+08
+[2026-05-19 20:53:30,053] INFO stage3.olmo2-7b.metamathqa-10k.cola - === MERGE EVENT 2 at step 1000 (method=cola) ===
+[2026-05-19 20:53:30,206] INFO stage3.olmo2-7b.metamathqa-10k.cola - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-19 20:54:27,247] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1000 POST-MERGE VAL_LOSS=0.2485 (first_eval=0.19575632375478744)
+[2026-05-19 20:56:32,229] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1025/3000 train_loss=0.0694 lr=5.00e-05 elapsed=5460s
+[2026-05-19 20:58:43,100] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1050/3000 train_loss=0.0694 lr=1.00e-04 elapsed=5591s
+[2026-05-19 20:58:43,524] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001050
+[2026-05-19 21:00:48,138] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1075/3000 train_loss=0.0674 lr=1.50e-04 elapsed=5716s
+[2026-05-19 21:02:50,283] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1100/3000 train_loss=0.0655 lr=2.00e-04 elapsed=5838s
+[2026-05-19 21:02:50,707] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001100
+[2026-05-19 21:04:53,375] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1125/3000 train_loss=0.0707 lr=2.00e-04 elapsed=5961s
+[2026-05-19 21:06:57,265] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1150/3000 train_loss=0.0656 lr=2.00e-04 elapsed=6085s
+[2026-05-19 21:06:57,690] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001150
+[2026-05-19 21:09:02,851] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1175/3000 train_loss=0.0720 lr=1.99e-04 elapsed=6211s
+[2026-05-19 21:11:03,735] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1200/3000 train_loss=0.0722 lr=1.99e-04 elapsed=6332s
+[2026-05-19 21:11:04,156] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001200
+[2026-05-19 21:13:11,112] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1225/3000 train_loss=0.0694 lr=1.98e-04 elapsed=6459s
+[2026-05-19 21:15:15,048] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1250/3000 train_loss=0.0722 lr=1.97e-04 elapsed=6583s
+[2026-05-19 21:15:15,477] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001250
+[2026-05-19 21:15:39,299] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1250 VAL_LOSS=0.2470
+[2026-05-19 21:17:50,031] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1275/3000 train_loss=0.0489 lr=1.96e-04 elapsed=6738s
+[2026-05-19 21:19:54,198] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1300/3000 train_loss=0.0457 lr=1.95e-04 elapsed=6862s
+[2026-05-19 21:19:57,006] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001300
+[2026-05-19 21:22:00,945] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1325/3000 train_loss=0.0454 lr=1.93e-04 elapsed=6989s
+[2026-05-19 21:24:05,471] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1350/3000 train_loss=0.0454 lr=1.92e-04 elapsed=7113s
+[2026-05-19 21:24:05,990] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001350
+[2026-05-19 21:26:13,735] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1375/3000 train_loss=0.0471 lr=1.90e-04 elapsed=7242s
+[2026-05-19 21:28:18,543] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1400/3000 train_loss=0.0487 lr=1.88e-04 elapsed=7366s
+[2026-05-19 21:28:18,960] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001400
+[2026-05-19 21:30:21,923] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1425/3000 train_loss=0.0504 lr=1.86e-04 elapsed=7490s
+[2026-05-19 21:32:27,311] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1450/3000 train_loss=0.0483 lr=1.84e-04 elapsed=7615s
+[2026-05-19 21:32:27,735] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001450
+[2026-05-19 21:34:34,859] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1475/3000 train_loss=0.0512 lr=1.81e-04 elapsed=7743s
+[2026-05-19 21:36:35,146] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1500/3000 train_loss=0.0507 lr=1.79e-04 elapsed=7863s
+[2026-05-19 21:36:37,918] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001500
+[2026-05-19 21:37:01,760] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1500 VAL_LOSS=0.2899
+[2026-05-19 21:37:35,342] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1500 mean_ER=2337.08 mean_CN=1.57e+08
+[2026-05-19 21:37:35,342] INFO stage3.olmo2-7b.metamathqa-10k.cola - === MERGE EVENT 3 at step 1500 (method=cola) ===
+[2026-05-19 21:37:35,502] INFO stage3.olmo2-7b.metamathqa-10k.cola - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-19 21:38:33,766] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1500 POST-MERGE VAL_LOSS=0.2899 (first_eval=0.19575632375478744)
+[2026-05-19 21:40:39,034] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1525/3000 train_loss=0.0472 lr=5.00e-05 elapsed=8107s
+[2026-05-19 21:42:42,217] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1550/3000 train_loss=0.0492 lr=1.00e-04 elapsed=8230s
+[2026-05-19 21:42:53,287] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001550
+[2026-05-19 21:45:00,828] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1575/3000 train_loss=0.0369 lr=1.50e-04 elapsed=8369s
+[2026-05-19 21:47:06,661] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1600/3000 train_loss=0.0255 lr=2.00e-04 elapsed=8495s
+[2026-05-19 21:47:09,601] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001600
+[2026-05-19 21:49:16,684] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1625/3000 train_loss=0.0273 lr=2.00e-04 elapsed=8625s
+[2026-05-19 21:51:16,829] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1650/3000 train_loss=0.0257 lr=1.99e-04 elapsed=8745s
+[2026-05-19 21:51:18,702] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001650
+[2026-05-19 21:53:25,259] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1675/3000 train_loss=0.0293 lr=1.99e-04 elapsed=8873s
+[2026-05-19 21:55:29,365] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1700/3000 train_loss=0.0300 lr=1.97e-04 elapsed=8997s
+[2026-05-19 21:55:31,274] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001700
+[2026-05-19 21:57:35,995] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1725/3000 train_loss=0.0296 lr=1.96e-04 elapsed=9124s
+[2026-05-19 21:59:36,513] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1750/3000 train_loss=0.0299 lr=1.94e-04 elapsed=9244s
+[2026-05-19 21:59:38,438] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001750
+[2026-05-19 22:00:02,310] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1750 VAL_LOSS=0.3301
+[2026-05-19 22:02:07,510] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1775/3000 train_loss=0.0308 lr=1.92e-04 elapsed=9395s
+[2026-05-19 22:04:14,291] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1800/3000 train_loss=0.0310 lr=1.90e-04 elapsed=9522s
+[2026-05-19 22:04:14,707] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001800
+[2026-05-19 22:06:24,594] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1825/3000 train_loss=0.0294 lr=1.88e-04 elapsed=9652s
+[2026-05-19 22:08:31,024] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1850/3000 train_loss=0.0297 lr=1.85e-04 elapsed=9779s
+[2026-05-19 22:08:31,462] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001850
+[2026-05-19 22:10:37,805] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1875/3000 train_loss=0.0318 lr=1.82e-04 elapsed=9906s
+[2026-05-19 22:12:43,646] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1900/3000 train_loss=0.0166 lr=1.78e-04 elapsed=10032s
+[2026-05-19 22:12:44,080] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001900
+[2026-05-19 22:14:53,821] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1925/3000 train_loss=0.0172 lr=1.75e-04 elapsed=10162s
+[2026-05-19 22:16:59,378] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1950/3000 train_loss=0.0181 lr=1.71e-04 elapsed=10287s
+[2026-05-19 22:17:01,483] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_001950
+[2026-05-19 22:19:00,752] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=1975/3000 train_loss=0.0192 lr=1.67e-04 elapsed=10409s
+[2026-05-19 22:21:05,693] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=2000/3000 train_loss=0.0182 lr=1.62e-04 elapsed=10534s
+[2026-05-19 22:21:09,588] INFO stage3.olmo2-7b.metamathqa-10k.cola - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42/checkpoints/step_002000
+[2026-05-19 22:21:33,448] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=2000 VAL_LOSS=0.3590
+[2026-05-19 22:22:07,555] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=2000 mean_ER=2337.42 mean_CN=2.69e+07
+[2026-05-19 22:22:07,555] INFO stage3.olmo2-7b.metamathqa-10k.cola - === MERGE EVENT 4 at step 2000 (method=cola) ===
+[2026-05-19 22:22:07,708] INFO stage3.olmo2-7b.metamathqa-10k.cola - merge: total=3584 kept=3584 drop_rate=0.000
+[2026-05-19 22:23:05,487] INFO stage3.olmo2-7b.metamathqa-10k.cola - step=2000 POST-MERGE VAL_LOSS=0.3591 (first_eval=0.19575632375478744)
+[2026-05-19 22:23:05,487] WARNING stage3.olmo2-7b.metamathqa-10k.cola - ABORT: post-merge val_loss=0.3591 > first_eval=0.1958 * 1.5
+[2026-05-19 22:23:06,958] INFO stage3.olmo2-7b.metamathqa-10k.cola - training ABORTED in 10654.8s
+[2026-05-19 22:23:30,685] INFO stage3.olmo2-7b.metamathqa-10k.cola - FINAL VAL_LOSS=0.3591
+[2026-05-19 22:24:04,203] INFO stage3.olmo2-7b.metamathqa-10k.cola - summary.json written
