@@ -159,3 +159,51 @@ olmo2-7b/tulu3-sft 4 cells distinct ✅, qwen3-8b/tulu3-sft S3neg=86.81% (new pe
   tail -5 /mnt/cpfs/junlongke/onlinelora/lora_obd/logs/scout/dl_qwen35_seq.log
   ls /mnt/cpfs/junlongke/onlinelora/models/ | sort
   /mnt/cpfs/junlongke/miniconda3/envs/flash_moe/bin/python -c "import peft;print(peft.__version__)" 2>&1
+
+## CONTEXT-TRIM CHECKPOINT 2 (12:58)
+
+### KEY FINDING: peft 0.17 incompatible with transformers 5.x
+peft 0.17.0/0.17.1 imports `HybridCache` which was removed in transformers 5.x:
+  ImportError: cannot import name 'HybridCache' from 'transformers'
+
+Need a NEWER peft version compatible with transformers 5.x. Options:
+- pip install peft==latest (try 0.18+)
+- pip install "peft>=0.18" 
+- Or peft from main: pip install git+https://github.com/huggingface/peft.git
+
+### Current state of bg processes:
+- PID 1772667: dl_qwen35_seq.sh (Qwen3.5 2B/4B/9B/27B from hf-mirror) — RUNNING
+- peft install in flash_moe FAILED (broken pip resolver in flash_moe's pip)
+- peft install in RRenv UNINSTALLED 0.17.1 first then tried 0.17.0 — leaves state ambiguous
+- PID 1755167: llama3 dora lm_eval — RUNNING (~19% done, 3-4h ETA)
+- PID 1733368, 1735950, 1762026: gemma3 cleanup trains — RUNNING
+
+### NEXT STEP ON RESUME:
+1. Install peft compatible with transformers 5.x:
+   /mnt/cpfs/junlongke/miniconda3/envs/RRenv/bin/python -m pip install --upgrade "peft>=0.18"
+   verify: python -c "from peft import LoraConfig"
+2. Verify Qwen3.5-0.8B loads in RRenv with peft + transformers 5.3.0
+3. Inspect Qwen3.5 module names to decide target_modules
+   probe with: for n,m in model.named_modules(): print(n)
+4. Adapt scripts/stage3_run.py for Qwen3.5 if needed
+
+### IMPORTANT: PI directive said proceed in parallel, not block
+While solving Qwen3.5 plumbing, can ALREADY start training Qwen3 dense models:
+  qwen3-1p7b (3.8GB, loaded fine in espo, Qwen3ForCausalLM)
+  qwen3-4b (7.6GB, same arch as qwen3-8b, drop-in)
+
+LAUNCH-READY: see logs/PHASE_D_LIVE_STATUS.md "TRAINING LAUNCHER TEMPLATE" section.
+GPUs free: 1, 2, 4, 7. Can start 4 Qwen3 dense trainings IMMEDIATELY in parallel.
+
+### WAVE 1 LAUNCH ORDER (per directive)
+qwen35-0p8b, qwen35-2b, qwen3-1p7b, qwen35-4b, qwen3-4b, qwen35-9b, qwen3-14b
+But qwen3-1p7b ready right now → use GPU 1, 2, 4, 7 to start qwen3-1p7b 5 cells in parallel
+(actually only 4 GPUs free, so pick 4 methods first; cola serial after first 4 done)
+
+5 methods: lora_vanilla, relora_baseline, relora_diag_gated_S3pos, dora, cola
+Parallel batch 1 (4 cells on 4 GPUs):
+  G1: qwen3-1p7b/tulu3-sft/lora_vanilla
+  G2: qwen3-1p7b/tulu3-sft/relora_baseline
+  G4: qwen3-1p7b/tulu3-sft/relora_diag_gated_S3pos
+  G7: qwen3-1p7b/tulu3-sft/dora
+Then cola when first GPU frees.
