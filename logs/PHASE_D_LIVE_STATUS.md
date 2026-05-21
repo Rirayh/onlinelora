@@ -352,3 +352,78 @@ c224f74 [NEGATIVE] Phase D blocker
 87cf71d Phase D peft 5.x compat finding
 1adfc95 Phase D launch plan checkpoint
 3f3ae2a Phase D launched 4 qwen3-1p7b trainings
+
+## CONTEXT-TRIM CHECKPOINT 6 (14:35) — PHASE D DAEMON WRITTEN
+
+### NEW: scripts/phase_d_daemon.py
+Phase-D-specific daemon. Differences vs scripts/auto_fill_daemon.py:
+- Two interpreters: PY_ESPO (Qwen3 dense), PY_RRENV (Qwen3.5 multimodal causal LM)
+- Only tulu3-sft, only Phase D 5-arm methods (vanilla, baseline, S3pos, dora, cola)
+- Wave 1 priority order (small→big):
+   qwen35-0p8b → qwen35-2b → qwen3-1p7b → qwen35-4b → qwen3-4b → qwen35-9b → qwen3-14b
+- merge_every=750 (Phase D config), eval_every=250, ckpt_every=250
+- Eval target: lm_eval_v3/ for ALL methods (Phase D fresh; v2 not present)
+- DOES NOT auto-fill Wave 2 (qwen3-32b / qwen35-27b need PI signoff)
+- DOES NOT touch non-Qwen models (frozen)
+
+Stop:    touch /tmp/phase_d_daemon.STOP
+State:   /tmp/phase_d_daemon.state.json
+Logs:    logs/scout/_phase_d_daemon.log + logs/scout/<job>.log
+
+### Launch command
+nohup /mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python \
+    /mnt/cpfs/junlongke/onlinelora/lora_obd/scripts/phase_d_daemon.py \
+    > /mnt/cpfs/junlongke/onlinelora/lora_obd/logs/scout/_phase_d_daemon.log 2>&1 &
+disown
+
+### Pre-launch sanity checklist
+- [ ] verify dry-run pending_trainings() lists 30 cells (7 models × 5 methods − 5 already-done qwen3-1p7b)
+  (4 are training right now; cola not yet → so for qwen3-1p7b only cola pending)
+  expected counts:
+    qwen35-0p8b: 5 (none trained yet)
+    qwen35-2b:   5
+    qwen3-1p7b:  1 (cola only; lora_vanilla/baseline/S3pos/dora in flight)
+    qwen35-4b:   5
+    qwen3-4b:    5
+    qwen35-9b:   5
+    qwen3-14b:   5
+    total:       31 cells pending
+- [ ] verify dry-run pending_lm_evals() = 0 (no Phase D summary.json yet)
+- [ ] confirm STOP file does not exist before launch
+
+### Currently running (DO NOT KILL)
+PID 1773565 GPU1 train-qwen3-1p7b/lora_vanilla  step ~1075/3000
+PID 1773579 GPU2 train-qwen3-1p7b/relora_baseline step ~1075/3000
+PID 1773593 GPU4 train-qwen3-1p7b/S3pos step ~1075/3000
+PID 1773607 GPU7 train-qwen3-1p7b/dora step ~250/800
+PID 1781447 GPU0 SMOKE qwen35-0p8b/lora_vanilla (16s/step, only 50 steps total)
+PID 1782768 fla install (causal-conv1d compiling from source)
+PID 1733368 GPU3 gemma3 cleanup
+PID 1735950 GPU5 gemma3 cleanup
+PID 1762026 GPU6 gemma3 cleanup
+PID 1755167 GPU0 llama3 dora lm_eval (~19% complete)
+
+### CRITICAL: smoke MUST be killed before daemon launch
+Otherwise daemon sees GPU 0 as busy. Smoke is now at step 25/50, val_loss 1.93.
+It already proved Qwen3.5 plumbing works -> can be killed now:
+  kill 1781447
+
+### After daemon launched
+The daemon will queue qwen35-0p8b 5 cells FIRST (highest priority in WAVE1_ORDER).
+Each 0.8B cell with linear-attn fallback = ~13h (slow). With fla kernels = ~1.5h.
+Daemon will not proceed to qwen35-2b until qwen35-0p8b has summary.json saved
+(or until enough GPUs free that train_q has lower-priority cells to fill).
+
+Actually — the daemon iterates pending_trainings() in WAVE1_ORDER, and pops jobs
+in that order. So when 4 GPUs go free, it will launch qwen35-0p8b 5 cells (parallel).
+On the 5th GPU it will start qwen35-2b/lora_vanilla. This is intentional parallelism.
+
+### TODO checklist
+[x] phase_d_daemon.py written
+[ ] dry-run check (show pending_trainings list)
+[ ] kill smoke (PID 1781447) on GPU 0
+[ ] launch daemon
+[ ] wait fla install finish; if successful, kill any 0.8B trainings and relaunch
+    (much faster). If fla install FAILS, accept ~13h/cell for 0.8B; use parallelism.
+[ ] when first qwen35-0p8b cell finishes -> manually verify_adapter_loaded sanity
+    (write sanity script if not yet done)
