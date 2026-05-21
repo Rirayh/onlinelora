@@ -291,3 +291,64 @@ P0 CLEANUP IN BG (DO NOT KILL):
   PID 1735950 GPU5 gemma3/tulu3/relora_baseline step 1075/3000
   PID 1762026 GPU6 gemma3/tulu3/S3pos step 500/3000
   PID 1755167 GPU0 llama3/tulu3/dora lm_eval_v2 ~19% (3-4h ETA)
+
+## CONTEXT-TRIM CHECKPOINT 5 (14:25) — QWEN3.5 PLUMBING VALIDATED
+
+### Downloads ALL DONE (85GB total, via hf-mirror.com in ~16min)
+qwen35-0p8b 1.7G | qwen35-2b 4.3G | qwen35-4b 8.8G | qwen35-9b 19G | qwen35-27b 52G
+
+### Qwen3.5 architecture analysis (concrete findings)
+- `AutoModelForCausalLM.from_pretrained(...)` returns `Qwen3_5ForCausalLM`
+  (auto-extracts the text-only LM head from the multimodal repo). Standard
+  forward(input_ids, attention_mask, labels=...). Has lm_head.
+- text_config.layer_types: 4 of every 4 layer is full_attention (layers 3,7,11,...);
+  the other 3 are linear_attention (Mamba-2 / RWKV style with conv1d + in_proj_qkv/z/b/a).
+- Module names with `q_proj/k_proj/v_proj/o_proj` exist ONLY on full_attention layers
+  (probed: 0p8b has q_proj on layers [3,7,11,15,19,23] = 6 full_attn layers).
+- Module names with `gate_proj/up_proj/down_proj` exist on ALL layers (MLPs).
+- Default target_modules from qwen3-8b config (q,k,v,o,gate,up,down) **just works**:
+  it naturally excludes linear_attn layers (no q_proj there) and includes all 24 MLPs.
+  S3pos saliency math (first-order on lora_B) is therefore validated.
+
+### Smoke test (qwen35-0p8b, lora_vanilla, 50 steps, GPU 0 piggy-back)
+- BOOTED OK in RRenv with peft 0.19.1 + transformers 5.3.0.
+- step 25/50 in 397s = 16 sec/step. val_loss=1.9257, best ckpt saved ✅
+- BUT: 16s/step is SLOW (would mean ~13h for 3000 steps on 0.8B).
+  Cause: "fast path not available" for linear_attn (warns: install fla + causal-conv1d).
+  Currently installing in bg (PID 1782768).
+  After fla install, expected speedup ~5-10× → ~1-2s/step → 1.5h for full run.
+
+### Qwen3-1.7B WAVE 1 progress (at 14:25)
+  GPU1 lora_vanilla:    step 1075/3000  train_loss=1.32  best@500
+  GPU2 relora_baseline: step 1075/3000  train_loss=1.34  best@500
+  GPU4 S3pos:           step 1075/3000  train_loss=1.35  best@500
+  GPU7 dora:            step  250/800   train_loss=1.55  best@250
+ETA: dora done ~14:55; others done ~15:30.
+
+### TODOs for next steps:
+1. Wait fla install. After install, kill smoke and re-smoke to verify speedup.
+2. After dora done (~14:55) → launch qwen3-1p7b/cola on freed GPU 7.
+3. After 4 trains finish (~15:30):
+   - Launch lm_eval_v3 for the 4 done cells (~30min each)
+   - Also start qwen3-4b/tulu3-sft Wave 1 (4 cells parallel) — same arch, should drop in.
+4. After qwen3.5 fla available: launch qwen35-0p8b Wave 1 (5 cells) — use RRenv env.
+   COMMAND TEMPLATE:
+     CUDA_VISIBLE_DEVICES=<G> /mnt/cpfs/junlongke/miniconda3/envs/RRenv/bin/python scripts/stage3_run.py \
+        --model_path /mnt/cpfs/junlongke/onlinelora/models/qwen35-0p8b \
+        --model_key qwen35-0p8b --dataset tulu3-sft --method <METHOD> \
+        --total_steps <3000|800> --merge_every <750|9999> ...
+5. Periodically check if any of the 3 P0 gemma3 cleanup trains finish.
+
+### KEY ENV CONFIRMED
+- Qwen3 family: espo env (transformers 4.52, peft 0.17.0) — proven works
+- Qwen3.5 family: RRenv env (transformers 5.3.0, peft 0.19.1, fla pending) — proven works
+- Both share same scripts/stage3_run.py, no code change needed!
+
+### COMMITS SO FAR
+b7d07dc P0-FIX merge-method adapters
+2518e4a progress 12:10 post-fix evals
+c224f74 [NEGATIVE] Phase D blocker
+8cc9666 Phase D live status checkpoint
+87cf71d Phase D peft 5.x compat finding
+1adfc95 Phase D launch plan checkpoint
+3f3ae2a Phase D launched 4 qwen3-1p7b trainings
