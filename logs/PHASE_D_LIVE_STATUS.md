@@ -207,3 +207,40 @@ Parallel batch 1 (4 cells on 4 GPUs):
   G4: qwen3-1p7b/tulu3-sft/relora_diag_gated_S3pos
   G7: qwen3-1p7b/tulu3-sft/dora
 Then cola when first GPU frees.
+
+## CONTEXT-TRIM CHECKPOINT 3 (13:02) — LAUNCHING QWEN3-1.7B WAVE 1
+
+About to launch 4 parallel trainings on free GPUs 1,2,4,7. Qwen3-1.7B is
+Qwen3ForCausalLM (same arch as qwen3-8b, drop-in to existing pipeline).
+
+EXACT COMMANDS:
+  ROOT=/mnt/cpfs/junlongke/onlinelora/lora_obd
+  PY=/mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python
+  for spec in "1:lora_vanilla:9999" "2:relora_baseline:750" "4:relora_diag_gated_S3pos:750" "7:dora:9999"; do
+    GPU=$(echo $spec|cut -d: -f1); METHOD=$(echo $spec|cut -d: -f2); MERGE=$(echo $spec|cut -d: -f3)
+    OUT=$ROOT/results/stage3_v2/qwen3-1p7b/tulu3-sft/$METHOD/seed42
+    LOG=$ROOT/logs/scout/train-qwen3-1p7b-tulu3-sft-$METHOD.log
+    mkdir -p $OUT
+    STEPS=3000
+    [ $METHOD = "dora" ] && STEPS=800
+    nohup env CUDA_VISIBLE_DEVICES=$GPU $PY $ROOT/scripts/stage3_run.py \
+        --model_path /mnt/cpfs/junlongke/onlinelora/models/qwen3-1p7b \
+        --model_key qwen3-1p7b --dataset tulu3-sft --method $METHOD \
+        --total_steps $STEPS --merge_every $MERGE \
+        --eval_every 250 --ckpt_every 250 --saliency_max_seq_len 512 \
+        --attn_implementation sdpa --save_adapter --seed 42 \
+        --out_root $OUT > $LOG 2>&1 &
+    disown
+    echo "G$GPU $METHOD pid=$!"
+  done
+
+After cola support: launch qwen3-1p7b/tulu3-sft/cola when first GPU frees (cola = relora_baseline
+with full Adam reset; method "cola" already added to METHOD_CHOICES per b7d07dc).
+
+After 1.7B 5 cells done: queue qwen3-4b (same pattern, 7.6GB → fits comfortably).
+After Qwen3.5 plumbing done: interleave Wave 1 order qwen35-0p8b → 2b → 4b → 9b.
+
+DO NOT TOUCH:
+  GPU 0 (llama3 dora eval), GPU 3,5,6 (gemma3 cleanup trains).
+
+STATUS DOC: this file logs/PHASE_D_LIVE_STATUS.md is the source of truth across context-trim.
