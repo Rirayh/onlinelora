@@ -1,0 +1,15 @@
+[2026-05-22 15:19:33,674] INFO stage3.qwen35-4b.tulu3-sft.dora - START stage3 model=/mnt/cpfs/junlongke/onlinelora/models/qwen35-4b dataset=tulu3-sft method=dora out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-4b/tulu3-sft/dora/seed42
+[2026-05-22 15:19:35,051] INFO stage3.qwen35-4b.tulu3-sft.dora - tokenizer loaded in 1.4s, vocab=248044
+[2026-05-22 15:19:35,052] INFO stage3.qwen35-4b.tulu3-sft.dora - loading tulu-3-sft-mixture from /mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture
+[2026-05-22 15:19:37,117] INFO stage3.qwen35-4b.tulu3-sft.dora - tulu3-sft train=10000 val=500
+[2026-05-22 15:19:56,933] INFO stage3.qwen35-4b.tulu3-sft.dora - tulu3-sft tokenized: train 10000 val 500
+[2026-05-22 15:19:57,226] INFO stage3.qwen35-4b.tulu3-sft.dora - data prepared in 22.2s
+[2026-05-22 15:19:57,534] INFO stage3.qwen35-4b.tulu3-sft.dora - model loaded in 0.3s
+[2026-05-22 15:20:07,835] INFO stage3.qwen35-4b.tulu3-sft.dora - #LoRA layers=128 #components=2048
+[2026-05-22 15:20:07,845] INFO stage3.qwen35-4b.tulu3-sft.dora - #trainable params=22.01M
+[2026-05-22 15:20:16,256] INFO stage3.qwen35-4b.tulu3-sft.dora - [step 0] mean_ER=2357.32 mean_CN=3.18e+01 (sampled 8 layers)
+[2026-05-22 15:20:16,257] INFO stage3.qwen35-4b.tulu3-sft.dora - merge events scheduled at: []
+[2026-05-22 15:38:01,476] INFO stage3.qwen35-4b.tulu3-sft.dora - step=25/800 train_loss=1.5750 lr=5.00e-05 elapsed=1065s
+[2026-05-22 15:56:06,758] INFO stage3.qwen35-4b.tulu3-sft.dora - step=50/800 train_loss=1.4312 lr=1.00e-04 elapsed=2150s
+[2026-05-22 16:13:42,406] INFO stage3.qwen35-4b.tulu3-sft.dora - step=75/800 train_loss=1.4138 lr=1.50e-04 elapsed=3206s
+[2026-05-22 16:30:46,386] INFO stage3.qwen35-4b.tulu3-sft.dora - step=100/800 train_loss=1.4080 lr=2.00e-04 elapsed=4230s

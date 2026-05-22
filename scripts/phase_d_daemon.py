@@ -147,23 +147,40 @@ launch_blacklist: set[str] = set()        # job name permanently skipped
 
 
 def _preflight_check(job: dict) -> Optional[str]:
-    """Return None if OK, else a string reason to skip. Cached failures go into blacklist."""
+    """Return None if OK, else a string reason to skip. Cached failures go into blacklist.
+
+    For Phase D evals we now run vLLM-on-merged-weights with the RRenv interpreter,
+    so we need lm_eval + datasets(>=4) + vllm all importable in RRenv. Merge runs in
+    espo, so we also check peft + transformers there.
+    """
     if job["kind"] == "eval":
-        py = _py_for(job["env"])
+        # RRenv: lm_eval + datasets + vllm
         try:
             r = subprocess.run(
-                [py, "-c",
-                 "import lm_eval, datasets; "
+                [PY_RRENV, "-c",
+                 "import lm_eval, datasets, vllm; "
                  "from datasets.features.features import _FEATURE_TYPES; "
-                 "assert 'List' in _FEATURE_TYPES, 'datasets too old (no List feature)'; "
-                 "print('ok')"],
+                 "assert 'List' in _FEATURE_TYPES, 'datasets too old'; "
+                 "print('rrenv ok')"],
+                capture_output=True, timeout=60, text=True
+            )
+            if r.returncode != 0:
+                tail = (r.stderr or r.stdout or "").splitlines()[-1] if (r.stderr or r.stdout) else "unknown"
+                return f"RRenv preflight failed: {tail}"
+        except Exception as e:
+            return f"RRenv preflight subprocess failed: {e}"
+
+        # espo: peft + transformers (for merge)
+        try:
+            r = subprocess.run(
+                [PY_ESPO, "-c", "import peft, transformers; print('espo ok')"],
                 capture_output=True, timeout=30, text=True
             )
             if r.returncode != 0:
                 tail = (r.stderr or r.stdout or "").splitlines()[-1] if (r.stderr or r.stdout) else "unknown"
-                return f"preflight failed in env={job['env']}: {tail}"
+                return f"espo preflight failed: {tail}"
         except Exception as e:
-            return f"preflight subprocess failed: {e}"
+            return f"espo preflight subprocess failed: {e}"
     return None
 
 
@@ -260,17 +277,56 @@ def launch_train(gpu: int, job: dict) -> Optional[int]:
 
 
 def launch_eval(gpu: int, job: dict) -> Optional[int]:
+    """vLLM-on-merged-weights eval launcher.
+
+    1. Merge adapter into a private bf16 dump under <seed_dir>/merged/ (if not already).
+       Merge is fast (~15s for 1.7B, scales linearly). Done with espo interpreter
+       (so we avoid the RRenv transformers-5.x deepspeed CUDA_HOME quirk for now).
+    2. Launch lm-eval with --model vllm pretrained=<merged>. No PEFT runtime, no
+       DoRA-incompatibility, batch_size=auto for max throughput.
+    """
     out_dir = Path(job["out_dir"])
     out_dir.mkdir(parents=True, exist_ok=True)
+    seed_dir = out_dir.parent  # .../seed42
+    merged_dir = seed_dir / "merged"
     log_path = LOG_DIR / f"{job['name']}.log"
+
+    # ----- Step 1: merge if needed -----
+    sentinel = merged_dir / ".merge.done"
+    needs_merge = (not sentinel.exists()) or (not (merged_dir / "config.json").exists())
+    if needs_merge:
+        merge_log = LOG_DIR / f"{job['name']}.merge.log"
+        merge_cmd = [
+            PY_ESPO, str(ROOT / "scripts" / "merge_adapter.py"),
+            "--base", job["model_path"],
+            "--adapter", job["adapter"],
+            "--out", str(merged_dir),
+        ]
+        m_env = os.environ.copy()
+        m_env["CUDA_HOME"] = "/usr/local/cuda-12"
+        m_env["CUDA_VISIBLE_DEVICES"] = ""  # merge on CPU; saves the GPU for vLLM
+        log(f"MERGE  {job['name']} (cpu) -> {merged_dir}")
+        try:
+            with merge_log.open("w") as f:
+                rc = subprocess.run(merge_cmd, env=m_env, stdout=f,
+                                    stderr=subprocess.STDOUT, cwd=str(ROOT),
+                                    timeout=900).returncode
+        except subprocess.TimeoutExpired:
+            log(f"MERGE TIMEOUT {job['name']} after 900s")
+            return None
+        if rc != 0:
+            log(f"MERGE FAIL {job['name']} rc={rc} (see {merge_log})")
+            return None
+
+    # ----- Step 2: vLLM eval (always RRenv interpreter; vLLM 0.15.1 only there) -----
     cmd = [
-        _py_for(job["env"]), "-m", "lm_eval",
-        "--model", "hf",
+        PY_RRENV, "-m", "lm_eval",
+        "--model", "vllm",
         "--model_args",
-        f"pretrained={job['model_path']},peft={job['adapter']},dtype=bfloat16,attn_implementation={job['attn']},trust_remote_code=True",
+        f"pretrained={merged_dir},dtype=bfloat16,gpu_memory_utilization=0.85,max_model_len=4096,trust_remote_code=True",
         "--tasks", "gsm8k,hellaswag,arc_challenge",
         "--num_fewshot", "5",
-        "--batch_size", "4",
+        "--batch_size", "auto",
         "--log_samples",
         "--output_path", str(out_dir),
     ]
@@ -279,7 +335,7 @@ def launch_eval(gpu: int, job: dict) -> Optional[int]:
     with log_path.open("w") as f:
         proc = subprocess.Popen(cmd, env=env, stdout=f, stderr=subprocess.STDOUT,
                                 cwd=str(ROOT), preexec_fn=os.setsid)
-    log(f"LAUNCH eval  GPU={gpu} env={job['env']} {job['name']} pid={proc.pid}")
+    log(f"LAUNCH eval(vllm) GPU={gpu} {job['name']} pid={proc.pid}")
     return proc.pid
 
 

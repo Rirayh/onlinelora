@@ -151,3 +151,28 @@
 [2026-05-22 13:57:17,280] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2625/3000 train_loss=1.2300 lr=1.24e-04 elapsed=33779s
 [2026-05-22 14:04:34,611] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2650/3000 train_loss=1.2213 lr=1.12e-04 elapsed=34217s
 [2026-05-22 14:12:13,296] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2675/3000 train_loss=1.1862 lr=1.00e-04 elapsed=34676s
+[2026-05-22 14:19:37,722] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2700/3000 train_loss=1.1827 lr=8.79e-05 elapsed=35120s
+[2026-05-22 14:27:02,430] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2725/3000 train_loss=1.2008 lr=7.61e-05 elapsed=35565s
+[2026-05-22 14:34:21,427] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2750/3000 train_loss=1.1589 lr=6.45e-05 elapsed=36004s
+[2026-05-22 14:34:22,051] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-2b/tulu3-sft/relora_diag_gated_S3pos/seed42/checkpoints/step_002750
+[2026-05-22 14:35:43,187] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2750 VAL_LOSS=1.6929
+[2026-05-22 14:43:06,566] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2775/3000 train_loss=1.2159 lr=5.35e-05 elapsed=36529s
+[2026-05-22 14:50:30,780] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2800/3000 train_loss=1.2747 lr=4.32e-05 elapsed=36973s
+[2026-05-22 14:57:56,934] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2825/3000 train_loss=1.1317 lr=3.37e-05 elapsed=37419s
+[2026-05-22 15:05:34,263] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2850/3000 train_loss=1.1421 lr=2.51e-05 elapsed=37876s
+[2026-05-22 15:11:58,078] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2875/3000 train_loss=1.0852 lr=1.77e-05 elapsed=38260s
+[2026-05-22 15:16:50,406] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2900/3000 train_loss=1.0801 lr=1.15e-05 elapsed=38553s
+[2026-05-22 15:21:52,247] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2925/3000 train_loss=1.0879 lr=6.50e-06 elapsed=38854s
+[2026-05-22 15:26:56,798] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2950/3000 train_loss=1.1500 lr=2.91e-06 elapsed=39159s
+[2026-05-22 15:32:10,093] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=2975/3000 train_loss=1.1727 lr=7.29e-07 elapsed=39472s
+[2026-05-22 15:37:17,837] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=3000/3000 train_loss=1.1011 lr=0.00e+00 elapsed=39780s
+[2026-05-22 15:37:23,728] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-2b/tulu3-sft/relora_diag_gated_S3pos/seed42/checkpoints/step_003000
+[2026-05-22 15:38:08,090] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=3000 VAL_LOSS=1.7317
+[2026-05-22 15:38:12,983] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=3000 mean_ER=1836.95 mean_CN=3.97e+01
+[2026-05-22 15:38:12,983] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - === MERGE EVENT 4 at step 3000 (method=relora_diag_gated_S3pos) ===
+[2026-05-22 15:38:22,257] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - merge: total=1536 kept=401 drop_rate=0.739
+[2026-05-22 15:39:11,819] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - step=3000 POST-MERGE VAL_LOSS=1.6016 (first_eval=1.598031670808792)
+[2026-05-22 15:39:11,823] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - training done in 39894.0s
+[2026-05-22 15:39:49,636] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - FINAL VAL_LOSS=1.6016
+[2026-05-22 15:39:56,440] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - summary.json written
+[2026-05-22 15:39:56,720] INFO stage3.qwen35-2b.tulu3-sft.relora_diag_gated_S3pos - adapter saved (copied from best/ to avoid post-merge B=0) to /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-2b/tulu3-sft/relora_diag_gated_S3pos/seed42/adapter

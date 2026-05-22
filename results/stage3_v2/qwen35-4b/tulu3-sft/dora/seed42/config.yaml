@@ -1,9 +1,9 @@
 model_path: /mnt/cpfs/junlongke/onlinelora/models/qwen35-4b
 model_key: qwen35-4b
 dataset: tulu3-sft
-method: relora_diag_gated_S3pos
-gate_sign: S3pos_drops
-do_relora: true
+method: dora
+gate_sign: null
+do_relora: false
 saliency_source: val
 saliency_max_seq_len: 512
 lora_r: 16
@@ -21,8 +21,8 @@ seq_len: 1024
 batch_size: 4
 grad_accum_steps: 8
 effective_batch: 32
-total_steps: 3000
-merge_every: 750
+total_steps: 800
+merge_every: 9999
 eval_every: 250
 rank_stat_every: 500
 lr: 0.0002
@@ -33,6 +33,6 @@ seed: 42
 diag_batches: 8
 abort_factor: 1.5
 n_lora_components: 2048
-n_trainable_M: 21.233664
+n_trainable_M: 22.007808
 commit_hash: 6e9bc44009f3dbc801a4859848bfa87bf7157d2e
-wall_clock_start: 1779463051.395327
+wall_clock_start: 1779463207.8831968
