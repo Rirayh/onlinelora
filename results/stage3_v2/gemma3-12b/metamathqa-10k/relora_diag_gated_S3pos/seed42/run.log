@@ -312,3 +312,18 @@
 [2026-05-21 12:03:09,493] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - step=300/3000 train_loss=0.1751 lr=1.98e-04 elapsed=2915s
 [2026-05-21 12:03:10,528] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/metamathqa-10k/relora_diag_gated_S3pos/seed42/checkpoints/step_000300
 [2026-05-21 12:07:14,061] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - step=325/3000 train_loss=0.1511 lr=1.97e-04 elapsed=3160s
+[2026-05-21 12:11:16,543] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - step=350/3000 train_loss=0.1407 lr=1.96e-04 elapsed=3402s
+[2026-05-21 12:11:17,338] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/metamathqa-10k/relora_diag_gated_S3pos/seed42/checkpoints/step_000350
+[2026-05-21 12:15:13,821] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - step=375/3000 train_loss=0.1383 lr=1.96e-04 elapsed=3640s
+[2026-05-21 12:19:14,187] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - step=400/3000 train_loss=0.1411 lr=1.95e-04 elapsed=3880s
+[2026-05-21 12:19:14,980] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/metamathqa-10k/relora_diag_gated_S3pos/seed42/checkpoints/step_000400
+[2026-05-21 12:23:19,369] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - step=425/3000 train_loss=0.1407 lr=1.94e-04 elapsed=4125s
+[2026-05-21 12:27:07,729] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - step=450/3000 train_loss=0.1448 lr=1.93e-04 elapsed=4354s
+[2026-05-21 12:27:08,770] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/metamathqa-10k/relora_diag_gated_S3pos/seed42/checkpoints/step_000450
+[2026-05-21 12:30:56,740] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - step=475/3000 train_loss=0.1373 lr=1.92e-04 elapsed=4583s
+[2026-05-21 12:34:51,851] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - step=500/3000 train_loss=0.1416 lr=1.91e-04 elapsed=4818s
+[2026-05-21 12:34:52,628] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/metamathqa-10k/relora_diag_gated_S3pos/seed42/checkpoints/step_000500
+[2026-05-21 12:35:48,831] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - step=500 VAL_LOSS=0.1711
+[2026-05-21 12:35:49,617] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - best ckpt updated: step=500 val_loss=0.1711
+[2026-05-21 12:36:00,736] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - step=500 mean_ER=1515.11 mean_CN=1.01e+06
+[2026-05-21 12:36:00,736] INFO stage3.gemma3-12b.metamathqa-10k.relora_diag_gated_S3pos - === MERGE EVENT 1 at step 500 (method=relora_diag_gated_S3pos) ===

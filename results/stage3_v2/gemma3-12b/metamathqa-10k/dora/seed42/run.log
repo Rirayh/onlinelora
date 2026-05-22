@@ -38,3 +38,4 @@
 [2026-05-21 11:29:07,956] INFO stage3.gemma3-12b.metamathqa-10k.dora - step=425/800 train_loss=0.1350 lr=1.11e-04 elapsed=26259s
 [2026-05-21 11:53:44,394] INFO stage3.gemma3-12b.metamathqa-10k.dora - step=450/800 train_loss=0.1375 lr=1.00e-04 elapsed=27736s
 [2026-05-21 11:53:45,277] INFO stage3.gemma3-12b.metamathqa-10k.dora - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/metamathqa-10k/dora/seed42/checkpoints/step_000450
+[2026-05-21 12:18:22,670] INFO stage3.gemma3-12b.metamathqa-10k.dora - step=475/800 train_loss=0.1301 lr=8.88e-05 elapsed=29214s

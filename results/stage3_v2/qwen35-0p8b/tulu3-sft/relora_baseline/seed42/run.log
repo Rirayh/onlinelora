@@ -1,0 +1,179 @@
+[2026-05-21 17:54:49,667] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - START stage3 model=/mnt/cpfs/junlongke/onlinelora/models/qwen35-0p8b dataset=tulu3-sft method=relora_baseline out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42
+[2026-05-21 17:54:50,831] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - tokenizer loaded in 1.2s, vocab=248044
+[2026-05-21 17:54:50,832] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - loading tulu-3-sft-mixture from /mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture
+[2026-05-21 17:54:52,512] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - tulu3-sft train=10000 val=500
+[2026-05-21 17:55:09,590] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - tulu3-sft tokenized: train 10000 val 500
+[2026-05-21 17:55:09,849] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - data prepared in 19.0s
+[2026-05-21 17:55:10,443] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - model loaded in 0.6s
+[2026-05-21 17:55:14,750] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - #LoRA layers=96 #components=1536
+[2026-05-21 17:55:14,752] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - #trainable params=6.39M
+[2026-05-21 17:55:16,425] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - [step 0] mean_ER=928.79 mean_CN=3.03e+01 (sampled 8 layers)
+[2026-05-21 17:55:16,425] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - merge events scheduled at: [750, 1500, 2250, 3000]
+[2026-05-21 17:59:27,946] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=25/3000 train_loss=2.0217 lr=5.00e-05 elapsed=252s
+[2026-05-21 18:03:51,128] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=50/3000 train_loss=1.8123 lr=1.00e-04 elapsed=515s
+[2026-05-21 18:08:10,795] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=75/3000 train_loss=1.8063 lr=1.50e-04 elapsed=774s
+[2026-05-21 18:12:29,130] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=100/3000 train_loss=1.9022 lr=2.00e-04 elapsed=1033s
+[2026-05-21 18:17:12,178] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=125/3000 train_loss=1.8307 lr=2.00e-04 elapsed=1316s
+[2026-05-21 18:22:02,216] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=150/3000 train_loss=1.8694 lr=2.00e-04 elapsed=1606s
+[2026-05-21 18:26:48,463] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=175/3000 train_loss=1.7870 lr=2.00e-04 elapsed=1892s
+[2026-05-21 18:31:33,589] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=200/3000 train_loss=1.8303 lr=1.99e-04 elapsed=2177s
+[2026-05-21 18:36:21,382] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=225/3000 train_loss=1.7316 lr=1.99e-04 elapsed=2465s
+[2026-05-21 18:41:07,193] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=250/3000 train_loss=1.8462 lr=1.99e-04 elapsed=2751s
+[2026-05-21 18:41:07,547] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42/checkpoints/step_000250
+[2026-05-21 18:41:43,669] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=250 VAL_LOSS=1.8300
+[2026-05-21 18:41:53,716] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - best ckpt updated: step=250 val_loss=1.8300
+[2026-05-21 18:46:47,075] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=275/3000 train_loss=1.7619 lr=1.98e-04 elapsed=3091s
+[2026-05-21 18:51:44,928] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=300/3000 train_loss=1.8287 lr=1.98e-04 elapsed=3388s
+[2026-05-21 18:56:23,806] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=325/3000 train_loss=1.7031 lr=1.97e-04 elapsed=3667s
+[2026-05-21 19:01:12,067] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=350/3000 train_loss=1.6654 lr=1.96e-04 elapsed=3956s
+[2026-05-21 19:06:03,797] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=375/3000 train_loss=1.6740 lr=1.96e-04 elapsed=4247s
+[2026-05-21 19:10:50,340] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=400/3000 train_loss=1.6874 lr=1.95e-04 elapsed=4534s
+[2026-05-21 19:15:31,292] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=425/3000 train_loss=1.6905 lr=1.94e-04 elapsed=4815s
+[2026-05-21 19:20:14,754] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=450/3000 train_loss=1.6850 lr=1.93e-04 elapsed=5098s
+[2026-05-21 19:24:55,931] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=475/3000 train_loss=1.6810 lr=1.92e-04 elapsed=5380s
+[2026-05-21 19:29:37,706] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=500/3000 train_loss=1.7099 lr=1.91e-04 elapsed=5661s
+[2026-05-21 19:29:38,015] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42/checkpoints/step_000500
+[2026-05-21 19:30:12,936] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=500 VAL_LOSS=1.8274
+[2026-05-21 19:30:13,253] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - best ckpt updated: step=500 val_loss=1.8274
+[2026-05-21 19:30:14,701] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=500 mean_ER=929.00 mean_CN=2.95e+01
+[2026-05-21 19:35:00,235] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=525/3000 train_loss=1.6758 lr=1.90e-04 elapsed=5984s
+[2026-05-21 19:40:02,681] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=550/3000 train_loss=1.6880 lr=1.88e-04 elapsed=6286s
+[2026-05-21 19:45:03,204] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=575/3000 train_loss=1.6451 lr=1.87e-04 elapsed=6587s
+[2026-05-21 19:50:04,537] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=600/3000 train_loss=1.7212 lr=1.86e-04 elapsed=6888s
+[2026-05-21 19:55:09,812] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=625/3000 train_loss=1.7084 lr=1.84e-04 elapsed=7193s
+[2026-05-21 20:00:08,672] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=650/3000 train_loss=1.5908 lr=1.83e-04 elapsed=7492s
+[2026-05-21 20:05:08,312] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=675/3000 train_loss=1.5604 lr=1.81e-04 elapsed=7792s
+[2026-05-21 20:10:17,498] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=700/3000 train_loss=1.5472 lr=1.80e-04 elapsed=8101s
+[2026-05-21 20:15:26,417] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=725/3000 train_loss=1.5540 lr=1.78e-04 elapsed=8410s
+[2026-05-21 20:20:28,898] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=750/3000 train_loss=1.5383 lr=1.76e-04 elapsed=8712s
+[2026-05-21 20:20:29,254] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42/checkpoints/step_000750
+[2026-05-21 20:21:09,243] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=750 VAL_LOSS=1.8550
+[2026-05-21 20:21:09,248] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - === MERGE EVENT 1 at step 750 (method=relora_baseline) ===
+[2026-05-21 20:21:09,324] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - merge: total=1536 kept=1536 drop_rate=0.000
+[2026-05-21 20:21:49,968] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=750 POST-MERGE VAL_LOSS=1.8547 (first_eval=1.8300405151844024)
+[2026-05-21 20:26:53,726] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=775/3000 train_loss=1.5133 lr=5.00e-05 elapsed=9097s
+[2026-05-21 20:32:03,311] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=800/3000 train_loss=1.5504 lr=1.00e-04 elapsed=9407s
+[2026-05-21 20:36:59,839] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=825/3000 train_loss=1.6148 lr=1.50e-04 elapsed=9703s
+[2026-05-21 20:41:59,576] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=850/3000 train_loss=1.4963 lr=2.00e-04 elapsed=10003s
+[2026-05-21 20:46:55,656] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=875/3000 train_loss=1.5356 lr=2.00e-04 elapsed=10299s
+[2026-05-21 20:51:48,002] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=900/3000 train_loss=1.5366 lr=2.00e-04 elapsed=10592s
+[2026-05-21 20:56:45,152] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=925/3000 train_loss=1.6024 lr=1.99e-04 elapsed=10889s
+[2026-05-21 21:01:36,496] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=950/3000 train_loss=1.4490 lr=1.99e-04 elapsed=11180s
+[2026-05-21 21:06:28,558] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=975/3000 train_loss=1.4401 lr=1.98e-04 elapsed=11472s
+[2026-05-21 21:11:29,950] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1000/3000 train_loss=1.4213 lr=1.98e-04 elapsed=11774s
+[2026-05-21 21:11:30,341] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001000
+[2026-05-21 21:12:09,848] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1000 VAL_LOSS=1.8837
+[2026-05-21 21:12:11,294] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1000 mean_ER=929.15 mean_CN=2.88e+01
+[2026-05-21 21:17:06,534] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1025/3000 train_loss=1.4647 lr=1.97e-04 elapsed=12110s
+[2026-05-21 21:22:03,034] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1050/3000 train_loss=1.4202 lr=1.96e-04 elapsed=12407s
+[2026-05-21 21:26:40,466] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1075/3000 train_loss=1.4703 lr=1.95e-04 elapsed=12684s
+[2026-05-21 21:31:16,870] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1100/3000 train_loss=1.5227 lr=1.93e-04 elapsed=12960s
+[2026-05-21 21:35:51,959] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1125/3000 train_loss=1.4685 lr=1.92e-04 elapsed=13236s
+[2026-05-21 21:40:29,527] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1150/3000 train_loss=1.5223 lr=1.91e-04 elapsed=13513s
+[2026-05-21 21:45:06,855] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1175/3000 train_loss=1.4855 lr=1.89e-04 elapsed=13790s
+[2026-05-21 21:49:49,404] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1200/3000 train_loss=1.5614 lr=1.87e-04 elapsed=14073s
+[2026-05-21 21:54:32,318] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1225/3000 train_loss=1.4358 lr=1.85e-04 elapsed=14356s
+[2026-05-21 21:59:09,000] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1250/3000 train_loss=1.4565 lr=1.83e-04 elapsed=14633s
+[2026-05-21 21:59:09,307] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001250
+[2026-05-21 21:59:44,483] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1250 VAL_LOSS=1.8863
+[2026-05-21 22:04:17,110] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1275/3000 train_loss=1.3679 lr=1.81e-04 elapsed=14941s
+[2026-05-21 22:08:51,011] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1300/3000 train_loss=1.3099 lr=1.79e-04 elapsed=15215s
+[2026-05-21 22:13:32,178] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1325/3000 train_loss=1.3906 lr=1.77e-04 elapsed=15496s
+[2026-05-21 22:18:07,863] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1350/3000 train_loss=1.3436 lr=1.74e-04 elapsed=15771s
+[2026-05-21 22:22:46,589] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1375/3000 train_loss=1.3170 lr=1.72e-04 elapsed=16050s
+[2026-05-21 22:27:25,061] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1400/3000 train_loss=1.3230 lr=1.69e-04 elapsed=16329s
+[2026-05-21 22:31:58,510] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1425/3000 train_loss=1.3942 lr=1.67e-04 elapsed=16602s
+[2026-05-21 22:36:30,294] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1450/3000 train_loss=1.3243 lr=1.64e-04 elapsed=16874s
+[2026-05-21 22:41:04,955] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1475/3000 train_loss=1.3940 lr=1.61e-04 elapsed=17149s
+[2026-05-21 22:45:41,043] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1500/3000 train_loss=1.3696 lr=1.58e-04 elapsed=17425s
+[2026-05-21 22:45:41,373] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001500
+[2026-05-21 22:46:16,870] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1500 VAL_LOSS=1.9402
+[2026-05-21 22:46:18,298] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1500 mean_ER=929.32 mean_CN=2.83e+01
+[2026-05-21 22:46:18,298] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - === MERGE EVENT 2 at step 1500 (method=relora_baseline) ===
+[2026-05-21 22:46:18,340] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - merge: total=1536 kept=1536 drop_rate=0.000
+[2026-05-21 22:46:55,869] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1500 POST-MERGE VAL_LOSS=1.9396 (first_eval=1.8300405151844024)
+[2026-05-21 22:51:45,944] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1525/3000 train_loss=1.3639 lr=5.00e-05 elapsed=17790s
+[2026-05-21 22:56:23,639] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1550/3000 train_loss=1.4370 lr=1.00e-04 elapsed=18067s
+[2026-05-21 23:01:04,475] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1575/3000 train_loss=1.3050 lr=1.50e-04 elapsed=18348s
+[2026-05-21 23:05:38,594] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1600/3000 train_loss=1.2444 lr=2.00e-04 elapsed=18622s
+[2026-05-21 23:10:12,523] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1625/3000 train_loss=1.2577 lr=2.00e-04 elapsed=18896s
+[2026-05-21 23:14:52,111] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1650/3000 train_loss=1.2662 lr=1.99e-04 elapsed=19176s
+[2026-05-21 23:19:19,190] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1675/3000 train_loss=1.2000 lr=1.99e-04 elapsed=19443s
+[2026-05-21 23:23:56,981] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1700/3000 train_loss=1.2227 lr=1.97e-04 elapsed=19721s
+[2026-05-21 23:28:28,879] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1725/3000 train_loss=1.3244 lr=1.96e-04 elapsed=19992s
+[2026-05-21 23:32:57,717] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1750/3000 train_loss=1.2882 lr=1.94e-04 elapsed=20261s
+[2026-05-21 23:32:58,066] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001750
+[2026-05-21 23:33:32,949] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1750 VAL_LOSS=1.9985
+[2026-05-21 23:38:06,741] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1775/3000 train_loss=1.2882 lr=1.92e-04 elapsed=20570s
+[2026-05-21 23:42:46,158] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1800/3000 train_loss=1.2863 lr=1.90e-04 elapsed=20850s
+[2026-05-21 23:47:24,407] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1825/3000 train_loss=1.2441 lr=1.88e-04 elapsed=21128s
+[2026-05-21 23:51:58,250] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1850/3000 train_loss=1.3551 lr=1.85e-04 elapsed=21402s
+[2026-05-21 23:56:30,980] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1875/3000 train_loss=1.2814 lr=1.82e-04 elapsed=21675s
+[2026-05-22 00:01:05,499] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1900/3000 train_loss=1.1583 lr=1.78e-04 elapsed=21949s
+[2026-05-22 00:05:37,279] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1925/3000 train_loss=1.2012 lr=1.75e-04 elapsed=22221s
+[2026-05-22 00:10:09,752] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1950/3000 train_loss=1.1181 lr=1.71e-04 elapsed=22493s
+[2026-05-22 00:14:43,546] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=1975/3000 train_loss=1.1299 lr=1.67e-04 elapsed=22767s
+[2026-05-22 00:19:17,766] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2000/3000 train_loss=1.1314 lr=1.62e-04 elapsed=23041s
+[2026-05-22 00:19:24,409] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002000
+[2026-05-22 00:19:59,664] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2000 VAL_LOSS=2.0734
+[2026-05-22 00:20:01,292] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2000 mean_ER=929.52 mean_CN=2.77e+01
+[2026-05-22 00:24:34,763] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2025/3000 train_loss=1.2352 lr=1.58e-04 elapsed=23358s
+[2026-05-22 00:29:08,998] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2050/3000 train_loss=1.1947 lr=1.53e-04 elapsed=23633s
+[2026-05-22 00:33:32,843] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2075/3000 train_loss=1.1898 lr=1.48e-04 elapsed=23896s
+[2026-05-22 00:37:53,648] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2100/3000 train_loss=1.2145 lr=1.43e-04 elapsed=24157s
+[2026-05-22 00:42:14,850] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2125/3000 train_loss=1.1471 lr=1.38e-04 elapsed=24418s
+[2026-05-22 00:46:38,210] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2150/3000 train_loss=1.1658 lr=1.33e-04 elapsed=24682s
+[2026-05-22 00:50:55,809] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2175/3000 train_loss=1.2602 lr=1.28e-04 elapsed=24939s
+[2026-05-22 00:55:15,616] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2200/3000 train_loss=1.1059 lr=1.22e-04 elapsed=25199s
+[2026-05-22 00:59:31,492] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2225/3000 train_loss=1.0831 lr=1.17e-04 elapsed=25455s
+[2026-05-22 01:03:50,986] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2250/3000 train_loss=1.1327 lr=1.11e-04 elapsed=25715s
+[2026-05-22 01:03:51,295] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002250
+[2026-05-22 01:04:23,190] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2250 VAL_LOSS=2.1508
+[2026-05-22 01:04:23,196] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - === MERGE EVENT 3 at step 2250 (method=relora_baseline) ===
+[2026-05-22 01:04:23,234] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - merge: total=1536 kept=1536 drop_rate=0.000
+[2026-05-22 01:04:56,833] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2250 POST-MERGE VAL_LOSS=2.1510 (first_eval=1.8300405151844024)
+[2026-05-22 01:09:12,435] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2275/3000 train_loss=1.0198 lr=5.00e-05 elapsed=26036s
+[2026-05-22 01:13:31,879] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2300/3000 train_loss=1.1238 lr=1.00e-04 elapsed=26295s
+[2026-05-22 01:17:46,138] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2325/3000 train_loss=1.0354 lr=1.50e-04 elapsed=26550s
+[2026-05-22 01:22:10,340] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2350/3000 train_loss=1.0647 lr=2.00e-04 elapsed=26814s
+[2026-05-22 01:26:26,496] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2375/3000 train_loss=1.0743 lr=1.99e-04 elapsed=27070s
+[2026-05-22 01:30:49,606] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2400/3000 train_loss=1.1017 lr=1.97e-04 elapsed=27333s
+[2026-05-22 01:35:03,325] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2425/3000 train_loss=1.1224 lr=1.94e-04 elapsed=27587s
+[2026-05-22 01:39:15,463] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2450/3000 train_loss=1.1180 lr=1.89e-04 elapsed=27839s
+[2026-05-22 01:43:30,063] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2475/3000 train_loss=1.0510 lr=1.82e-04 elapsed=28094s
+[2026-05-22 01:47:45,484] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2500/3000 train_loss=1.0324 lr=1.75e-04 elapsed=28349s
+[2026-05-22 01:47:45,773] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002500
+[2026-05-22 01:48:16,873] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2500 VAL_LOSS=2.1533
+[2026-05-22 01:48:18,270] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2500 mean_ER=929.66 mean_CN=2.73e+01
+[2026-05-22 01:52:35,575] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2525/3000 train_loss=1.0627 lr=1.66e-04 elapsed=28639s
+[2026-05-22 01:56:53,899] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2550/3000 train_loss=1.0452 lr=1.57e-04 elapsed=28897s
+[2026-05-22 02:01:08,575] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2575/3000 train_loss=0.9393 lr=1.46e-04 elapsed=29152s
+[2026-05-22 02:05:15,690] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2600/3000 train_loss=0.9458 lr=1.35e-04 elapsed=29399s
+[2026-05-22 02:09:36,276] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2625/3000 train_loss=1.0266 lr=1.24e-04 elapsed=29660s
+[2026-05-22 02:13:49,642] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2650/3000 train_loss=1.0628 lr=1.12e-04 elapsed=29913s
+[2026-05-22 02:18:06,552] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2675/3000 train_loss=1.0332 lr=1.00e-04 elapsed=30170s
+[2026-05-22 02:22:20,670] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2700/3000 train_loss=1.0254 lr=8.79e-05 elapsed=30424s
+[2026-05-22 02:26:32,866] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2725/3000 train_loss=1.0268 lr=7.61e-05 elapsed=30676s
+[2026-05-22 02:30:47,880] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2750/3000 train_loss=1.0780 lr=6.45e-05 elapsed=30931s
+[2026-05-22 02:30:48,239] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002750
+[2026-05-22 02:31:19,798] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2750 VAL_LOSS=2.2312
+[2026-05-22 02:35:35,513] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2775/3000 train_loss=0.9958 lr=5.35e-05 elapsed=31219s
+[2026-05-22 02:39:51,139] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2800/3000 train_loss=1.0415 lr=4.32e-05 elapsed=31475s
+[2026-05-22 02:44:04,062] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2825/3000 train_loss=1.0037 lr=3.37e-05 elapsed=31728s
+[2026-05-22 02:48:20,701] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2850/3000 train_loss=0.9612 lr=2.51e-05 elapsed=31984s
+[2026-05-22 02:52:39,147] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2875/3000 train_loss=0.9878 lr=1.77e-05 elapsed=32243s
+[2026-05-22 02:56:53,860] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2900/3000 train_loss=0.9102 lr=1.15e-05 elapsed=32497s
+[2026-05-22 03:01:08,107] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2925/3000 train_loss=0.9455 lr=6.50e-06 elapsed=32752s
+[2026-05-22 03:05:27,565] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2950/3000 train_loss=0.9840 lr=2.91e-06 elapsed=33011s
+[2026-05-22 03:09:46,294] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=2975/3000 train_loss=0.9765 lr=7.29e-07 elapsed=33270s
+[2026-05-22 03:13:58,010] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=3000/3000 train_loss=0.8357 lr=0.00e+00 elapsed=33522s
+[2026-05-22 03:13:58,321] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42/checkpoints/step_003000
+[2026-05-22 03:14:29,908] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=3000 VAL_LOSS=2.3002
+[2026-05-22 03:14:31,461] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=3000 mean_ER=929.73 mean_CN=2.72e+01
+[2026-05-22 03:14:31,462] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - === MERGE EVENT 4 at step 3000 (method=relora_baseline) ===
+[2026-05-22 03:14:31,496] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - merge: total=1536 kept=1536 drop_rate=0.000
+[2026-05-22 03:15:04,721] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - step=3000 POST-MERGE VAL_LOSS=2.3010 (first_eval=1.8300405151844024)
+[2026-05-22 03:15:04,725] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - training done in 33588.3s
+[2026-05-22 03:15:37,051] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - FINAL VAL_LOSS=2.3010
+[2026-05-22 03:15:38,460] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - summary.json written
+[2026-05-22 03:15:38,775] INFO stage3.qwen35-0p8b.tulu3-sft.relora_baseline - adapter saved (copied from best/ to avoid post-merge B=0) to /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42/adapter

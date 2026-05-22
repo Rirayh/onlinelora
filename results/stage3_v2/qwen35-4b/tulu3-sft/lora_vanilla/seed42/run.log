@@ -1,0 +1,89 @@
+[2026-05-22 05:05:41,407] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - START stage3 model=/mnt/cpfs/junlongke/onlinelora/models/qwen35-4b dataset=tulu3-sft method=lora_vanilla out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-4b/tulu3-sft/lora_vanilla/seed42
+[2026-05-22 05:05:42,844] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - tokenizer loaded in 1.4s, vocab=248044
+[2026-05-22 05:05:42,845] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - loading tulu-3-sft-mixture from /mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture
+[2026-05-22 05:05:44,795] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - tulu3-sft train=10000 val=500
+[2026-05-22 05:06:04,158] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - tulu3-sft tokenized: train 10000 val 500
+[2026-05-22 05:06:04,499] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - data prepared in 21.7s
+[2026-05-22 05:06:04,830] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - model loaded in 0.3s
+[2026-05-22 05:06:15,681] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - #LoRA layers=128 #components=2048
+[2026-05-22 05:06:15,686] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - #trainable params=21.23M
+[2026-05-22 05:06:24,229] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - [step 0] mean_ER=2357.32 mean_CN=3.18e+01 (sampled 8 layers)
+[2026-05-22 05:06:24,230] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - merge events scheduled at: []
+[2026-05-22 05:15:12,363] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=25/3000 train_loss=1.5837 lr=5.00e-05 elapsed=528s
+[2026-05-22 05:23:50,731] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=50/3000 train_loss=1.4324 lr=1.00e-04 elapsed=1046s
+[2026-05-22 05:32:18,722] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=75/3000 train_loss=1.4145 lr=1.50e-04 elapsed=1554s
+[2026-05-22 05:40:37,563] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=100/3000 train_loss=1.4086 lr=2.00e-04 elapsed=2053s
+[2026-05-22 05:49:04,971] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=125/3000 train_loss=1.3974 lr=2.00e-04 elapsed=2561s
+[2026-05-22 05:57:45,189] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=150/3000 train_loss=1.3369 lr=2.00e-04 elapsed=3081s
+[2026-05-22 06:06:27,669] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=175/3000 train_loss=1.4091 lr=2.00e-04 elapsed=3603s
+[2026-05-22 06:14:49,916] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=200/3000 train_loss=1.4153 lr=1.99e-04 elapsed=4106s
+[2026-05-22 06:23:18,965] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=225/3000 train_loss=1.3836 lr=1.99e-04 elapsed=4615s
+[2026-05-22 06:32:08,938] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=250/3000 train_loss=1.3841 lr=1.99e-04 elapsed=5145s
+[2026-05-22 06:32:09,402] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-4b/tulu3-sft/lora_vanilla/seed42/checkpoints/step_000250
+[2026-05-22 06:33:18,294] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=250 VAL_LOSS=1.3971
+[2026-05-22 06:33:18,755] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - best ckpt updated: step=250 val_loss=1.3971
+[2026-05-22 06:42:04,178] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=275/3000 train_loss=1.3298 lr=1.98e-04 elapsed=5740s
+[2026-05-22 06:50:29,420] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=300/3000 train_loss=1.3576 lr=1.98e-04 elapsed=6245s
+[2026-05-22 06:59:01,873] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=325/3000 train_loss=1.2599 lr=1.97e-04 elapsed=6758s
+[2026-05-22 07:08:00,123] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=350/3000 train_loss=1.2037 lr=1.96e-04 elapsed=7296s
+[2026-05-22 07:16:47,372] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=375/3000 train_loss=1.2925 lr=1.96e-04 elapsed=7823s
+[2026-05-22 07:25:19,461] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=400/3000 train_loss=1.2501 lr=1.95e-04 elapsed=8335s
+[2026-05-22 07:33:54,283] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=425/3000 train_loss=1.3113 lr=1.94e-04 elapsed=8850s
+[2026-05-22 07:42:32,199] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=450/3000 train_loss=1.2651 lr=1.93e-04 elapsed=9368s
+[2026-05-22 07:51:14,568] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=475/3000 train_loss=1.2933 lr=1.92e-04 elapsed=9890s
+[2026-05-22 07:59:37,513] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=500/3000 train_loss=1.2090 lr=1.91e-04 elapsed=10393s
+[2026-05-22 07:59:38,036] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-4b/tulu3-sft/lora_vanilla/seed42/checkpoints/step_000500
+[2026-05-22 08:00:46,417] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=500 VAL_LOSS=1.3964
+[2026-05-22 08:00:46,867] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - best ckpt updated: step=500 val_loss=1.3964
+[2026-05-22 08:00:55,240] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=500 mean_ER=2357.31 mean_CN=3.13e+01
+[2026-05-22 08:09:35,541] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=525/3000 train_loss=1.3144 lr=1.90e-04 elapsed=10991s
+[2026-05-22 08:18:18,560] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=550/3000 train_loss=1.1884 lr=1.88e-04 elapsed=11514s
+[2026-05-22 08:26:49,602] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=575/3000 train_loss=1.2708 lr=1.87e-04 elapsed=12025s
+[2026-05-22 08:35:49,635] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=600/3000 train_loss=1.3301 lr=1.86e-04 elapsed=12565s
+[2026-05-22 08:44:14,002] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=625/3000 train_loss=1.2599 lr=1.84e-04 elapsed=13070s
+[2026-05-22 08:52:57,438] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=650/3000 train_loss=1.1665 lr=1.83e-04 elapsed=13593s
+[2026-05-22 09:01:43,170] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=675/3000 train_loss=1.1411 lr=1.81e-04 elapsed=14119s
+[2026-05-22 09:10:06,477] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=700/3000 train_loss=1.0966 lr=1.80e-04 elapsed=14622s
+[2026-05-22 09:18:46,721] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=725/3000 train_loss=1.1363 lr=1.78e-04 elapsed=15142s
+[2026-05-22 09:27:18,029] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=750/3000 train_loss=1.0320 lr=1.76e-04 elapsed=15654s
+[2026-05-22 09:27:18,559] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-4b/tulu3-sft/lora_vanilla/seed42/checkpoints/step_000750
+[2026-05-22 09:28:27,121] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=750 VAL_LOSS=1.4318
+[2026-05-22 09:37:14,545] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=775/3000 train_loss=1.1015 lr=1.74e-04 elapsed=16250s
+[2026-05-22 09:45:45,923] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=800/3000 train_loss=1.1083 lr=1.73e-04 elapsed=16762s
+[2026-05-22 09:54:25,049] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=825/3000 train_loss=1.1049 lr=1.71e-04 elapsed=17281s
+[2026-05-22 10:02:50,639] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=850/3000 train_loss=1.0338 lr=1.69e-04 elapsed=17786s
+[2026-05-22 10:11:12,336] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=875/3000 train_loss=1.0663 lr=1.67e-04 elapsed=18288s
+[2026-05-22 10:19:34,746] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=900/3000 train_loss=1.1809 lr=1.65e-04 elapsed=18791s
+[2026-05-22 10:28:00,558] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=925/3000 train_loss=1.1079 lr=1.63e-04 elapsed=19296s
+[2026-05-22 10:36:40,180] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=950/3000 train_loss=1.0359 lr=1.61e-04 elapsed=19816s
+[2026-05-22 10:45:01,228] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=975/3000 train_loss=0.9057 lr=1.58e-04 elapsed=20317s
+[2026-05-22 10:53:53,030] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1000/3000 train_loss=0.9591 lr=1.56e-04 elapsed=20849s
+[2026-05-22 10:53:53,660] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-4b/tulu3-sft/lora_vanilla/seed42/checkpoints/step_001000
+[2026-05-22 10:55:05,017] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1000 VAL_LOSS=1.4998
+[2026-05-22 10:55:13,086] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1000 mean_ER=2356.59 mean_CN=3.11e+01
+[2026-05-22 11:03:55,004] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1025/3000 train_loss=0.9511 lr=1.54e-04 elapsed=21451s
+[2026-05-22 11:12:50,677] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1050/3000 train_loss=0.9427 lr=1.52e-04 elapsed=21986s
+[2026-05-22 11:22:20,891] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1075/3000 train_loss=0.9176 lr=1.49e-04 elapsed=22557s
+[2026-05-22 11:32:57,794] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1100/3000 train_loss=0.9408 lr=1.47e-04 elapsed=23194s
+[2026-05-22 11:43:38,001] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1125/3000 train_loss=0.9423 lr=1.44e-04 elapsed=23834s
+[2026-05-22 11:54:24,020] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1150/3000 train_loss=0.9933 lr=1.42e-04 elapsed=24480s
+[2026-05-22 12:04:52,561] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1175/3000 train_loss=0.9369 lr=1.40e-04 elapsed=25108s
+[2026-05-22 12:14:37,626] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1200/3000 train_loss=0.9880 lr=1.37e-04 elapsed=25693s
+[2026-05-22 12:24:18,787] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1225/3000 train_loss=0.9911 lr=1.34e-04 elapsed=26275s
+[2026-05-22 12:33:57,649] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1250/3000 train_loss=0.9507 lr=1.32e-04 elapsed=26853s
+[2026-05-22 12:33:58,152] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-4b/tulu3-sft/lora_vanilla/seed42/checkpoints/step_001250
+[2026-05-22 12:35:09,605] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1250 VAL_LOSS=1.5020
+[2026-05-22 12:44:13,895] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1275/3000 train_loss=0.8125 lr=1.29e-04 elapsed=27470s
+[2026-05-22 12:52:38,032] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1300/3000 train_loss=0.8130 lr=1.27e-04 elapsed=27974s
+[2026-05-22 13:00:54,820] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1325/3000 train_loss=0.7704 lr=1.24e-04 elapsed=28471s
+[2026-05-22 13:09:17,468] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1350/3000 train_loss=0.8106 lr=1.21e-04 elapsed=28973s
+[2026-05-22 13:17:38,705] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1375/3000 train_loss=0.7632 lr=1.19e-04 elapsed=29474s
+[2026-05-22 13:25:53,682] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1400/3000 train_loss=0.7245 lr=1.16e-04 elapsed=29969s
+[2026-05-22 13:34:17,650] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1425/3000 train_loss=0.7734 lr=1.14e-04 elapsed=30473s
+[2026-05-22 13:43:32,818] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1450/3000 train_loss=0.8165 lr=1.11e-04 elapsed=31029s
+[2026-05-22 13:54:08,097] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1475/3000 train_loss=0.8278 lr=1.08e-04 elapsed=31664s
+[2026-05-22 14:04:42,769] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1500/3000 train_loss=0.7837 lr=1.05e-04 elapsed=32299s
+[2026-05-22 14:04:43,404] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-4b/tulu3-sft/lora_vanilla/seed42/checkpoints/step_001500
+[2026-05-22 14:06:26,137] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1500 VAL_LOSS=1.6051
+[2026-05-22 14:06:34,106] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1500 mean_ER=2355.60 mean_CN=3.11e+01
+[2026-05-22 14:17:20,690] INFO stage3.qwen35-4b.tulu3-sft.lora_vanilla - step=1525/3000 train_loss=0.8506 lr=1.03e-04 elapsed=33056s

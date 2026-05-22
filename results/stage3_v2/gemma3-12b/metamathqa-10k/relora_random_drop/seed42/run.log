@@ -216,3 +216,18 @@
 [2026-05-21 12:02:25,027] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - step=2875/3000 train_loss=0.0135 lr=4.44e-05 elapsed=28383s
 [2026-05-21 12:06:16,397] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - step=2900/3000 train_loss=0.0123 lr=2.93e-05 elapsed=28614s
 [2026-05-21 12:06:17,268] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002900
+[2026-05-21 12:10:11,919] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - step=2925/3000 train_loss=0.0128 lr=1.69e-05 elapsed=28850s
+[2026-05-21 12:14:01,455] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - step=2950/3000 train_loss=0.0114 lr=7.61e-06 elapsed=29079s
+[2026-05-21 12:14:02,326] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_002950
+[2026-05-21 12:18:00,630] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - step=2975/3000 train_loss=0.0116 lr=1.92e-06 elapsed=29319s
+[2026-05-21 12:21:56,548] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - step=3000/3000 train_loss=0.0117 lr=0.00e+00 elapsed=29554s
+[2026-05-21 12:21:57,364] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/metamathqa-10k/relora_random_drop/seed42/checkpoints/step_003000
+[2026-05-21 12:22:53,434] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - step=3000 VAL_LOSS=0.4005
+[2026-05-21 12:23:04,516] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - step=3000 mean_ER=1515.69 mean_CN=1.01e+06
+[2026-05-21 12:23:04,516] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - === MERGE EVENT 6 at step 3000 (method=relora_random_drop) ===
+[2026-05-21 12:23:04,776] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - merge: total=6672 kept=3305 drop_rate=0.505
+[2026-05-21 12:24:11,998] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - step=3000 POST-MERGE VAL_LOSS=0.3004 (first_eval=0.17174239188432694)
+[2026-05-21 12:24:11,999] WARNING stage3.gemma3-12b.metamathqa-10k.relora_random_drop - ABORT: post-merge val_loss=0.3004 > first_eval=0.1717 * 1.5
+[2026-05-21 12:24:12,012] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - training ABORTED in 29689.9s
+[2026-05-21 12:25:07,554] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - FINAL VAL_LOSS=0.3004
+[2026-05-21 12:25:18,576] INFO stage3.gemma3-12b.metamathqa-10k.relora_random_drop - summary.json written

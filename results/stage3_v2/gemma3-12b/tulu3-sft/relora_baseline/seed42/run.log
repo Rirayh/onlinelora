@@ -76,3 +76,158 @@
 [2026-05-21 11:53:55,292] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=950/3000 train_loss=0.9794 lr=1.90e-04 elapsed=17893s
 [2026-05-21 11:53:56,101] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_000950
 [2026-05-21 12:01:26,980] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=975/3000 train_loss=0.8839 lr=1.88e-04 elapsed=18345s
+[2026-05-21 12:09:19,920] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1000/3000 train_loss=0.8611 lr=1.87e-04 elapsed=18818s
+[2026-05-21 12:09:20,725] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001000
+[2026-05-21 12:11:02,450] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1000 VAL_LOSS=1.4041
+[2026-05-21 12:11:14,036] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1000 mean_ER=1515.31 mean_CN=1.01e+06
+[2026-05-21 12:11:14,037] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - === MERGE EVENT 2 at step 1000 (method=relora_baseline) ===
+[2026-05-21 12:11:14,309] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - merge: total=6672 kept=6672 drop_rate=0.000
+[2026-05-21 12:13:09,344] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1000 POST-MERGE VAL_LOSS=1.4043 (first_eval=1.3190043706893921)
+[2026-05-21 12:20:59,971] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1025/3000 train_loss=0.8958 lr=5.00e-05 elapsed=19518s
+[2026-05-21 12:28:31,281] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1050/3000 train_loss=0.8330 lr=1.00e-04 elapsed=19969s
+[2026-05-21 12:28:32,065] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001050
+[2026-05-21 12:36:17,719] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1075/3000 train_loss=0.8281 lr=1.50e-04 elapsed=20435s
+[2026-05-21 12:43:57,250] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1100/3000 train_loss=0.9100 lr=2.00e-04 elapsed=20895s
+[2026-05-21 12:43:58,347] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001100
+[2026-05-21 12:51:38,122] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1125/3000 train_loss=0.8793 lr=2.00e-04 elapsed=21356s
+[2026-05-21 12:58:48,048] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1150/3000 train_loss=0.8622 lr=2.00e-04 elapsed=21786s
+[2026-05-21 12:58:48,894] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001150
+[2026-05-21 13:06:35,034] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1175/3000 train_loss=0.8760 lr=1.99e-04 elapsed=22253s
+[2026-05-21 13:14:18,430] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1200/3000 train_loss=0.8895 lr=1.99e-04 elapsed=22716s
+[2026-05-21 13:14:19,223] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001200
+[2026-05-21 13:21:58,272] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1225/3000 train_loss=0.8578 lr=1.98e-04 elapsed=23176s
+[2026-05-21 13:29:48,772] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1250/3000 train_loss=0.8807 lr=1.97e-04 elapsed=23646s
+[2026-05-21 13:29:49,579] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001250
+[2026-05-21 13:31:31,416] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1250 VAL_LOSS=1.3973
+[2026-05-21 13:39:24,818] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1275/3000 train_loss=0.7435 lr=1.96e-04 elapsed=24222s
+[2026-05-21 13:47:13,535] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1300/3000 train_loss=0.7476 lr=1.95e-04 elapsed=24691s
+[2026-05-21 13:47:14,363] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001300
+[2026-05-21 13:54:55,069] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1325/3000 train_loss=0.7886 lr=1.93e-04 elapsed=25153s
+[2026-05-21 14:02:24,739] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1350/3000 train_loss=0.7575 lr=1.92e-04 elapsed=25602s
+[2026-05-21 14:02:25,526] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001350
+[2026-05-21 14:10:22,436] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1375/3000 train_loss=0.7956 lr=1.90e-04 elapsed=26080s
+[2026-05-21 14:17:59,308] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1400/3000 train_loss=0.7412 lr=1.88e-04 elapsed=26537s
+[2026-05-21 14:18:00,193] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001400
+[2026-05-21 14:25:48,350] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1425/3000 train_loss=0.7707 lr=1.86e-04 elapsed=27006s
+[2026-05-21 14:33:39,026] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1450/3000 train_loss=0.7849 lr=1.84e-04 elapsed=27477s
+[2026-05-21 14:33:39,823] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001450
+[2026-05-21 14:41:02,930] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1475/3000 train_loss=0.7412 lr=1.81e-04 elapsed=27921s
+[2026-05-21 14:48:43,124] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1500/3000 train_loss=0.7936 lr=1.79e-04 elapsed=28381s
+[2026-05-21 14:48:43,952] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001500
+[2026-05-21 14:50:26,501] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1500 VAL_LOSS=1.4776
+[2026-05-21 14:50:37,657] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1500 mean_ER=1515.57 mean_CN=1.01e+06
+[2026-05-21 14:50:37,657] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - === MERGE EVENT 3 at step 1500 (method=relora_baseline) ===
+[2026-05-21 14:50:37,920] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - merge: total=6672 kept=6672 drop_rate=0.000
+[2026-05-21 14:52:31,383] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1500 POST-MERGE VAL_LOSS=1.4788 (first_eval=1.3190043706893921)
+[2026-05-21 15:00:02,938] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1525/3000 train_loss=0.8122 lr=5.00e-05 elapsed=29061s
+[2026-05-21 15:07:38,071] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1550/3000 train_loss=0.7457 lr=1.00e-04 elapsed=29516s
+[2026-05-21 15:07:38,884] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001550
+[2026-05-21 15:15:23,789] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1575/3000 train_loss=0.7796 lr=1.50e-04 elapsed=29981s
+[2026-05-21 15:22:45,009] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1600/3000 train_loss=0.6188 lr=2.00e-04 elapsed=30423s
+[2026-05-21 15:22:45,852] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001600
+[2026-05-21 15:30:33,425] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1625/3000 train_loss=0.6560 lr=2.00e-04 elapsed=30891s
+[2026-05-21 15:38:08,900] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1650/3000 train_loss=0.6099 lr=1.99e-04 elapsed=31346s
+[2026-05-21 15:38:09,809] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001650
+[2026-05-21 15:46:07,601] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1675/3000 train_loss=0.6357 lr=1.99e-04 elapsed=31825s
+[2026-05-21 15:53:49,406] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1700/3000 train_loss=0.6279 lr=1.97e-04 elapsed=32287s
+[2026-05-21 15:53:50,303] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001700
+[2026-05-21 16:01:29,908] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1725/3000 train_loss=0.6841 lr=1.96e-04 elapsed=32747s
+[2026-05-21 16:09:05,962] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1750/3000 train_loss=0.6748 lr=1.94e-04 elapsed=33204s
+[2026-05-21 16:09:06,862] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001750
+[2026-05-21 16:10:50,398] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1750 VAL_LOSS=1.5698
+[2026-05-21 16:18:46,841] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1775/3000 train_loss=0.6474 lr=1.92e-04 elapsed=33784s
+[2026-05-21 16:26:11,317] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1800/3000 train_loss=0.6302 lr=1.90e-04 elapsed=34229s
+[2026-05-21 16:26:12,197] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001800
+[2026-05-21 16:33:58,251] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1825/3000 train_loss=0.6685 lr=1.88e-04 elapsed=34696s
+[2026-05-21 16:41:41,773] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1850/3000 train_loss=0.6284 lr=1.85e-04 elapsed=35159s
+[2026-05-21 16:41:42,585] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001850
+[2026-05-21 16:49:14,647] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1875/3000 train_loss=0.6570 lr=1.82e-04 elapsed=35612s
+[2026-05-21 16:56:50,435] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1900/3000 train_loss=0.5536 lr=1.78e-04 elapsed=36068s
+[2026-05-21 16:56:51,241] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001900
+[2026-05-21 17:04:15,876] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1925/3000 train_loss=0.4992 lr=1.75e-04 elapsed=36513s
+[2026-05-21 17:12:04,099] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1950/3000 train_loss=0.5447 lr=1.71e-04 elapsed=36982s
+[2026-05-21 17:12:04,934] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_001950
+[2026-05-21 17:20:01,054] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=1975/3000 train_loss=0.5807 lr=1.67e-04 elapsed=37459s
+[2026-05-21 17:27:36,984] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2000/3000 train_loss=0.5544 lr=1.62e-04 elapsed=37915s
+[2026-05-21 17:27:37,833] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002000
+[2026-05-21 17:29:20,115] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2000 VAL_LOSS=1.7765
+[2026-05-21 17:29:31,752] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2000 mean_ER=1515.84 mean_CN=1.01e+06
+[2026-05-21 17:29:31,752] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - === MERGE EVENT 4 at step 2000 (method=relora_baseline) ===
+[2026-05-21 17:29:32,018] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - merge: total=6672 kept=6672 drop_rate=0.000
+[2026-05-21 17:31:25,709] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2000 POST-MERGE VAL_LOSS=1.7772 (first_eval=1.3190043706893921)
+[2026-05-21 17:39:21,171] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2025/3000 train_loss=0.6198 lr=5.00e-05 elapsed=38619s
+[2026-05-21 17:46:48,176] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2050/3000 train_loss=0.5052 lr=1.00e-04 elapsed=39066s
+[2026-05-21 17:46:49,021] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002050
+[2026-05-21 17:54:23,566] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2075/3000 train_loss=0.5497 lr=1.50e-04 elapsed=39521s
+[2026-05-21 18:01:56,464] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2100/3000 train_loss=0.5406 lr=2.00e-04 elapsed=39974s
+[2026-05-21 18:01:57,299] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002100
+[2026-05-21 18:09:44,930] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2125/3000 train_loss=0.5450 lr=2.00e-04 elapsed=40443s
+[2026-05-21 18:17:34,818] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2150/3000 train_loss=0.5428 lr=1.98e-04 elapsed=40912s
+[2026-05-21 18:17:35,820] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002150
+[2026-05-21 18:25:08,851] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2175/3000 train_loss=0.5371 lr=1.97e-04 elapsed=41366s
+[2026-05-21 18:32:50,682] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2200/3000 train_loss=0.5374 lr=1.94e-04 elapsed=41828s
+[2026-05-21 18:32:51,704] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002200
+[2026-05-21 18:40:37,554] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2225/3000 train_loss=0.4591 lr=1.91e-04 elapsed=42295s
+[2026-05-21 18:48:18,021] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2250/3000 train_loss=0.4923 lr=1.87e-04 elapsed=42756s
+[2026-05-21 18:48:26,809] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002250
+[2026-05-21 18:50:14,465] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2250 VAL_LOSS=1.9249
+[2026-05-21 18:58:01,668] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2275/3000 train_loss=0.4588 lr=1.82e-04 elapsed=43339s
+[2026-05-21 19:05:40,617] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2300/3000 train_loss=0.4693 lr=1.77e-04 elapsed=43798s
+[2026-05-21 19:05:41,541] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002300
+[2026-05-21 19:13:38,423] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2325/3000 train_loss=0.4709 lr=1.71e-04 elapsed=44276s
+[2026-05-21 19:21:18,457] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2350/3000 train_loss=0.5026 lr=1.64e-04 elapsed=44736s
+[2026-05-21 19:21:19,411] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002350
+[2026-05-21 19:29:14,108] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2375/3000 train_loss=0.5217 lr=1.57e-04 elapsed=45212s
+[2026-05-21 19:36:50,697] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2400/3000 train_loss=0.4183 lr=1.50e-04 elapsed=45668s
+[2026-05-21 19:36:51,851] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002400
+[2026-05-21 19:44:26,066] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2425/3000 train_loss=0.4332 lr=1.42e-04 elapsed=46124s
+[2026-05-21 19:52:02,863] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2450/3000 train_loss=0.4680 lr=1.34e-04 elapsed=46580s
+[2026-05-21 19:52:03,959] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002450
+[2026-05-21 19:59:40,380] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2475/3000 train_loss=0.4532 lr=1.26e-04 elapsed=47038s
+[2026-05-21 20:07:15,706] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2500/3000 train_loss=0.4418 lr=1.17e-04 elapsed=47493s
+[2026-05-21 20:07:16,810] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002500
+[2026-05-21 20:09:11,468] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2500 VAL_LOSS=1.9617
+[2026-05-21 20:09:22,477] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2500 mean_ER=1516.09 mean_CN=1.01e+06
+[2026-05-21 20:09:22,477] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - === MERGE EVENT 5 at step 2500 (method=relora_baseline) ===
+[2026-05-21 20:09:22,762] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - merge: total=6672 kept=6672 drop_rate=0.000
+[2026-05-21 20:11:27,207] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2500 POST-MERGE VAL_LOSS=1.9639 (first_eval=1.3190043706893921)
+[2026-05-21 20:19:03,567] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2525/3000 train_loss=0.3744 lr=5.00e-05 elapsed=48201s
+[2026-05-21 20:26:48,990] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2550/3000 train_loss=0.4125 lr=1.00e-04 elapsed=48667s
+[2026-05-21 20:26:50,086] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002550
+[2026-05-21 20:34:40,739] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2575/3000 train_loss=0.3917 lr=1.50e-04 elapsed=49138s
+[2026-05-21 20:42:10,456] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2600/3000 train_loss=0.3505 lr=2.00e-04 elapsed=49588s
+[2026-05-21 20:42:11,535] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002600
+[2026-05-21 20:50:14,484] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2625/3000 train_loss=0.3965 lr=1.98e-04 elapsed=50072s
+[2026-05-21 20:57:55,540] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2650/3000 train_loss=0.3694 lr=1.92e-04 elapsed=50533s
+[2026-05-21 20:57:56,462] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002650
+[2026-05-21 21:05:44,558] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2675/3000 train_loss=0.3844 lr=1.83e-04 elapsed=51002s
+[2026-05-21 21:13:34,762] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2700/3000 train_loss=0.4184 lr=1.71e-04 elapsed=51472s
+[2026-05-21 21:13:35,726] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002700
+[2026-05-21 21:21:04,535] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2725/3000 train_loss=0.3684 lr=1.56e-04 elapsed=51922s
+[2026-05-21 21:29:06,651] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2750/3000 train_loss=0.4461 lr=1.38e-04 elapsed=52404s
+[2026-05-21 21:29:07,611] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002750
+[2026-05-21 21:30:55,423] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2750 VAL_LOSS=2.1125
+[2026-05-21 21:38:28,621] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2775/3000 train_loss=0.3773 lr=1.20e-04 elapsed=52966s
+[2026-05-21 21:45:50,461] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2800/3000 train_loss=0.3784 lr=1.00e-04 elapsed=53408s
+[2026-05-21 21:45:51,444] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002800
+[2026-05-21 21:53:37,892] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2825/3000 train_loss=0.3755 lr=8.05e-05 elapsed=53875s
+[2026-05-21 22:01:23,155] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2850/3000 train_loss=0.3136 lr=6.17e-05 elapsed=54341s
+[2026-05-21 22:01:24,132] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002850
+[2026-05-21 22:08:56,623] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2875/3000 train_loss=0.3502 lr=4.44e-05 elapsed=54794s
+[2026-05-21 22:16:36,344] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2900/3000 train_loss=0.3211 lr=2.93e-05 elapsed=55254s
+[2026-05-21 22:16:37,318] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002900
+[2026-05-21 22:24:31,186] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2925/3000 train_loss=0.3361 lr=1.69e-05 elapsed=55729s
+[2026-05-21 22:32:03,577] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2950/3000 train_loss=0.3214 lr=7.61e-06 elapsed=56181s
+[2026-05-21 22:32:04,485] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_002950
+[2026-05-21 22:39:39,134] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=2975/3000 train_loss=0.3163 lr=1.92e-06 elapsed=56637s
+[2026-05-21 22:47:02,579] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=3000/3000 train_loss=0.2653 lr=0.00e+00 elapsed=57080s
+[2026-05-21 22:47:03,545] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - periodic ckpt saved: /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42/checkpoints/step_003000
+[2026-05-21 22:48:52,006] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=3000 VAL_LOSS=2.2981
+[2026-05-21 22:49:03,117] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=3000 mean_ER=1516.24 mean_CN=1.01e+06
+[2026-05-21 22:49:03,117] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - === MERGE EVENT 6 at step 3000 (method=relora_baseline) ===
+[2026-05-21 22:49:03,399] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - merge: total=6672 kept=6672 drop_rate=0.000
+[2026-05-21 22:51:03,537] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - step=3000 POST-MERGE VAL_LOSS=2.2980 (first_eval=1.3190043706893921)
+[2026-05-21 22:51:03,539] WARNING stage3.gemma3-12b.tulu3-sft.relora_baseline - ABORT: post-merge val_loss=2.2980 > first_eval=1.3190 * 1.5
+[2026-05-21 22:51:03,555] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - training ABORTED in 57321.1s
+[2026-05-21 22:52:50,738] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - FINAL VAL_LOSS=2.2980
+[2026-05-21 22:53:01,707] INFO stage3.gemma3-12b.tulu3-sft.relora_baseline - summary.json written

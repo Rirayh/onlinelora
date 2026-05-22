@@ -140,6 +140,33 @@ def _running_eval_outs() -> set[str]:
     return outs
 
 
+# ============ Per-job retry cap (avoid runaway loops on persistent failures) ============
+MAX_LAUNCH_ATTEMPTS = 3
+launch_attempts: dict[str, int] = {}      # job name -> count
+launch_blacklist: set[str] = set()        # job name permanently skipped
+
+
+def _preflight_check(job: dict) -> Optional[str]:
+    """Return None if OK, else a string reason to skip. Cached failures go into blacklist."""
+    if job["kind"] == "eval":
+        py = _py_for(job["env"])
+        try:
+            r = subprocess.run(
+                [py, "-c",
+                 "import lm_eval, datasets; "
+                 "from datasets.features.features import _FEATURE_TYPES; "
+                 "assert 'List' in _FEATURE_TYPES, 'datasets too old (no List feature)'; "
+                 "print('ok')"],
+                capture_output=True, timeout=30, text=True
+            )
+            if r.returncode != 0:
+                tail = (r.stderr or r.stdout or "").splitlines()[-1] if (r.stderr or r.stdout) else "unknown"
+                return f"preflight failed in env={job['env']}: {tail}"
+        except Exception as e:
+            return f"preflight subprocess failed: {e}"
+    return None
+
+
 # ============ Queue: pending lm-evals (Phase D = lm_eval_v3/) ============
 def pending_lm_evals() -> list[dict]:
     """For every Phase D cell with summary.json + adapter/, schedule lm_eval_v3/ if missing."""
@@ -160,11 +187,17 @@ def pending_lm_evals() -> list[dict]:
                     continue
             if str(out_dir.resolve()) in busy:
                 continue
+            name = f"eval-{slug}-{DATASET}-{method}"
+            if name in launch_blacklist:
+                continue
+            if launch_attempts.get(name, 0) >= MAX_LAUNCH_ATTEMPTS:
+                launch_blacklist.add(name)
+                continue
             pending.append({
                 "kind": "eval", "model": slug, "method": method,
                 "model_path": path, "env": env, "attn": attn,
                 "adapter": str(adapter), "out_dir": str(out_dir),
-                "name": f"eval-{slug}-{DATASET}-{method}",
+                "name": name,
             })
     return pending
 
@@ -309,14 +342,28 @@ def main() -> None:
             all_idle_since = 0.0
 
         for gpu in free_idle:
-            if eval_q:
-                job = eval_q.pop(0)
+            job = None
+            while eval_q:
+                cand = eval_q.pop(0)
+                reason = _preflight_check(cand)
+                if reason is not None:
+                    launch_attempts[cand["name"]] = launch_attempts.get(cand["name"], 0) + 1
+                    log(f"SKIP {cand['name']}: {reason} (attempt {launch_attempts[cand['name']]}/{MAX_LAUNCH_ATTEMPTS})")
+                    if launch_attempts[cand["name"]] >= MAX_LAUNCH_ATTEMPTS:
+                        launch_blacklist.add(cand["name"])
+                        log(f"BLACKLIST {cand['name']} after {MAX_LAUNCH_ATTEMPTS} preflight failures")
+                    continue
+                job = cand
                 pid = launch_eval(gpu, job)
-            elif train_q:
+                break
+            if job is None and train_q:
                 job = train_q.pop(0)
                 pid = launch_train(gpu, job)
-            else:
+            if job is None:
                 continue
+            launch_attempts[job["name"]] = launch_attempts.get(job["name"], 0) + 1
+            if launch_attempts[job["name"]] >= MAX_LAUNCH_ATTEMPTS and job["kind"] == "eval":
+                pass  # we'll let it run; on next scan if results json is missing it stays out
             gpu_idle_since[gpu] = 0.0
             gpu_last_launch[gpu] = now
             launched[gpu] = {
@@ -324,7 +371,9 @@ def main() -> None:
                 "started_at": now,
             }
             save_state({"launched": launched, "idle_since": gpu_idle_since,
-                        "eval_q_size": len(eval_q), "train_q_size": len(train_q)})
+                        "eval_q_size": len(eval_q), "train_q_size": len(train_q),
+                        "blacklist": sorted(launch_blacklist),
+                        "attempts": launch_attempts})
 
         time.sleep(CHECK_INTERVAL)
 

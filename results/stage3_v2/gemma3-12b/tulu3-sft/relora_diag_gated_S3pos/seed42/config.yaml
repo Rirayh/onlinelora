@@ -34,5 +34,5 @@ diag_batches: 8
 abort_factor: 1.5
 n_lora_components: 6672
 n_trainable_M: 68.456448
-commit_hash: b7d07dc9f86be02663555d135e3be0d57805dc43
-wall_clock_start: 1779356813.1209197
+commit_hash: 2518e4a6eb20061f43cc9995c20d40f513a19d2e
+wall_clock_start: 1779366610.5057986

@@ -1,0 +1,22 @@
+[2026-05-21 14:10:58,034] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - START stage3 model=/mnt/cpfs/junlongke/onlinelora/models/qwen35-0p8b dataset=tulu3-sft method=lora_vanilla out=results/_smoke/qwen35-0p8b/seed42
+[2026-05-21 14:10:59,250] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - tokenizer loaded in 1.2s, vocab=248044
+[2026-05-21 14:10:59,251] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - loading tulu-3-sft-mixture from /mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture
+[2026-05-21 14:11:01,400] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - tulu3-sft train=10000 val=500
+[2026-05-21 14:11:18,152] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - tulu3-sft tokenized: train 10000 val 500
+[2026-05-21 14:11:18,405] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - data prepared in 19.2s
+[2026-05-21 14:11:18,656] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - model loaded in 0.2s
+[2026-05-21 14:11:23,657] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - #LoRA layers=96 #components=1536
+[2026-05-21 14:11:23,660] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - #trainable params=6.39M
+[2026-05-21 14:11:28,925] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - [step 0] mean_ER=928.79 mean_CN=3.03e+01 (sampled 8 layers)
+[2026-05-21 14:11:28,925] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - merge events scheduled at: []
+[2026-05-21 14:18:06,352] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - step=25/50 train_loss=2.0216 lr=5.00e-05 elapsed=397s
+[2026-05-21 14:19:01,911] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - step=25 VAL_LOSS=1.9257
+[2026-05-21 14:19:02,256] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - best ckpt updated: step=25 val_loss=1.9257
+[2026-05-21 14:25:42,542] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - step=50/50 train_loss=1.8124 lr=1.00e-04 elapsed=854s
+[2026-05-21 14:25:42,870] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - periodic ckpt saved: results/_smoke/qwen35-0p8b/seed42/checkpoints/step_000050
+[2026-05-21 14:26:37,845] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - step=50 VAL_LOSS=1.8893
+[2026-05-21 14:26:38,143] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - best ckpt updated: step=50 val_loss=1.8893
+[2026-05-21 14:26:38,147] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - training done in 909.2s
+[2026-05-21 14:27:33,063] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - FINAL VAL_LOSS=1.8893
+[2026-05-21 14:27:36,538] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - summary.json written
+[2026-05-21 14:27:36,848] INFO stage3.qwen35-0p8b.tulu3-sft.lora_vanilla - adapter saved to results/_smoke/qwen35-0p8b/seed42/adapter

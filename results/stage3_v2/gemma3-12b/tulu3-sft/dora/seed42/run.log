@@ -1,0 +1,11 @@
+[2026-05-21 12:31:10,026] INFO stage3.gemma3-12b.tulu3-sft.dora - START stage3 model=/mnt/cpfs/junlongke/onlinelora/models/gemma-3-12b-it dataset=tulu3-sft method=dora out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/gemma3-12b/tulu3-sft/dora/seed42
+[2026-05-21 12:31:13,721] INFO stage3.gemma3-12b.tulu3-sft.dora - tokenizer loaded in 1.1s, vocab=262144
+[2026-05-21 12:31:13,722] INFO stage3.gemma3-12b.tulu3-sft.dora - loading tulu-3-sft-mixture from /mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture
+[2026-05-21 12:31:15,404] INFO stage3.gemma3-12b.tulu3-sft.dora - tulu3-sft train=10000 val=500
+[2026-05-21 12:31:26,455] INFO stage3.gemma3-12b.tulu3-sft.dora - tulu3-sft tokenized: train 10000 val 500
+[2026-05-21 12:31:26,697] INFO stage3.gemma3-12b.tulu3-sft.dora - data prepared in 13.0s
+[2026-05-21 12:31:33,485] INFO stage3.gemma3-12b.tulu3-sft.dora - model loaded in 6.8s
+[2026-05-21 12:31:49,094] INFO stage3.gemma3-12b.tulu3-sft.dora - #LoRA layers=417 #components=6672
+[2026-05-21 12:31:49,104] INFO stage3.gemma3-12b.tulu3-sft.dora - #trainable params=70.79M
+[2026-05-21 12:32:00,471] INFO stage3.gemma3-12b.tulu3-sft.dora - [step 0] mean_ER=1515.00 mean_CN=1.01e+06 (sampled 8 layers)
+[2026-05-21 12:32:00,471] INFO stage3.gemma3-12b.tulu3-sft.dora - merge events scheduled at: []
