@@ -1,0 +1,20 @@
+[2026-05-23 02:31:23,471] INFO stage3.qwen35-9b.tulu3-sft.dora - START stage3 model=/mnt/cpfs/junlongke/onlinelora/models/qwen35-9b dataset=tulu3-sft method=dora out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-9b/tulu3-sft/dora/seed42
+[2026-05-23 02:31:24,778] INFO stage3.qwen35-9b.tulu3-sft.dora - tokenizer loaded in 1.3s, vocab=248044
+[2026-05-23 02:31:24,779] INFO stage3.qwen35-9b.tulu3-sft.dora - loading tulu-3-sft-mixture from /mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture
+[2026-05-23 02:31:26,591] INFO stage3.qwen35-9b.tulu3-sft.dora - tulu3-sft train=10000 val=500
+[2026-05-23 02:31:45,502] INFO stage3.qwen35-9b.tulu3-sft.dora - tulu3-sft tokenized: train 10000 val 500
+[2026-05-23 02:31:45,795] INFO stage3.qwen35-9b.tulu3-sft.dora - data prepared in 21.0s
+[2026-05-23 02:31:46,115] INFO stage3.qwen35-9b.tulu3-sft.dora - model loaded in 0.3s
+[2026-05-23 02:31:59,992] INFO stage3.qwen35-9b.tulu3-sft.dora - #LoRA layers=128 #components=2048
+[2026-05-23 02:31:59,997] INFO stage3.qwen35-9b.tulu3-sft.dora - #trainable params=30.13M
+[2026-05-23 02:32:27,604] INFO stage3.qwen35-9b.tulu3-sft.dora - [step 0] mean_ER=3691.23 mean_CN=3.76e+01 (sampled 8 layers)
+[2026-05-23 02:32:27,605] INFO stage3.qwen35-9b.tulu3-sft.dora - merge events scheduled at: []
+[2026-05-23 03:00:30,406] INFO stage3.qwen35-9b.tulu3-sft.dora - step=25/800 train_loss=1.4426 lr=5.00e-05 elapsed=1683s
+[2026-05-23 03:30:17,272] INFO stage3.qwen35-9b.tulu3-sft.dora - step=50/800 train_loss=1.3498 lr=1.00e-04 elapsed=3470s
+[2026-05-23 03:59:35,383] INFO stage3.qwen35-9b.tulu3-sft.dora - step=75/800 train_loss=1.3796 lr=1.50e-04 elapsed=5228s
+[2026-05-23 04:26:44,052] INFO stage3.qwen35-9b.tulu3-sft.dora - step=100/800 train_loss=1.2513 lr=2.00e-04 elapsed=6856s
+[2026-05-23 04:55:49,909] INFO stage3.qwen35-9b.tulu3-sft.dora - step=125/800 train_loss=1.2567 lr=1.99e-04 elapsed=8602s
+[2026-05-23 05:24:28,940] INFO stage3.qwen35-9b.tulu3-sft.dora - step=150/800 train_loss=1.2641 lr=1.97e-04 elapsed=10321s
+[2026-05-23 05:54:06,158] INFO stage3.qwen35-9b.tulu3-sft.dora - step=175/800 train_loss=1.2954 lr=1.94e-04 elapsed=12099s
+[2026-05-23 06:22:13,729] INFO stage3.qwen35-9b.tulu3-sft.dora - step=200/800 train_loss=1.2709 lr=1.90e-04 elapsed=13786s
+[2026-05-23 06:49:33,681] INFO stage3.qwen35-9b.tulu3-sft.dora - step=225/800 train_loss=1.2929 lr=1.85e-04 elapsed=15426s

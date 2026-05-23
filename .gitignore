@@ -44,3 +44,6 @@ baselines/*_reference/
 !baselines/*_reimpl/IMPLEMENTATION_NOTES.md
 logs/
 .b1_download_pids
+
+# vLLM-on-merged eval intermediate dumps
+**/seed*/merged/

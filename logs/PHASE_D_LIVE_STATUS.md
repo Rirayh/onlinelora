@@ -1,482 +1,101 @@
-# Phase D Live Status — 2026-05-21 ~12:50
-
-## DIRECTIVE (recap, condensed from PI msg)
-Validate "S3pos works on quality post-trained, mid-capacity, non-saturated bases" via Qwen3 + Qwen3.5 multi-size sweep.
-- Dataset: tulu3-sft only
-- Methods: lora_vanilla, relora_baseline, relora_diag_gated_S3pos, dora, cola
-- Wave 1 (small→big, commit per size): qwen35-0p8b, qwen35-2b, qwen3-1p7b, qwen35-4b, qwen3-4b, qwen35-9b, qwen3-14b
-- Wave 2 (only after Wave 1 + qwen3-8b validates hypothesis): qwen3-32b, qwen35-27b (skip cola for both)
-- Train config IDENTICAL to qwen3-8b: rank=8 alpha=16 target=qkvo+gate/up/down,
-  AdamW lr=1e-4 betas=(0.9,0.999) wd=0.01, cosine warmup=100/total=3000, bs=8 grad_accum=1,
-  merge_every=750 (non-vanilla/dora), COLA K=4×750 with FULL Adam reset per stage,
-  val every 250 steps.
-- Each cell evidence: train_loss, val_loss, effective_rank, cumulative_rank, condition_number,
-  saliency_at_merge (merge-arm), dropped_components (gated/random_drop), summary.json with
-  aborted/best_step/best_val_loss, lm_eval_v3/ (gsm8k,hellaswag,arc_challenge,--log_samples),
-  adapter under best/.
-- Sanity gate: scripts/verify_adapter_loaded.py — for each cell, confirm adapter changes logits
-  vs base. If a model fails sanity, halt all training of that model + write logs/PHASE_D_ADAPTER_BUG_<model>.md.
-- DO NOT: restart daemon (Phase D is manual queue), train on metamath, train MoE, run cola on
-  qwen3-32b/qwen35-27b, fix non-Qwen, re-eval existing lm_eval_v3.
-- Report cadence: per-size commit `Phase D <slug>: 5/5 done, S3pos vs vanilla = +X.XXpp on GSM8K-flex`,
-  + maintain summary/main_table.md and summary/phase_d_curve.md (size | vanilla | baseline | S3pos | DoRA | COLA | Δ_vs_baseline | Δ_vs_DoRA).
-- Negative push immediately if: any size S3pos LOSES baseline by >2pp, OOM/instability,
-  adapter sanity fails, or Wave 1 complete.
-
-## KEY FILES
-- scripts/stage3_run.py       — main training loop (already has fix from b7d07dc to copy best/ → adapter/)
-- scripts/auto_fill_daemon.py — DO NOT relaunch (PI explicit)
-- scripts/build_main_table.py — picks lm_eval_v3 > v2 > v1
-- scripts/fix_p0_adapter_from_best.py — retroactive B=0 cleanup, run if needed
-- logs/PHASE_D_ENV.md         — blocker analysis (committed c224f74)
-- logs/scout/PHASE_D_TRIAGE.md — gemma3 in-flight kill record (committed c224f74)
-
-## ENVIRONMENTS (key finding)
-| env | transformers | peft | qwen3_5 supported |
-|---|---|---|---|
-| espo | 4.52.0.dev0 | 0.17.0 | ❌ KeyError 'qwen3_5' |
-| flash_moe | **5.3.0** | NO | ✅ AutoConfig OK |
-| RRenv | 5.3.0 | NO | likely ✅ |
-| vllm_eval | 4.57.6 | 0.18.1 | ❌ |
-| modes | 4.51.3 | NO | ❌ |
-| opsd | 4.57.1 | NO | ❌ |
-| rllm/rllm_backup | 4.57.6 | NO | ❌ |
-
-PI plan: install peft into flash_moe (or RRenv), use it for Qwen3.5 train + eval.
-Existing `espo` keeps Qwen3 dense work (Qwen3ForCausalLM unchanged).
-
-PYTHON BINARIES:
-  espo:      /mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python
-  flash_moe: /mnt/cpfs/junlongke/miniconda3/envs/flash_moe/bin/python
-  RRenv:     /mnt/cpfs/junlongke/miniconda3/envs/RRenv/bin/python
-
-## DOWNLOAD STATE (as of 12:50)
-COMPLETE (under /mnt/cpfs/junlongke/onlinelora/models/):
-  qwen3-1p7b   3.8GB   Qwen3ForCausalLM ✅
-  qwen3-4b     7.6GB   (Qwen3-4B-Instruct-2507) Qwen3ForCausalLM ✅
-  qwen3-14b    ~30GB
-  qwen3-32b    62GB
-  qwen35-0p8b  1.7GB   Qwen3_5ForConditionalGeneration (multimodal hybrid)
-
-IN PROGRESS (just kicked off via HF_ENDPOINT=https://hf-mirror.com):
-  scripts/dl_qwen35_seq.sh  → qwen35-2b, qwen35-4b, qwen35-9b, qwen35-27b
-  log: logs/scout/dl_qwen35_seq.log
-
-EXISTING LARGE BASES (already there from prior phases):
-  /mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B
-  /mnt/cpfs/public_data/public_model/Qwen/Qwen2.5-7B
-  /mnt/cpfs/public_data/public_model/Mistral/Mistral-7B-v0.3
-  /mnt/cpfs/public_data/public_model/Meta-Llama-3-8B
-  models/{OLMo-2-7B, R1-Distill-Qwen-7B, gemma-3-12b-it, AceReason-Nemotron-7B (DEPRECATED)}
-
-## QWEN3.5 ARCH NOTES (critical for adapter plumbing)
-- model_type: qwen3_5
-- architectures: ['Qwen3_5ForConditionalGeneration']
-- config has sub_configs: {vision_config, text_config, ...}
-- text_config: hidden_size=1024 (0.8B), num_hidden_layers=24
-- layer_types: alternating ['linear_attention'×3, 'full_attention'] every 4 (full_attention_interval=4)
-  → S3pos saliency math (first-order on lora_B) is validated only on standard self-attention.
-    Linear_attention layers may need to be EXCLUDED from target_modules or treated differently.
-- Has image_token_id=248056, video_preprocessor_config.json — for our text-only tulu3-sft training
-  these are ignored if we feed only text inputs.
-- Uses AutoProcessor (not AutoTokenizer) for combined image+text. For text-only training
-  we should be able to pass the tokenizer subcomponent.
-
-## GPU STATE (as of 12:50)
-GPU 0: 20GB — running llama3-8b/tulu3-sft/dora lm_eval_v2 (PID 1755167, ~19% complete, ETA 3-4h)
-GPU 3: 58GB — gemma3/tulu3/lora_vanilla train (PID 1733368, step 1175/3000, ~10h ETA)
-GPU 5: 71GB — gemma3/tulu3/relora_baseline train (PID 1735950, step 1075/3000, ~10h ETA)
-GPU 6: 70GB — gemma3/tulu3/relora_diag_gated_S3pos train (PID 1762026, step 500/3000, ~22h ETA)
-GPU 1, 2, 4, 7: idle (free for Phase D)
-
-## TODO (next steps after context-trim)
-P1 IN PROGRESS:
-  [x] survey conda envs → flash_moe (5.3.0) + RRenv (5.3.0) recognize qwen3_5
-  [x] start qwen35 download via mirror → PID running, log dl_qwen35_seq.log
-  [ ] install peft into flash_moe (pip install peft into /mnt/cpfs/junlongke/miniconda3/envs/flash_moe)
-  [ ] verify Qwen3-1.7B smoke load + tulu3 forward pass (espo env)
-  [ ] adapt stage3_run.py to handle Qwen3.5: text_config sub-arch, target_modules for
-      mixed linear/full_attention layers, AutoProcessor instead of AutoTokenizer
-  [ ] write scripts/verify_adapter_loaded.py (the sanity gate)
-
-P2 PENDING (Wave 1 launch order):
-  qwen35-0p8b → qwen35-2b → qwen3-1p7b → qwen35-4b → qwen3-4b → qwen35-9b → qwen3-14b
-  per-size: 5 cells × ~1.5h (small) to ~5h (14B) = use 4 free GPUs in parallel
-
-## TRAINING LAUNCHER TEMPLATE (copy from prior runs)
-For Qwen3 dense (works in espo):
-  CUDA_VISIBLE_DEVICES=<g> /mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python scripts/stage3_run.py \
-    --model_path models/<slug> --model_key <slug> --dataset tulu3-sft \
-    --method <method> --total_steps 3000 --merge_every 750 \
-    --eval_every 250 --ckpt_every 250 --saliency_max_seq_len 512 \
-    --attn_implementation sdpa --save_adapter --seed 42 \
-    --out_root results/stage3_v2/<slug>/tulu3-sft/<method>/seed42
-
-For Qwen3.5 (needs flash_moe + adaptations TBD):
-  CUDA_VISIBLE_DEVICES=<g> /mnt/cpfs/junlongke/miniconda3/envs/flash_moe/bin/python scripts/stage3_run.py \
-    ... (with --model_path models/<slug> and updated tokenizer/processor logic)
-
-## RECENT COMMITS
-b7d07dc [P0-FIX] merge-method adapters: copy best/ -> adapter/ at end-of-training
-2518e4a progress 2026-05-21 12:10: post-P0-fix evals + new-model trainings
-c224f74 [NEGATIVE] Phase D blocker: Qwen3.5 is multimodal (this commit explained options A/B/C)
-
-## P0 ACCEPTANCE GATE (already passed, PI saw)
-olmo2-7b/tulu3-sft 4 cells distinct ✅, qwen3-8b/tulu3-sft S3neg=86.81% (new peak post-fix)
-
-## CONTEXT-TRIM CHECKPOINT (12:55) — RESUME HERE
-
-### Currently running in bg (DO NOT KILL):
-- PID 1772667: bash dl_qwen35_seq.sh — Qwen3.5 {2B,4B,9B,27B} from hf-mirror.com,
-  log: logs/scout/dl_qwen35_seq.log
-- PID 1772680: pip install peft==0.17.0 into flash_moe env,
-  log: logs/scout/install_peft_flash_moe.log
-- PID 1733368, 1735950, 1762026: gemma3 cleanup trains (P0.4) — keep alive
-- PID 1755167: llama3 dora lm_eval — keep alive
-
-### Next concrete steps (resume):
-1. Verify peft installed in flash_moe:
-   /mnt/cpfs/junlongke/miniconda3/envs/flash_moe/bin/python -c "import peft;print(peft.__version__)"
-2. Smoke Qwen3-1.7B forward in espo (already verified config; need actual weights):
-   ALREADY DONE earlier: loaded Qwen3ForCausalLM 1.72B, logits shape correct.
-3. Smoke Qwen3.5-0.8B in flash_moe — the critical compatibility test.
-   Must determine: does AutoModelForCausalLM work? Or need Qwen3_5ForConditionalGeneration directly?
-   What target_modules names are present in linear_attention layers vs full_attention?
-4. Adapt scripts/stage3_run.py if needed for Qwen3.5:
-   - tokenizer = AutoTokenizer (text-only) OR AutoProcessor.tokenizer
-   - model.text_model accessor for the LM submodule
-   - target_modules: probe model.named_modules() to see what q/k/v/o/gate/up/down look like;
-     may need different names for linear_attention layers
-5. Write scripts/verify_adapter_loaded.py (sanity gate):
-   load base + load with peft adapter → forward 1 GSM8K sample → assert logits differ.
-6. Once smoke passes for one Qwen3.5 size, launch Wave 1:
-   qwen35-0p8b → qwen35-2b → qwen3-1p7b → qwen35-4b → qwen3-4b → qwen35-9b → qwen3-14b
-   GPUs: 1, 2, 4, 7 free; 0,3,5,6 occupied by P0 cleanup (free up over next 3-22h).
-
-### Quick commands to recheck state on resume:
-  nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits
-  ps -eo pid,etime,args | grep -E '(stage3_run|lm_eval|dl_qwen|peft)' | grep -v grep
-  tail -5 /mnt/cpfs/junlongke/onlinelora/lora_obd/logs/scout/dl_qwen35_seq.log
-  ls /mnt/cpfs/junlongke/onlinelora/models/ | sort
-  /mnt/cpfs/junlongke/miniconda3/envs/flash_moe/bin/python -c "import peft;print(peft.__version__)" 2>&1
-
-## CONTEXT-TRIM CHECKPOINT 2 (12:58)
-
-### KEY FINDING: peft 0.17 incompatible with transformers 5.x
-peft 0.17.0/0.17.1 imports `HybridCache` which was removed in transformers 5.x:
-  ImportError: cannot import name 'HybridCache' from 'transformers'
-
-Need a NEWER peft version compatible with transformers 5.x. Options:
-- pip install peft==latest (try 0.18+)
-- pip install "peft>=0.18" 
-- Or peft from main: pip install git+https://github.com/huggingface/peft.git
-
-### Current state of bg processes:
-- PID 1772667: dl_qwen35_seq.sh (Qwen3.5 2B/4B/9B/27B from hf-mirror) — RUNNING
-- peft install in flash_moe FAILED (broken pip resolver in flash_moe's pip)
-- peft install in RRenv UNINSTALLED 0.17.1 first then tried 0.17.0 — leaves state ambiguous
-- PID 1755167: llama3 dora lm_eval — RUNNING (~19% done, 3-4h ETA)
-- PID 1733368, 1735950, 1762026: gemma3 cleanup trains — RUNNING
-
-### NEXT STEP ON RESUME:
-1. Install peft compatible with transformers 5.x:
-   /mnt/cpfs/junlongke/miniconda3/envs/RRenv/bin/python -m pip install --upgrade "peft>=0.18"
-   verify: python -c "from peft import LoraConfig"
-2. Verify Qwen3.5-0.8B loads in RRenv with peft + transformers 5.3.0
-3. Inspect Qwen3.5 module names to decide target_modules
-   probe with: for n,m in model.named_modules(): print(n)
-4. Adapt scripts/stage3_run.py for Qwen3.5 if needed
-
-### IMPORTANT: PI directive said proceed in parallel, not block
-While solving Qwen3.5 plumbing, can ALREADY start training Qwen3 dense models:
-  qwen3-1p7b (3.8GB, loaded fine in espo, Qwen3ForCausalLM)
-  qwen3-4b (7.6GB, same arch as qwen3-8b, drop-in)
-
-LAUNCH-READY: see logs/PHASE_D_LIVE_STATUS.md "TRAINING LAUNCHER TEMPLATE" section.
-GPUs free: 1, 2, 4, 7. Can start 4 Qwen3 dense trainings IMMEDIATELY in parallel.
-
-### WAVE 1 LAUNCH ORDER (per directive)
-qwen35-0p8b, qwen35-2b, qwen3-1p7b, qwen35-4b, qwen3-4b, qwen35-9b, qwen3-14b
-But qwen3-1p7b ready right now → use GPU 1, 2, 4, 7 to start qwen3-1p7b 5 cells in parallel
-(actually only 4 GPUs free, so pick 4 methods first; cola serial after first 4 done)
-
-5 methods: lora_vanilla, relora_baseline, relora_diag_gated_S3pos, dora, cola
-Parallel batch 1 (4 cells on 4 GPUs):
-  G1: qwen3-1p7b/tulu3-sft/lora_vanilla
-  G2: qwen3-1p7b/tulu3-sft/relora_baseline
-  G4: qwen3-1p7b/tulu3-sft/relora_diag_gated_S3pos
-  G7: qwen3-1p7b/tulu3-sft/dora
-Then cola when first GPU frees.
-
-## CONTEXT-TRIM CHECKPOINT 3 (13:02) — LAUNCHING QWEN3-1.7B WAVE 1
-
-About to launch 4 parallel trainings on free GPUs 1,2,4,7. Qwen3-1.7B is
-Qwen3ForCausalLM (same arch as qwen3-8b, drop-in to existing pipeline).
-
-EXACT COMMANDS:
-  ROOT=/mnt/cpfs/junlongke/onlinelora/lora_obd
-  PY=/mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python
-  for spec in "1:lora_vanilla:9999" "2:relora_baseline:750" "4:relora_diag_gated_S3pos:750" "7:dora:9999"; do
-    GPU=$(echo $spec|cut -d: -f1); METHOD=$(echo $spec|cut -d: -f2); MERGE=$(echo $spec|cut -d: -f3)
-    OUT=$ROOT/results/stage3_v2/qwen3-1p7b/tulu3-sft/$METHOD/seed42
-    LOG=$ROOT/logs/scout/train-qwen3-1p7b-tulu3-sft-$METHOD.log
-    mkdir -p $OUT
-    STEPS=3000
-    [ $METHOD = "dora" ] && STEPS=800
-    nohup env CUDA_VISIBLE_DEVICES=$GPU $PY $ROOT/scripts/stage3_run.py \
-        --model_path /mnt/cpfs/junlongke/onlinelora/models/qwen3-1p7b \
-        --model_key qwen3-1p7b --dataset tulu3-sft --method $METHOD \
-        --total_steps $STEPS --merge_every $MERGE \
-        --eval_every 250 --ckpt_every 250 --saliency_max_seq_len 512 \
-        --attn_implementation sdpa --save_adapter --seed 42 \
-        --out_root $OUT > $LOG 2>&1 &
-    disown
-    echo "G$GPU $METHOD pid=$!"
-  done
-
-After cola support: launch qwen3-1p7b/tulu3-sft/cola when first GPU frees (cola = relora_baseline
-with full Adam reset; method "cola" already added to METHOD_CHOICES per b7d07dc).
-
-After 1.7B 5 cells done: queue qwen3-4b (same pattern, 7.6GB → fits comfortably).
-After Qwen3.5 plumbing done: interleave Wave 1 order qwen35-0p8b → 2b → 4b → 9b.
-
-DO NOT TOUCH:
-  GPU 0 (llama3 dora eval), GPU 3,5,6 (gemma3 cleanup trains).
-
-STATUS DOC: this file logs/PHASE_D_LIVE_STATUS.md is the source of truth across context-trim.
-
-## CONTEXT-TRIM CHECKPOINT 4 (13:05) — 4 QWEN3-1.7B TRAINS LAUNCHED ✅
-
-LAUNCHED on free GPUs at 13:05:
-  PID 1773565: GPU 1 qwen3-1p7b/tulu3-sft/lora_vanilla     (3000 steps, ~1.5h)
-  PID 1773579: GPU 2 qwen3-1p7b/tulu3-sft/relora_baseline  (3000 steps, ~1.5h)
-  PID 1773593: GPU 4 qwen3-1p7b/tulu3-sft/relora_diag_gated_S3pos (3000 steps, ~1.5h)
-  PID 1773607: GPU 7 qwen3-1p7b/tulu3-sft/dora             (800 steps, ~30min)
-
-REMAINING TODO ON RESUME:
-1. When PID 1773607 (dora, fastest) finishes ~13:35, launch on GPU 7:
-   qwen3-1p7b/tulu3-sft/cola  (3000 steps, merge_every=750, total_steps=3000)
-2. After 4 lora_vanilla/baseline/S3pos finish ~14:35, launch on those GPUs:
-   - qwen3-4b/tulu3-sft/{lora_vanilla, relora_baseline, S3pos, dora} 4 parallel
-   - then qwen3-4b/tulu3-sft/cola
-3. After qwen3-4b done, launch qwen3-14b (1 cell at a time, ~5h each on 1 GPU; or 2 GPUs sharded)
-4. While trainings run, in parallel:
-   a. install peft>=0.18 into RRenv (transformers 5.3.0 + new peft)
-      command: /mnt/cpfs/junlongke/miniconda3/envs/RRenv/bin/python -m pip install --upgrade "peft>=0.18"
-      verify: from peft import LoraConfig
-   b. once qwen35-2b finishes downloading, smoke load it in RRenv
-   c. inspect Qwen3.5 module names (q_proj/k_proj? linear_attn? gate proj?)
-   d. write/test scripts/verify_adapter_loaded.py
-   e. if all looks good, adapt scripts/stage3_run.py minimal patches to support Qwen3.5
-
-EVAL: After each cell finishes, launch lm_eval_v3 manually on the freed GPU:
-  /mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python -m lm_eval --model hf \
-    --model_args pretrained=models/qwen3-1p7b,peft=results/stage3_v2/qwen3-1p7b/tulu3-sft/<METHOD>/seed42/adapter,dtype=bfloat16,attn_implementation=sdpa,trust_remote_code=True \
-    --tasks gsm8k,hellaswag,arc_challenge --num_fewshot 5 --batch_size 4 --log_samples \
-    --output_path results/stage3_v2/qwen3-1p7b/tulu3-sft/<METHOD>/seed42/lm_eval_v3
-
-PER-SIZE COMPLETION CHECK (from directive):
-  When 5/5 done on qwen3-1p7b: commit "Phase D qwen3-1p7b: 5/5 done, S3pos vs vanilla = +X.XXpp on GSM8K-flex"
-  Update results/stage3_v2/summary/main_table.md AND summary/phase_d_curve.md
-  phase_d_curve.md columns: size | vanilla | baseline | S3pos | DoRA | COLA | Δ_S3pos_vs_baseline | Δ_S3pos_vs_DoRA
-
-ANY S3pos LOSE >2pp vs baseline → push immediately with [NEGATIVE]: prefix.
-
-DOWNLOAD CONTINUES IN BG: PID 1772667 dl_qwen35_seq.sh
-  log: logs/scout/dl_qwen35_seq.log
-  expected: qwen35-2b (4.6GB), 4B (9.3), 9B (19.3), 27B (55.6) → total ~89GB
-
-P0 CLEANUP IN BG (DO NOT KILL):
-  PID 1733368 GPU3 gemma3/tulu3/lora_vanilla  step 1175/3000
-  PID 1735950 GPU5 gemma3/tulu3/relora_baseline step 1075/3000
-  PID 1762026 GPU6 gemma3/tulu3/S3pos step 500/3000
-  PID 1755167 GPU0 llama3/tulu3/dora lm_eval_v2 ~19% (3-4h ETA)
-
-## CONTEXT-TRIM CHECKPOINT 5 (14:25) — QWEN3.5 PLUMBING VALIDATED
-
-### Downloads ALL DONE (85GB total, via hf-mirror.com in ~16min)
-qwen35-0p8b 1.7G | qwen35-2b 4.3G | qwen35-4b 8.8G | qwen35-9b 19G | qwen35-27b 52G
-
-### Qwen3.5 architecture analysis (concrete findings)
-- `AutoModelForCausalLM.from_pretrained(...)` returns `Qwen3_5ForCausalLM`
-  (auto-extracts the text-only LM head from the multimodal repo). Standard
-  forward(input_ids, attention_mask, labels=...). Has lm_head.
-- text_config.layer_types: 4 of every 4 layer is full_attention (layers 3,7,11,...);
-  the other 3 are linear_attention (Mamba-2 / RWKV style with conv1d + in_proj_qkv/z/b/a).
-- Module names with `q_proj/k_proj/v_proj/o_proj` exist ONLY on full_attention layers
-  (probed: 0p8b has q_proj on layers [3,7,11,15,19,23] = 6 full_attn layers).
-- Module names with `gate_proj/up_proj/down_proj` exist on ALL layers (MLPs).
-- Default target_modules from qwen3-8b config (q,k,v,o,gate,up,down) **just works**:
-  it naturally excludes linear_attn layers (no q_proj there) and includes all 24 MLPs.
-  S3pos saliency math (first-order on lora_B) is therefore validated.
-
-### Smoke test (qwen35-0p8b, lora_vanilla, 50 steps, GPU 0 piggy-back)
-- BOOTED OK in RRenv with peft 0.19.1 + transformers 5.3.0.
-- step 25/50 in 397s = 16 sec/step. val_loss=1.9257, best ckpt saved ✅
-- BUT: 16s/step is SLOW (would mean ~13h for 3000 steps on 0.8B).
-  Cause: "fast path not available" for linear_attn (warns: install fla + causal-conv1d).
-  Currently installing in bg (PID 1782768).
-  After fla install, expected speedup ~5-10× → ~1-2s/step → 1.5h for full run.
-
-### Qwen3-1.7B WAVE 1 progress (at 14:25)
-  GPU1 lora_vanilla:    step 1075/3000  train_loss=1.32  best@500
-  GPU2 relora_baseline: step 1075/3000  train_loss=1.34  best@500
-  GPU4 S3pos:           step 1075/3000  train_loss=1.35  best@500
-  GPU7 dora:            step  250/800   train_loss=1.55  best@250
-ETA: dora done ~14:55; others done ~15:30.
-
-### TODOs for next steps:
-1. Wait fla install. After install, kill smoke and re-smoke to verify speedup.
-2. After dora done (~14:55) → launch qwen3-1p7b/cola on freed GPU 7.
-3. After 4 trains finish (~15:30):
-   - Launch lm_eval_v3 for the 4 done cells (~30min each)
-   - Also start qwen3-4b/tulu3-sft Wave 1 (4 cells parallel) — same arch, should drop in.
-4. After qwen3.5 fla available: launch qwen35-0p8b Wave 1 (5 cells) — use RRenv env.
-   COMMAND TEMPLATE:
-     CUDA_VISIBLE_DEVICES=<G> /mnt/cpfs/junlongke/miniconda3/envs/RRenv/bin/python scripts/stage3_run.py \
-        --model_path /mnt/cpfs/junlongke/onlinelora/models/qwen35-0p8b \
-        --model_key qwen35-0p8b --dataset tulu3-sft --method <METHOD> \
-        --total_steps <3000|800> --merge_every <750|9999> ...
-5. Periodically check if any of the 3 P0 gemma3 cleanup trains finish.
-
-### KEY ENV CONFIRMED
-- Qwen3 family: espo env (transformers 4.52, peft 0.17.0) — proven works
-- Qwen3.5 family: RRenv env (transformers 5.3.0, peft 0.19.1, fla pending) — proven works
-- Both share same scripts/stage3_run.py, no code change needed!
-
-### COMMITS SO FAR
-b7d07dc P0-FIX merge-method adapters
-2518e4a progress 12:10 post-fix evals
-c224f74 [NEGATIVE] Phase D blocker
-8cc9666 Phase D live status checkpoint
-87cf71d Phase D peft 5.x compat finding
-1adfc95 Phase D launch plan checkpoint
-3f3ae2a Phase D launched 4 qwen3-1p7b trainings
-
-## CONTEXT-TRIM CHECKPOINT 6 (14:35) — PHASE D DAEMON WRITTEN
-
-### NEW: scripts/phase_d_daemon.py
-Phase-D-specific daemon. Differences vs scripts/auto_fill_daemon.py:
-- Two interpreters: PY_ESPO (Qwen3 dense), PY_RRENV (Qwen3.5 multimodal causal LM)
-- Only tulu3-sft, only Phase D 5-arm methods (vanilla, baseline, S3pos, dora, cola)
-- Wave 1 priority order (small→big):
-   qwen35-0p8b → qwen35-2b → qwen3-1p7b → qwen35-4b → qwen3-4b → qwen35-9b → qwen3-14b
-- merge_every=750 (Phase D config), eval_every=250, ckpt_every=250
-- Eval target: lm_eval_v3/ for ALL methods (Phase D fresh; v2 not present)
-- DOES NOT auto-fill Wave 2 (qwen3-32b / qwen35-27b need PI signoff)
-- DOES NOT touch non-Qwen models (frozen)
-
-Stop:    touch /tmp/phase_d_daemon.STOP
-State:   /tmp/phase_d_daemon.state.json
-Logs:    logs/scout/_phase_d_daemon.log + logs/scout/<job>.log
-
-### Launch command
-nohup /mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python \
-    /mnt/cpfs/junlongke/onlinelora/lora_obd/scripts/phase_d_daemon.py \
-    > /mnt/cpfs/junlongke/onlinelora/lora_obd/logs/scout/_phase_d_daemon.log 2>&1 &
-disown
-
-### Pre-launch sanity checklist
-- [ ] verify dry-run pending_trainings() lists 30 cells (7 models × 5 methods − 5 already-done qwen3-1p7b)
-  (4 are training right now; cola not yet → so for qwen3-1p7b only cola pending)
-  expected counts:
-    qwen35-0p8b: 5 (none trained yet)
-    qwen35-2b:   5
-    qwen3-1p7b:  1 (cola only; lora_vanilla/baseline/S3pos/dora in flight)
-    qwen35-4b:   5
-    qwen3-4b:    5
-    qwen35-9b:   5
-    qwen3-14b:   5
-    total:       31 cells pending
-- [ ] verify dry-run pending_lm_evals() = 0 (no Phase D summary.json yet)
-- [ ] confirm STOP file does not exist before launch
-
-### Currently running (DO NOT KILL)
-PID 1773565 GPU1 train-qwen3-1p7b/lora_vanilla  step ~1075/3000
-PID 1773579 GPU2 train-qwen3-1p7b/relora_baseline step ~1075/3000
-PID 1773593 GPU4 train-qwen3-1p7b/S3pos step ~1075/3000
-PID 1773607 GPU7 train-qwen3-1p7b/dora step ~250/800
-PID 1781447 GPU0 SMOKE qwen35-0p8b/lora_vanilla (16s/step, only 50 steps total)
-PID 1782768 fla install (causal-conv1d compiling from source)
-PID 1733368 GPU3 gemma3 cleanup
-PID 1735950 GPU5 gemma3 cleanup
-PID 1762026 GPU6 gemma3 cleanup
-PID 1755167 GPU0 llama3 dora lm_eval (~19% complete)
-
-### CRITICAL: smoke MUST be killed before daemon launch
-Otherwise daemon sees GPU 0 as busy. Smoke is now at step 25/50, val_loss 1.93.
-It already proved Qwen3.5 plumbing works -> can be killed now:
-  kill 1781447
-
-### After daemon launched
-The daemon will queue qwen35-0p8b 5 cells FIRST (highest priority in WAVE1_ORDER).
-Each 0.8B cell with linear-attn fallback = ~13h (slow). With fla kernels = ~1.5h.
-Daemon will not proceed to qwen35-2b until qwen35-0p8b has summary.json saved
-(or until enough GPUs free that train_q has lower-priority cells to fill).
-
-Actually — the daemon iterates pending_trainings() in WAVE1_ORDER, and pops jobs
-in that order. So when 4 GPUs go free, it will launch qwen35-0p8b 5 cells (parallel).
-On the 5th GPU it will start qwen35-2b/lora_vanilla. This is intentional parallelism.
-
-### TODO checklist
-[x] phase_d_daemon.py written
-[ ] dry-run check (show pending_trainings list)
-[ ] kill smoke (PID 1781447) on GPU 0
-[ ] launch daemon
-[ ] wait fla install finish; if successful, kill any 0.8B trainings and relaunch
-    (much faster). If fla install FAILS, accept ~13h/cell for 0.8B; use parallelism.
-[ ] when first qwen35-0p8b cell finishes -> manually verify_adapter_loaded sanity
-    (write sanity script if not yet done)
-
-## CONTEXT-TRIM CHECKPOINT 7 (14:50) — DAEMON LAUNCHED ✅
-
-Phase D daemon PID 1785455 running. Confirmed dry-run output:
-  31 trainings pending across 7 Wave 1 models (in priority order)
-  0 evals pending (no Phase D summary.json yet — first need trainings to finish)
-
-Smoke (qwen35-0p8b PID 1781447) finished naturally, GPU 0 freed.
-
-Daemon will now:
-1. After 5min idle grace on freed GPUs, launch trainings in WAVE1_ORDER priority
-2. First batch will be qwen35-0p8b (5 cells) — but only 1 GPU free initially (GPU 0)
-   so it launches 1 cell, then waits for next free GPU
-3. As qwen3-1p7b trainings finish (3 are at step 1075/3000, ~1.5h ETA),
-   daemon will fill those GPUs with qwen35-* cells
-4. When qwen3-1p7b/dora finishes (~30min), daemon picks up qwen3-1p7b/cola
-5. Daemon stops when all 31 cells have summary.json + no GPU activity for 5min
-   (or via `touch /tmp/phase_d_daemon.STOP`)
-
-DAEMON STATE FILE: /tmp/phase_d_daemon.state.json (machine readable)
-DAEMON LOG: logs/scout/_phase_d_daemon.log
-
-### Quick health check commands (resume usage):
-  ps -eo pid,etime,args | grep phase_d_daemon | grep -v grep
-  tail -30 /mnt/cpfs/junlongke/onlinelora/lora_obd/logs/scout/_phase_d_daemon.log
-  ls /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-0p8b/tulu3-sft/ 2>&1
-  ls /mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen35-2b/tulu3-sft/ 2>&1
-
-### To stop daemon:
-  touch /tmp/phase_d_daemon.STOP
-
-### After daemon completes Wave 1:
-  - run scripts/build_main_table.py to refresh summary
-  - check phase_d_curve metric: Δ(S3pos) vs baseline across model sizes
-  - if inverted-U or all-win observed, get PI signoff for Wave 2 (32B/27B)
-  - use the same daemon (it currently does NOT include 32B/27B; would need
-    to add those entries to WAVE1_ORDER)
-
-### KEY ENV REMINDER (for any manual training)
-  Qwen3 dense models: /mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python
-  Qwen3.5 multimodal: /mnt/cpfs/junlongke/miniconda3/envs/RRenv/bin/python
-
-### KEY MODEL PATHS (all downloaded ✅)
-  /mnt/cpfs/junlongke/onlinelora/models/qwen3-1p7b   (3.8GB)
-  /mnt/cpfs/junlongke/onlinelora/models/qwen3-4b     (7.6GB Instruct-2507)
-  /mnt/cpfs/junlongke/onlinelora/models/qwen3-14b    (~30GB)
-  /mnt/cpfs/junlongke/onlinelora/models/qwen3-32b    (62GB)
-  /mnt/cpfs/junlongke/onlinelora/models/qwen35-0p8b  (1.7GB)
-  /mnt/cpfs/junlongke/onlinelora/models/qwen35-2b    (4.3GB)
-  /mnt/cpfs/junlongke/onlinelora/models/qwen35-4b    (8.8GB)
-  /mnt/cpfs/junlongke/onlinelora/models/qwen35-9b    (19GB)
-  /mnt/cpfs/junlongke/onlinelora/models/qwen35-27b   (52GB)
-  Qwen3-8B already at /mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B
+# Phase D LIVE STATUS — 2026-05-22 17:54
+
+## Pipeline architecture (current)
+- **Daemon**: `scripts/phase_d_daemon.py` PID 1916993 alive (restarted 17:21)
+- **Eval backends** (split by env):
+  - `env=espo` (Qwen3 dense: qwen3-1p7b/4b/14b): **vLLM-on-merged**
+    - Step 1: `merge_adapter.py` (PY_RRENV, CUDA_HOME=/usr/local/cuda-12, CUDA_VISIBLE_DEVICES="")
+      → `<seed_dir>/merged/` (bf16, ~3GB for 1.7B, ~80s)
+    - Step 2: `lm_eval --model vllm pretrained=<merged> bs=auto gpu_mem_util=0.85`
+  - `env=rrenv` (Qwen3.5: qwen35-{0p8b,2b,4b,9b,27b}): **HF-with-PEFT**
+    - vLLM 0.15.1 does NOT support `Qwen3_5ForCausalLM` (hybrid Mamba/full-attn) — confirmed via pydantic validation error
+    - Even `model_impl=transformers` fallback rejects it: "The Transformers implementation of 'Qwen3_5ForCausalLM' is not compatible with vLLM"
+    - Stays on HF backend, but bs bumped: 0p8b=16, 2b=8, 4b=4, 9b=2
+
+## Validated facts
+- `merge_adapter.py` works on RRenv with `CUDA_HOME=/usr/local/cuda-12` (deepspeed probe needs it; merge runs CPU)
+  - qwen35-0p8b/dora merged in 65s
+  - qwen3-1p7b/dora merged in 105s (saved at `results/stage3_v2/qwen3-1p7b/tulu3-sft/dora/seed42/merged/`)
+- vLLM smoke on `qwen3-1p7b/dora/merged` IN PROGRESS (PID 1919866 GPU=5, gpu_mem_util=0.4 to share with HF eval)
+  - Engine init done at 17:50, doing actual eval now
+  - HF baseline (qwen3-1p7b/dora full): gsm8k_strict=0.5201, flex=0.5262, hella=0.6314, arc=0.5205
+  - Expected vLLM result ≈ HF baseline (validates merge correctness)
+- numpy in RRenv: 2.4 → 2.2.6 (numba in vllm v1 spec_decode requires <2.3)
+- datasets in RRenv: 3.6.0 → 4.8.5 (need 'List' feature for lm_eval gsm8k metadata)
+
+## qwen3.5 vLLM blockers (DO NOT keep retrying)
+- `Qwen3_5ForCausalLM` not in vLLM 0.15.1 supported architectures
+- Architecture rename hack would fail: it's a hybrid linear-attn (Mamba-style in_proj_qkv/z/b/a) so structurally != Qwen3
+- Decision: keep HF backend for all qwen35-*
+
+## Done evals
+- qwen3-1p7b: 5/5 (HF, espo) — ALREADY in lm_eval_v3/results_*.json
+- qwen35-0p8b: 5/5 (HF, RRenv) — committed b8da94c
+  | method | gsm8k_strict | gsm8k_flex | hella | arc |
+  |---|---|---|---|---|
+  | lora_vanilla | 0.2320 | 0.1713 | 0.4296 | 0.4232 |
+  | relora_baseline | 0.2881 | 0.2889 | 0.4092 | 0.4061 |
+  | S3pos | 0.3116 | 0.3124 | 0.4087 | 0.4019 |
+  | dora | 0.3108 | 0.3124 | 0.4187 | 0.4172 |
+  | cola | 0.2972 | 0.2972 | 0.4084 | 0.4070 |
+
+## In flight (training)
+- qwen35-2b: 5/5 trained — 4 lm-eval (HF) running on GPU 2/3/5/6 launched ~15:13-15:46 (will finish ~16:30-17:30)
+  - actually one (lora_vanilla) already done v3=1
+- qwen35-4b: training 4/5 (lora_vanilla 2000/3000, relora_baseline 1975/3000, S3pos 300/3000, dora 150/800)
+  - rate: ~25 s/step (lora/relora) and 45 s/step (dora) — linear-attn slow fallback (no fla installed)
+  - cola not yet launched
+
+## Pending (training)
+- qwen35-4b/cola
+- qwen3-4b: 5 cells (env=espo, qwen3 dense — should be ~2-3x faster than qwen35-4b)
+- qwen35-9b: 5 cells (rrenv, will be ~30-50s/step, 24-40h each)
+- qwen3-14b: 5 cells (espo, ~10-15s/step likely)
+
+## OPLoRA analysis task (assigned, NOT STARTED)
+**Goal**: contrast experiment X-1 + X-2 (offline SVD vs online curvature subspace alignment)
+- **No retraining**, pure offline SVD postprocessing on existing adapters
+- Models: qwen3-1.7b, qwen3-8b, qwen35-0p8b, qwen35-2b
+- Methods: lora_vanilla, dora, relora_diag_gated_S3pos
+- Datasets: tulu3-sft (mathmix optional)
+- For each (model, data, method, layer) emit JSON:
+  ```
+  {
+    layer: "model.layers.0.self_attn.q_proj",
+    rho_k: {8,16,32,64,128} -> float,           # OPLoRA metric
+    subspace_overlap_left:  k -> float in [0,1],
+    subspace_overlap_right: k -> float in [0,1],
+    per_window_drift:       w=1..4 -> float in [0,1]   # X-2 only (windowed checkpoints)
+  }
+  ```
+- Output figures:
+  - Fig_A: ρ_k vs k, line per method
+  - Fig_B: subspace overlap (avg over layers) vs k
+  - Fig_C: per-window drift heatmap (windows × layers)
+- Plan:
+  1. `scripts/oplora_analysis.py`: load base W0 + adapter ΔW (or W0 + checkpoints/best/ for windows from periodic ckpts step_*); for each target_module compute SVD top-k subspace overlap with W0's top-k subspace
+  2. ρ_k = ||P_⊥(W0_top_k) ΔW||_F / ||ΔW||_F  (OPLoRA metric: how much of ΔW falls outside W0's top-k subspace; higher = more "novel" direction)
+  3. Subspace overlap_left[k] = ||U_W0_topk^T U_ΔW_topk||_F^2 / k   (Hotelling/principal angles)
+  4. For X-2: walk `checkpoints/step_000250.../adapter_*.safetensors` to compute ΔW per window, then drift = 1 - overlap(W_w, W_{w+1})
+  5. Plot with matplotlib; save under `analysis/oplora/{figures,jsons}/`
+
+## Critical files (don't lose)
+- `scripts/phase_d_daemon.py` (eval pipeline split)
+- `scripts/merge_adapter.py` (PEFT merge utility)
+- `scripts/run_lmeval_8parallel.sh` (older 8-task fanout, NOT used by daemon)
+- Latest commit: b8da94c "Phase D: vLLM-on-merged eval pipeline + qwen35-0p8b 5/5 results"
+- Branch: main, remote: github.com:Rirayh/onlinelora.git
+- Daemon log: `logs/scout/_phase_d_daemon.log`
+- Daemon stdout: `logs/phase_d_daemon.out`
+- STOP file: `/tmp/phase_d_daemon.STOP`
+
+## Next concrete actions
+1. Wait for vLLM smoke (PID 1919866) to finish, compare result vs HF=0.5201
+2. If vLLM agrees with HF (within ±0.01) → pipeline validated
+3. Start `scripts/oplora_analysis.py`, run on qwen35-0p8b first (smallest, cheapest); do CPU-only with adapter_model.safetensors
+4. Don't disturb daemon; OPLoRA analysis is CPU-bound
+
+## Environment
+- /mnt/cpfs/junlongke/miniconda3/envs/espo: transformers 4.52, peft 0.17 (Qwen3 dense only, NO vllm)
+- /mnt/cpfs/junlongke/miniconda3/envs/RRenv: transformers 5.3, peft 0.19.1, vllm 0.15.1, datasets 4.8.5, numpy 2.2.6, lm_eval 0.4.12
+- CUDA: /usr/local/cuda-12 (no nvcc binary); only need CUDA_HOME for deepspeed probe
