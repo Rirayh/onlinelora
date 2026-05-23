@@ -1,0 +1,17 @@
+[2026-05-23 17:24:00,180] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - START stage3 model=/mnt/cpfs/junlongke/onlinelora/models/qwen3-14b dataset=tulu3-sft method=relora_baseline out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/stage3_v2/qwen3-14b/tulu3-sft/relora_baseline/seed42
+[2026-05-23 17:24:03,746] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - tokenizer loaded in 0.4s, vocab=151643
+[2026-05-23 17:24:03,747] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - loading tulu-3-sft-mixture from /mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture
+[2026-05-23 17:24:05,586] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - tulu3-sft train=10000 val=500
+[2026-05-23 17:24:23,431] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - tulu3-sft tokenized: train 10000 val 500
+[2026-05-23 17:24:23,723] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - data prepared in 20.0s
+[2026-05-23 17:24:25,400] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - model loaded in 1.7s
+[2026-05-23 17:24:36,616] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - #LoRA layers=280 #components=4480
+[2026-05-23 17:24:36,621] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - #trainable params=64.23M
+[2026-05-23 17:25:00,270] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - [step 0] mean_ER=2228.38 mean_CN=3.45e+05 (sampled 8 layers)
+[2026-05-23 17:25:00,271] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - merge events scheduled at: [750, 1500, 2250, 3000]
+[2026-05-23 17:32:10,019] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - step=25/3000 train_loss=1.7224 lr=5.00e-05 elapsed=430s
+[2026-05-23 17:39:07,800] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - step=50/3000 train_loss=1.3779 lr=1.00e-04 elapsed=848s
+[2026-05-23 17:46:24,810] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - step=75/3000 train_loss=1.2349 lr=1.50e-04 elapsed=1285s
+[2026-05-23 17:53:32,288] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - step=100/3000 train_loss=1.2455 lr=2.00e-04 elapsed=1712s
+[2026-05-23 18:00:40,255] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - step=125/3000 train_loss=1.2099 lr=2.00e-04 elapsed=2140s
+[2026-05-23 18:07:48,837] INFO stage3.qwen3-14b.tulu3-sft.relora_baseline - step=150/3000 train_loss=1.2261 lr=2.00e-04 elapsed=2569s

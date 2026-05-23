@@ -1,0 +1,15 @@
+[skip] qwen35-0p8b/tulu3-sft/lora_vanilla (already analyzed)
+[skip] qwen35-0p8b/tulu3-sft/dora (already analyzed)
+[skip] qwen35-0p8b/tulu3-sft/relora_diag_gated_S3pos (already analyzed)
+[skip] qwen3-1p7b/tulu3-sft/lora_vanilla (already analyzed)
+[skip] qwen3-1p7b/tulu3-sft/dora (already analyzed)
+[skip] qwen3-1p7b/tulu3-sft/relora_diag_gated_S3pos (already analyzed)
+[skip] qwen35-2b/tulu3-sft/lora_vanilla (already analyzed)
+[skip] qwen35-2b/tulu3-sft/dora (already analyzed)
+[skip] qwen35-2b/tulu3-sft/relora_diag_gated_S3pos (already analyzed)
+[run]  qwen3-4b/tulu3-sft/lora_vanilla -> /mnt/cpfs/junlongke/onlinelora/lora_obd/analysis/oplora/jsons/qwen3-4b__tulu3-sft__lora_vanilla.json
+  ok
+[skip] qwen3-4b/tulu3-sft/dora (no adapter)
+[run]  qwen3-4b/tulu3-sft/relora_diag_gated_S3pos -> /mnt/cpfs/junlongke/onlinelora/lora_obd/analysis/oplora/jsons/qwen3-4b__tulu3-sft__relora_diag_gated_S3pos.json
+  ok
+[done] all OPLoRA analyses complete
