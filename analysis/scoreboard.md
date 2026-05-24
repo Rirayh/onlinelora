@@ -2,7 +2,9 @@
 
 **Backend:** qwen3-* (dense) → vLLM-on-merged | qwen35-* (hybrid) → HF+PEFT (bs=size-aware)
 
-Cells with eval done: **41**
+Total cells with eval done: **46**
+
+## Wave 1 (Qwen3 / Qwen3.5 ladder, tulu3-sft)
 
 | model | method | gsm8k_strict | gsm8k_flex | hellaswag | arc_challenge |
 |---|---|---:|---:|---:|---:|
@@ -30,20 +32,40 @@ Cells with eval done: **41**
 | qwen3-4b | relora_diag_gated_S3pos | 0.6778 | 0.7688 | 0.7266 | 0.6348 |
 | qwen3-4b | dora | 0.4519 | 0.7824 | 0.7351 | 0.6365 |
 | qwen3-4b | cola | 0.6679 | 0.7513 | 0.7274 | 0.6365 |
+| qwen35-9b | lora_vanilla | 0.7680 | 0.7521 | 0.8014 | 0.6305 |
+| qwen35-9b | relora_baseline | 0.8271 | 0.8294 | 0.8124 | 0.6911 |
+| qwen35-9b | dora | 0.8143 | 0.8158 | 0.8162 | 0.6834 |
+| qwen35-9b | cola | 0.8188 | 0.8241 | 0.8110 | 0.6869 |
+| qwen3-14b | lora_vanilla | 0.7726 | 0.8014 | 0.8068 | 0.6246 |
+
+## Legacy / earlier waves
+
+| model | method | gsm8k_strict | gsm8k_flex | hellaswag | arc_challenge |
+|---|---|---:|---:|---:|---:|
 | llama3-8b | relora_baseline | 0.4337 | 0.4329 | 0.8185 | 0.6084 |
-| olmo2-7b | relora_baseline | 0.6338 | 0.6338 | 0.8193 | 0.6195 |
-| qwen3-8b | relora_baseline | 0.7885 | 0.8006 | 0.7756 | 0.6689 |
-| r1-distill-7b | relora_baseline | 0.7642 | 0.7642 | 0.6319 | 0.5324 |
 | llama3-8b | relora_diag_gated_S3pos | 0.4602 | 0.4625 | 0.8266 | 0.5964 |
-| olmo2-7b | relora_diag_gated_S3pos | 0.6399 | 0.6391 | 0.8188 | 0.6152 |
-| qwen3-8b | relora_diag_gated_S3pos | 0.8650 | 0.8704 | 0.7707 | 0.6732 |
-| r1-distill-7b | relora_diag_gated_S3pos | 0.7225 | 0.7066 | 0.6213 | 0.5273 |
 | llama3-8b | cola | 0.4564 | 0.4632 | 0.8197 | 0.5922 |
-| olmo2-7b | cola | 0.6444 | 0.6459 | 0.8184 | 0.6186 |
-| r1-distill-7b | cola | 0.7612 | 0.7635 | 0.6336 | 0.5384 |
 | llama3-8b | relora_random_drop | 0.4594 | 0.4610 | 0.8176 | 0.5973 |
+| olmo2-7b | relora_baseline | 0.6338 | 0.6338 | 0.8193 | 0.6195 |
+| olmo2-7b | relora_diag_gated_S3pos | 0.6399 | 0.6391 | 0.8188 | 0.6152 |
+| olmo2-7b | cola | 0.6444 | 0.6459 | 0.8184 | 0.6186 |
 | olmo2-7b | relora_random_drop | 0.6459 | 0.6482 | 0.8192 | 0.6177 |
-| qwen3-8b | relora_diag_gated_S3neg | 0.8681 | 0.8688 | 0.7782 | 0.6715 |
+| qwen3-8b | relora_baseline | 0.7885 | 0.8006 | 0.7756 | 0.6689 |
+| qwen3-8b | relora_diag_gated_S3pos | 0.8650 | 0.8704 | 0.7707 | 0.6732 |
 | qwen3-8b | relora_random_drop | 0.8605 | 0.8643 | 0.7714 | 0.6724 |
+| qwen3-8b | relora_diag_gated_S3neg | 0.8681 | 0.8688 | 0.7782 | 0.6715 |
 | qwen3-8b | relora_train_gated | 0.8666 | 0.8696 | 0.7680 | 0.6672 |
+| r1-distill-7b | relora_baseline | 0.7642 | 0.7642 | 0.6319 | 0.5324 |
+| r1-distill-7b | relora_diag_gated_S3pos | 0.7225 | 0.7066 | 0.6213 | 0.5273 |
+| r1-distill-7b | cola | 0.7612 | 0.7635 | 0.6336 | 0.5384 |
 | r1-distill-7b | relora_random_drop | 0.7619 | 0.7657 | 0.6322 | 0.5350 |
+
+## Coverage by model (Wave 1)
+
+- qwen35-0p8b: 5/5
+- qwen3-1p7b: 5/5
+- qwen35-2b: 5/5
+- qwen35-4b: 4/5
+- qwen3-4b: 5/5
+- qwen35-9b: 4/5
+- qwen3-14b: 1/5
