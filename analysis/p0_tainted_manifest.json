@@ -1,0 +1,2715 @@
+{
+  "fix_commit": "b7d07dc",
+  "fix_dt_utc": "2026-05-19T15:45:00+00:00",
+  "merge_methods": [
+    "cola",
+    "relora_baseline",
+    "relora_diag_gated_S3neg",
+    "relora_diag_gated_S3pos",
+    "relora_diag_gated_S3pos_keepB",
+    "relora_random_drop",
+    "relora_train_gated"
+  ],
+  "n_rows": 115,
+  "n_tainted": 24,
+  "n_needs_v3_reeval": 29,
+  "n_needs_v3_reeval_pi_targets": 10,
+  "n_needs_vllm_v3": 67,
+  "n_needs_vllm_v3_pi_targets": 20,
+  "rows": [
+    {
+      "model": "gemma3-12b",
+      "dataset": "metamathqa-10k",
+      "method": "cola",
+      "seed_dir": "results/stage3_v2/gemma3-12b/metamathqa-10k/cola/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "gemma3-12b",
+      "dataset": "metamathqa-10k",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/gemma3-12b/metamathqa-10k/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": false,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "gemma3-12b",
+      "dataset": "metamathqa-10k",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/gemma3-12b/metamathqa-10k/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/gemma3-12b/metamathqa-10k/lora_vanilla/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__gemma3-12b__metamathqa-10k__lora_vanilla__seed42__adapter/results_2026-05-21T12-04-32.798543.json",
+          "ts": 1779365072.0,
+          "pre_fix": false,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "gemma3-12b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/gemma3-12b/metamathqa-10k/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "gemma3-12b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/gemma3-12b/metamathqa-10k/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": false,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "gemma3-12b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_random_drop",
+      "seed_dir": "results/stage3_v2/gemma3-12b/metamathqa-10k/relora_random_drop/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "gemma3-12b",
+      "dataset": "tulu3-sft",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/gemma3-12b/tulu3-sft/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": false,
+      "has_adapter": false,
+      "has_best_ckpt": false,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "gemma3-12b",
+      "dataset": "tulu3-sft",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/gemma3-12b/tulu3-sft/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "gemma3-12b",
+      "dataset": "tulu3-sft",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/gemma3-12b/tulu3-sft/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "gemma3-12b",
+      "dataset": "tulu3-sft",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/gemma3-12b/tulu3-sft/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": false,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "gemma3-12b",
+      "dataset": "tulu3-sft",
+      "method": "relora_random_drop",
+      "seed_dir": "results/stage3_v2/gemma3-12b/tulu3-sft/relora_random_drop/seed42",
+      "is_merge_method": true,
+      "has_summary": false,
+      "has_adapter": false,
+      "has_best_ckpt": false,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "llama3-8b",
+      "dataset": "metamathqa-10k",
+      "method": "cola",
+      "seed_dir": "results/stage3_v2/llama3-8b/metamathqa-10k/cola/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "llama3-8b",
+      "dataset": "metamathqa-10k",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/llama3-8b/metamathqa-10k/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/llama3-8b/metamathqa-10k/dora/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__llama3-8b__metamathqa-10k__dora__seed42__adapter/results_2026-05-21T03-58-31.420710.json",
+          "ts": 1779335911.0,
+          "pre_fix": false,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "llama3-8b",
+      "dataset": "metamathqa-10k",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/llama3-8b/metamathqa-10k/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/llama3-8b/metamathqa-10k/lora_vanilla/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__llama3-8b__metamathqa-10k__lora_vanilla__seed42__adapter/results_2026-05-18T21-47-42.341042.json",
+          "ts": 1779140862.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "llama3-8b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/llama3-8b/metamathqa-10k/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "llama3-8b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/llama3-8b/metamathqa-10k/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/llama3-8b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__llama3-8b__metamathqa-10k__relora_diag_gated_S3pos__seed42__adapter/results_2026-05-20T17-43-52.088007.json",
+          "ts": 1779299032.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "llama3-8b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_random_drop",
+      "seed_dir": "results/stage3_v2/llama3-8b/metamathqa-10k/relora_random_drop/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "llama3-8b",
+      "dataset": "tulu3-sft",
+      "method": "cola",
+      "seed_dir": "results/stage3_v2/llama3-8b/tulu3-sft/cola/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/llama3-8b/tulu3-sft/cola/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__llama3-8b__tulu3-sft__cola__seed42__adapter/results_2026-05-21T06-20-37.950989.json",
+          "ts": 1779344437.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "llama3-8b",
+      "dataset": "tulu3-sft",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/llama3-8b/tulu3-sft/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/llama3-8b/tulu3-sft/dora/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__llama3-8b__tulu3-sft__dora__seed42__adapter/results_2026-05-21T18-05-48.344121.json",
+          "ts": 1779386748.0,
+          "pre_fix": false,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "llama3-8b",
+      "dataset": "tulu3-sft",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/llama3-8b/tulu3-sft/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/llama3-8b/tulu3-sft/lora_vanilla/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__llama3-8b__tulu3-sft__lora_vanilla__seed42__adapter/results_2026-05-21T00-56-56.714299.json",
+          "ts": 1779325016.0,
+          "pre_fix": false,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "llama3-8b",
+      "dataset": "tulu3-sft",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/llama3-8b/tulu3-sft/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/llama3-8b/tulu3-sft/relora_baseline/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__llama3-8b__tulu3-sft__relora_baseline__seed42__adapter/results_2026-05-21T02-26-17.657057.json",
+          "ts": 1779330377.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "llama3-8b",
+      "dataset": "tulu3-sft",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/llama3-8b/tulu3-sft/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/llama3-8b/tulu3-sft/relora_diag_gated_S3pos/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__llama3-8b__tulu3-sft__relora_diag_gated_S3pos__seed42__adapter/results_2026-05-21T02-35-33.805672.json",
+          "ts": 1779330933.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "llama3-8b",
+      "dataset": "tulu3-sft",
+      "method": "relora_random_drop",
+      "seed_dir": "results/stage3_v2/llama3-8b/tulu3-sft/relora_random_drop/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/llama3-8b/tulu3-sft/relora_random_drop/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__llama3-8b__tulu3-sft__relora_random_drop__seed42__adapter/results_2026-05-21T04-04-50.249124.json",
+          "ts": 1779336290.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "mistral-7b",
+      "dataset": "metamathqa-10k",
+      "method": "adalora",
+      "seed_dir": "results/stage3_v2/mistral-7b/metamathqa-10k/adalora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/adalora/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__mistral-7b__metamathqa-10k__adalora__seed42__checkpoints__best/results_2026-05-16T08-04-04.249896.json",
+          "ts": 1778918644.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "mistral-7b",
+      "dataset": "metamathqa-10k",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/mistral-7b/metamathqa-10k/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/dora/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__mistral-7b__metamathqa-10k__dora__seed42__checkpoints__best/results_2026-05-17T21-25-19.297670.json",
+          "ts": 1779053119.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "mistral-7b",
+      "dataset": "metamathqa-10k",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/mistral-7b/metamathqa-10k/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/lora_vanilla/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__mistral-7b__metamathqa-10k__lora_vanilla__seed42__checkpoints__best/results_2026-05-15T16-33-43.651434.json",
+          "ts": 1778862823.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "mistral-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_baseline/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__mistral-7b__metamathqa-10k__relora_baseline__seed42__checkpoints__best/results_2026-05-15T16-31-29.579778.json",
+          "ts": 1778862689.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "mistral-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_diag_gated_S3neg",
+      "seed_dir": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__mistral-7b__metamathqa-10k__relora_diag_gated_S3neg__seed42__checkpoints__best/results_2026-05-16T07-56-09.034634.json",
+          "ts": 1778918169.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "mistral-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__mistral-7b__metamathqa-10k__relora_diag_gated_S3pos__seed42__checkpoints__best/results_2026-05-17T09-46-27.268322.json",
+          "ts": 1779011187.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval_step001500/results__stage3_v2__mistral-7b__metamathqa-10k__relora_diag_gated_S3pos__seed42__checkpoints__step_001500/results_2026-05-18T14-50-55.885997.json",
+          "ts": 1779115855.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__mistral-7b__metamathqa-10k__relora_diag_gated_S3pos__seed42__adapter/results_2026-05-19T17-39-27.133827.json",
+          "ts": 1779212367.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval_rebuilt/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__mistral-7b__metamathqa-10k__relora_diag_gated_S3pos__seed42__checkpoints__best/results_2026-05-16T02-55-34.510385.json",
+          "ts": 1778900134.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__mistral-7b__metamathqa-10k__relora_diag_gated_S3pos__seed42__checkpoints__best/results_2026-05-15T16-31-34.295296.json",
+          "ts": 1778862694.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "mistral-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_random_drop",
+      "seed_dir": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__mistral-7b__metamathqa-10k__relora_random_drop__seed42__checkpoints__best/results_2026-05-17T09-48-26.860554.json",
+          "ts": 1779011306.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__mistral-7b__metamathqa-10k__relora_random_drop__seed42__adapter/results_2026-05-19T17-40-57.227637.json",
+          "ts": 1779212457.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/lm_eval_rebuilt/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__mistral-7b__metamathqa-10k__relora_random_drop__seed42__checkpoints__best/results_2026-05-16T02-59-12.012585.json",
+          "ts": 1778900352.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_random_drop/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__mistral-7b__metamathqa-10k__relora_random_drop__seed42__checkpoints__best/results_2026-05-15T16-33-34.144482.json",
+          "ts": 1778862814.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "mistral-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_train_gated",
+      "seed_dir": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_train_gated/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_train_gated/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__mistral-7b__metamathqa-10k__relora_train_gated__seed42__adapter/results_2026-05-19T18-24-29.733840.json",
+          "ts": 1779215069.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/mistral-7b/metamathqa-10k/relora_train_gated/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__mistral-7b__metamathqa-10k__relora_train_gated__seed42__checkpoints__best/results_2026-05-17T11-51-12.842801.json",
+          "ts": 1779018672.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "olmo2-7b",
+      "dataset": "metamathqa-10k",
+      "method": "cola",
+      "seed_dir": "results/stage3_v2/olmo2-7b/metamathqa-10k/cola/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "olmo2-7b",
+      "dataset": "metamathqa-10k",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/olmo2-7b/metamathqa-10k/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": false,
+      "evals": [
+        {
+          "path": "results/stage3_v2/olmo2-7b/metamathqa-10k/dora/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__olmo2-7b__metamathqa-10k__dora__seed42__adapter/results_2026-05-19T13-44-44.348723.json",
+          "ts": 1779198284.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "olmo2-7b",
+      "dataset": "metamathqa-10k",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/olmo2-7b/metamathqa-10k/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/olmo2-7b/metamathqa-10k/lora_vanilla/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__olmo2-7b__metamathqa-10k__lora_vanilla__seed42__adapter/results_2026-05-18T22-08-28.368763.json",
+          "ts": 1779142108.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "olmo2-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/olmo2-7b/metamathqa-10k/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "olmo2-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/olmo2-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/olmo2-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__olmo2-7b__metamathqa-10k__relora_diag_gated_S3pos__seed42__adapter/results_2026-05-19T01-14-28.898778.json",
+          "ts": 1779153268.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/olmo2-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__olmo2-7b__metamathqa-10k__relora_diag_gated_S3pos__seed42__adapter/results_2026-05-19T17-29-26.018250.json",
+          "ts": 1779211766.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "olmo2-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_random_drop",
+      "seed_dir": "results/stage3_v2/olmo2-7b/metamathqa-10k/relora_random_drop/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "olmo2-7b",
+      "dataset": "tulu3-sft",
+      "method": "cola",
+      "seed_dir": "results/stage3_v2/olmo2-7b/tulu3-sft/cola/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/olmo2-7b/tulu3-sft/cola/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__olmo2-7b__tulu3-sft__cola__seed42__adapter/results_2026-05-20T06-30-33.736601.json",
+          "ts": 1779258633.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "olmo2-7b",
+      "dataset": "tulu3-sft",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/olmo2-7b/tulu3-sft/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": false,
+      "evals": [
+        {
+          "path": "results/stage3_v2/olmo2-7b/tulu3-sft/dora/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__olmo2-7b__tulu3-sft__dora__seed42__adapter/results_2026-05-20T19-47-45.952451.json",
+          "ts": 1779306465.0,
+          "pre_fix": false,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "olmo2-7b",
+      "dataset": "tulu3-sft",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/olmo2-7b/tulu3-sft/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/olmo2-7b/tulu3-sft/lora_vanilla/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__olmo2-7b__tulu3-sft__lora_vanilla__seed42__adapter/results_2026-05-19T08-46-39.026614.json",
+          "ts": 1779180399.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "olmo2-7b",
+      "dataset": "tulu3-sft",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/olmo2-7b/tulu3-sft/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/olmo2-7b/tulu3-sft/relora_baseline/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__olmo2-7b__tulu3-sft__relora_baseline__seed42__adapter/results_2026-05-19T08-56-33.702404.json",
+          "ts": 1779180993.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/olmo2-7b/tulu3-sft/relora_baseline/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__olmo2-7b__tulu3-sft__relora_baseline__seed42__adapter/results_2026-05-19T17-24-17.749529.json",
+          "ts": 1779211457.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "olmo2-7b",
+      "dataset": "tulu3-sft",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/olmo2-7b/tulu3-sft/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/olmo2-7b/tulu3-sft/relora_diag_gated_S3pos/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__olmo2-7b__tulu3-sft__relora_diag_gated_S3pos__seed42__adapter/results_2026-05-19T09-00-50.124689.json",
+          "ts": 1779181250.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/olmo2-7b/tulu3-sft/relora_diag_gated_S3pos/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__olmo2-7b__tulu3-sft__relora_diag_gated_S3pos__seed42__adapter/results_2026-05-19T17-23-38.523398.json",
+          "ts": 1779211418.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "olmo2-7b",
+      "dataset": "tulu3-sft",
+      "method": "relora_random_drop",
+      "seed_dir": "results/stage3_v2/olmo2-7b/tulu3-sft/relora_random_drop/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/olmo2-7b/tulu3-sft/relora_random_drop/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__olmo2-7b__tulu3-sft__relora_random_drop__seed42__adapter/results_2026-05-19T09-12-55.767436.json",
+          "ts": 1779181975.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/olmo2-7b/tulu3-sft/relora_random_drop/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__olmo2-7b__tulu3-sft__relora_random_drop__seed42__adapter/results_2026-05-19T17-25-42.749800.json",
+          "ts": 1779211542.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen25-7b",
+      "dataset": "metamathqa-10k",
+      "method": "adalora",
+      "seed_dir": "results/stage3_v2/qwen25-7b/metamathqa-10k/adalora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen25-7b/metamathqa-10k/adalora/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen25-7b__metamathqa-10k__adalora__seed42__checkpoints__best/results_2026-05-16T07-51-52.600003.json",
+          "ts": 1778917912.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen25-7b",
+      "dataset": "metamathqa-10k",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/qwen25-7b/metamathqa-10k/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen25-7b/metamathqa-10k/dora/seed42/lm_eval_step000750/results__stage3_v2__qwen25-7b__metamathqa-10k__dora__seed42__checkpoints__step_000750/results_2026-05-20T11-45-37.813105.json",
+          "ts": 1779277537.0,
+          "pre_fix": false,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen25-7b/metamathqa-10k/dora/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen25-7b__metamathqa-10k__dora__seed42__checkpoints__best/results_2026-05-18T01-48-46.921663.json",
+          "ts": 1779068926.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen25-7b",
+      "dataset": "metamathqa-10k",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/qwen25-7b/metamathqa-10k/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen25-7b/metamathqa-10k/lora_vanilla/seed42/lm_eval_step001500/results__stage3_v2__qwen25-7b__metamathqa-10k__lora_vanilla__seed42__checkpoints__step_001500/results_2026-05-18T18-58-52.209143.json",
+          "ts": 1779130732.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen25-7b/metamathqa-10k/lora_vanilla/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen25-7b__metamathqa-10k__lora_vanilla__seed42__checkpoints__best/results_2026-05-15T16-22-54.952835.json",
+          "ts": 1778862174.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen25-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/lm_eval_step001500/results__stage3_v2__qwen25-7b__metamathqa-10k__relora_baseline__seed42__checkpoints__step_001500/results_2026-05-18T15-09-34.677378.json",
+          "ts": 1779116974.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen25-7b/metamathqa-10k/relora_baseline/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen25-7b__metamathqa-10k__relora_baseline__seed42__checkpoints__best/results_2026-05-15T16-23-48.112253.json",
+          "ts": 1778862228.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen25-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_diag_gated_S3neg",
+      "seed_dir": "results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen25-7b__metamathqa-10k__relora_diag_gated_S3neg__seed42__checkpoints__best/results_2026-05-16T07-44-46.007054.json",
+          "ts": 1778917486.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen25-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval_step001500/results__stage3_v2__qwen25-7b__metamathqa-10k__relora_diag_gated_S3pos__seed42__checkpoints__step_001500/results_2026-05-18T16-33-15.678290.json",
+          "ts": 1779121995.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen25-7b__metamathqa-10k__relora_diag_gated_S3pos__seed42__adapter/results_2026-05-19T23-42-52.249377.json",
+          "ts": 1779234172.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen25-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen25-7b__metamathqa-10k__relora_diag_gated_S3pos__seed42__checkpoints__best/results_2026-05-15T16-23-05.640325.json",
+          "ts": 1778862185.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen25-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_random_drop",
+      "seed_dir": "results/stage3_v2/qwen25-7b/metamathqa-10k/relora_random_drop/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen25-7b/metamathqa-10k/relora_random_drop/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen25-7b__metamathqa-10k__relora_random_drop__seed42__checkpoints__best/results_2026-05-15T16-21-54.390729.json",
+          "ts": 1778862114.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen25-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_train_gated",
+      "seed_dir": "results/stage3_v2/qwen25-7b/metamathqa-10k/relora_train_gated/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen25-7b/metamathqa-10k/relora_train_gated/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen25-7b__metamathqa-10k__relora_train_gated__seed42__checkpoints__best/results_2026-05-17T09-35-12.827215.json",
+          "ts": 1779010512.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen3-14b",
+      "dataset": "tulu3-sft",
+      "method": "cola",
+      "seed_dir": "results/stage3_v2/qwen3-14b/tulu3-sft/cola/seed42",
+      "is_merge_method": true,
+      "has_summary": false,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen3-14b",
+      "dataset": "tulu3-sft",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/qwen3-14b/tulu3-sft/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": false,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-14b",
+      "dataset": "tulu3-sft",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/qwen3-14b/tulu3-sft/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-14b/tulu3-sft/lora_vanilla/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-14b__tulu3-sft__lora_vanilla__seed42__merged/results_2026-05-24T02-48-47.826266.json",
+          "ts": 1779590927.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "vllm"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-14b",
+      "dataset": "tulu3-sft",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/qwen3-14b/tulu3-sft/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-14b/tulu3-sft/relora_baseline/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-14b__tulu3-sft__relora_baseline__seed42__merged/results_2026-05-24T09-13-27.902096.json",
+          "ts": 1779614007.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "vllm"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-14b",
+      "dataset": "tulu3-sft",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/qwen3-14b/tulu3-sft/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": false,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen3-1p7b",
+      "dataset": "tulu3-sft",
+      "method": "cola",
+      "seed_dir": "results/stage3_v2/qwen3-1p7b/tulu3-sft/cola/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-1p7b/tulu3-sft/cola/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-1p7b__tulu3-sft__cola__seed42__adapter/results_2026-05-22T10-07-27.325333.json",
+          "ts": 1779444447.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen3-1p7b",
+      "dataset": "tulu3-sft",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/qwen3-1p7b/tulu3-sft/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-1p7b/tulu3-sft/dora/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-1p7b__tulu3-sft__dora__seed42__adapter/results_2026-05-21T19-29-07.205477.json",
+          "ts": 1779391747.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-1p7b",
+      "dataset": "tulu3-sft",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/qwen3-1p7b/tulu3-sft/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-1p7b/tulu3-sft/lora_vanilla/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-1p7b__tulu3-sft__lora_vanilla__seed42__adapter/results_2026-05-21T17-49-07.611112.json",
+          "ts": 1779385747.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-1p7b",
+      "dataset": "tulu3-sft",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/qwen3-1p7b/tulu3-sft/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-1p7b/tulu3-sft/relora_baseline/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-1p7b__tulu3-sft__relora_baseline__seed42__adapter/results_2026-05-21T17-54-10.649755.json",
+          "ts": 1779386050.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen3-1p7b",
+      "dataset": "tulu3-sft",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/qwen3-1p7b/tulu3-sft/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-1p7b/tulu3-sft/relora_diag_gated_S3pos/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-1p7b__tulu3-sft__relora_diag_gated_S3pos__seed42__adapter/results_2026-05-21T18-10-41.826124.json",
+          "ts": 1779387041.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen3-4b",
+      "dataset": "tulu3-sft",
+      "method": "cola",
+      "seed_dir": "results/stage3_v2/qwen3-4b/tulu3-sft/cola/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-4b/tulu3-sft/cola/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-4b__tulu3-sft__cola__seed42__merged/results_2026-05-23T07-10-24.894209.json",
+          "ts": 1779520224.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "vllm"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-4b",
+      "dataset": "tulu3-sft",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/qwen3-4b/tulu3-sft/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-4b/tulu3-sft/dora/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-4b__tulu3-sft__dora__seed42__merged/results_2026-05-23T09-27-18.342672.json",
+          "ts": 1779528438.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "vllm"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-4b",
+      "dataset": "tulu3-sft",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/qwen3-4b/tulu3-sft/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-4b/tulu3-sft/lora_vanilla/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-4b__tulu3-sft__lora_vanilla__seed42__merged/results_2026-05-23T01-54-00.737929.json",
+          "ts": 1779501240.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "vllm"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-4b",
+      "dataset": "tulu3-sft",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/qwen3-4b/tulu3-sft/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-4b/tulu3-sft/relora_baseline/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-4b__tulu3-sft__relora_baseline__seed42__merged/results_2026-05-23T01-56-40.965252.json",
+          "ts": 1779501400.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "vllm"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-4b",
+      "dataset": "tulu3-sft",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/qwen3-4b/tulu3-sft/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-4b/tulu3-sft/relora_diag_gated_S3pos/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-4b__tulu3-sft__relora_diag_gated_S3pos__seed42__merged/results_2026-05-23T02-25-37.140894.json",
+          "ts": 1779503137.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "vllm"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "metamathqa-10k",
+      "method": "adalora",
+      "seed_dir": "results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/lm_eval_step003000/results__stage3_v2__qwen3-8b__metamathqa-10k__adalora__seed42__checkpoints__step_003000/results_2026-05-18T10-16-00.703934.json",
+          "ts": 1779099360.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/adalora/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__adalora__seed42__checkpoints__best/results_2026-05-17T06-31-57.930527.json",
+          "ts": 1778999517.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "metamathqa-10k",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/qwen3-8b/metamathqa-10k/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/dora/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__dora__seed42__checkpoints__best/results_2026-05-17T11-55-20.279792.json",
+          "ts": 1779018920.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "metamathqa-10k",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/qwen3-8b/metamathqa-10k/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/lora_vanilla/seed42/lm_eval_step001500/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__lora_vanilla__seed42__checkpoints__step_001500/results_2026-05-17T14-20-05.938156.json",
+          "ts": 1779027605.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/lora_vanilla/seed42/lm_eval_step003000/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__lora_vanilla__seed42__checkpoints__step_003000/results_2026-05-18T07-47-20.027844.json",
+          "ts": 1779090440.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/lora_vanilla/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__lora_vanilla__seed42__checkpoints__best/results_2026-05-17T06-33-38.838439.json",
+          "ts": 1778999618.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_baseline/seed42/lm_eval_step002000/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__relora_baseline__seed42__checkpoints__step_002000/results_2026-05-18T07-39-03.255470.json",
+          "ts": 1779089943.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_baseline/seed42/lm_eval_step001500/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__relora_baseline__seed42__checkpoints__step_001500/results_2026-05-17T12-03-31.195591.json",
+          "ts": 1779019411.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_baseline/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__relora_baseline__seed42__checkpoints__best/results_2026-05-16T18-43-00.805849.json",
+          "ts": 1778956980.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_diag_gated_S3neg",
+      "seed_dir": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_diag_gated_S3neg/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_diag_gated_S3neg/seed42/lm_eval_step002000/results__stage3_v2__qwen3-8b__metamathqa-10k__relora_diag_gated_S3neg__seed42__checkpoints__step_002000/results_2026-05-18T10-07-12.886921.json",
+          "ts": 1779098832.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_diag_gated_S3neg/seed42/lm_eval_step001500/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__relora_diag_gated_S3neg__seed42__checkpoints__step_001500/results_2026-05-18T07-38-28.259263.json",
+          "ts": 1779089908.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_diag_gated_S3neg/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__relora_diag_gated_S3neg__seed42__checkpoints__best/results_2026-05-16T18-39-06.120642.json",
+          "ts": 1778956746.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval_step001500/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__relora_diag_gated_S3pos__seed42__checkpoints__step_001500/results_2026-05-17T12-01-39.643993.json",
+          "ts": 1779019299.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval_step003000/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__relora_diag_gated_S3pos__seed42__checkpoints__step_003000/results_2026-05-17T12-05-51.262405.json",
+          "ts": 1779019551.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__relora_diag_gated_S3pos__seed42__adapter/results_2026-05-19T19-27-38.829155.json",
+          "ts": 1779218858.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__relora_diag_gated_S3pos__seed42__checkpoints__best/results_2026-05-17T06-19-41.983766.json",
+          "ts": 1778998781.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_random_drop",
+      "seed_dir": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_random_drop/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_random_drop/seed42/lm_eval_step001500/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__relora_random_drop__seed42__checkpoints__step_001500/results_2026-05-17T14-13-40.885460.json",
+          "ts": 1779027220.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_random_drop/seed42/lm_eval_step003000/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__relora_random_drop__seed42__checkpoints__step_003000/results_2026-05-18T07-40-55.303785.json",
+          "ts": 1779090055.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_random_drop/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__relora_random_drop__seed42__checkpoints__best/results_2026-05-17T06-23-27.091832.json",
+          "ts": 1778999007.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_train_gated",
+      "seed_dir": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_train_gated/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_train_gated/seed42/lm_eval_step002000/results__stage3_v2__qwen3-8b__metamathqa-10k__relora_train_gated__seed42__checkpoints__step_002000/results_2026-05-18T10-07-44.413753.json",
+          "ts": 1779098864.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_train_gated/seed42/lm_eval_step001500/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__relora_train_gated__seed42__checkpoints__step_001500/results_2026-05-18T07-39-51.043440.json",
+          "ts": 1779089991.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/metamathqa-10k/relora_train_gated/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__metamathqa-10k__relora_train_gated__seed42__checkpoints__best/results_2026-05-16T18-41-19.573298.json",
+          "ts": 1778956879.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "tulu3-sft",
+      "method": "adalora",
+      "seed_dir": "results/stage3_v2/qwen3-8b/tulu3-sft/adalora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/adalora/seed42/lm_eval_step001500/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__adalora__seed42__checkpoints__step_001500/results_2026-05-18T07-32-27.419229.json",
+          "ts": 1779089547.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/adalora/seed42/lm_eval_step003000/results__stage3_v2__qwen3-8b__tulu3-sft__adalora__seed42__checkpoints__step_003000/results_2026-05-18T10-02-00.147063.json",
+          "ts": 1779098520.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/adalora/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__adalora__seed42__checkpoints__best/results_2026-05-15T02-56-07.536886.json",
+          "ts": 1778813767.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "tulu3-sft",
+      "method": "cola",
+      "seed_dir": "results/stage3_v2/qwen3-8b/tulu3-sft/cola/seed42",
+      "is_merge_method": true,
+      "has_summary": false,
+      "has_adapter": false,
+      "has_best_ckpt": false,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "tulu3-sft",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/qwen3-8b/tulu3-sft/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/dora/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__dora__seed42__checkpoints__best/results_2026-05-17T16-22-27.973772.json",
+          "ts": 1779034947.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "tulu3-sft",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/qwen3-8b/tulu3-sft/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/lora_vanilla/seed42/lm_eval_step001500/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__lora_vanilla__seed42__checkpoints__step_001500/results_2026-05-17T19-41-09.519340.json",
+          "ts": 1779046869.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/lora_vanilla/seed42/lm_eval_step003000/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__lora_vanilla__seed42__checkpoints__step_003000/results_2026-05-17T19-43-04.755537.json",
+          "ts": 1779046984.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/lora_vanilla/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__lora_vanilla__seed42__checkpoints__best/results_2026-05-15T02-54-30.235329.json",
+          "ts": 1778813670.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "tulu3-sft",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_baseline/seed42/lm_eval_step001500/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_baseline__seed42__checkpoints__step_001500/results_2026-05-17T13-55-58.610124.json",
+          "ts": 1779026158.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_baseline/seed42/lm_eval_step003000/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_baseline__seed42__checkpoints__step_003000/results_2026-05-17T19-53-46.964929.json",
+          "ts": 1779047626.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_baseline/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_baseline__seed42__adapter/results_2026-05-19T19-18-57.151227.json",
+          "ts": 1779218337.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_baseline/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_baseline__seed42__checkpoints__best/results_2026-05-15T02-54-24.758782.json",
+          "ts": 1778813664.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "tulu3-sft",
+      "method": "relora_diag_gated_S3neg",
+      "seed_dir": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_diag_gated_S3neg/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_diag_gated_S3neg/seed42/lm_eval_step001500/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_diag_gated_S3neg__seed42__checkpoints__step_001500/results_2026-05-18T07-39-35.013524.json",
+          "ts": 1779089975.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_diag_gated_S3neg/seed42/lm_eval_step003000/results__stage3_v2__qwen3-8b__tulu3-sft__relora_diag_gated_S3neg__seed42__checkpoints__step_003000/results_2026-05-18T10-08-50.254455.json",
+          "ts": 1779098930.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_diag_gated_S3neg/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_diag_gated_S3neg__seed42__adapter/results_2026-05-19T19-42-40.141921.json",
+          "ts": 1779219760.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_diag_gated_S3neg/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_diag_gated_S3neg__seed42__checkpoints__best/results_2026-05-15T02-58-02.458687.json",
+          "ts": 1778813882.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "tulu3-sft",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_diag_gated_S3pos/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_diag_gated_S3pos__seed42__checkpoints__best/results_2026-05-17T09-53-03.034162.json",
+          "ts": 1779011583.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_diag_gated_S3pos/seed42/lm_eval_step001500/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_diag_gated_S3pos__seed42__checkpoints__step_001500/results_2026-05-17T14-10-05.906323.json",
+          "ts": 1779027005.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_diag_gated_S3pos/seed42/lm_eval_step003000/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_diag_gated_S3pos__seed42__checkpoints__step_003000/results_2026-05-17T14-11-35.396610.json",
+          "ts": 1779027095.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_diag_gated_S3pos/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_diag_gated_S3pos__seed42__adapter/results_2026-05-19T19-32-32.487554.json",
+          "ts": 1779219152.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_diag_gated_S3pos/seed42/lm_eval_rebuilt/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_diag_gated_S3pos__seed42__checkpoints__best/results_2026-05-16T03-10-01.072805.json",
+          "ts": 1778901001.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_diag_gated_S3pos/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_diag_gated_S3pos__seed42__checkpoints__best/results_2026-05-15T03-05-39.344793.json",
+          "ts": 1778814339.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "tulu3-sft",
+      "method": "relora_random_drop",
+      "seed_dir": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_random_drop/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_random_drop/seed42/lm_eval_step001500/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_random_drop__seed42__checkpoints__step_001500/results_2026-05-17T19-49-49.380266.json",
+          "ts": 1779047389.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_random_drop/seed42/lm_eval_step003000/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_random_drop__seed42__checkpoints__step_003000/results_2026-05-17T19-52-39.507649.json",
+          "ts": 1779047559.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_random_drop/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_random_drop__seed42__adapter/results_2026-05-19T19-25-06.217714.json",
+          "ts": 1779218706.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_random_drop/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_random_drop__seed42__checkpoints__best/results_2026-05-15T02-53-34.323720.json",
+          "ts": 1778813614.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen3-8b",
+      "dataset": "tulu3-sft",
+      "method": "relora_train_gated",
+      "seed_dir": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_train_gated/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_train_gated/seed42/lm_eval_step001500/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_train_gated__seed42__checkpoints__step_001500/results_2026-05-18T07-38-31.346116.json",
+          "ts": 1779089911.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_train_gated/seed42/lm_eval_step003000/results__stage3_v2__qwen3-8b__tulu3-sft__relora_train_gated__seed42__checkpoints__step_003000/results_2026-05-18T10-07-50.878316.json",
+          "ts": 1779098870.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_train_gated/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_train_gated__seed42__adapter/results_2026-05-19T19-45-42.835174.json",
+          "ts": 1779219942.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        },
+        {
+          "path": "results/stage3_v2/qwen3-8b/tulu3-sft/relora_train_gated/seed42/lm_eval/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen3-8b__tulu3-sft__relora_train_gated__seed42__checkpoints__best/results_2026-05-16T14-48-33.551898.json",
+          "ts": 1778942913.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": true,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen35-0p8b",
+      "dataset": "tulu3-sft",
+      "method": "cola",
+      "seed_dir": "results/stage3_v2/qwen35-0p8b/tulu3-sft/cola/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-0p8b/tulu3-sft/cola/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-0p8b__tulu3-sft__cola__seed42__adapter/results_2026-05-22T15-08-14.281264.json",
+          "ts": 1779462494.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen35-0p8b",
+      "dataset": "tulu3-sft",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/qwen35-0p8b/tulu3-sft/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-0p8b/tulu3-sft/dora/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-0p8b__tulu3-sft__dora__seed42__adapter/results_2026-05-22T15-10-42.969516.json",
+          "ts": 1779462642.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen35-0p8b",
+      "dataset": "tulu3-sft",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/qwen35-0p8b/tulu3-sft/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-0p8b/tulu3-sft/lora_vanilla/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-0p8b__tulu3-sft__lora_vanilla__seed42__adapter/results_2026-05-22T12-00-44.991767.json",
+          "ts": 1779451244.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen35-0p8b",
+      "dataset": "tulu3-sft",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_baseline/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-0p8b__tulu3-sft__relora_baseline__seed42__adapter/results_2026-05-22T12-34-17.726962.json",
+          "ts": 1779453257.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen35-0p8b",
+      "dataset": "tulu3-sft",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-0p8b/tulu3-sft/relora_diag_gated_S3pos/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-0p8b__tulu3-sft__relora_diag_gated_S3pos__seed42__adapter/results_2026-05-22T12-41-18.248324.json",
+          "ts": 1779453678.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen35-2b",
+      "dataset": "tulu3-sft",
+      "method": "cola",
+      "seed_dir": "results/stage3_v2/qwen35-2b/tulu3-sft/cola/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-2b/tulu3-sft/cola/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-2b__tulu3-sft__cola__seed42__adapter/results_2026-05-22T18-46-21.759259.json",
+          "ts": 1779475581.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen35-2b",
+      "dataset": "tulu3-sft",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/qwen35-2b/tulu3-sft/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-2b/tulu3-sft/dora/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-2b__tulu3-sft__dora__seed42__adapter/results_2026-05-22T18-26-30.726623.json",
+          "ts": 1779474390.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen35-2b",
+      "dataset": "tulu3-sft",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/qwen35-2b/tulu3-sft/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-2b/tulu3-sft/lora_vanilla/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-2b__tulu3-sft__lora_vanilla__seed42__adapter/results_2026-05-22T15-13-15.891613.json",
+          "ts": 1779462795.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen35-2b",
+      "dataset": "tulu3-sft",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/qwen35-2b/tulu3-sft/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-2b/tulu3-sft/relora_baseline/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-2b__tulu3-sft__relora_baseline__seed42__adapter/results_2026-05-22T18-27-21.232703.json",
+          "ts": 1779474441.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen35-2b",
+      "dataset": "tulu3-sft",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/qwen35-2b/tulu3-sft/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-2b/tulu3-sft/relora_diag_gated_S3pos/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-2b__tulu3-sft__relora_diag_gated_S3pos__seed42__adapter/results_2026-05-22T18-24-19.362568.json",
+          "ts": 1779474259.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen35-4b",
+      "dataset": "tulu3-sft",
+      "method": "cola",
+      "seed_dir": "results/stage3_v2/qwen35-4b/tulu3-sft/cola/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-4b/tulu3-sft/cola/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-4b__tulu3-sft__cola__seed42__adapter/results_2026-05-23T16-23-33.814713.json",
+          "ts": 1779553413.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen35-4b",
+      "dataset": "tulu3-sft",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/qwen35-4b/tulu3-sft/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-4b/tulu3-sft/dora/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-4b__tulu3-sft__dora__seed42__adapter/results_2026-05-23T17-18-21.678393.json",
+          "ts": 1779556701.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen35-4b",
+      "dataset": "tulu3-sft",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/qwen35-4b/tulu3-sft/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-4b/tulu3-sft/lora_vanilla/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-4b__tulu3-sft__lora_vanilla__seed42__adapter/results_2026-05-23T13-55-14.726946.json",
+          "ts": 1779544514.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen35-4b",
+      "dataset": "tulu3-sft",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/qwen35-4b/tulu3-sft/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-4b/tulu3-sft/relora_baseline/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-4b__tulu3-sft__relora_baseline__seed42__adapter/results_2026-05-23T14-15-21.508821.json",
+          "ts": 1779545721.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen35-4b",
+      "dataset": "tulu3-sft",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/qwen35-4b/tulu3-sft/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": false,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen35-9b",
+      "dataset": "tulu3-sft",
+      "method": "cola",
+      "seed_dir": "results/stage3_v2/qwen35-9b/tulu3-sft/cola/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-9b/tulu3-sft/cola/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-9b__tulu3-sft__cola__seed42__adapter/results_2026-05-24T06-12-59.642622.json",
+          "ts": 1779603179.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen35-9b",
+      "dataset": "tulu3-sft",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/qwen35-9b/tulu3-sft/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-9b/tulu3-sft/dora/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-9b__tulu3-sft__dora__seed42__adapter/results_2026-05-24T03-06-57.163024.json",
+          "ts": 1779592017.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen35-9b",
+      "dataset": "tulu3-sft",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/qwen35-9b/tulu3-sft/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-9b/tulu3-sft/lora_vanilla/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-9b__tulu3-sft__lora_vanilla__seed42__adapter/results_2026-05-24T00-48-20.305411.json",
+          "ts": 1779583700.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "qwen35-9b",
+      "dataset": "tulu3-sft",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/qwen35-9b/tulu3-sft/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/qwen35-9b/tulu3-sft/relora_baseline/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__qwen35-9b__tulu3-sft__relora_baseline__seed42__adapter/results_2026-05-24T01-43-42.488657.json",
+          "ts": 1779587022.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "qwen35-9b",
+      "dataset": "tulu3-sft",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/qwen35-9b/tulu3-sft/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": false,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "r1-distill-7b",
+      "dataset": "metamathqa-10k",
+      "method": "cola",
+      "seed_dir": "results/stage3_v2/r1-distill-7b/metamathqa-10k/cola/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "r1-distill-7b",
+      "dataset": "metamathqa-10k",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/r1-distill-7b/metamathqa-10k/dora/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__r1-distill-7b__metamathqa-10k__dora__seed42__adapter/results_2026-05-20T14-40-05.144436.json",
+          "ts": 1779288005.0,
+          "pre_fix": false,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "r1-distill-7b",
+      "dataset": "metamathqa-10k",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/r1-distill-7b/metamathqa-10k/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/r1-distill-7b/metamathqa-10k/lora_vanilla/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__r1-distill-7b__metamathqa-10k__lora_vanilla__seed42__adapter/results_2026-05-18T21-50-16.853115.json",
+          "ts": 1779141016.0,
+          "pre_fix": true,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "r1-distill-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/r1-distill-7b/metamathqa-10k/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "r1-distill-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/r1-distill-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/r1-distill-7b/metamathqa-10k/relora_diag_gated_S3pos/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__r1-distill-7b__metamathqa-10k__relora_diag_gated_S3pos__seed42__adapter/results_2026-05-20T01-57-35.658416.json",
+          "ts": 1779242255.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "r1-distill-7b",
+      "dataset": "metamathqa-10k",
+      "method": "relora_random_drop",
+      "seed_dir": "results/stage3_v2/r1-distill-7b/metamathqa-10k/relora_random_drop/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": false,
+      "has_best_ckpt": true,
+      "evals": [],
+      "is_tainted": false,
+      "needs_v3_reeval": true,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "r1-distill-7b",
+      "dataset": "tulu3-sft",
+      "method": "cola",
+      "seed_dir": "results/stage3_v2/r1-distill-7b/tulu3-sft/cola/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/r1-distill-7b/tulu3-sft/cola/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__r1-distill-7b__tulu3-sft__cola__seed42__adapter/results_2026-05-20T19-31-24.158441.json",
+          "ts": 1779305484.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "r1-distill-7b",
+      "dataset": "tulu3-sft",
+      "method": "dora",
+      "seed_dir": "results/stage3_v2/r1-distill-7b/tulu3-sft/dora/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/r1-distill-7b/tulu3-sft/dora/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__r1-distill-7b__tulu3-sft__dora__seed42__adapter/results_2026-05-21T05-21-02.383063.json",
+          "ts": 1779340862.0,
+          "pre_fix": false,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "r1-distill-7b",
+      "dataset": "tulu3-sft",
+      "method": "lora_vanilla",
+      "seed_dir": "results/stage3_v2/r1-distill-7b/tulu3-sft/lora_vanilla/seed42",
+      "is_merge_method": false,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/r1-distill-7b/tulu3-sft/lora_vanilla/seed42/lm_eval_v2/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__r1-distill-7b__tulu3-sft__lora_vanilla__seed42__adapter/results_2026-05-20T09-32-20.991603.json",
+          "ts": 1779269540.0,
+          "pre_fix": false,
+          "is_v3": false,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": false
+    },
+    {
+      "model": "r1-distill-7b",
+      "dataset": "tulu3-sft",
+      "method": "relora_baseline",
+      "seed_dir": "results/stage3_v2/r1-distill-7b/tulu3-sft/relora_baseline/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/r1-distill-7b/tulu3-sft/relora_baseline/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__r1-distill-7b__tulu3-sft__relora_baseline__seed42__adapter/results_2026-05-20T09-55-59.470523.json",
+          "ts": 1779270959.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "r1-distill-7b",
+      "dataset": "tulu3-sft",
+      "method": "relora_diag_gated_S3pos",
+      "seed_dir": "results/stage3_v2/r1-distill-7b/tulu3-sft/relora_diag_gated_S3pos/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/r1-distill-7b/tulu3-sft/relora_diag_gated_S3pos/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__r1-distill-7b__tulu3-sft__relora_diag_gated_S3pos__seed42__adapter/results_2026-05-20T13-08-28.865591.json",
+          "ts": 1779282508.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    },
+    {
+      "model": "r1-distill-7b",
+      "dataset": "tulu3-sft",
+      "method": "relora_random_drop",
+      "seed_dir": "results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42",
+      "is_merge_method": true,
+      "has_summary": true,
+      "has_adapter": true,
+      "has_best_ckpt": true,
+      "evals": [
+        {
+          "path": "results/stage3_v2/r1-distill-7b/tulu3-sft/relora_random_drop/seed42/lm_eval_v3/__mnt__cpfs__junlongke__onlinelora__lora_obd__results__stage3_v2__r1-distill-7b__tulu3-sft__relora_random_drop__seed42__adapter/results_2026-05-20T11-55-42.181266.json",
+          "ts": 1779278142.0,
+          "pre_fix": false,
+          "is_v3": true,
+          "backend": "hf"
+        }
+      ],
+      "is_tainted": false,
+      "needs_v3_reeval": false,
+      "needs_vllm_v3": true
+    }
+  ]
+}
