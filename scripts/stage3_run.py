@@ -65,6 +65,7 @@ METHOD_CHOICES = [
     "relora_baseline",
     "relora_diag_gated_S3pos",
     "relora_diag_gated_S3neg",
+    "relora_diag_gated_S3pos_keepB",
     "dora",
     "adalora",
     "relora_random_drop",
@@ -286,7 +287,20 @@ def _find_lora_owner(peft_model: nn.Module, handle_name: str):
 
 @torch.no_grad()
 def merge_and_reset_lora(peft_model: nn.Module, handles: list[LoraHandle],
-                        keep_mask: dict[str, torch.Tensor], log) -> dict[str, Any]:
+                        keep_mask: dict[str, torch.Tensor], log,
+                        keep_B_after_merge: bool = False) -> dict[str, Any]:
+    """Merge kept components into base weight, then re-init for next ReLoRA segment.
+
+    keep_B_after_merge=False (default, original ReLoRA/CoLA behaviour):
+        all components -> kaiming(A), zero(B). Identical reset for kept+dropped;
+        saliency only affects which delta gets folded into base weight.
+
+    keep_B_after_merge=True (Task 2 fix; saliency-aware re-init):
+        - kept components: keep B columns, set A rows to 0  (delta = B @ 0 = 0,
+          no double-count after fold-in; B preserves saliency-selected direction
+          for the next segment, A re-learns from zero).
+        - dropped components: standard kaiming(A) + zero(B) (full re-init).
+    """
     merged_total = 0
     kept_per_layer: dict[str, int] = {}
     for h in handles:
@@ -303,8 +317,22 @@ def merge_and_reset_lora(peft_model: nn.Module, handles: list[LoraHandle],
             kept_per_layer[h.name] = r_keep
         else:
             kept_per_layer[h.name] = 0
-        nn.init.kaiming_uniform_(h.A, a=math.sqrt(5))
-        nn.init.zeros_(h.B)
+        if keep_B_after_merge and mask.any():
+            # Saliency-aware re-init: keep B[:, kept], zero corresponding A[kept, :].
+            # Dropped columns (~mask): kaiming(A), zero(B) as usual.
+            drop = ~mask
+            # Reset DROPPED rows of A with kaiming, keep KEPT rows' B columns.
+            if drop.any():
+                A_tmp = torch.empty_like(h.A)
+                nn.init.kaiming_uniform_(A_tmp, a=math.sqrt(5))
+                h.A.data[drop, :] = A_tmp[drop, :]
+                h.B.data[:, drop] = 0.0
+            # Kept rows of A reset to 0 (so delta=B@A=0 right after merge);
+            # B kept columns preserved.
+            h.A.data[mask, :] = 0.0
+        else:
+            nn.init.kaiming_uniform_(h.A, a=math.sqrt(5))
+            nn.init.zeros_(h.B)
     return {"merged_total": merged_total, "kept_per_layer": kept_per_layer}
 
 
@@ -496,6 +524,11 @@ def main() -> int:
                    help="save adapter checkpoint every N steps (0 = disabled)")
     p.add_argument("--saliency_max_seq_len", type=int, default=2048,
                    help="truncate batches to this length when computing saliency on long-seq train batches (F1 fix for relora_train_gated OOM); only triggers if < args.seq_len")
+    p.add_argument("--keep_B_after_merge", action="store_true",
+                   help="Task 2 method fix: saliency-aware re-init after merge. "
+                        "Kept components keep B columns (A rows zeroed); dropped components "
+                        "get standard kaiming(A)+zero(B). Auto-enabled by method "
+                        "relora_diag_gated_S3pos_keepB.")
     p.add_argument("--smoke", action="store_true",
                    help="quick smoke: total_steps=50 eval_every=25 rank_stat_every=25")
     args = p.parse_args()
@@ -527,6 +560,13 @@ def main() -> int:
     elif args.method == "relora_diag_gated_S3neg":
         do_relora = True
         gate_sign = "S3neg_drops"
+    elif args.method == "relora_diag_gated_S3pos_keepB":
+        # Same gating as S3pos, but on merge: kept components keep B, A reset to 0
+        # (avoids double-count of B@A through delta after fold-in, while preserving
+        #  saliency-selected B direction). Dropped components: standard kaiming(A)+zero(B).
+        do_relora = True
+        gate_sign = "S3pos_drops"
+        args.keep_B_after_merge = True
     elif args.method == "relora_random_drop":
         do_relora = True
         gate_sign = "random"
@@ -637,6 +677,7 @@ def main() -> int:
         "gate_sign": gate_sign, "do_relora": do_relora,
         "saliency_source": saliency_source,
         "saliency_max_seq_len": args.saliency_max_seq_len,
+        "keep_B_after_merge": args.keep_B_after_merge,
         "lora_r": args.lora_r, "lora_alpha": args.lora_alpha,
         "lora_dropout": args.lora_dropout, "target_modules": args.target_modules,
         "seq_len": args.seq_len, "batch_size": args.batch_size,
@@ -772,7 +813,7 @@ def main() -> int:
                 # ----- ReLoRA merge event -----
                 if step in merge_steps:
                     event_idx = sorted(merge_steps).index(step) + 1
-                    log.info(f"=== MERGE EVENT {event_idx} at step {step} (method={args.method}) ===")
+                    log.info(f"=== MERGE EVENT {event_idx} at step {step} (method={args.method}, keep_B_after_merge={args.keep_B_after_merge}) ===")
                     # build keep_mask
                     if gate_sign is None:
                         # vanilla ReLoRA: merge all
@@ -839,7 +880,8 @@ def main() -> int:
                             model.zero_grad(set_to_none=True)
                             torch.cuda.empty_cache()
                         keep_masks, stats = build_keep_mask(handles, gate_sign, fo_signed)
-                    merge_stats = merge_and_reset_lora(model, handles, keep_masks, log)
+                    merge_stats = merge_and_reset_lora(model, handles, keep_masks, log,
+                                                       keep_B_after_merge=args.keep_B_after_merge)
                     # reset optimizer (Lialin protocol)
                     optim = AdamW(trainable, lr=args.lr, weight_decay=args.weight_decay,
                                   betas=(0.9, 0.95))
