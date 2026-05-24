@@ -27,6 +27,7 @@ import os
 import random
 import sys
 import time
+import gc
 from pathlib import Path
 from typing import Any, Optional
 
@@ -791,18 +792,52 @@ def main() -> int:
                     else:
                         # gated: compute first-order saliency on val OR train batch
                         sal_loader = diag_loader if saliency_source == "val" else train_loader
-                        if saliency_source == "train" and args.saliency_max_seq_len < args.seq_len:
-                            sal_loader = build_truncated_loader(
-                                sal_loader,
-                                max_len=args.saliency_max_seq_len,
-                                max_batches=args.diag_batches,
-                            )
-                            log.info(f"saliency train loader truncated to seq_len={args.saliency_max_seq_len} "
-                                     f"(diag_batches={args.diag_batches}) [F1 OOM fix]")
-                        fo_signed = first_order_saliency(
-                            model, handles, sal_loader, device,
-                            max_batches=args.diag_batches, signed=True,
+                        # F2 OOM fix (S3pos large-model crash):
+                        # Always truncate sal_loader to saliency_max_seq_len for both
+                        # val and train sources. Previously only train was truncated;
+                        # for large models (qwen35-4b/9b, qwen3-14b) the un-truncated
+                        # val loader caused silent CUDA OOM (SIGKILL, no traceback)
+                        # at MERGE EVENT 1 with method=relora_diag_gated_S3pos.
+                        sal_loader = build_truncated_loader(
+                            sal_loader,
+                            max_len=min(args.saliency_max_seq_len, args.seq_len),
+                            max_batches=args.diag_batches,
                         )
+                        log.info(f"saliency loader (source={saliency_source}) truncated to "
+                                 f"seq_len={min(args.saliency_max_seq_len, args.seq_len)} "
+                                 f"(diag_batches={args.diag_batches}) [F2 OOM fix]")
+                        # Free optimizer state + cache before backward to give
+                        # saliency activations more headroom on big models.
+                        del optim, sched
+                        gc.collect()
+                        torch.cuda.empty_cache()
+                        try:
+                            mem_pre = torch.cuda.memory_allocated() / (1024**3)
+                            log.info(f"merge_event{event_idx} pre-saliency cuda_alloc={mem_pre:.2f}GB")
+                            fo_signed = first_order_saliency(
+                                model, handles, sal_loader, device,
+                                max_batches=args.diag_batches, signed=True,
+                            )
+                        except torch.cuda.OutOfMemoryError as e:
+                            log.warning(f"saliency OOM ({e}); retry with diag_batches=1, max_len={args.saliency_max_seq_len // 2}")
+                            torch.cuda.empty_cache()
+                            sal_loader = build_truncated_loader(
+                                diag_loader if saliency_source == "val" else train_loader,
+                                max_len=max(args.saliency_max_seq_len // 2, 256),
+                                max_batches=1,
+                            )
+                            fo_signed = first_order_saliency(
+                                model, handles, sal_loader, device,
+                                max_batches=1, signed=True,
+                            )
+                        except Exception as e:
+                            import traceback
+                            log.error(f"saliency FAILED: {type(e).__name__}: {e}")
+                            log.error(traceback.format_exc())
+                            raise
+                        finally:
+                            model.zero_grad(set_to_none=True)
+                            torch.cuda.empty_cache()
                         keep_masks, stats = build_keep_mask(handles, gate_sign, fo_signed)
                     merge_stats = merge_and_reset_lora(model, handles, keep_masks, log)
                     # reset optimizer (Lialin protocol)
