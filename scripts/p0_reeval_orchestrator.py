@@ -206,10 +206,19 @@ def launch_eval_hybrid(gpu: int, model: str, model_path: str,
 
 def build_jobs(manifest: dict) -> list[dict]:
     jobs = []
+    pi_jobs = []
+    other_jobs = []
+    PI_MODELS = {"mistral-7b", "qwen25-7b", "qwen3-8b"}
     for r in manifest["rows"]:
         if not r.get("needs_vllm_v3"):
             continue
         model = r["model"]
+        # Per PI directive 2026-05-25 11:00 §7: "All evals via vLLM-on-merged.
+        # No HF backend." -> skip hybrid Qwen3.5 cells (vllm 0.15.1 has no hybrid
+        # Mamba+full-attn support). Document them as deferred.
+        if is_hybrid(model):
+            log(f"DEFER hybrid (no-HF rule): {model}/{r['dataset']}/{r['method']}")
+            continue
         if model not in MODEL_PATH:
             log(f"SKIP (no model_path): {model}/{r['dataset']}/{r['method']}")
             continue
@@ -225,7 +234,7 @@ def build_jobs(manifest: dict) -> list[dict]:
             log(f"SKIP (base path missing): {model} -> {base_path}")
             continue
         name = f"{model}__{r['dataset']}__{r['method']}"
-        jobs.append({
+        job = {
             "name": name,
             "model": model,
             "model_path": base_path,
@@ -235,8 +244,16 @@ def build_jobs(manifest: dict) -> list[dict]:
             "adapter": adapter_src,
             "merged_dir": seed_dir / "merged",
             "out_dir": seed_dir / "lm_eval",
-            "is_hybrid": is_hybrid(model),
-        })
+            "is_hybrid": False,
+        }
+        if model in PI_MODELS:
+            pi_jobs.append(job)
+        else:
+            other_jobs.append(job)
+    # PI cells first — explicit priority per directive 2026-05-25 11:00.
+    jobs = pi_jobs + other_jobs
+    log(f"build_jobs: PI={len(pi_jobs)} other={len(other_jobs)} total={len(jobs)}")
+    return jobs
     return jobs
 
 
