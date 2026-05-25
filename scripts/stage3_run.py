@@ -245,6 +245,62 @@ def build_metamathqa(tok, max_len: int, log, n_train: int = 10_000, n_val: int =
 
 
 # -----------------------------------------------------------------------------
+# OOD calibration sets for saliency (Task 3 fix)
+# -----------------------------------------------------------------------------
+# Default saliency_source='val' uses the SFT val split, which is the WRONG
+# distribution when downstream eval is OOD (e.g. GSM8K reasoning, HellaSwag MCQ).
+# These calib loaders provide eval-distribution-aligned saliency signals.
+def build_gsm8k_calib(tok, max_len: int, log, n_calib: int = 256) -> SFTDataset:
+    """GSM8K train split for saliency calibration (OOD math reasoning)."""
+    from datasets import load_dataset
+    log.info(f"[saliency_calib] loading gsm8k train split (n={n_calib})")
+    ds = load_dataset("gsm8k", "main")
+    train_raw = list(ds["train"])
+    rng = random.Random(42)
+    rng.shuffle(train_raw)
+    samples = train_raw[:n_calib]
+
+    def _fmt(ex):
+        prompt = f"Question: {ex['question']}\nAnswer:"
+        response = " " + ex["answer"]
+        return _tokenize_pair(tok, prompt, response, max_len)
+    ex_list = [_fmt(e) for e in samples]
+    log.info(f"[saliency_calib] gsm8k tokenized: {len(ex_list)}")
+    return SFTDataset(ex_list)
+
+
+def build_hellaswag_calib(tok, max_len: int, log, n_calib: int = 256) -> SFTDataset:
+    """HellaSwag val split for saliency calibration (OOD commonsense MCQ).
+
+    Treated as completion: prompt = ctx_a + ctx_b, response = endings[label].
+    """
+    from datasets import load_dataset
+    log.info(f"[saliency_calib] loading hellaswag val split (n={n_calib})")
+    ds = load_dataset("hellaswag")
+    val_raw = list(ds["validation"])
+    rng = random.Random(42)
+    rng.shuffle(val_raw)
+    samples = val_raw[:n_calib]
+
+    def _fmt(ex):
+        ctx = (ex.get("ctx_a", "") or "") + " " + (ex.get("ctx_b", "") or "")
+        ctx = ctx.strip()
+        try:
+            label = int(ex["label"])
+        except (ValueError, TypeError):
+            return None
+        endings = ex.get("endings") or []
+        if label < 0 or label >= len(endings):
+            return None
+        prompt = f"{ctx}"
+        response = " " + endings[label]
+        return _tokenize_pair(tok, prompt, response, max_len)
+    ex_list = [r for r in (_fmt(e) for e in samples) if r is not None]
+    log.info(f"[saliency_calib] hellaswag tokenized: {len(ex_list)}")
+    return SFTDataset(ex_list)
+
+
+# -----------------------------------------------------------------------------
 # LoRA helpers (reuse stage2 conventions)
 # -----------------------------------------------------------------------------
 def wrap_lora(model: nn.Module, r: int, alpha: int, dropout: float,
@@ -529,6 +585,16 @@ def main() -> int:
                         "Kept components keep B columns (A rows zeroed); dropped components "
                         "get standard kaiming(A)+zero(B). Auto-enabled by method "
                         "relora_diag_gated_S3pos_keepB.")
+    p.add_argument("--saliency_calib_set",
+                   choices=["none", "gsm8k_train", "hellaswag_val"],
+                   default="none",
+                   help="Task 3 fix: OOD calibration set for saliency. 'none' (default) "
+                        "keeps the original behaviour (val/train SFT split per method). "
+                        "'gsm8k_train' / 'hellaswag_val' override sal_loader with the "
+                        "eval-distribution-aligned set so saliency ranks components under "
+                        "the downstream OOD distribution.")
+    p.add_argument("--saliency_calib_n", type=int, default=256,
+                   help="number of calib samples (only when --saliency_calib_set != none)")
     p.add_argument("--smoke", action="store_true",
                    help="quick smoke: total_steps=50 eval_every=25 rank_stat_every=25")
     args = p.parse_args()
@@ -635,6 +701,21 @@ def main() -> int:
     diag_loader = DataLoader(val_ds, batch_size=args.batch_size, shuffle=True,
                              collate_fn=collate, drop_last=False)
 
+    # Task 3: OOD saliency calibration loader (overrides val/train sal source).
+    calib_loader = None
+    if args.saliency_calib_set == "gsm8k_train":
+        calib_ds = build_gsm8k_calib(tok, args.seq_len, log, n_calib=args.saliency_calib_n)
+        calib_loader = DataLoader(calib_ds, batch_size=args.batch_size, shuffle=True,
+                                  collate_fn=collate, drop_last=False)
+    elif args.saliency_calib_set == "hellaswag_val":
+        calib_ds = build_hellaswag_calib(tok, args.seq_len, log, n_calib=args.saliency_calib_n)
+        calib_loader = DataLoader(calib_ds, batch_size=args.batch_size, shuffle=True,
+                                  collate_fn=collate, drop_last=False)
+    if calib_loader is not None:
+        log.info(f"[saliency_calib] using OOD calib set '{args.saliency_calib_set}' "
+                 f"(n={args.saliency_calib_n}) for saliency; overrides "
+                 f"saliency_source={args.method} default.")
+
     # Model
     t0 = time.time()
     base = AutoModelForCausalLM.from_pretrained(
@@ -678,6 +759,8 @@ def main() -> int:
         "saliency_source": saliency_source,
         "saliency_max_seq_len": args.saliency_max_seq_len,
         "keep_B_after_merge": args.keep_B_after_merge,
+        "saliency_calib_set": args.saliency_calib_set,
+        "saliency_calib_n": args.saliency_calib_n,
         "lora_r": args.lora_r, "lora_alpha": args.lora_alpha,
         "lora_dropout": args.lora_dropout, "target_modules": args.target_modules,
         "seq_len": args.seq_len, "batch_size": args.batch_size,
@@ -831,8 +914,14 @@ def main() -> int:
                             rng_seed=args.seed + event_idx,
                         )
                     else:
-                        # gated: compute first-order saliency on val OR train batch
-                        sal_loader = diag_loader if saliency_source == "val" else train_loader
+                        # gated: compute first-order saliency on val/train OR OOD calib batch.
+                        # Task 3 fix: if --saliency_calib_set is set, override sal source.
+                        if calib_loader is not None:
+                            sal_loader = calib_loader
+                            sal_src_label = f"calib:{args.saliency_calib_set}"
+                        else:
+                            sal_loader = diag_loader if saliency_source == "val" else train_loader
+                            sal_src_label = saliency_source
                         # F2 OOM fix (S3pos large-model crash):
                         # Always truncate sal_loader to saliency_max_seq_len for both
                         # val and train sources. Previously only train was truncated;
@@ -844,7 +933,7 @@ def main() -> int:
                             max_len=min(args.saliency_max_seq_len, args.seq_len),
                             max_batches=args.diag_batches,
                         )
-                        log.info(f"saliency loader (source={saliency_source}) truncated to "
+                        log.info(f"saliency loader (source={sal_src_label}) truncated to "
                                  f"seq_len={min(args.saliency_max_seq_len, args.seq_len)} "
                                  f"(diag_batches={args.diag_batches}) [F2 OOM fix]")
                         # Free optimizer state + cache before backward to give
@@ -862,8 +951,12 @@ def main() -> int:
                         except torch.cuda.OutOfMemoryError as e:
                             log.warning(f"saliency OOM ({e}); retry with diag_batches=1, max_len={args.saliency_max_seq_len // 2}")
                             torch.cuda.empty_cache()
+                            base_sal_loader = (
+                                calib_loader if calib_loader is not None
+                                else (diag_loader if saliency_source == "val" else train_loader)
+                            )
                             sal_loader = build_truncated_loader(
-                                diag_loader if saliency_source == "val" else train_loader,
+                                base_sal_loader,
                                 max_len=max(args.saliency_max_seq_len // 2, 256),
                                 max_batches=1,
                             )
