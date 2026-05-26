@@ -183,6 +183,49 @@ TARGET_MODULES_DEFAULT = [
     "gate_proj", "up_proj", "down_proj",
 ]
 
+# Per-event drop_rate schedules (PI 2026-05-26 v2 saliency revamp, S2.5).
+# Each schedule lists drop probabilities per merge event, in event order.
+# Default has 6 entries (matches merge_every=500, total_steps=3000).
+DROP_SCHEDULE_REGISTRY: dict[str, list[float]] = {
+    "const_0p25":         [0.25] * 6,
+    "const_0p5":          [0.5] * 6,
+    "const_0p75":         [0.75] * 6,
+    "anneal_down":        [0.75, 0.65, 0.55, 0.45, 0.35, 0.25],
+    "anneal_up":          [0.25, 0.35, 0.45, 0.55, 0.65, 0.75],
+    "triangle_up_down":   [0.25, 0.45, 0.65, 0.65, 0.45, 0.25],
+    "triangle_down_up":   [0.75, 0.55, 0.35, 0.35, 0.55, 0.75],
+    "early_burst":        [0.9, 0.5, 0.5, 0.5, 0.5, 0.5],
+    "late_burst":         [0.5, 0.5, 0.5, 0.5, 0.5, 0.9],
+    "bookend_burst":      [0.9, 0.3, 0.3, 0.3, 0.3, 0.9],
+    "extreme_alternate":  [0.0, 1.0, 0.0, 1.0, 0.0, 1.0],
+}
+
+
+def parse_drop_schedule(spec: str, n_events: int) -> list[float] | None:
+    """Resolve --drop_schedule spec to a per-event list of length n_events.
+
+    Returns None if spec is empty (caller should fall back to constant
+    --random_drop_rate). Raises ValueError on unknown registry name.
+    """
+    if not spec:
+        return None
+    if spec in DROP_SCHEDULE_REGISTRY:
+        sched = list(DROP_SCHEDULE_REGISTRY[spec])
+    elif spec.startswith("random_schedule:seed="):
+        seed = int(spec.split("=", 1)[1])
+        rng = np.random.default_rng(seed)
+        sched = [float(rng.uniform(0.1, 0.9)) for _ in range(n_events)]
+    elif "," in spec:
+        sched = [float(x) for x in spec.split(",")]
+    else:
+        raise ValueError(
+            f"unknown --drop_schedule '{spec}'. Use a registry name "
+            f"({sorted(DROP_SCHEDULE_REGISTRY)}), a comma list, or "
+            f"'random_schedule:seed=N'.")
+    if len(sched) < n_events:
+        sched = sched + [sched[-1]] * (n_events - len(sched))
+    return sched[:n_events]
+
 
 # -----------------------------------------------------------------------------
 # Data loaders — produce (input_ids, labels) where labels are -100 on prompt
@@ -712,6 +755,23 @@ def main() -> int:
                         "LoRA scaled (alpha/r) updates with cosine warmup peak.")
     p.add_argument("--muon_ns_steps", type=int, default=5,
                    help="Newton-Schulz iterations per Muon step (default 5).")
+    p.add_argument("--saliency_estimator", choices=["v1", "v2"], default="v1",
+                   help="v1: legacy first_order_saliency aggregated over batches "
+                        "(sign-only). v2: per-sample IG (m points B->t*B) + "
+                        "BH-FDR t-stat gating + Bernoulli random fallback "
+                        "(PI 2026-05-26 v2 saliency revamp).")
+    p.add_argument("--saliency_v2_m_ig", type=int, default=4,
+                   help="IG interpolation points for v2 estimator (default 4).")
+    p.add_argument("--saliency_v2_alpha", type=float, default=0.1,
+                   help="BH-FDR significance level for v2 t-stat gating (default 0.1).")
+    p.add_argument("--drop_schedule", default="",
+                   help="Per-event drop_rate schedule. One of:\n"
+                        "  - registry name: const_0p5, const_0p25, const_0p75,\n"
+                        "      anneal_down, anneal_up, triangle_up_down, triangle_down_up,\n"
+                        "      early_burst, late_burst, bookend_burst, extreme_alternate\n"
+                        "  - comma list: '0.9,0.5,0.5,0.5,0.5,0.5'\n"
+                        "  - 'random_schedule:seed=N' for random per-event in [0.1,0.9]\n"
+                        "  - empty (default): use --random_drop_rate as constant")
     p.add_argument("--smoke", action="store_true",
                    help="quick smoke: total_steps=50 eval_every=25 rank_stat_every=25")
     args = p.parse_args()
@@ -941,6 +1001,11 @@ def main() -> int:
         merge_steps = set()
     log.info(f"merge events scheduled at: {sorted(merge_steps)}")
 
+    # Resolve --drop_schedule (PI 2026-05-26 v2, S2.5). None => constant --random_drop_rate.
+    drop_schedule_list = parse_drop_schedule(args.drop_schedule, len(merge_steps))
+    if drop_schedule_list is not None:
+        log.info(f"drop_schedule '{args.drop_schedule}' -> per-event rates: {drop_schedule_list}")
+
     # Train loop
     model.train()
     step = 0
@@ -1037,13 +1102,19 @@ def main() -> int:
                                  "score_quantiles": [],
                                  "per_layer_keep_counts": {h.name: h.r for h in handles}}
                     elif gate_sign == "random":
-                        # Bernoulli random drop at configurable rate (Exp-1 sweep target).
-                        # drop_rate=0.0 should reproduce relora_baseline behaviour.
+                        # Bernoulli random drop. Per-event rate from --drop_schedule
+                        # (PI 2026-05-26 v2 S2.5) when set; otherwise constant
+                        # --random_drop_rate (Exp-1 sweep target).
+                        if drop_schedule_list is not None:
+                            rate_for_event = float(drop_schedule_list[event_idx - 1])
+                        else:
+                            rate_for_event = float(args.random_drop_rate)
                         keep_masks, stats = build_keep_mask(
                             handles, "random", fo_val_signed={},
-                            target_drop_rate=args.random_drop_rate,
+                            target_drop_rate=rate_for_event,
                             rng_seed=args.seed + event_idx,
                         )
+                        stats["scheduled_drop_rate"] = rate_for_event
                     else:
                         # gated: compute first-order saliency on val/train OR OOD calib batch.
                         # Task 3 fix: if --saliency_calib_set is set, override sal source.
@@ -1072,38 +1143,102 @@ def main() -> int:
                         del optim, sched
                         gc.collect()
                         torch.cuda.empty_cache()
-                        try:
+                        if args.saliency_estimator == "v2":
+                            # PI 2026-05-26 v2: per-sample IG + BH-FDR t-stat gating.
+                            from src.saliency_v2 import (
+                                integrated_gradient_saliency_per_sample,
+                                t_stat_decision,
+                                fisher_signvote_score,
+                            )
                             mem_pre = torch.cuda.memory_allocated() / (1024**3)
-                            log.info(f"merge_event{event_idx} pre-saliency cuda_alloc={mem_pre:.2f}GB")
-                            fo_signed = first_order_saliency(
-                                model, handles, sal_loader, device,
-                                max_batches=args.diag_batches, signed=True,
+                            log.info(f"merge_event{event_idx} pre-saliency cuda_alloc={mem_pre:.2f}GB "
+                                     f"[v2 estimator m_ig={args.saliency_v2_m_ig} alpha={args.saliency_v2_alpha}]")
+                            n_samples_target = min(args.saliency_calib_n,
+                                                   args.diag_batches * args.batch_size)
+                            try:
+                                per_sample = integrated_gradient_saliency_per_sample(
+                                    model, handles, sal_loader, device,
+                                    m=args.saliency_v2_m_ig,
+                                    max_samples=max(n_samples_target, 16),
+                                    signed=True,
+                                )
+                            except torch.cuda.OutOfMemoryError as e:
+                                log.warning(f"v2 saliency OOM ({e}); retry with halved seq_len + samples")
+                                torch.cuda.empty_cache()
+                                base_sal_loader = (
+                                    calib_loader if calib_loader is not None
+                                    else (diag_loader if saliency_source == "val" else train_loader)
+                                )
+                                sal_loader = build_truncated_loader(
+                                    base_sal_loader,
+                                    max_len=max(args.saliency_max_seq_len // 2, 256),
+                                    max_batches=max(args.diag_batches // 2, 1),
+                                )
+                                per_sample = integrated_gradient_saliency_per_sample(
+                                    model, handles, sal_loader, device,
+                                    m=args.saliency_v2_m_ig,
+                                    max_samples=max(n_samples_target // 2, 8),
+                                    signed=True,
+                                )
+                            keep_masks, v2_info = t_stat_decision(
+                                per_sample, alpha=args.saliency_v2_alpha,
+                                rng_seed=args.seed + event_idx,
                             )
-                        except torch.cuda.OutOfMemoryError as e:
-                            log.warning(f"saliency OOM ({e}); retry with diag_batches=1, max_len={args.saliency_max_seq_len // 2}")
-                            torch.cuda.empty_cache()
-                            base_sal_loader = (
-                                calib_loader if calib_loader is not None
-                                else (diag_loader if saliency_source == "val" else train_loader)
-                            )
-                            sal_loader = build_truncated_loader(
-                                base_sal_loader,
-                                max_len=max(args.saliency_max_seq_len // 2, 256),
-                                max_batches=1,
-                            )
-                            fo_signed = first_order_saliency(
-                                model, handles, sal_loader, device,
-                                max_batches=1, signed=True,
-                            )
-                        except Exception as e:
-                            import traceback
-                            log.error(f"saliency FAILED: {type(e).__name__}: {e}")
-                            log.error(traceback.format_exc())
-                            raise
-                        finally:
+                            fsv_scores = fisher_signvote_score(per_sample)
+                            n_total = sum(h.r for h in handles)
+                            n_kept = sum(int(m.sum().item()) for m in keep_masks.values())
+                            flat_fsv = []
+                            for L in fsv_scores:
+                                flat_fsv.extend([float(x) for x in fsv_scores[L].tolist()])
+                            qs = ([float(np.quantile(flat_fsv, q)) for q in (0.05,0.25,0.5,0.75,0.95)]
+                                  if flat_fsv else [])
+                            stats = {
+                                "components_total": n_total,
+                                "components_kept": n_kept,
+                                "components_dropped": n_total - n_kept,
+                                "drop_rate": 1.0 - n_kept / max(n_total, 1),
+                                "score_quantiles": qs,
+                                "per_layer_keep_counts": {L: int(m.sum().item())
+                                                          for L, m in keep_masks.items()},
+                                "saliency_estimator": "v2",
+                                **v2_info,
+                            }
                             model.zero_grad(set_to_none=True)
                             torch.cuda.empty_cache()
-                        keep_masks, stats = build_keep_mask(handles, gate_sign, fo_signed)
+                        else:
+                            try:
+                                mem_pre = torch.cuda.memory_allocated() / (1024**3)
+                                log.info(f"merge_event{event_idx} pre-saliency cuda_alloc={mem_pre:.2f}GB")
+                                fo_signed = first_order_saliency(
+                                    model, handles, sal_loader, device,
+                                    max_batches=args.diag_batches, signed=True,
+                                )
+                            except torch.cuda.OutOfMemoryError as e:
+                                log.warning(f"saliency OOM ({e}); retry with diag_batches=1, max_len={args.saliency_max_seq_len // 2}")
+                                torch.cuda.empty_cache()
+                                base_sal_loader = (
+                                    calib_loader if calib_loader is not None
+                                    else (diag_loader if saliency_source == "val" else train_loader)
+                                )
+                                sal_loader = build_truncated_loader(
+                                    base_sal_loader,
+                                    max_len=max(args.saliency_max_seq_len // 2, 256),
+                                    max_batches=1,
+                                )
+                                fo_signed = first_order_saliency(
+                                    model, handles, sal_loader, device,
+                                    max_batches=1, signed=True,
+                                )
+                            except Exception as e:
+                                import traceback
+                                log.error(f"saliency FAILED: {type(e).__name__}: {e}")
+                                log.error(traceback.format_exc())
+                                raise
+                            finally:
+                                model.zero_grad(set_to_none=True)
+                                torch.cuda.empty_cache()
+                            keep_masks, stats = build_keep_mask(handles, gate_sign, fo_signed)
+                            stats["saliency_estimator"] = "v1"
                     merge_stats = merge_and_reset_lora(model, handles, keep_masks, log,
                                                        keep_B_after_merge=args.keep_B_after_merge)
                     # reset optimizer (Lialin protocol)
