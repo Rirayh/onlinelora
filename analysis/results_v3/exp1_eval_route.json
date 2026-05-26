@@ -1,0 +1,8 @@
+{
+  "primary_metric": "gsm8k_flex",
+  "primary_shape": "ambiguous",
+  "cross_metric_agreement": "2/3",
+  "sanity_pass": true,
+  "route": "E_ambiguous_tiebreak",
+  "sanity_note": "cross-metric agreement 2/3 with primary"
+}
