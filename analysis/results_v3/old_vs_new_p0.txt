@@ -1,0 +1,28 @@
+cell                                                                   |  OLD_str |  NEW_str |    Δstr |  OLD_flx |  NEW_flx |    Δflx
+----------------------------------------------------------------------------------------------------------------------------------
+mistral-7b/metamathqa-10k/relora_baseline                              |   50.64% |   51.25% |  +0.61 |   50.87% |   51.48% |  +0.61
+mistral-7b/metamathqa-10k/relora_diag_gated_S3neg                      |   51.48% |   51.25% |  -0.23 |   52.24% |   51.78% |  -0.45
+mistral-7b/metamathqa-10k/relora_diag_gated_S3pos                      |   36.47% |   52.01% | +15.54 |   36.39% |   52.54% | +16.15
+mistral-7b/metamathqa-10k/relora_random_drop                           |   36.47% |   52.54% | +16.07 |   36.39% |   52.84% | +16.45
+mistral-7b/metamathqa-10k/relora_train_gated                           |   53.07% |   52.69% |  -0.38 |   53.60% |   53.22% |  -0.38
+qwen25-7b/metamathqa-10k/relora_baseline                               |   80.67% |   79.76% |  -0.91 |   80.89% |   79.61% |  -1.29
+qwen25-7b/metamathqa-10k/relora_diag_gated_S3neg                       |   80.21% |   79.83% |  -0.38 |   80.14% |   79.76% |  -0.38
+qwen25-7b/metamathqa-10k/relora_diag_gated_S3pos                       |   80.82% |   79.08% |  -1.74 |   80.82% |   78.70% |  -2.12
+qwen25-7b/metamathqa-10k/relora_random_drop                            |   80.44% |   79.45% |  -0.99 |   80.59% |   79.53% |  -1.06
+qwen25-7b/metamathqa-10k/relora_train_gated                            |   80.06% |   78.85% |  -1.21 |   79.83% |   78.92% |  -0.91
+qwen3-8b/metamathqa-10k/relora_baseline                                |   81.35% |   81.20% |  -0.15 |   81.80% |   81.58% |  -0.23
+qwen3-8b/metamathqa-10k/relora_diag_gated_S3neg                        |   81.58% |   82.18% |  +0.61 |   81.88% |   82.56% |  +0.68
+qwen3-8b/metamathqa-10k/relora_diag_gated_S3pos                        |   85.82% |   86.05% |  +0.23 |   86.13% |   86.28% |  +0.15
+qwen3-8b/metamathqa-10k/relora_random_drop                             |   85.14% |   84.76% |  -0.38 |   85.44% |   85.06% |  -0.38
+qwen3-8b/metamathqa-10k/relora_train_gated                             |   81.50% |   81.12% |  -0.38 |   81.88% |   81.50% |  -0.38
+qwen3-8b/tulu3-sft/relora_baseline                                     |   78.85% |   79.83% |  +0.99 |   80.06% |   80.67% |  +0.61
+qwen3-8b/tulu3-sft/relora_diag_gated_S3neg                             |   86.81% |   86.13% |  -0.68 |   86.88% |   86.50% |  -0.38
+qwen3-8b/tulu3-sft/relora_diag_gated_S3pos                             |   87.41% |   86.43% |  -0.99 |   87.95% |   86.96% |  -0.99
+qwen3-8b/tulu3-sft/relora_random_drop                                  |   86.05% |   85.75% |  -0.30 |   86.43% |   86.20% |  -0.23
+qwen3-8b/tulu3-sft/relora_train_gated                                  |   86.66% |   86.88% |  +0.23 |   86.96% |   87.11% |  +0.15
+
+=== BIT-IDENTICAL DETECTOR (PI cells, NEW strict) ===
+CRITICAL: same NEW strict score across multiple methods:
+  mistral-7b/metamathqa-10k score=51.2509% methods=['relora_baseline', 'relora_diag_gated_S3neg']
+
+Total cells with OLD+NEW: 20

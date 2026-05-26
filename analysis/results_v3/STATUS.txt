@@ -1,0 +1,4 @@
+Status snapshot 12:XX UTC
+P0 reeval: 60/67 ok, 7 fail
+PI: mistral-7b 5/8, qwen25-7b 5/?, qwen3-8b 10/?
+exp_v1: 7/7 trained (cola still 1800/3000?? but listed TRAINED), 7/7 evaluated
