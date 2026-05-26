@@ -762,8 +762,10 @@ def main() -> int:
                         "(PI 2026-05-26 v2 saliency revamp).")
     p.add_argument("--saliency_v2_m_ig", type=int, default=4,
                    help="IG interpolation points for v2 estimator (default 4).")
-    p.add_argument("--saliency_v2_alpha", type=float, default=0.1,
-                   help="BH-FDR significance level for v2 t-stat gating (default 0.1).")
+    p.add_argument("--saliency_v2_alpha", type=float, default=0.2,
+                   help="BH-FDR significance level for v2 t-stat gating "
+                        "(default 0.2 per PI feedback 2026-05-26: ~24k tests "
+                        "across 6 events x 4032 components, alpha=0.1 too tight).")
     p.add_argument("--drop_schedule", default="",
                    help="Per-event drop_rate schedule. One of:\n"
                         "  - registry name: const_0p5, const_0p25, const_0p75,\n"
