@@ -595,6 +595,10 @@ def main() -> int:
                         "the downstream OOD distribution.")
     p.add_argument("--saliency_calib_n", type=int, default=256,
                    help="number of calib samples (only when --saliency_calib_set != none)")
+    p.add_argument("--random_drop_rate", type=float, default=0.5,
+                   help="Bernoulli drop probability for method=relora_random_drop. "
+                        "Default 0.5 preserves prior behaviour. Used by Exp-1 drop-rate sweep "
+                        "{0.0, 0.1, 0.25, 0.5, 0.75, 0.9}. drop_rate=0.0 should reproduce relora_baseline.")
     p.add_argument("--smoke", action="store_true",
                    help="quick smoke: total_steps=50 eval_every=25 rank_stat_every=25")
     args = p.parse_args()
@@ -907,10 +911,11 @@ def main() -> int:
                                  "score_quantiles": [],
                                  "per_layer_keep_counts": {h.name: h.r for h in handles}}
                     elif gate_sign == "random":
-                        # Bernoulli random drop at fixed rate 0.5 (matches median S3pos drop_rate empirically)
+                        # Bernoulli random drop at configurable rate (Exp-1 sweep target).
+                        # drop_rate=0.0 should reproduce relora_baseline behaviour.
                         keep_masks, stats = build_keep_mask(
                             handles, "random", fo_val_signed={},
-                            target_drop_rate=0.5,
+                            target_drop_rate=args.random_drop_rate,
                             rng_seed=args.seed + event_idx,
                         )
                     else:
