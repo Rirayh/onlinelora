@@ -43,6 +43,109 @@ from transformers import (
     get_cosine_schedule_with_warmup,
 )
 
+# Local Muon optimizer (vendored from KellerJordan/Muon, MIT).
+import sys as _sys
+_THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+if _THIS_DIR not in _sys.path:
+    _sys.path.insert(0, _THIS_DIR)
+from muon import Muon, split_params_for_muon  # noqa: E402
+
+
+class OptimizerEnsemble(torch.optim.Optimizer):
+    """Combine multiple optimizers behind a single Optimizer interface.
+
+    HF's `get_cosine_schedule_with_warmup` walks `optimizer.param_groups`
+    and assigns `group["lr"]` per step. By exposing the union of all child
+    optimizers' param_groups, the scheduler updates LR for every group of
+    every child uniformly.
+
+    `.step()` / `.zero_grad()` / `.state_dict()` are forwarded.
+    """
+
+    def __init__(self, children: list[torch.optim.Optimizer]):
+        assert len(children) > 0
+        self._children = children
+        # Don't call super().__init__ (it expects params/defaults).
+        self.defaults = children[0].defaults
+
+    @property
+    def param_groups(self):  # noqa: D401
+        groups = []
+        for opt in self._children:
+            groups.extend(opt.param_groups)
+        return groups
+
+    @param_groups.setter
+    def param_groups(self, value):
+        # HF schedulers assign back via index; instead they only mutate items in
+        # the list returned above (in-place). So we don't need to handle reassign.
+        # But satisfy any setter callers by re-distributing.
+        idx = 0
+        for opt in self._children:
+            n = len(opt.param_groups)
+            opt.param_groups = value[idx:idx + n]
+            idx += n
+
+    @property
+    def state(self):  # union view (read-only-ish)
+        merged: dict = {}
+        for opt in self._children:
+            merged.update(opt.state)
+        return merged
+
+    def step(self, closure=None):
+        loss = None
+        if closure is not None:
+            with torch.enable_grad():
+                loss = closure()
+        for opt in self._children:
+            opt.step()
+        return loss
+
+    def zero_grad(self, set_to_none: bool = True):
+        for opt in self._children:
+            opt.zero_grad(set_to_none=set_to_none)
+
+    def state_dict(self):
+        return {f"opt_{i}": opt.state_dict() for i, opt in enumerate(self._children)}
+
+    def load_state_dict(self, sd):
+        for i, opt in enumerate(self._children):
+            opt.load_state_dict(sd[f"opt_{i}"])
+
+
+def build_optimizer(model: nn.Module, args, log) -> torch.optim.Optimizer:
+    """Build optimizer per --optimizer choice.
+
+    adamw: single AdamW over all trainable params (legacy behaviour).
+    muon : Muon for 2D LoRA matrices (lora_A, lora_B) + AdamW for the rest
+           (1D biases, scaling, embeddings, head).
+    """
+    if args.optimizer == "adamw":
+        trainable = [p for p in model.parameters() if p.requires_grad]
+        return AdamW(trainable, lr=args.lr, weight_decay=args.weight_decay,
+                     betas=(0.9, 0.95))
+    elif args.optimizer == "muon":
+        muon_p, adamw_p = split_params_for_muon(model.named_parameters())
+        n_muon = sum(p.numel() for p in muon_p)
+        n_adamw = sum(p.numel() for p in adamw_p)
+        log.info(f"[muon] partitioned trainable params: muon={n_muon/1e6:.2f}M (2D LoRA) "
+                 f"adamw={n_adamw/1e6:.2f}M (rest)")
+        if not muon_p:
+            log.warning("[muon] no 2D LoRA params found; falling back to AdamW only.")
+            return AdamW(adamw_p, lr=args.lr, weight_decay=args.weight_decay,
+                         betas=(0.9, 0.95))
+        children = [
+            Muon(muon_p, lr=args.muon_lr, momentum=0.95, nesterov=True,
+                 ns_steps=args.muon_ns_steps, weight_decay=args.weight_decay),
+        ]
+        if adamw_p:
+            children.append(AdamW(adamw_p, lr=args.lr,
+                                  weight_decay=args.weight_decay, betas=(0.9, 0.95)))
+        return OptimizerEnsemble(children)
+    else:
+        raise ValueError(f"unknown --optimizer={args.optimizer}")
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
@@ -599,6 +702,16 @@ def main() -> int:
                    help="Bernoulli drop probability for method=relora_random_drop. "
                         "Default 0.5 preserves prior behaviour. Used by Exp-1 drop-rate sweep "
                         "{0.0, 0.1, 0.25, 0.5, 0.75, 0.9}. drop_rate=0.0 should reproduce relora_baseline.")
+    p.add_argument("--optimizer", choices=["adamw", "muon"], default="adamw",
+                   help="Optimizer choice. 'muon' routes 2D LoRA matrices to Muon "
+                        "(orthogonalized momentum via Newton-Schulz) and the rest to AdamW. "
+                        "Used by Exp-2 Muon-decoupling experiment.")
+    p.add_argument("--muon_lr", type=float, default=0.005,
+                   help="Learning rate for Muon child (only used when --optimizer=muon). "
+                        "Default 0.005; smoke confirmed Keller's default 0.02 diverges on "
+                        "LoRA scaled (alpha/r) updates with cosine warmup peak.")
+    p.add_argument("--muon_ns_steps", type=int, default=5,
+                   help="Newton-Schulz iterations per Muon step (default 5).")
     p.add_argument("--smoke", action="store_true",
                    help="quick smoke: total_steps=50 eval_every=25 rank_stat_every=25")
     args = p.parse_args()
@@ -742,7 +855,7 @@ def main() -> int:
 
     # Optim + sched
     trainable = [p for p in model.parameters() if p.requires_grad]
-    optim = AdamW(trainable, lr=args.lr, weight_decay=args.weight_decay, betas=(0.9, 0.95))
+    optim = build_optimizer(model, args, log)
     sched = get_cosine_schedule_with_warmup(
         optim, num_warmup_steps=args.warmup_steps, num_training_steps=args.total_steps
     )
@@ -780,6 +893,19 @@ def main() -> int:
         "commit_hash": commit_hash,
         "wall_clock_start": wall_clock_start,
     }, str(out_root / "config.yaml"))
+
+    # Optimizer metadata (PI 2026-05-26 hard rule for Exp-2).
+    opt_meta = {
+        "optimizer": args.optimizer,
+        "muon_lr": args.muon_lr if args.optimizer == "muon" else None,
+        "muon_ns_steps": args.muon_ns_steps if args.optimizer == "muon" else None,
+        "adamw_lr": args.lr,
+        "weight_decay": args.weight_decay,
+        "random_drop_rate": args.random_drop_rate if args.method == "relora_random_drop" else None,
+        "betas_adamw": [0.9, 0.95],
+    }
+    with (out_root / "optimizer_metadata.json").open("w") as f:
+        json.dump(opt_meta, f, indent=2)
 
     # Empty out output files
     train_loss_path = out_root / "train_loss.jsonl"
@@ -981,8 +1107,7 @@ def main() -> int:
                     merge_stats = merge_and_reset_lora(model, handles, keep_masks, log,
                                                        keep_B_after_merge=args.keep_B_after_merge)
                     # reset optimizer (Lialin protocol)
-                    optim = AdamW(trainable, lr=args.lr, weight_decay=args.weight_decay,
-                                  betas=(0.9, 0.95))
+                    optim = build_optimizer(model, args, log)
                     remaining = args.total_steps - step
                     sched = get_cosine_schedule_with_warmup(
                         optim, num_warmup_steps=min(args.warmup_steps, max(remaining // 4, 1)),
