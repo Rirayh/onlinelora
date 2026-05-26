@@ -1109,14 +1109,27 @@ def main() -> int:
                         # --random_drop_rate (Exp-1 sweep target).
                         if drop_schedule_list is not None:
                             rate_for_event = float(drop_schedule_list[event_idx - 1])
+                            sched_name = args.drop_schedule or "constant"
+                            n_events = len(drop_schedule_list)
                         else:
                             rate_for_event = float(args.random_drop_rate)
+                            sched_name = "constant"
+                            n_events = len(merge_steps)
+                        log.info(f"[schedule={sched_name} event_idx={event_idx}/{n_events} "
+                                 f"target_drop_rate={rate_for_event:.3f}]")
                         keep_masks, stats = build_keep_mask(
                             handles, "random", fo_val_signed={},
                             target_drop_rate=rate_for_event,
                             rng_seed=args.seed + event_idx,
                         )
                         stats["scheduled_drop_rate"] = rate_for_event
+                        stats["schedule_name"] = sched_name
+                        stats["event_idx"] = event_idx
+                        stats["n_events"] = n_events
+                        log.info(f"[schedule={sched_name} event_idx={event_idx}/{n_events} "
+                                 f"realised_drop_rate={stats['drop_rate']:.4f} "
+                                 f"target={rate_for_event:.4f} "
+                                 f"diff={stats['drop_rate']-rate_for_event:+.4f}]")
                     else:
                         # gated: compute first-order saliency on val/train OR OOD calib batch.
                         # Task 3 fix: if --saliency_calib_set is set, override sal source.
@@ -1205,6 +1218,34 @@ def main() -> int:
                                 "saliency_estimator": "v2",
                                 **v2_info,
                             }
+                            # PI feedback #2 §1: per-event v2 breakdown.
+                            n_random_keep_v2 = v2_info.get("n_random_keep", 0)
+                            n_random_drop_v2 = v2_info.get("n_random", 0) - n_random_keep_v2
+                            n_keep_sig_v2 = v2_info.get("n_keep_sig", 0)
+                            n_drop_sig_v2 = v2_info.get("n_drop_sig", 0)
+                            q05_v2 = qs[0] if qs else float("nan")
+                            q50_v2 = qs[2] if qs else float("nan")
+                            q95_v2 = qs[4] if qs else float("nan")
+                            log.info(
+                                f"[v2 estimator m_ig={args.saliency_v2_m_ig} "
+                                f"alpha={args.saliency_v2_alpha}] "
+                                f"merge_event={event_idx}\n"
+                                f"  n_keep_sig={n_keep_sig_v2}  n_drop_sig={n_drop_sig_v2}  "
+                                f"n_random_assigned_keep={n_random_keep_v2}  "
+                                f"n_random_assigned_drop={n_random_drop_v2}\n"
+                                f"  -> final keep={n_keep_sig_v2 + n_random_keep_v2}  "
+                                f"final drop={n_drop_sig_v2 + n_random_drop_v2}  "
+                                f"drop_rate={(n_drop_sig_v2 + n_random_drop_v2)/max(n_total,1):.4f}\n"
+                                f"  fisher_signvote_score: q05={q05_v2:.3e}  "
+                                f"q50={q50_v2:.3e}  q95={q95_v2:.3e}"
+                            )
+                            stats["n_random_drop"] = n_random_drop_v2
+                            # PI feedback #2 §2: dump dropped (layer, idx) pairs
+                            # so v1<->v2 IoU can be computed offline.
+                            stats["dropped_component_ids"] = [
+                                [L, int(i)] for L, mtensor in keep_masks.items()
+                                for i, kept in enumerate(mtensor.tolist()) if not kept
+                            ]
                             model.zero_grad(set_to_none=True)
                             torch.cuda.empty_cache()
                         else:
@@ -1241,6 +1282,16 @@ def main() -> int:
                                 torch.cuda.empty_cache()
                             keep_masks, stats = build_keep_mask(handles, gate_sign, fo_signed)
                             stats["saliency_estimator"] = "v1"
+                            # PI feedback #2 §2: per-event v1 breakdown for v1<->v2 IoU.
+                            stats["dropped_component_ids"] = [
+                                [L, int(i)] for L, mtensor in keep_masks.items()
+                                for i, kept in enumerate(mtensor.tolist()) if not kept
+                            ]
+                            log.info(
+                                f"[v1 estimator] merge_event={event_idx} "
+                                f"n_dropped={stats['components_dropped']} "
+                                f"drop_rate={stats['drop_rate']:.4f}"
+                            )
                     merge_stats = merge_and_reset_lora(model, handles, keep_masks, log,
                                                        keep_B_after_merge=args.keep_B_after_merge)
                     # reset optimizer (Lialin protocol)
