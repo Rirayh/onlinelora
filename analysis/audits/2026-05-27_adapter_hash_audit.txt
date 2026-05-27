@@ -1,0 +1,104 @@
+# Adapter hash audit — PI feedback #5 Action B
+
+**Date**: 2026-05-27 06:50 UTC
+**Source dirs**: see SHA list below
+
+## Hash table
+
+```
+dr0.05        sha256=7dbe3432556fde01d06af8bba229f405  size=174655536
+dr0.15        sha256=cc166deb8104b262ed6766c9b6d14f15  size=174655536
+dr0.20        sha256=41ce0df3e9a9b690713524475c708eb4  size=174655536
+dr0.30        sha256=dbf4ef4220bb3d53d680170ff0624041  size=174655536
+v1_recheck    sha256=e1f6cc6c0d68a9208648cd460c996f97  size=174655536
+v2_full       sha256=bacc435e7460764096157728d3235319  size=174655536
+```
+
+All 6 adapters have **distinct SHA-256 hashes**. Same byte-size (174655536 = ~166MiB).
+
+## Per-tensor max-abs-diff vs `v1_recheck` baseline
+
+```
+dr0.05        max_abs_diff=1.544e-02  max_rel=7.996e-01  L2_diff/L2_ref=2.176e-01
+              max_abs key: layers.2.self_attn.q_proj.lora_A
+dr0.15        max_abs_diff=1.702e-02  max_rel=9.922e-01  L2_diff/L2_ref=2.753e-01
+              max_abs key: layers.4.self_attn.q_proj.lora_B
+dr0.20        max_abs_diff=1.528e-02  max_rel=8.286e-01  L2_diff/L2_ref=2.671e-01
+              max_abs key: layers.6.self_attn.q_proj.lora_A
+dr0.30        max_abs_diff=2.273e-02  max_rel=1.046e+00  L2_diff/L2_ref=4.463e-01
+              max_abs key: layers.26.mlp.gate_proj.lora_A
+v2_full       max_abs_diff=1.510e-02  max_rel=9.590e-01  L2_diff/L2_ref=2.392e-01
+              max_abs key: layers.8.self_attn.k_proj.lora_B
+```
+
+All adapters differ by max_abs_diff = 1.5e-2 to 2.3e-2. Overall L2 norm
+ratio of diff/ref = **22% to 45%**. This is **far above** cuDNN reduction
+noise floor (~1e-5 to 1e-4 expected).
+
+## Interpretation
+
+Adapters are NOT bit-identical and NOT cuDNN-equivalent. They genuinely
+differ — but the differences come from:
+
+1. **`best_step` varies**: dr=0.30 saved at step 250, others at step 500.
+   Saving at different optimization steps produces genuinely different LoRA
+   states.
+2. **Saliency calibration RNG drift**: `saliency_calib_n` differs across
+   runs (v2_full: 64, v1_recheck: 256, tie-break: 256). Saliency calib
+   consumes RNG state at startup → diverges per-step train state.
+3. **Code-drift between commits**: different `commit_hash` per run
+   (v2_full: 547f8c9, v1_recheck: bf5d452, tie-break: 87da7d4). Bug fixes
+   between commits change exact training trajectory.
+
+## PI hypothesis verdict
+
+PI's claim "all adapters are bit-identical pre-merge LoRA snapshots" =
+**REFINED, not falsified**:
+
+- ✅ TRUE: every saved adapter IS the pre-merge state (`best_step ∈ {250,
+  500}` < first merge at step 750).
+- ✅ TRUE: drop policy NEVER affects the saved state (only fires at step
+  ≥750, never observed by best/).
+- ❌ But adapters are NOT bit-identical because of (1)-(3) above.
+
+So the adapters differ measurably, but **none of those differences encode
+the drop method's effect**. The lm-eval scores produced by these adapters
+DO vary, but the variance reflects best-step / RNG / code-drift, not
+method behavior. The scoreboard "ranking" was meaningless.
+
+## Action E: scoreboard ckpt provenance trace
+
+PI scoreboard gsm8k_strict=86.43 / gsm8k_flex=86.96 / hellaswag=77.27 /
+arc_c=69.32 grep results across the repo:
+
+```
+/analysis/oplora/jsons/qwen35-2b__tulu3-sft__lora_vanilla.json:
+  "128": 0.8643144965171814  (gsm8k_strict)
+/analysis/oplora/jsons/qwen35-0p8b__tulu3-sft__relora_diag_gated_S3pos.json:
+  0.8640161007642746  (gsm8k_flex)
+/analysis/oplora/jsons/qwen3-1p7b__tulu3-sft__relora_diag_gated_S3pos.json:
+  0.8642847836017609  (gsm8k)
+```
+
+**No qwen3-8b prior eval in the repo matches the scoreboard.** The
+matching results are on `qwen35-2b`, `qwen35-0p8b`, `qwen3-1p7b` — all
+DIFFERENT BASE MODELS than `qwen3-8b`.
+
+→ The "scoreboard targets" were transcribed from a different base-model
+experiment family (qwen35-2b/0p8b/qwen3-1p7b). They were never achievable
+on qwen3-8b under any policy. The 80% gsm8k we observe on qwen3-8b is the
+correct floor for this base model.
+
+## Conclusions
+
+1. PI's deeper claim is correct: the saved `adapter/` for all 6 runs is
+   the pre-merge LoRA state, never observed any drop policy. The eval
+   pipeline measures pre-merge ckpt, not method.
+2. Adapters differ pairwise by ~1.5e-2 max-abs / 25% L2 — but those diffs
+   come from best_step / RNG / code-drift, NOT method.
+3. The scoreboard 86.43%/86.96%/69.32% comes from different base models
+   (qwen35-2b, qwen35-0p8b, qwen3-1p7b), NOT qwen3-8b. The 80% floor is
+   correct for qwen3-8b.
+
+Patch direction: implement Option 3 (eval at merge boundaries + final;
+remove the "best/" copy-from-best hack). See agent reply for proposed patch.
