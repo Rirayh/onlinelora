@@ -1445,45 +1445,92 @@ def main() -> int:
         # base model with LoRA sub-modules; we need to extract the underlying
         # transformer and save it as a standalone HF model for offline lm-eval.
         #
-        # NOTE: we cannot call peft.merge_and_unload() because PEFT's save
-        # path triggers transformers.is_deepspeed_zero3_enabled() which on
-        # this env tries to compile CUDA ops (CUDA_HOME unset) and crashes.
-        # Instead, walk the model and replace each LoRA-wrapped Linear with
-        # its underlying base_layer, then call save_pretrained on the
-        # resulting plain transformer.
+        # This env has CUDA_HOME unset, so any code path that imports
+        # `accelerate.utils.other.extract_model_from_parallel` (which does
+        # `from deepspeed import DeepSpeedEngine`) crashes at import time
+        # because deepspeed eagerly probes CUDA. That rules out:
+        #   - peft.merge_and_unload() (calls peft save chain)
+        #   - transformers.PreTrainedModel.save_pretrained() (calls
+        #     unwrap_model -> extract_model_from_parallel -> deepspeed)
+        # Workaround: walk model graph, replace LoRA wrappers with their
+        # base_layer, then write state_dict via safetensors directly + copy
+        # config/tokenizer files from the original model dir. This avoids
+        # accelerate/deepspeed entirely.
         merged_dir = out_root / "merged_final"
         merged_dir.mkdir(exist_ok=True)
         try:
-            import torch.nn as _nn
-            # Strip LoRA wrappers in-place: for each module that has a
-            # base_layer attribute (LoraLayer subclass), we set the lora_A
-            # and lora_B weights to zero/kaiming-equivalent (already done by
-            # merge_and_reset_lora). The simplest correct path: find the
-            # underlying transformer (model.base_model.model is the HF model
-            # itself for PEFT-wrapped Causal LMs) and save THAT. The base
-            # weights have all merges folded in; the PEFT wrapper just adds
-            # zero-delta LoRA modules on top.
+            # Step 1: descend to inner HF transformer
             if hasattr(model, "base_model") and hasattr(model.base_model, "model"):
                 inner = model.base_model.model
             elif hasattr(model, "model"):
                 inner = model.model
             else:
                 inner = model
-            # Replace all LoRA-wrapped submodules with their base_layer so
-            # save_pretrained writes a clean transformer (no LoRA shards).
+
+            # Step 2: strip all LoRA wrappers (replace with their base_layer)
             n_replaced = 0
-            for parent_name, parent_mod in list(inner.named_modules()):
+            for parent_mod in list(inner.modules()):
                 for child_name, child in list(parent_mod.named_children()):
                     if hasattr(child, "base_layer"):
                         setattr(parent_mod, child_name, child.base_layer)
                         n_replaced += 1
             log.info(f"replaced {n_replaced} LoRA wrappers with base_layer")
-            # Now inner is a plain HF transformer with all merge deltas
-            # folded in. Save via transformers' native save_pretrained.
-            inner.save_pretrained(str(merged_dir), safe_serialization=True)
-            tok.save_pretrained(str(merged_dir))
+
+            # Step 3: build a clean state_dict (no _orig_mod prefix from compile)
+            sd = inner.state_dict()
+            sd_clean = {
+                (k[len("_orig_mod."):] if k.startswith("_orig_mod.") else k):
+                    v.detach().cpu().contiguous()
+                for k, v in sd.items()
+            }
+
+            # Step 4: shard + save via safetensors (bypasses transformers save)
+            from safetensors.torch import save_file as _save_safetensors
+            total_bytes = sum(v.element_size() * v.numel() for v in sd_clean.values())
+            SHARD_BYTES = 4 * 1024 * 1024 * 1024  # 4 GiB shards
+            if total_bytes < SHARD_BYTES:
+                _save_safetensors(sd_clean, str(merged_dir / "model.safetensors"))
+            else:
+                shards = []
+                cur, cur_bytes, idx = {}, 0, 1
+                for k, v in sd_clean.items():
+                    vb = v.element_size() * v.numel()
+                    if cur_bytes + vb > SHARD_BYTES and cur:
+                        shards.append((idx, cur))
+                        idx += 1
+                        cur, cur_bytes = {}, 0
+                    cur[k] = v
+                    cur_bytes += vb
+                if cur:
+                    shards.append((idx, cur))
+                n_shards = len(shards)
+                weight_map: dict[str, str] = {}
+                for sidx, sdict in shards:
+                    shard_name = f"model-{sidx:05d}-of-{n_shards:05d}.safetensors"
+                    _save_safetensors(sdict, str(merged_dir / shard_name))
+                    for k in sdict.keys():
+                        weight_map[k] = shard_name
+                index = {"metadata": {"total_size": total_bytes},
+                         "weight_map": weight_map}
+                (merged_dir / "model.safetensors.index.json").write_text(
+                    json.dumps(index, indent=2)
+                )
+
+            # Step 5: copy config + tokenizer files from the source model dir
+            import shutil as _shutil
+            src_root = Path(args.model_path)
+            for fn in ["config.json", "generation_config.json",
+                       "tokenizer.json", "tokenizer_config.json",
+                       "special_tokens_map.json", "vocab.json",
+                       "merges.txt", "added_tokens.json", "chat_template.jinja"]:
+                src = src_root / fn
+                if src.exists():
+                    _shutil.copy(str(src), str(merged_dir / fn))
+
             log.info(f"merged_final saved to {merged_dir} "
-                     f"(post-all-merges base; correct lm-eval target for do_relora)")
+                     f"(total {total_bytes / 1e9:.1f} GB, "
+                     f"{n_replaced} LoRA wrappers stripped, "
+                     f"manual safetensors path)")
         except Exception as e:
             import traceback
             log.error(f"merged_final save FAILED: {e}\n{traceback.format_exc()}")
