@@ -721,7 +721,14 @@ def main() -> int:
                    help="abort if post-merge val_loss > first_eval_val_loss * abort_factor")
     p.add_argument("--out_root", type=str, default=None)
     p.add_argument("--save_adapter", action="store_true",
-                   help="save peft adapter to out_root/adapter/ after training")
+                   help="(legacy) save peft adapter to out_root/adapter/ after training. "
+                        "DEPRECATED for do_relora methods: the saved adapter has lora_B=0 "
+                        "after final merge -> lm-eval reflects vanilla base. Use "
+                        "--save_merged_final instead, which saves the full merged base.")
+    p.add_argument("--save_merged_final", action="store_true",
+                   help="(PI #5b Option 3) save the full base model with all merge deltas "
+                        "folded in to out_root/merged_final/. This is the correct ckpt for "
+                        "lm-eval on do_relora runs. ~16GB per cell for qwen3-8b.")
     p.add_argument("--ckpt_every", type=int, default=50,
                    help="save adapter checkpoint every N steps (0 = disabled)")
     p.add_argument("--saliency_max_seq_len", type=int, default=2048,
@@ -1412,25 +1419,76 @@ def main() -> int:
 
     if args.save_adapter and not aborted:
         adapter_dir = out_root / "adapter"
-        # P0 FIX: for merge-based methods (do_relora=True), the in-memory model
-        # state at end-of-training has lora_B=0 (the final merge event zeroed
-        # B and the residual training-after-final-merge often does not happen
-        # because merge_steps include the last step). Saving model.save_pretrained
-        # at this point serializes a B=0 adapter -> lm-eval = base-model score.
-        # Instead, copy the "best/" ckpt (saved exclusively from the eval_every
-        # branch BETWEEN merges) which has valid non-zero lora_B.
+        # NOTE: PI #5b — for do_relora methods this saves the pre-merge "best/"
+        # ckpt (lora_B != 0 because saved between merges), but pre-merge ckpts
+        # are method-blind (drop policy hasn't fired yet at best_step). Use
+        # --save_merged_final for the post-all-merges base model which IS the
+        # correct lm-eval target.
         _best_dir_final = ckpt_dir / "best"
         if do_relora and _best_dir_final.exists() and (_best_dir_final / "adapter_model.safetensors").exists():
             import shutil
             if adapter_dir.exists():
                 shutil.rmtree(adapter_dir)
             shutil.copytree(str(_best_dir_final), str(adapter_dir))
-            log.info(f"adapter saved (copied from best/ to avoid post-merge B=0) to {adapter_dir}")
+            log.info(f"adapter saved (copied from best/ — METHOD-BLIND for do_relora; "
+                     f"use --save_merged_final for method-aware eval) to {adapter_dir}")
         else:
             adapter_dir.mkdir(exist_ok=True)
             model.save_pretrained(str(adapter_dir))
             tok.save_pretrained(str(adapter_dir))
             log.info(f"adapter saved to {adapter_dir}")
+
+    if args.save_merged_final and not aborted:
+        # PI #5b Option 3: at end of training, the base_linear weights already
+        # contain ALL merge deltas folded in (in-place mutation in
+        # merge_and_reset_lora at L517). The PEFT wrapper still wraps the
+        # base model with LoRA sub-modules; we need to extract the underlying
+        # transformer and save it as a standalone HF model for offline lm-eval.
+        #
+        # NOTE: we cannot call peft.merge_and_unload() because PEFT's save
+        # path triggers transformers.is_deepspeed_zero3_enabled() which on
+        # this env tries to compile CUDA ops (CUDA_HOME unset) and crashes.
+        # Instead, walk the model and replace each LoRA-wrapped Linear with
+        # its underlying base_layer, then call save_pretrained on the
+        # resulting plain transformer.
+        merged_dir = out_root / "merged_final"
+        merged_dir.mkdir(exist_ok=True)
+        try:
+            import torch.nn as _nn
+            # Strip LoRA wrappers in-place: for each module that has a
+            # base_layer attribute (LoraLayer subclass), we set the lora_A
+            # and lora_B weights to zero/kaiming-equivalent (already done by
+            # merge_and_reset_lora). The simplest correct path: find the
+            # underlying transformer (model.base_model.model is the HF model
+            # itself for PEFT-wrapped Causal LMs) and save THAT. The base
+            # weights have all merges folded in; the PEFT wrapper just adds
+            # zero-delta LoRA modules on top.
+            if hasattr(model, "base_model") and hasattr(model.base_model, "model"):
+                inner = model.base_model.model
+            elif hasattr(model, "model"):
+                inner = model.model
+            else:
+                inner = model
+            # Replace all LoRA-wrapped submodules with their base_layer so
+            # save_pretrained writes a clean transformer (no LoRA shards).
+            n_replaced = 0
+            for parent_name, parent_mod in list(inner.named_modules()):
+                for child_name, child in list(parent_mod.named_children()):
+                    if hasattr(child, "base_layer"):
+                        setattr(parent_mod, child_name, child.base_layer)
+                        n_replaced += 1
+            log.info(f"replaced {n_replaced} LoRA wrappers with base_layer")
+            # Now inner is a plain HF transformer with all merge deltas
+            # folded in. Save via transformers' native save_pretrained.
+            inner.save_pretrained(str(merged_dir), safe_serialization=True)
+            tok.save_pretrained(str(merged_dir))
+            log.info(f"merged_final saved to {merged_dir} "
+                     f"(post-all-merges base; correct lm-eval target for do_relora)")
+        except Exception as e:
+            import traceback
+            log.error(f"merged_final save FAILED: {e}\n{traceback.format_exc()}")
+            with open(merged_dir / "SAVE_FAILED.flag", "w") as f:
+                f.write(f"{type(e).__name__}: {e}\n")
 
     return 2 if aborted else 0
 
