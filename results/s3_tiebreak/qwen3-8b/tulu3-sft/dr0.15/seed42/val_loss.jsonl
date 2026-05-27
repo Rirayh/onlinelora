@@ -11,3 +11,7 @@
 {"step": 2250, "val_loss": 1.5490560960769653}
 {"step": 2250, "val_loss": 1.5099948546886444, "post_merge": true}
 {"step": 2500, "val_loss": 1.5266355032920838}
+{"step": 2750, "val_loss": 1.603976222038269}
+{"step": 3000, "val_loss": 1.6467676050662994}
+{"step": 3000, "val_loss": 1.6217265267372132, "post_merge": true}
+{"step": 3000, "val_loss": 1.6217265267372132, "final": true}

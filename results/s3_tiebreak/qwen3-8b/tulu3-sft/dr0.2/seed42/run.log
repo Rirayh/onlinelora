@@ -143,3 +143,33 @@
 [2026-05-27 04:23:45,419] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2500 mean_ER=1926.84 mean_CN=7.43e+05
 [2026-05-27 04:28:27,034] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2525/3000 train_loss=0.7716 lr=1.66e-04 elapsed=28797s
 [2026-05-27 04:33:03,451] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2550/3000 train_loss=0.8255 lr=1.57e-04 elapsed=29073s
+[2026-05-27 04:37:51,137] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2575/3000 train_loss=0.8768 lr=1.46e-04 elapsed=29361s
+[2026-05-27 04:42:22,318] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2600/3000 train_loss=0.7549 lr=1.35e-04 elapsed=29632s
+[2026-05-27 04:47:00,793] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2625/3000 train_loss=0.7706 lr=1.24e-04 elapsed=29910s
+[2026-05-27 04:51:40,090] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2650/3000 train_loss=0.8008 lr=1.12e-04 elapsed=30190s
+[2026-05-27 04:56:30,251] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2675/3000 train_loss=0.9052 lr=1.00e-04 elapsed=30480s
+[2026-05-27 05:01:09,214] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2700/3000 train_loss=0.8434 lr=8.79e-05 elapsed=30759s
+[2026-05-27 05:05:43,272] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2725/3000 train_loss=0.8201 lr=7.61e-05 elapsed=31033s
+[2026-05-27 05:10:12,629] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2750/3000 train_loss=0.7854 lr=6.45e-05 elapsed=31302s
+[2026-05-27 05:11:02,263] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2750 VAL_LOSS=1.5717
+[2026-05-27 05:15:37,076] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2775/3000 train_loss=0.8087 lr=5.35e-05 elapsed=31627s
+[2026-05-27 05:20:15,090] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2800/3000 train_loss=0.8001 lr=4.32e-05 elapsed=31905s
+[2026-05-27 05:24:53,861] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2825/3000 train_loss=0.8271 lr=3.37e-05 elapsed=32183s
+[2026-05-27 05:29:39,434] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2850/3000 train_loss=0.8196 lr=2.51e-05 elapsed=32469s
+[2026-05-27 05:34:06,676] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2875/3000 train_loss=0.7807 lr=1.77e-05 elapsed=32736s
+[2026-05-27 05:38:48,991] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2900/3000 train_loss=0.7709 lr=1.15e-05 elapsed=33019s
+[2026-05-27 05:43:24,817] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2925/3000 train_loss=0.7415 lr=6.50e-06 elapsed=33294s
+[2026-05-27 05:48:01,257] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2950/3000 train_loss=0.7836 lr=2.91e-06 elapsed=33571s
+[2026-05-27 05:52:46,217] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=2975/3000 train_loss=0.8871 lr=7.29e-07 elapsed=33856s
+[2026-05-27 05:57:23,625] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=3000/3000 train_loss=0.8061 lr=0.00e+00 elapsed=34133s
+[2026-05-27 05:58:13,427] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=3000 VAL_LOSS=1.6252
+[2026-05-27 05:58:28,233] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=3000 mean_ER=1926.85 mean_CN=9.58e+04
+[2026-05-27 05:58:28,234] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - === MERGE EVENT 4 at step 3000 (method=relora_random_drop, keep_B_after_merge=False) ===
+[2026-05-27 05:58:28,236] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [schedule=constant event_idx=4/4 target_drop_rate=0.200]
+[2026-05-27 05:58:28,241] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [schedule=constant event_idx=4/4 realised_drop_rate=0.2016 target=0.2000 diff=+0.0016]
+[2026-05-27 05:58:28,409] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - merge: total=4032 kept=3219 drop_rate=0.202
+[2026-05-27 05:59:32,761] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=3000 POST-MERGE VAL_LOSS=1.5942 (first_eval=1.3146167303323746)
+[2026-05-27 05:59:32,770] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - training done in 34262.4s
+[2026-05-27 06:00:22,322] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - FINAL VAL_LOSS=1.5942
+[2026-05-27 06:00:37,219] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - summary.json written
+[2026-05-27 06:00:37,541] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - adapter saved (copied from best/ to avoid post-merge B=0) to results/s3_tiebreak/qwen3-8b/tulu3-sft/dr0.2/seed42/adapter
