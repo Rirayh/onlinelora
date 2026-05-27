@@ -1,0 +1,59 @@
+[2026-05-26 22:55:44,461] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - START stage3 model=/mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B dataset=tulu3-sft method=relora_random_drop out=results/s5_sanity/qwen3-8b/tulu3-sft/anneal_down/seed42
+[2026-05-26 22:55:45,607] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - tokenizer loaded in 0.3s, vocab=151643
+[2026-05-26 22:55:45,608] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - loading tulu-3-sft-mixture from /mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture
+[2026-05-26 22:55:47,379] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - tulu3-sft train=10000 val=500
+[2026-05-26 22:56:03,131] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - tulu3-sft tokenized: train 10000 val 500
+[2026-05-26 22:56:03,394] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - data prepared in 17.8s
+[2026-05-26 22:56:05,077] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - model loaded in 1.7s
+[2026-05-26 22:56:11,154] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - #LoRA layers=252 #components=4032
+[2026-05-26 22:56:11,160] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - #trainable params=43.65M
+[2026-05-26 22:56:42,151] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [step 0] mean_ER=1926.51 mean_CN=9.34e+04 (sampled 8 layers)
+[2026-05-26 22:56:42,153] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - merge events scheduled at: [50, 100, 150, 200, 250, 300]
+[2026-05-26 22:56:42,153] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - drop_schedule 'anneal_down' -> per-event rates: [0.75, 0.65, 0.55, 0.45, 0.35, 0.25]
+[2026-05-26 23:06:55,366] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=25/300 train_loss=1.8817 lr=5.00e-05 elapsed=613s
+[2026-05-26 23:17:03,200] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=50/300 train_loss=1.4080 lr=1.00e-04 elapsed=1221s
+[2026-05-26 23:17:03,212] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - === MERGE EVENT 1 at step 50 (method=relora_random_drop, keep_B_after_merge=False) ===
+[2026-05-26 23:17:03,212] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [schedule=anneal_down event_idx=1/6 target_drop_rate=0.750]
+[2026-05-26 23:17:03,217] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [schedule=anneal_down event_idx=1/6 realised_drop_rate=0.7440 target=0.7500 diff=-0.0060]
+[2026-05-26 23:17:04,584] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - merge: total=4032 kept=1032 drop_rate=0.744
+[2026-05-26 23:19:26,186] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=50 POST-MERGE VAL_LOSS=1.6378 (first_eval=None)
+[2026-05-26 23:29:48,007] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=75/300 train_loss=1.5535 lr=8.06e-05 elapsed=1986s
+[2026-05-26 23:40:07,948] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=100/300 train_loss=1.3722 lr=1.61e-04 elapsed=2606s
+[2026-05-26 23:40:07,961] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - === MERGE EVENT 2 at step 100 (method=relora_random_drop, keep_B_after_merge=False) ===
+[2026-05-26 23:40:07,961] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [schedule=anneal_down event_idx=2/6 target_drop_rate=0.650]
+[2026-05-26 23:40:07,966] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [schedule=anneal_down event_idx=2/6 realised_drop_rate=0.6473 target=0.6500 diff=-0.0027]
+[2026-05-26 23:40:10,022] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - merge: total=4032 kept=1422 drop_rate=0.647
+[2026-05-26 23:42:31,778] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=100 POST-MERGE VAL_LOSS=1.4302 (first_eval=None)
+[2026-05-26 23:52:51,036] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=125/300 train_loss=1.3552 lr=1.00e-04 elapsed=3369s
+[2026-05-27 00:03:08,092] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=150/300 train_loss=1.3328 lr=2.00e-04 elapsed=3986s
+[2026-05-27 00:03:08,104] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - === MERGE EVENT 3 at step 150 (method=relora_random_drop, keep_B_after_merge=False) ===
+[2026-05-27 00:03:08,104] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [schedule=anneal_down event_idx=3/6 target_drop_rate=0.550]
+[2026-05-27 00:03:08,109] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [schedule=anneal_down event_idx=3/6 realised_drop_rate=0.5486 target=0.5500 diff=-0.0014]
+[2026-05-27 00:03:09,847] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - merge: total=4032 kept=1820 drop_rate=0.549
+[2026-05-27 00:05:31,959] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=150 POST-MERGE VAL_LOSS=1.3766 (first_eval=None)
+[2026-05-27 00:15:54,444] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=175/300 train_loss=1.3074 lr=1.35e-04 elapsed=4752s
+[2026-05-27 00:26:46,406] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=200/300 train_loss=1.3345 lr=1.94e-04 elapsed=5404s
+[2026-05-27 00:28:37,174] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=200 VAL_LOSS=1.3489
+[2026-05-27 00:28:37,702] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - best ckpt updated: step=200 val_loss=1.3489
+[2026-05-27 00:28:37,702] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - === MERGE EVENT 4 at step 200 (method=relora_random_drop, keep_B_after_merge=False) ===
+[2026-05-27 00:28:37,704] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [schedule=anneal_down event_idx=4/6 target_drop_rate=0.450]
+[2026-05-27 00:28:37,710] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [schedule=anneal_down event_idx=4/6 realised_drop_rate=0.4566 target=0.4500 diff=+0.0066]
+[2026-05-27 00:28:37,875] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - merge: total=4032 kept=2191 drop_rate=0.457
+[2026-05-27 00:30:57,700] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=200 POST-MERGE VAL_LOSS=1.3519 (first_eval=1.3489262988567352)
+[2026-05-27 00:41:08,891] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=225/300 train_loss=1.2627 lr=2.00e-04 elapsed=6267s
+[2026-05-27 00:51:37,881] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=250/300 train_loss=1.3134 lr=1.50e-04 elapsed=6896s
+[2026-05-27 00:51:37,895] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - === MERGE EVENT 5 at step 250 (method=relora_random_drop, keep_B_after_merge=False) ===
+[2026-05-27 00:51:37,895] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [schedule=anneal_down event_idx=5/6 target_drop_rate=0.350]
+[2026-05-27 00:51:37,900] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [schedule=anneal_down event_idx=5/6 realised_drop_rate=0.3604 target=0.3500 diff=+0.0104]
+[2026-05-27 00:51:39,822] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - merge: total=4032 kept=2579 drop_rate=0.360
+[2026-05-27 00:54:01,725] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=250 POST-MERGE VAL_LOSS=1.3419 (first_eval=1.3489262988567352)
+[2026-05-27 01:04:35,484] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=275/300 train_loss=1.3311 lr=1.48e-04 elapsed=7673s
+[2026-05-27 01:14:37,980] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=300/300 train_loss=1.3472 lr=0.00e+00 elapsed=8276s
+[2026-05-27 01:14:37,992] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - === MERGE EVENT 6 at step 300 (method=relora_random_drop, keep_B_after_merge=False) ===
+[2026-05-27 01:14:37,992] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [schedule=anneal_down event_idx=6/6 target_drop_rate=0.250]
+[2026-05-27 01:14:37,997] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - [schedule=anneal_down event_idx=6/6 realised_drop_rate=0.2416 target=0.2500 diff=-0.0084]
+[2026-05-27 01:14:40,181] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - merge: total=4032 kept=3058 drop_rate=0.242
+[2026-05-27 01:17:03,922] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - step=300 POST-MERGE VAL_LOSS=1.3357 (first_eval=1.3489262988567352)
+[2026-05-27 01:17:03,930] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - training done in 8421.8s
+[2026-05-27 01:18:54,532] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - FINAL VAL_LOSS=1.3357
+[2026-05-27 01:19:29,454] INFO stage3.qwen3-8b.tulu3-sft.relora_random_drop - summary.json written

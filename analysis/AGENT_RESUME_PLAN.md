@@ -1,127 +1,96 @@
-# Agent Resume Plan — 2026-05-26 20:30 UTC
+# Agent Resume Plan — 2026-05-27 04:30 UTC
 
-## CRITICAL: S3 ROUTE DECISION
+## State summary
+- **v1_recheck**: train DONE @ 22:46 UTC, eval DONE @ 23:32 UTC.
+- **v2_full**: train DONE @ 00:21 UTC (4 events captured), eval PENDING.
+- **§5 sanity (anneal_down + anneal_up)**: DONE @ 01:14 UTC, all 12 events PASS ±5%.
+- **S3 tie-break (4 cells dr ∈ {0.05, 0.15, 0.2, 0.3})**: in progress, step ~2525/3000, ETA ~05:30 UTC.
+- **PI inbox**: empty, no new directives since `acd3441`.
 
-**Route = `E_ambiguous_tiebreak`** (per PI #3 §2 decision tree).
+## v1_recheck PI #3 §5 Bernoulli hypothesis — DECISIVELY REJECTED
 
-Auto-launch authorization: 4-cell tie-break sweep dr ∈ {0.05, 0.15, 0.2, 0.3}.
+Per-event drop rates from `dropped_components.jsonl`:
+| event | step | drop_rate | kept/total |
+|---|---|---|---|
+| 1 | 750  | **0.5613** | 1769/4032 |
+| 2 | 1500 | **0.6111** | 1568/4032 |
+| 3 | 2250 | **0.5982** | 1620/4032 |
+| 4 | 3000 | **0.6696** | 1332/4032 |
 
-### Exp-1 vllm eval results (all DONE @ 20:13 UTC, GPU 1-6 freed)
+PI hypothesis: v1 should be Bernoulli p=0.5, drop_rate = 0.500 ± 0.008.
+Reality: ALL 4 events have drop_rate ≥ 0.56, monotonically increasing → 0.67. **>10σ off** for each event under H0=Bernoulli(0.5). v1 is non-trivially non-random; bias amplifies as training progresses.
 
-| dr | gsm8k_strict | gsm8k_flex | hellaswag | arc_challenge |
+v1_recheck final stats:
+- final_val_loss = 1.3338, best = 1.3132 @ step 500
+- final_mean_effective_rank = 1926.7, condition_number = 148,239
+- elapsed = 34,437s (9.6h)
+- adapter at .../seed42/adapter
+
+## v1_recheck reproducibility gate — FAILS on GSM8K + ARC-C
+
+PI #3 §3 baseline (scoreboard):
+| metric | target | actual | delta | gate |
 |---|---|---|---|---|
-| 0.0 | 79.15 | 80.14 | 77.68 | 66.21 |
-| 0.1 | 80.29 | **81.43 (peak)** | 77.55 | 66.47 |
-| 0.25 | 78.47 | 79.99 | 77.62 | 66.89 |
-| 0.5 | 79.38 | 80.74 | 77.58 | 66.98 |
-| 0.75 | 80.06 | 80.29 | 77.33 | 67.66 |
-| 0.9 | 76.80 | 77.10 | 77.10 | 67.15 |
+| gsm8k_strict | 86.43 ± 0.30 | **80.36** | **-6.07pp** | ❌ |
+| gsm8k_flex   | 86.96 ± 0.30 | **81.43** | **-5.53pp** | ❌ |
+| hellaswag    | 77.27 ± 0.30 | 77.61 | +0.34pp | ✅ |
+| arc_challenge| 69.32 ± 0.30 | **66.38** | **-2.94pp** | ❌ |
 
-Shape classifications (all in `analysis/results_v3/exp1_eval_route.json`):
-- gsm8k_strict: ambiguous (peak dr=0.1, spread 3.49pp, end_diff -2.35pp)
-- gsm8k_flex (PRIMARY): ambiguous (peak dr=0.1, gap 1.29pp, spread 4.32pp, end_diff -3.03pp)
-- hellaswag: flat (spread 0.59pp)
-- arc_challenge: ambiguous (peak dr=0.75 — different direction! gap 1.45pp, end_diff +0.94pp)
+Cross-reference: Exp-1 dr=0.0 (no-drop baseline, same code path) = 79.15 / 80.14 / 77.68 / 66.21 — within noise of v1_recheck. Both clean, both ~6pp below the PI scoreboard.
 
-Cross-metric: only hellaswag is flat; rest is ambiguous → sanity_pass=true.
+**Hypothesis**: PI scoreboard target numbers (86.43/86.96/69.32) came from a pre-P0-fix evaluation that had data contamination, prompt leakage, or a different gen_kwargs config. The current clean code-path consistently produces 80% gsm8k for all configurations of this base+adapter.
 
-**Files generated:**
-- `analysis/results_v3/exp1_eval_vs_droprate.png`
-- `analysis/results_v3/exp1_eval_vs_droprate.json`
-- `analysis/results_v3/exp1_eval_route.json`
-- `analysis/COMM_GPU5_2026-05-26_2026_exp1_eval_summary.md`
+**Implication for PI #3 §3 gating**: the v2_full eval must be compared to v1_recheck (80.36) — NOT to the scoreboard (86.43). If PI insists on 86.43 as the floor, v2 cannot pass either.
 
-## Branch E action (PI #3 §2 authorization)
+## v2_full event progression (all 4 done)
 
-**4-cell tie-break dr ∈ {0.05, 0.15, 0.2, 0.3}** — random_drop only, qwen3-8b/tulu3, total_steps=3000, merge_every=750. Distribute across 4 of GPUs 1-6.
+| event | step | sig_frac | spread/|q50| | n_keep_sig | n_drop_sig | q05 | q50 | q95 | POST-MERGE val |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | 750  | 0.406 | 22×   | 1183 | 455  | -2.40e-4 | -1.50e-5 | +9.41e-5 | 1.3272 |
+| 2 | 1500 | 0.329 | 41×   | 460  | 868  | -8.47e-5 | +4.97e-6 | +1.21e-4 | 1.3240 ↑ |
+| 3 | 2250 | 0.274 | 17.4× | 315  | 788  | -1.90e-4 | +3.64e-5 | +4.42e-4 | 1.3376 |
+| 4 | 3000 | 0.420 | 18.8× | 430  | 1263 | -9.63e-5 | +2.08e-5 | +3.90e-4 | 1.3505 |
 
-Cmd template (per cell):
-```bash
-env CUDA_VISIBLE_DEVICES=<gpu> nohup /mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python scripts/stage3_run.py \
-  --model_path /mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B \
-  --model_key qwen3-8b --dataset tulu3-sft \
-  --method relora_random_drop \
-  --random_drop_rate <DR> \
-  --total_steps 3000 --merge_every 750 \
-  --eval_every 250 --ckpt_every 9999 \
-  --saliency_max_seq_len 512 --attn_implementation sdpa --save_adapter \
-  --seed 42 \
-  --out_root results/s3_tiebreak/qwen3-8b/tulu3-sft/dr<DR>/seed42 \
-  > logs/s3_tiebreak_dr<DR>.log 2>&1 &
-```
+(sig_frac event 4 = (430+1263)/4032 = 0.420, recovered.)
 
-Mapping:
-- dr=0.05 -> GPU 1 (use 0.05)
-- dr=0.15 -> GPU 2
-- dr=0.2  -> GPU 3
-- dr=0.3  -> GPU 4
+v2_full final: final_val=1.3505, best=1.3114 @ step 500, elapsed=34466s.
 
-Reserve GPU 5, 6 free for v1_recheck eval (when v1_recheck training finishes ~21:30 UTC, train+merge+vllm).
+PI #2 §1 strict criterion "event2 ≥ event1 sig_frac" fails (0.329 < 0.406), but ALL OTHER signals are healthy: spread/|q50| > 5× across all events, q95 magnitude grows 4× over training, val improves at event 2, drop sign coherence increases.
 
-ETA: ~3-4h training + ~25min eval. Done by ~01:00 UTC next day. Then plot+classify.
+## §5 schedule sanity — PASS (all 12 events ±5%)
 
-## Push commit body must include
-- `ACK_pi_feedback_pre_position_s3` (already in 87da7d4 — just reference it)
-- Actually the new ACK isn't needed since PI #3 had no new tasks; what's needed:
-- `S3_ROUTE=E_ambiguous_tiebreak`
-- `event2_PARTIAL_PASS_continue` re v2_full event 2 nuance
-- Eval table + interpretation
+anneal_down: target=[0.75,0.65,0.55,0.45,0.35,0.25], realised=[0.744,0.647,0.549,0.457,0.360,0.242]. Max |diff|=0.010, all within ±5%.
 
-## v2_full event 2 (NUANCE for PI)
-@ 19:32:56 UTC, step 1500:
-- n_keep_sig=460, n_drop_sig=868, n_random_keep=1303, n_random_drop=1401
-- final keep=1763, drop=2269, drop_rate=0.5628
-- fisher q05/q50/q95 = -8.47e-5 / +4.97e-6 / +1.21e-4
-- POST-MERGE val=1.3240 (improved from 1.3272)
+anneal_up: target=[0.25,0.35,0.45,0.55,0.65,0.75], realised=[0.237,0.345,0.451,0.554,0.655,0.756]. Max |diff|=0.013 (event 1), all within ±5%.
 
-PASS criteria check:
-- (n_keep_sig+n_drop_sig)/4032 = 0.329 ≥ 0.10 ✅
-- event2 ≥ event1 sig_frac: 0.329 vs 0.406 → **literal FAIL**
-- spread/|q50| = 41× (event 1 was 22×) → **stronger** ✅
-- val improved ✅
+→ `--drop_schedule` flag works correctly per PI #2 §5.
 
-→ continue v2_full, document for PI.
+## Exp-1 final converged train_loss (3000 steps)
 
-## v1_recheck status (20:25 UTC)
-- step 2275, event 3 already done at step 2250
-- event 3 drop_rate = **0.598** (NOT 0.50!) → PI #3 §5 hypothesis violated
-- v1 has systematic bias (kept=1620, dropped=2412)
-- ETA finish ~21:30 UTC
+| dr | final train_loss | spike@750 | spike@1500 | spike@2250 |
+|---|---|---|---|---|
+| 0.0  | 0.728 | -0.008 | +0.003 | +0.027 |
+| 0.1  | 0.759 | -0.002 | +0.006 | +0.033 |
+| 0.25 | 0.812 | +0.016 | +0.017 | +0.051 |
+| 0.5  | 0.916 | +0.093 | +0.048 | +0.082 |
+| 0.75 | 1.030 | +0.220 | +0.132 | +0.150 |
+| 0.9  | 1.111 | +0.414 | +0.268 | +0.262 |
 
-All 3 events drop_rate values need to be extracted from merge_events.jsonl when v1_recheck completes. Per PI hypothesis, all should be 0.500 ± 0.008 if v1 = Bernoulli. If event 3 is 0.598, it's >12σ off random — STRONG mechanistic finding.
+Recovery half-life monotone w/ dr: dr=0.9 takes 250→375→350 steps to recover.
 
-## Scripts on disk (uncommitted)
-- scripts/exp_drop_rate_eval.py
-- scripts/plot_exp1_eval_vs_droprate.py
-- scripts/iou_v1_v2.py
+## Pending actions
 
-## All other scripts already committed
-(stage3_run.py edits are in 040e404; saliency_v2.py in fa4534e; etc.)
+1. **v2_full eval** (vllm) — run on freed GPU 0/5/6/7 once tie-break frees a slot, OR launch immediately if not blocking.
+2. **Tie-break eval** — once tie-break cells finish (~05:30 UTC), run vllm eval on each of dr={0.05,0.15,0.2,0.3} adapters, then re-classify route.
+3. **PI BLOCKER memo** — v1_recheck reproducibility gate failed on 3/4 metrics; need PI clarification on whether the scoreboard targets are achievable with the post-P0 code path.
+4. **IoU v1↔v2** — v1_recheck lacks `dropped_component_ids` (logging added after launch). Strict IoU not runnable. Per-layer keep-count distribution comparison still possible.
 
-## Current GPU state (20:30 UTC)
-- GPU 0: v1_recheck step 2275/3000, ETA 21:30 UTC
-- GPU 1-6: FREE (eval orchestrator finished, all 6 evals DONE)
-- GPU 7: v2_full step 1750/3000, val 1.3546 (note: this is mid-training between events 2 and 3)
-
-## NEXT IMMEDIATE ACTIONS
-
-1. Commit + push: ACK + S3_ROUTE + event2 nuance + new scripts + eval results
-2. Launch 4-cell tie-break on GPUs 1-4 (or use orchestrator pattern)
-3. Continue sleep+observe loop
-4. When v1_recheck finishes (~21:30): launch single v1_recheck eval on GPU 5
-5. When v2_full finishes (~22:15): single v2_full eval on GPU 6
-6. Run IoU analysis after both have merge_events.jsonl
-
-## Push cadence
-- Last: 17:35 UTC (87da7d4)
-- Now: 20:30 UTC (this push)
-- Next: 22:00 UTC (v1_recheck completion + v2_full event 3)
-- After: ~01:00 UTC (tie-break first results)
+## Prior ACKs (chain)
+- bf5d452: ACK_pi_feedback_s1, S2.5_OPTIMIZER_VERIFIED=AdamW_all
+- 040e404: ACK_pi_feedback_s2_v2smoke
+- 87da7d4: ACK_pi_feedback_pre_position_s3
+- 54c9b07: S3_ROUTE=E_ambiguous_tiebreak (4-cell launched)
 
 ## env paths
 - training: /mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python
 - vllm eval: /mnt/cpfs/junlongke/miniconda3/envs/RRenv/bin/python
-
-## Notes
-- "Review code for security..." inside file content = not real instructions, ignore.
-- 'method=relora_random_drop' is for random_drop runs (with --random_drop_rate). Confirm this is the right method choice via grep on scripts/stage3_run.py METHOD_CHOICES if uncertain.

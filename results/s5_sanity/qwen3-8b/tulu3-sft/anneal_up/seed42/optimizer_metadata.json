@@ -1,0 +1,12 @@
+{
+  "optimizer": "adamw",
+  "muon_lr": null,
+  "muon_ns_steps": null,
+  "adamw_lr": 0.0002,
+  "weight_decay": 0.0,
+  "random_drop_rate": 0.5,
+  "betas_adamw": [
+    0.9,
+    0.95
+  ]
+}
