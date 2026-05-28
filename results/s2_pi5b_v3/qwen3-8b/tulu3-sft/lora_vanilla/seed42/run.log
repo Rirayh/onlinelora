@@ -1,0 +1,156 @@
+[2026-05-27 08:13:07,137] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - START stage3 model=/mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B dataset=tulu3-sft method=lora_vanilla out=/mnt/cpfs/junlongke/onlinelora/lora_obd/results/s2_pi5b_v3/qwen3-8b/tulu3-sft/lora_vanilla/seed42
+[2026-05-27 08:13:09,825] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - tokenizer loaded in 0.3s, vocab=151643
+[2026-05-27 08:13:09,826] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - loading tulu-3-sft-mixture from /mnt/cpfs/junlongke/onlinelora/datasets/tulu-3-sft-mixture
+[2026-05-27 08:13:11,575] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - tulu3-sft train=10000 val=500
+[2026-05-27 08:13:28,662] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - tulu3-sft tokenized: train 10000 val 500
+[2026-05-27 08:13:28,925] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - data prepared in 19.1s
+[2026-05-27 08:13:30,618] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - model loaded in 1.7s
+[2026-05-27 08:13:47,608] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - #LoRA layers=252 #components=4032
+[2026-05-27 08:13:47,614] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - #trainable params=43.65M
+[2026-05-27 08:14:04,284] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - [step 0] mean_ER=1926.51 mean_CN=9.34e+04 (sampled 8 layers)
+[2026-05-27 08:14:04,285] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - merge events scheduled at: []
+[2026-05-27 08:18:37,560] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=25/3000 train_loss=1.8819 lr=5.00e-05 elapsed=273s
+[2026-05-27 08:23:08,235] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=50/3000 train_loss=1.4083 lr=1.00e-04 elapsed=544s
+[2026-05-27 08:27:44,060] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=75/3000 train_loss=1.4039 lr=1.50e-04 elapsed=820s
+[2026-05-27 08:32:18,912] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=100/3000 train_loss=1.3264 lr=2.00e-04 elapsed=1095s
+[2026-05-27 08:36:53,077] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=125/3000 train_loss=1.2826 lr=2.00e-04 elapsed=1369s
+[2026-05-27 08:41:26,230] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=150/3000 train_loss=1.2983 lr=2.00e-04 elapsed=1642s
+[2026-05-27 08:46:01,714] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=175/3000 train_loss=1.2598 lr=2.00e-04 elapsed=1917s
+[2026-05-27 08:50:50,293] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=200/3000 train_loss=1.3075 lr=1.99e-04 elapsed=2206s
+[2026-05-27 08:55:20,517] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=225/3000 train_loss=1.2328 lr=1.99e-04 elapsed=2476s
+[2026-05-27 08:59:59,197] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=250/3000 train_loss=1.2869 lr=1.99e-04 elapsed=2755s
+[2026-05-27 09:00:48,476] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=250 VAL_LOSS=1.3137
+[2026-05-27 09:00:48,989] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - best ckpt updated: step=250 val_loss=1.3137
+[2026-05-27 09:05:30,127] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=275/3000 train_loss=1.3089 lr=1.98e-04 elapsed=3086s
+[2026-05-27 09:09:57,112] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=300/3000 train_loss=1.3225 lr=1.98e-04 elapsed=3353s
+[2026-05-27 09:14:30,135] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=325/3000 train_loss=1.2681 lr=1.97e-04 elapsed=3626s
+[2026-05-27 09:19:08,516] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=350/3000 train_loss=1.1914 lr=1.96e-04 elapsed=3904s
+[2026-05-27 09:23:34,294] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=375/3000 train_loss=1.2048 lr=1.96e-04 elapsed=4170s
+[2026-05-27 09:28:16,965] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=400/3000 train_loss=1.1785 lr=1.95e-04 elapsed=4453s
+[2026-05-27 09:32:56,826] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=425/3000 train_loss=1.1990 lr=1.94e-04 elapsed=4733s
+[2026-05-27 09:37:29,504] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=450/3000 train_loss=1.2797 lr=1.93e-04 elapsed=5005s
+[2026-05-27 09:42:03,540] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=475/3000 train_loss=1.2499 lr=1.92e-04 elapsed=5279s
+[2026-05-27 09:46:27,984] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=500/3000 train_loss=1.1868 lr=1.91e-04 elapsed=5544s
+[2026-05-27 09:47:17,304] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=500 VAL_LOSS=1.3124
+[2026-05-27 09:47:17,783] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - best ckpt updated: step=500 val_loss=1.3124
+[2026-05-27 09:47:32,511] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=500 mean_ER=1926.59 mean_CN=1.27e+06
+[2026-05-27 09:52:17,287] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=525/3000 train_loss=1.2361 lr=1.90e-04 elapsed=5893s
+[2026-05-27 09:57:03,538] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=550/3000 train_loss=1.2248 lr=1.88e-04 elapsed=6179s
+[2026-05-27 10:01:36,850] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=575/3000 train_loss=1.2059 lr=1.87e-04 elapsed=6453s
+[2026-05-27 10:06:10,062] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=600/3000 train_loss=1.2283 lr=1.86e-04 elapsed=6726s
+[2026-05-27 10:10:47,453] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=625/3000 train_loss=1.2449 lr=1.84e-04 elapsed=7003s
+[2026-05-27 10:15:17,402] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=650/3000 train_loss=1.1067 lr=1.83e-04 elapsed=7273s
+[2026-05-27 10:20:00,076] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=675/3000 train_loss=1.1272 lr=1.81e-04 elapsed=7556s
+[2026-05-27 10:24:35,860] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=700/3000 train_loss=1.0976 lr=1.80e-04 elapsed=7832s
+[2026-05-27 10:29:13,438] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=725/3000 train_loss=1.1305 lr=1.78e-04 elapsed=8109s
+[2026-05-27 10:33:57,780] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=750/3000 train_loss=1.1161 lr=1.76e-04 elapsed=8393s
+[2026-05-27 10:34:47,169] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=750 VAL_LOSS=1.3327
+[2026-05-27 10:39:25,994] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=775/3000 train_loss=1.1225 lr=1.74e-04 elapsed=8722s
+[2026-05-27 10:44:06,677] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=800/3000 train_loss=1.1911 lr=1.73e-04 elapsed=9002s
+[2026-05-27 10:48:35,175] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=825/3000 train_loss=1.1003 lr=1.71e-04 elapsed=9271s
+[2026-05-27 10:53:16,270] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=850/3000 train_loss=1.0932 lr=1.69e-04 elapsed=9552s
+[2026-05-27 10:57:50,251] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=875/3000 train_loss=1.0968 lr=1.67e-04 elapsed=9826s
+[2026-05-27 11:02:29,782] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=900/3000 train_loss=1.1499 lr=1.65e-04 elapsed=10105s
+[2026-05-27 11:07:08,601] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=925/3000 train_loss=1.1267 lr=1.63e-04 elapsed=10384s
+[2026-05-27 11:11:48,633] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=950/3000 train_loss=1.0699 lr=1.61e-04 elapsed=10664s
+[2026-05-27 11:16:27,591] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=975/3000 train_loss=0.9909 lr=1.58e-04 elapsed=10943s
+[2026-05-27 11:21:08,056] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1000/3000 train_loss=1.0492 lr=1.56e-04 elapsed=11224s
+[2026-05-27 11:21:57,356] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1000 VAL_LOSS=1.3761
+[2026-05-27 11:22:12,471] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1000 mean_ER=1926.64 mean_CN=5.90e+04
+[2026-05-27 11:26:49,720] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1025/3000 train_loss=1.0315 lr=1.54e-04 elapsed=11565s
+[2026-05-27 11:31:23,505] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1050/3000 train_loss=0.9366 lr=1.52e-04 elapsed=11839s
+[2026-05-27 11:36:08,042] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1075/3000 train_loss=1.0106 lr=1.49e-04 elapsed=12124s
+[2026-05-27 11:41:04,234] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1100/3000 train_loss=1.0718 lr=1.47e-04 elapsed=12420s
+[2026-05-27 11:45:35,780] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1125/3000 train_loss=1.0129 lr=1.44e-04 elapsed=12691s
+[2026-05-27 11:50:03,734] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1150/3000 train_loss=1.0596 lr=1.42e-04 elapsed=12959s
+[2026-05-27 11:54:39,005] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1175/3000 train_loss=1.0072 lr=1.40e-04 elapsed=13235s
+[2026-05-27 11:59:14,981] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1200/3000 train_loss=1.0146 lr=1.37e-04 elapsed=13511s
+[2026-05-27 12:03:50,164] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1225/3000 train_loss=0.9966 lr=1.34e-04 elapsed=13786s
+[2026-05-27 12:08:30,965] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1250/3000 train_loss=1.0612 lr=1.32e-04 elapsed=14067s
+[2026-05-27 12:09:20,308] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1250 VAL_LOSS=1.3783
+[2026-05-27 12:13:53,965] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1275/3000 train_loss=0.9124 lr=1.29e-04 elapsed=14390s
+[2026-05-27 12:18:25,669] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1300/3000 train_loss=0.8660 lr=1.27e-04 elapsed=14661s
+[2026-05-27 12:23:01,956] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1325/3000 train_loss=0.9021 lr=1.24e-04 elapsed=14938s
+[2026-05-27 12:27:48,538] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1350/3000 train_loss=0.9307 lr=1.21e-04 elapsed=15224s
+[2026-05-27 12:32:31,854] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1375/3000 train_loss=0.8942 lr=1.19e-04 elapsed=15508s
+[2026-05-27 12:37:18,727] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1400/3000 train_loss=0.9852 lr=1.16e-04 elapsed=15794s
+[2026-05-27 12:42:03,507] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1425/3000 train_loss=0.8788 lr=1.14e-04 elapsed=16079s
+[2026-05-27 12:46:44,530] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1450/3000 train_loss=0.9490 lr=1.11e-04 elapsed=16360s
+[2026-05-27 12:51:20,335] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1475/3000 train_loss=0.9510 lr=1.08e-04 elapsed=16636s
+[2026-05-27 12:55:53,723] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1500/3000 train_loss=0.9091 lr=1.05e-04 elapsed=16909s
+[2026-05-27 12:56:43,077] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1500 VAL_LOSS=1.4448
+[2026-05-27 12:56:57,995] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1500 mean_ER=1926.67 mean_CN=8.70e+04
+[2026-05-27 13:01:36,134] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1525/3000 train_loss=0.8984 lr=1.03e-04 elapsed=17252s
+[2026-05-27 13:06:11,815] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1550/3000 train_loss=0.9220 lr=1.00e-04 elapsed=17528s
+[2026-05-27 13:10:31,448] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1575/3000 train_loss=0.8774 lr=9.73e-05 elapsed=17787s
+[2026-05-27 13:15:23,582] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1600/3000 train_loss=0.8446 lr=9.46e-05 elapsed=18079s
+[2026-05-27 13:19:57,545] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1625/3000 train_loss=0.8070 lr=9.19e-05 elapsed=18353s
+[2026-05-27 13:24:42,248] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1650/3000 train_loss=0.8133 lr=8.92e-05 elapsed=18638s
+[2026-05-27 13:29:20,819] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1675/3000 train_loss=0.8281 lr=8.65e-05 elapsed=18917s
+[2026-05-27 13:34:09,917] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1700/3000 train_loss=0.8766 lr=8.38e-05 elapsed=19206s
+[2026-05-27 13:38:47,038] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1725/3000 train_loss=0.7766 lr=8.12e-05 elapsed=19483s
+[2026-05-27 13:43:12,490] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1750/3000 train_loss=0.8132 lr=7.85e-05 elapsed=19748s
+[2026-05-27 13:44:01,842] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1750 VAL_LOSS=1.5382
+[2026-05-27 13:48:29,200] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1775/3000 train_loss=0.7968 lr=7.59e-05 elapsed=20065s
+[2026-05-27 13:53:05,208] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1800/3000 train_loss=0.8115 lr=7.32e-05 elapsed=20341s
+[2026-05-27 13:57:41,160] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1825/3000 train_loss=0.7923 lr=7.06e-05 elapsed=20617s
+[2026-05-27 14:02:25,024] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1850/3000 train_loss=0.8255 lr=6.81e-05 elapsed=20901s
+[2026-05-27 14:06:57,306] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1875/3000 train_loss=0.8145 lr=6.55e-05 elapsed=21173s
+[2026-05-27 14:11:31,796] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1900/3000 train_loss=0.6945 lr=6.30e-05 elapsed=21448s
+[2026-05-27 14:16:10,020] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1925/3000 train_loss=0.6976 lr=6.05e-05 elapsed=21726s
+[2026-05-27 14:20:35,210] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1950/3000 train_loss=0.6788 lr=5.80e-05 elapsed=21991s
+[2026-05-27 14:25:18,228] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=1975/3000 train_loss=0.7014 lr=5.56e-05 elapsed=22274s
+[2026-05-27 14:29:58,017] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2000/3000 train_loss=0.7891 lr=5.32e-05 elapsed=22554s
+[2026-05-27 14:30:47,373] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2000 VAL_LOSS=1.6381
+[2026-05-27 14:31:02,395] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2000 mean_ER=1926.69 mean_CN=1.43e+05
+[2026-05-27 14:35:49,040] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2025/3000 train_loss=0.7526 lr=5.08e-05 elapsed=22905s
+[2026-05-27 14:40:30,358] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2050/3000 train_loss=0.7356 lr=4.84e-05 elapsed=23186s
+[2026-05-27 14:45:10,568] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2075/3000 train_loss=0.7356 lr=4.61e-05 elapsed=23466s
+[2026-05-27 14:49:48,803] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2100/3000 train_loss=0.7776 lr=4.39e-05 elapsed=23745s
+[2026-05-27 14:54:26,150] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2125/3000 train_loss=0.7801 lr=4.17e-05 elapsed=24022s
+[2026-05-27 14:58:52,284] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2150/3000 train_loss=0.7264 lr=3.95e-05 elapsed=24288s
+[2026-05-27 15:03:26,029] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2175/3000 train_loss=0.7464 lr=3.73e-05 elapsed=24562s
+[2026-05-27 15:08:03,544] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2200/3000 train_loss=0.7665 lr=3.53e-05 elapsed=24839s
+[2026-05-27 15:12:44,265] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2225/3000 train_loss=0.7155 lr=3.32e-05 elapsed=25120s
+[2026-05-27 15:17:18,831] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2250/3000 train_loss=0.6905 lr=3.12e-05 elapsed=25395s
+[2026-05-27 15:18:08,252] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2250 VAL_LOSS=1.7100
+[2026-05-27 15:22:43,939] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2275/3000 train_loss=0.6473 lr=2.93e-05 elapsed=25720s
+[2026-05-27 15:27:24,344] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2300/3000 train_loss=0.6613 lr=2.74e-05 elapsed=26000s
+[2026-05-27 15:31:53,177] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2325/3000 train_loss=0.6534 lr=2.56e-05 elapsed=26269s
+[2026-05-27 15:36:40,975] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2350/3000 train_loss=0.6931 lr=2.38e-05 elapsed=26557s
+[2026-05-27 15:41:14,543] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2375/3000 train_loss=0.6443 lr=2.21e-05 elapsed=26830s
+[2026-05-27 15:45:56,466] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2400/3000 train_loss=0.7754 lr=2.04e-05 elapsed=27112s
+[2026-05-27 15:50:30,939] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2425/3000 train_loss=0.6375 lr=1.88e-05 elapsed=27387s
+[2026-05-27 15:55:05,650] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2450/3000 train_loss=0.6496 lr=1.72e-05 elapsed=27661s
+[2026-05-27 15:59:38,609] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2475/3000 train_loss=0.6703 lr=1.57e-05 elapsed=27934s
+[2026-05-27 16:04:17,065] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2500/3000 train_loss=0.6587 lr=1.43e-05 elapsed=28213s
+[2026-05-27 16:05:06,522] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2500 VAL_LOSS=1.7192
+[2026-05-27 16:05:21,793] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2500 mean_ER=1926.68 mean_CN=1.39e+05
+[2026-05-27 16:10:06,018] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2525/3000 train_loss=0.6425 lr=1.29e-05 elapsed=28562s
+[2026-05-27 16:14:28,062] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2550/3000 train_loss=0.6005 lr=1.16e-05 elapsed=28824s
+[2026-05-27 16:19:02,362] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2575/3000 train_loss=0.6109 lr=1.04e-05 elapsed=29098s
+[2026-05-27 16:23:39,838] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2600/3000 train_loss=0.6546 lr=9.24e-06 elapsed=29376s
+[2026-05-27 16:28:30,769] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2625/3000 train_loss=0.7052 lr=8.14e-06 elapsed=29666s
+[2026-05-27 16:33:07,284] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2650/3000 train_loss=0.6142 lr=7.10e-06 elapsed=29943s
+[2026-05-27 16:37:42,934] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2675/3000 train_loss=0.6270 lr=6.13e-06 elapsed=30219s
+[2026-05-27 16:42:16,354] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2700/3000 train_loss=0.6143 lr=5.23e-06 elapsed=30492s
+[2026-05-27 16:46:57,591] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2725/3000 train_loss=0.6663 lr=4.40e-06 elapsed=30773s
+[2026-05-27 16:51:22,650] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2750/3000 train_loss=0.6118 lr=3.65e-06 elapsed=31038s
+[2026-05-27 16:52:12,026] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2750 VAL_LOSS=1.7687
+[2026-05-27 16:56:47,432] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2775/3000 train_loss=0.6568 lr=2.96e-06 elapsed=31363s
+[2026-05-27 17:01:32,367] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2800/3000 train_loss=0.6177 lr=2.34e-06 elapsed=31648s
+[2026-05-27 17:06:20,941] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2825/3000 train_loss=0.6682 lr=1.79e-06 elapsed=31937s
+[2026-05-27 17:10:50,920] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2850/3000 train_loss=0.6333 lr=1.32e-06 elapsed=32207s
+[2026-05-27 17:15:36,863] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2875/3000 train_loss=0.6695 lr=9.15e-07 elapsed=32493s
+[2026-05-27 17:20:18,040] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2900/3000 train_loss=0.6447 lr=5.86e-07 elapsed=32774s
+[2026-05-27 17:24:51,209] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2925/3000 train_loss=0.5531 lr=3.30e-07 elapsed=33047s
+[2026-05-27 17:29:26,829] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2950/3000 train_loss=0.6164 lr=1.47e-07 elapsed=33323s
+[2026-05-27 17:34:04,152] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=2975/3000 train_loss=0.6230 lr=3.67e-08 elapsed=33600s
+[2026-05-27 17:38:56,244] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=3000/3000 train_loss=0.7041 lr=0.00e+00 elapsed=33892s
+[2026-05-27 17:39:45,612] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=3000 VAL_LOSS=1.7829
+[2026-05-27 17:40:00,547] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - step=3000 mean_ER=1926.69 mean_CN=1.35e+05
+[2026-05-27 17:40:00,547] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - training done in 33956.3s
+[2026-05-27 17:40:49,856] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - FINAL VAL_LOSS=1.7829
+[2026-05-27 17:41:04,338] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - summary.json written
+[2026-05-27 17:41:04,350] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - replaced 252 LoRA wrappers with base_layer
+[2026-05-27 17:41:32,509] INFO stage3.qwen3-8b.tulu3-sft.lora_vanilla - merged_final saved to /mnt/cpfs/junlongke/onlinelora/lora_obd/results/s2_pi5b_v3/qwen3-8b/tulu3-sft/lora_vanilla/seed42/merged_final (total 16.4 GB, 252 LoRA wrappers stripped, manual safetensors path)

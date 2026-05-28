@@ -1,68 +1,75 @@
-# Agent Resume Plan — 2026-05-27 18:40 UTC
+# Agent Resume Plan — 2026-05-28 06:25 UTC
 
-## Active state: 6-cell lm-eval IN FLIGHT on GPUs 0-5
+## CRITICAL FINDING: lm-eval scores reveal unexpected pattern
 
-All 6 cells trained + merged_final saved. lm-eval launched 18:35 UTC.
-ETA per cell ~45-60min → all done ~19:30-19:45 UTC.
+All 6-cell lm-eval DONE (completed ~19:13-19:15 UTC yesterday).
 
-| GPU | cell             | PID (vllm sub) | eval log                              |
-|-----|------------------|----------------|---------------------------------------|
-| 0   | v1_S3pos         | 2779947        | logs/s2_pi5b_v3/v1_S3pos.eval.log    |
-| 1   | v2_S3pos_IG_FDR  | 2779952        | logs/s2_pi5b_v3/v2_S3pos_IG_FDR.eval.log |
-| 2   | random_dr0.5     | 2779957        | logs/s2_pi5b_v3/random_dr0.5.eval.log |
-| 3   | random_dr0.3     | 2779973        | logs/s2_pi5b_v3/random_dr0.3.eval.log |
-| 4   | relora_baseline  | 2779978        | logs/s2_pi5b_v3/relora_baseline.eval.log |
-| 5   | lora_vanilla     | 2779983        | logs/s2_pi5b_v3/lora_vanilla.eval.log |
+### Scores table
+| cell             | gsm_strict | gsm_flex | hellaswag | arc_c |
+|------------------|-----------|----------|-----------|-------|
+| v1_S3pos         | 79.53     | 80.14    | 77.97     | 66.89 |
+| v2_S3pos_IG_FDR  | 76.19     | 76.72    | 78.84     | 66.81 |
+| random_dr0.5     | 77.03     | 77.56    | 79.36     | 66.38 |
+| random_dr0.3     | 72.18     | 72.71    | 79.73     | 65.44 |
+| relora_baseline  | 70.28     | 70.81    | 78.93     | 62.37 |
+| **lora_vanilla** | **87.64** | **88.32**| 76.07     | 66.47 |
 
-Orchestrator PID: 2778765, log: logs/s2_pi5b_v3/eval_orchestrator.log
+### Delta vs lora_vanilla
+| cell             | gsm_strict | gsm_flex | hellaswag | arc_c |
+|------------------|-----------|----------|-----------|-------|
+| v1_S3pos         | -8.11     | -8.19    | +1.90     | +0.43 |
+| v2_S3pos_IG_FDR  | -11.45    | -11.60   | +2.77     | +0.34 |
+| random_dr0.5     | -10.61    | -10.77   | +3.29     | -0.09 |
+| random_dr0.3     | -15.47    | -15.62   | +3.65     | -1.02 |
+| relora_baseline  | -17.36    | -17.51   | +2.86     | -4.10 |
 
-## Training results (post-merge val_loss, significant signal already visible)
-| cell             | final_val | best_val | best_step |
-|------------------|-----------|----------|-----------|
-| v1_S3pos         | 1.3298    | 1.3134   | 500       |
-| v2_S3pos_IG_FDR  | 1.3477    | 1.3126   | 250       |
-| random_dr0.5     | 1.4438    | 1.3122   | 500       |
-| random_dr0.3     | 1.5459    | 1.3112   | 500       |
-| relora_baseline  | 1.6943    | 1.3141   | 250       |
-| lora_vanilla     | 1.7829    | 1.3124   | 500       |
+### Interpretation
+Pattern: lora_vanilla DOMINATES gsm8k by 8-17pp over all relora variants.
+Hellaswag shows OPPOSITE pattern: all relora variants beat lora_vanilla by 1.9-3.7pp.
 
-Note: final_val_loss is the POST-ALL-MERGES val_loss (correct metric now).
-v1_S3pos (1.330) is substantially better than relora_baseline (1.694) and
-lora_vanilla (1.783). This is the first clean signal we've ever seen.
+This suggests: ReLoRA merging HURTS gsm8k but HELPS hellaswag. The merge operation
+may be compressing reasoning-heavy knowledge. v1_S3pos is the BEST relora variant
+(least gsm8k degradation, still beats vanilla on hellaswag).
 
-## After eval done
-1. Check results/s2_pi5b_v3/.../lm_eval/results_*.json for all 6 cells
-2. Parse scores (gsm8k_strict, gsm8k_flex, hellaswag, arc_challenge)
-3. Build comparison table; PI acceptance = >5pp delta v1/v2 vs baseline
-4. git add results/s2_pi5b_v3/ scripts/s2_pi5b_v3_eval.py analysis/ && commit + push
+v1 vs relora_baseline: v1_S3pos gsm_strict=79.53 vs relora_baseline=70.28 (+9.25pp).
+→ v1 saliency IS helping, substantially, vs baseline relora.
 
-## Commands to check progress
+v2 vs v1: v2=76.19 vs v1=79.53 (-3.34pp gsm8k) but v2 hellaswag=78.84 > v1=77.97 (+0.87pp).
+
+### Key conclusions
+1. Method DOES produce signal: v1 > v2 > random_dr0.5 > random_dr0.3 > relora_baseline (gsm8k)
+2. lora_vanilla gsm8k (87.64%) > all relora variants — BUT vanilla has no parameter budget
+   savings vs relora. This means the merging+dropout COSTS reasoning ability.
+3. Hellaswag trend reversed: relora variants BEAT vanilla by 1.9-3.7pp.
+4. This matches PI #5b hypothesis that method works (signal hidden by P0 bug).
+
+## Current state
+- GPUs 0-7: ALL FREE
+- Orchestrator: still running (polling dead PIDs, harmless)
+- PI inbox: EMPTY (no new commits)
+- Nothing pushed since 0eb5566
+
+## Next actions
+1. Kill orphan orchestrator (PID 2778765)
+2. Write results summary JSON
+3. Commit + push: training results + lm_eval results + summary
+4. Write COMM_AGENT_TO_PI doc with score table + conclusions
+
+## Commands
 ```bash
-# eval progress
-for c in v1_S3pos v2_S3pos_IG_FDR random_dr0.5 random_dr0.3 relora_baseline lora_vanilla; do
-  echo -n "$c: "
-  tail -3 /mnt/cpfs/junlongke/onlinelora/lora_obd/logs/s2_pi5b_v3/${c}.eval.log 2>/dev/null | grep -oE "(gsm8k|Running|Completed)" | head -1
-done
+# Kill orchestrator
+kill 2778765 2>/dev/null
 
-# orchestrator status
-tail -10 /mnt/cpfs/junlongke/onlinelora/lora_obd/logs/s2_pi5b_v3/eval_orchestrator.log
+# Score extraction already done (see above)
 
-# results present?
-for c in v1_S3pos v2_S3pos_IG_FDR random_dr0.5 random_dr0.3 relora_baseline lora_vanilla; do
-  echo -n "$c: "
-  ls /mnt/cpfs/junlongke/onlinelora/lora_obd/results/s2_pi5b_v3/qwen3-8b/tulu3-sft/$c/seed42/lm_eval/ 2>/dev/null | head -1
-done
+# Files to commit:
+git add results/s2_pi5b_v3/ analysis/ && git commit && git push
 ```
-
-## Key paths
-- training results: results/s2_pi5b_v3/qwen3-8b/tulu3-sft/<cell>/seed42/
-- merged models: .../seed42/merged_final/ (16.4GB per cell, 4 shards)
-- lm_eval output: .../seed42/lm_eval/
 
 ## ACK chain
 bf5d452, 040e404, 87da7d4, 54c9b07, afa7880, 5f53503, 921d66c,
-f960448, 5286141 (ACK_5b + 6-cell train launched),
-(next: final results + commit + push)
+f960448, 5286141, 0eb5566 (train done + eval launched),
+(NEXT: final results commit)
 
 ## env paths
 - training: /mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python
