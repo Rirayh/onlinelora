@@ -32,10 +32,13 @@ PY_RRENV = "/mnt/cpfs/junlongke/miniconda3/envs/RRenv/bin/python"
 MODEL = "qwen3-8b"
 DATASET = "tulu3-sft"
 
-PHASE1_CELLS  = ["v1_S3pos", "random_dr0.5", "relora_baseline"]
-PHASE1_SEEDS  = [42, 43, 44]
-PHASED_CELLS  = ["lora_vanilla", "v1_S3pos"]
-PHASED_SEEDS  = [42, 43]
+PHASE1_CELLS   = ["v1_S3pos", "random_dr0.5", "relora_baseline"]
+PHASE1_SEEDS   = [42, 43, 44]
+PHASED_CELLS   = ["lora_vanilla", "v1_S3pos"]
+PHASED_SEEDS   = [42, 43]
+PHASE1P5_CELLS = ["random_anneal_up", "random_anneal_down",
+                  "random_triangle_up_down", "random_triangle_down_up"]
+PHASE1P5_SEEDS = [42]
 
 TASKS_5SHOT   = "gsm8k,hellaswag,arc_challenge,mmlu"
 TASKS_0SHOT   = "ifeval"
@@ -90,7 +93,7 @@ def launch_eval(gpu: int, merged_dir: Path, out_dir: Path,
     return proc.pid
 
 
-def collect_jobs(phase1: bool, phaseD: bool) -> list[dict]:
+def collect_jobs(phase1: bool, phaseD: bool, phase1p5: bool = False) -> list[dict]:
     jobs = []
     if phase1:
         base = ROOT / "results" / "phase1_robustness" / MODEL / DATASET
@@ -106,6 +109,21 @@ def collect_jobs(phase1: bool, phaseD: bool) -> list[dict]:
                     log(f"SKIP phase1 {cell}/seed{seed}: result exists")
                     continue
                 jobs.append({"label": f"p1/{cell}/s{seed}",
+                             "merged": merged, "out": lm_dir})
+    if phase1p5:
+        base = ROOT / "results" / "phase1p5_schedule_ablation" / MODEL / DATASET
+        for cell in PHASE1P5_CELLS:
+            for seed in PHASE1P5_SEEDS:
+                seed_dir  = base / cell / f"seed{seed}"
+                merged    = seed_dir / "merged_final"
+                lm_dir    = seed_dir / "lm_eval"
+                if not (merged / "config.json").exists():
+                    log(f"SKIP phase1p5 {cell}/seed{seed}: merged_final missing")
+                    continue
+                if has_result(lm_dir):
+                    log(f"SKIP phase1p5 {cell}/seed{seed}: result exists")
+                    continue
+                jobs.append({"label": f"p1p5/{cell}/s{seed}",
                              "merged": merged, "out": lm_dir})
     if phaseD:
         base = ROOT / "results" / "phase_d" / MODEL / DATASET
@@ -129,20 +147,23 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--gpus", default="",
                     help="Comma-sep GPU ids; empty=auto-detect free.")
-    ap.add_argument("--phase1", action="store_true", default=False)
-    ap.add_argument("--phaseD", action="store_true", default=False)
+    ap.add_argument("--phase1",   action="store_true", default=False)
+    ap.add_argument("--phase1p5", action="store_true", default=False)
+    ap.add_argument("--phaseD",   action="store_true", default=False)
     ap.add_argument("--all", action="store_true", default=False,
-                    help="Eval both phase1 and phaseD.")
+                    help="Eval phase1 + phase1p5 + phaseD.")
     ap.add_argument("--dry_run", action="store_true")
     args = ap.parse_args()
 
-    do_p1 = args.phase1 or args.all
-    do_pD = args.phaseD or args.all
-    if not do_p1 and not do_pD:
-        print("Specify --phase1, --phaseD, or --all", file=sys.stderr)
+    do_p1   = args.phase1   or args.all
+    do_p1p5 = args.phase1p5 or args.all
+    do_pD   = args.phaseD   or args.all
+    if not do_p1 and not do_p1p5 and not do_pD:
+        print("Specify --phase1, --phase1p5, --phaseD, or --all", file=sys.stderr)
         return 1
 
-    log(f"=== Phase1/D eval orchestrator started (phase1={do_p1} phaseD={do_pD}) ===")
+    log(f"=== Phase1/1p5/D eval orchestrator started "
+        f"(phase1={do_p1} phase1p5={do_p1p5} phaseD={do_pD}) ===")
 
     if args.gpus:
         gpus = [int(x) for x in args.gpus.split(",") if x.strip()]
@@ -150,7 +171,7 @@ def main() -> int:
         gpus = free_gpus()
         log(f"auto-detected free GPUs: {gpus}")
 
-    jobs = collect_jobs(do_p1, do_pD)
+    jobs = collect_jobs(do_p1, do_pD, do_p1p5)
     if not jobs:
         log("Nothing to eval.")
         return 0
@@ -197,11 +218,11 @@ def main() -> int:
 
     log("=== all evals done ===")
 
-    _print_summary(do_p1, do_pD)
+    _print_summary(do_p1, do_p1p5, do_pD)
     return 0
 
 
-def _print_summary(phase1: bool, phaseD: bool) -> None:
+def _print_summary(phase1: bool, phase1p5: bool, phaseD: bool) -> None:
     rows = []
 
     def _parse(seed_dir: Path, label: str) -> None:
@@ -216,12 +237,12 @@ def _print_summary(phase1: bool, phaseD: bool) -> None:
             v = r.get(task, {}).get(key, r.get(task, {}).get(key.split(",")[0], fallback))
             return f"{v*100:.2f}" if isinstance(v, float) else str(v)
 
-        gsm_s = g("gsm8k",       "exact_match,strict-match")
-        gsm_f = g("gsm8k",       "exact_match,flexible-extract")
-        hsw   = g("hellaswag",   "acc_norm,none")
+        gsm_s = g("gsm8k",        "exact_match,strict-match")
+        gsm_f = g("gsm8k",        "exact_match,flexible-extract")
+        hsw   = g("hellaswag",    "acc_norm,none")
         arc   = g("arc_challenge","acc_norm,none")
-        mmlu  = g("mmlu",        "acc,none")
-        ife   = g("ifeval",      "prompt_level_strict_acc,none")
+        mmlu  = g("mmlu",         "acc,none")
+        ife   = g("ifeval",       "prompt_level_strict_acc,none")
         rows.append(f"  {label:40s}  gsm_s={gsm_s}  gsm_f={gsm_f}  "
                     f"hsw={hsw}  arc={arc}  mmlu={mmlu}  ifeval={ife}")
 
@@ -230,6 +251,11 @@ def _print_summary(phase1: bool, phaseD: bool) -> None:
         for cell in PHASE1_CELLS:
             for seed in PHASE1_SEEDS:
                 _parse(base / cell / f"seed{seed}", f"p1/{cell}/s{seed}")
+    if phase1p5:
+        base = ROOT / "results" / "phase1p5_schedule_ablation" / MODEL / DATASET
+        for cell in PHASE1P5_CELLS:
+            for seed in PHASE1P5_SEEDS:
+                _parse(base / cell / f"seed{seed}", f"p1p5/{cell}/s{seed}")
     if phaseD:
         base = ROOT / "results" / "phase_d" / MODEL / DATASET
         for cell in PHASED_CELLS:

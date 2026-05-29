@@ -122,6 +122,9 @@ def build_cmd(method: str, extra: list[str], seed: int, out_dir: Path) -> list[s
     return base + extra
 
 
+POLL_INTERVAL_S = 120
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--gpus", default="",
@@ -129,17 +132,31 @@ def main() -> int:
     ap.add_argument("--exclude_gpus", default="",
                     help="GPUs to reserve (comma-sep).")
     ap.add_argument("--dry_run", action="store_true")
+    ap.add_argument("--wait", action="store_true",
+                    help="Poll until enough GPUs are free before launching.")
     args = ap.parse_args()
 
     out_root_base = ROOT / "results" / "phase_d" / MODEL / DATASET
     out_root_base.mkdir(parents=True, exist_ok=True)
 
-    excl = [int(x) for x in args.exclude_gpus.split(",") if x.strip()]
+    excl = set(int(x) for x in args.exclude_gpus.split(",") if x.strip())
     if args.gpus:
         gpus = [int(x) for x in args.gpus.split(",") if x.strip()]
     else:
-        gpus = free_gpus(exclude=excl)
-        log(f"auto-detected free GPUs (excl={excl}): {gpus}")
+        n_needed = len(CELLS) * len(SEEDS)
+        if args.wait:
+            log(f"waiting for {n_needed} free GPUs (excl={sorted(excl)}) ...")
+            while True:
+                avail = free_gpus(exclude=list(excl))
+                if len(avail) >= n_needed:
+                    log(f"found {len(avail)} free GPUs: {avail}")
+                    break
+                log(f"  {len(avail)} free (need {n_needed}); retry in {POLL_INTERVAL_S}s ...")
+                time.sleep(POLL_INTERVAL_S)
+            gpus = avail[:n_needed]
+        else:
+            gpus = free_gpus(exclude=list(excl))
+            log(f"auto-detected free GPUs (excl={sorted(excl)}): {gpus}")
 
     pending = []
     for cell_label, method, extra in CELLS:

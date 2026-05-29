@@ -92,6 +92,9 @@ def build_cmd(method: str, extra: list[str], seed: int, out_dir: Path) -> list[s
     return base + extra
 
 
+POLL_INTERVAL_S = 120
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--gpus", default="",
@@ -99,17 +102,14 @@ def main() -> int:
     ap.add_argument("--exclude_gpus", default="",
                     help="GPUs to reserve (comma-sep).")
     ap.add_argument("--dry_run", action="store_true")
+    ap.add_argument("--wait", action="store_true",
+                    help="Poll until enough GPUs are free before launching.")
     args = ap.parse_args()
 
     out_root_base = ROOT / "results" / "phase1_robustness" / MODEL / DATASET
     out_root_base.mkdir(parents=True, exist_ok=True)
 
-    excl = [int(x) for x in args.exclude_gpus.split(",") if x.strip()]
-    if args.gpus:
-        gpus = [int(x) for x in args.gpus.split(",") if x.strip()]
-    else:
-        gpus = free_gpus(exclude=excl)
-        log(f"auto-detected free GPUs (excl={excl}): {gpus}")
+    excl = set(int(x) for x in args.exclude_gpus.split(",") if x.strip())
 
     pending = []
     for cell_label, method, extra in CELLS:
@@ -122,8 +122,28 @@ def main() -> int:
             pending.append((cell_label, method, extra, seed, out_dir))
 
     if not pending:
-        log("All 9 cells have merged_final/; nothing to do.")
+        log("All cells have merged_final/; nothing to do.")
         return 0
+
+    log(f"pending ({len(pending)}): {[(p[0], p[3]) for p in pending]}")
+
+    if args.gpus:
+        gpus = [int(x) for x in args.gpus.split(",") if x.strip()]
+    else:
+        n_needed = len(pending)
+        if args.wait:
+            log(f"waiting for {n_needed} free GPU(s) (excl={sorted(excl)}) ...")
+            while True:
+                avail = free_gpus(exclude=list(excl))
+                if avail:
+                    log(f"found {len(avail)} free GPUs: {avail}")
+                    break
+                log(f"  0 free; retry in {POLL_INTERVAL_S}s ...")
+                time.sleep(POLL_INTERVAL_S)
+            gpus = avail
+        else:
+            gpus = free_gpus(exclude=list(excl))
+            log(f"auto-detected free GPUs (excl={sorted(excl)}): {gpus}")
 
     log(f"pending ({len(pending)}): {[(p[0], p[3]) for p in pending]}")
 
