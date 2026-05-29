@@ -69,10 +69,11 @@ def has_result(out_dir: Path) -> bool:
 
 
 def launch_eval(gpu: int, merged_dir: Path, out_dir: Path,
-                log_path: Path, tasks: str, fewshot: int) -> int:
+                log_path: Path, tasks: str, fewshot: int) -> subprocess.Popen:
     env = os.environ.copy()
     env["CUDA_VISIBLE_DEVICES"] = str(gpu)
     env["CUDA_HOME"] = "/usr/local/cuda-12"
+    env["NLTK_DATA"] = "/mnt/cpfs/junlongke/nltk_data"
     cmd = [
         PY_RRENV, "-m", "lm_eval",
         "--model", "vllm",
@@ -90,7 +91,7 @@ def launch_eval(gpu: int, merged_dir: Path, out_dir: Path,
     with log_path.open("w") as f:
         proc = subprocess.Popen(cmd, env=env, stdout=f, stderr=subprocess.STDOUT,
                                 cwd=str(ROOT), preexec_fn=os.setsid)
-    return proc.pid
+    return proc
 
 
 def collect_jobs(phase1: bool, phaseD: bool, phase1p5: bool = False) -> list[dict]:
@@ -182,7 +183,7 @@ def main() -> int:
         log(f"WARN: {len(gpus)} GPUs for {len(jobs)} jobs; "
             f"will launch first {len(gpus)}, re-run for rest.")
 
-    procs: list[tuple[str, int, int]] = []
+    procs: list[tuple[str, int, subprocess.Popen]] = []
     for i, job in enumerate(jobs):
         if i >= len(gpus):
             log(f"no GPU for {job['label']}; re-run after GPUs free.")
@@ -192,10 +193,10 @@ def main() -> int:
             continue
         gpu = gpus[i]
         log_path = LOG_DIR / (job["label"].replace("/", "_") + ".eval.log")
-        pid = launch_eval(gpu, job["merged"], job["out"], log_path,
-                          TASKS_5SHOT + "," + TASKS_0SHOT, 5)
-        procs.append((job["label"], gpu, pid))
-        log(f"  LAUNCH {job['label']} gpu={gpu} pid={pid}")
+        proc = launch_eval(gpu, job["merged"], job["out"], log_path,
+                           TASKS_5SHOT + "," + TASKS_0SHOT, 5)
+        procs.append((job["label"], gpu, proc))
+        log(f"  LAUNCH {job['label']} gpu={gpu} pid={proc.pid}")
 
     if args.dry_run:
         log("dry-run done.")
@@ -205,12 +206,12 @@ def main() -> int:
     while True:
         time.sleep(60)
         alive = []
-        for label, gpu, pid in procs:
-            try:
-                os.kill(pid, 0)
-                alive.append((label, gpu, pid))
-            except ProcessLookupError:
-                log(f"  {label} (pid={pid}) exited.")
+        for label, gpu, proc in procs:
+            rc = proc.poll()
+            if rc is None:
+                alive.append((label, gpu, proc))
+            else:
+                log(f"  {label} (pid={proc.pid}) exited rc={rc}.")
         procs = alive
         if not procs:
             break
