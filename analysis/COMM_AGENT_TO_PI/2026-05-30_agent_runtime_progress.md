@@ -100,3 +100,52 @@ Rough ETA at the current rate is around 2026-05-30 15:00-16:00 UTC for PhaseD tr
 - Check `logs/phase1D_eval/*.eval.log` for nonzero eval exits.
 - Check `logs/phaseD/*.train.log` for PhaseD progress and final `merged_final` creation.
 - Do not commit `results/`, live `logs/`, `.phase1_seed44_rerun.pid`, or local incident timestamp files.
+
+---
+
+# Update - 2026-05-30 13:42 UTC
+
+## Pulled PI Feedback #8
+
+Pulled `origin/main` to `977436f` and received `analysis/COMM_PI_TO_AGENT/2026-05-30_pi_feedback_8_phase1p5_seed_stabilize.md`.
+
+## New Phase 1.5 Jobs Launched
+
+Launched the highest-priority stabilization batch from section A1:
+
+| GPU | PID | Job |
+| --- | ---: | --- |
+| 4 | `3165503` | Phase1.5 train `random_anneal_down/seed43` |
+| 5 | `3165504` | Phase1.5 train `random_anneal_down/seed44` |
+
+Logs:
+
+- `logs/phase1p5/random_anneal_down.seed43.train.log`
+- `logs/phase1p5/random_anneal_down.seed44.train.log`
+
+Both jobs reached step 0 diagnostics and confirmed `drop_schedule 'anneal_down' -> [0.75, 0.65, 0.55, 0.45]`.
+
+## GPU State
+
+As of 2026-05-30 13:41 UTC:
+
+- GPUs 0-3: PhaseD training still healthy.
+- GPUs 4-5: new Phase1.5 `random_anneal_down` seed43/44 training.
+- GPUs 6-7: idle by design; PI #8 only required two new training jobs at this point.
+
+## Phase 1 Decision Analysis
+
+Regenerated Phase 1 paired-t outputs:
+
+- `analysis/results_v3/phase1_summary.json`
+- `analysis/COMM_AGENT_TO_PI/2026-05-30_phase1_decision.md`
+
+Result: Phase 1 alone satisfies the selection-vs-random rule (`+3.18pp`, `p=0.0479`), but Phase 2 remains held until Phase 1.5 n=3 evals finish.
+
+## Remaining Work
+
+- Wait for `random_anneal_down/seed43` and `seed44` `merged_final/`.
+- Eval both Phase1.5 seeds on the same suite.
+- Recompute Phase1.5 n=3 decision per PI section A4.
+- Low-priority hygiene still pending: delete older duplicate `random_anneal_up` result JSON and replace the temporary eval autodrain with `--drain`.
+

@@ -1,0 +1,198 @@
+{
+  "cells": {
+    "v1_S3pos": {
+      "gsm8k_strict": {
+        "mean": 78.9992,
+        "std": 0.6478,
+        "values": [
+          79.6058,
+          78.3169,
+          79.0751
+        ]
+      },
+      "gsm8k_flex": {
+        "mean": 79.1761,
+        "std": 0.7044,
+        "values": [
+          79.7574,
+          78.3927,
+          79.3783
+        ]
+      },
+      "hellaswag": {
+        "mean": 78.3277,
+        "std": 0.1896,
+        "values": [
+          78.1318,
+          78.5103,
+          78.341
+        ]
+      },
+      "arc_challenge": {
+        "mean": 68.1741,
+        "std": 0.5328,
+        "values": [
+          67.7474,
+          68.7713,
+          68.0034
+        ]
+      },
+      "mmlu": {
+        "mean": 74.9157,
+        "std": 0.2737,
+        "values": [
+          74.6689,
+          74.8683,
+          75.2101
+        ]
+      },
+      "ifeval": {
+        "mean": 41.7745,
+        "std": 1.9209,
+        "values": [
+          40.6654,
+          43.9926,
+          40.6654
+        ]
+      }
+    },
+    "random_dr0.5": {
+      "gsm8k_strict": {
+        "mean": 75.815,
+        "std": 0.9856,
+        "values": [
+          76.3457,
+          76.4215,
+          74.6778
+        ]
+      },
+      "gsm8k_flex": {
+        "mean": 76.2194,
+        "std": 0.8177,
+        "values": [
+          76.8006,
+          76.5732,
+          75.2843
+        ]
+      },
+      "hellaswag": {
+        "mean": 79.4065,
+        "std": 0.1195,
+        "values": [
+          79.4065,
+          79.526,
+          79.287
+        ]
+      },
+      "arc_challenge": {
+        "mean": 66.5245,
+        "std": 0.936,
+        "values": [
+          66.2116,
+          65.785,
+          67.5768
+        ]
+      },
+      "mmlu": {
+        "mean": 74.2629,
+        "std": 0.1572,
+        "values": [
+          74.4267,
+          74.1134,
+          74.2487
+        ]
+      },
+      "ifeval": {
+        "mean": 39.6796,
+        "std": 3.1496,
+        "values": [
+          41.5896,
+          36.0444,
+          41.4048
+        ]
+      }
+    },
+    "relora_baseline": {
+      "gsm8k_strict": {
+        "mean": 71.1903,
+        "std": 0.5307,
+        "values": [
+          71.721,
+          71.1903,
+          70.6596
+        ]
+      },
+      "gsm8k_flex": {
+        "mean": 71.6705,
+        "std": 0.7364,
+        "values": [
+          72.4792,
+          71.4936,
+          71.0387
+        ]
+      },
+      "hellaswag": {
+        "mean": 79.1011,
+        "std": 0.1697,
+        "values": [
+          79.0082,
+          78.9982,
+          79.297
+        ]
+      },
+      "arc_challenge": {
+        "mean": 63.4243,
+        "std": 0.9889,
+        "values": [
+          63.5666,
+          62.372,
+          64.3345
+        ]
+      },
+      "mmlu": {
+        "mean": 72.7247,
+        "std": 0.2019,
+        "values": [
+          72.568,
+          72.6535,
+          72.9526
+        ]
+      },
+      "ifeval": {
+        "mean": 28.9587,
+        "std": 3.3544,
+        "values": [
+          30.3142,
+          31.4233,
+          25.1386
+        ]
+      }
+    }
+  },
+  "comparisons": {
+    "v1_S3pos_vs_relora_baseline_gsm8k_strict": {
+      "label": "primary: method vs baseline",
+      "cell_a": "v1_S3pos",
+      "cell_b": "relora_baseline",
+      "metric": "gsm8k_strict",
+      "delta": 7.8089,
+      "t_stat": 20.8803,
+      "p_value": 0.0023,
+      "v1_S3pos_mean": 78.9992,
+      "relora_baseline_mean": 71.1903
+    },
+    "v1_S3pos_vs_random_dr0.5_gsm8k_strict": {
+      "label": "KEY: selection vs random (decision rule)",
+      "cell_a": "v1_S3pos",
+      "cell_b": "random_dr0.5",
+      "metric": "gsm8k_strict",
+      "delta": 3.1842,
+      "t_stat": 4.4028,
+      "p_value": 0.0479,
+      "v1_S3pos_mean": 78.9992,
+      "random_dr0.5_mean": 75.815
+    }
+  },
+  "decision": "PROCEED_TO_PHASE2",
+  "decision_reason": "v1 vs random_dr0.5 gsm8k delta=+3.18pp >= 1.5pp AND p=0.0479 < 0.1. Selection signal confirmed."
+}

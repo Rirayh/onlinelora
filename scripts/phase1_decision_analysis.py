@@ -179,6 +179,9 @@ def main() -> int:
         key = f"{c1}_vs_{c2}_{metric}"
         summary["comparisons"][key] = {
             "label":  label,
+            "cell_a": c1,
+            "cell_b": c2,
+            "metric": metric,
             "delta":  round(delta, 4),
             "t_stat": round(t, 4),
             "p_value": round(p, 4),
@@ -271,8 +274,9 @@ def _write_decision_md(summary: dict, decision: str, reason: str) -> None:
     for key, v in summary.get("comparisons", {}).items():
         sig = "YES" if abs(v.get("delta", 0)) >= PROCEED_THRESHOLD_PP \
               and v.get("p_value", 1) < PROCEED_P_THRESHOLD else "no"
+        metric = v.get("metric", key.rsplit("_", 1)[-1])
         lines.append(
-            f"| {v.get('label',key)} | {key.split('_')[-1]} | "
+            f"| {v.get('label',key)} | {metric} | "
             f"{v.get('delta', 0):+.2f}pp | "
             f"{v.get('t_stat', 0):.3f} | {v.get('p_value', 1):.4f} | {sig} |"
         )
@@ -283,9 +287,9 @@ def _write_decision_md(summary: dict, decision: str, reason: str) -> None:
         "",
     ]
     for key, v in summary.get("comparisons", {}).items():
-        n = len(SEEDS)
-        c1, c2 = key.split("_vs_")[0], key.split("_vs_")[1].rsplit("_", 1)[0]
-        metric = key.rsplit("_", 1)[-1]
+        c1 = v.get("cell_a", key.split("_vs_")[0])
+        c2 = v.get("cell_b", key.split("_vs_")[1].rsplit("_", 1)[0])
+        metric = v.get("metric", key.rsplit("_", 1)[-1])
         mu1 = v.get(f"{c1}_mean", float("nan"))
         mu2 = v.get(f"{c2}_mean", float("nan"))
         delta = v.get("delta", float("nan"))
