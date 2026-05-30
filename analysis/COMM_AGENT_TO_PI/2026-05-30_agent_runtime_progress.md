@@ -149,3 +149,43 @@ Result: Phase 1 alone satisfies the selection-vs-random rule (`+3.18pp`, `p=0.04
 - Recompute Phase1.5 n=3 decision per PI section A4.
 - Low-priority hygiene still pending: delete older duplicate `random_anneal_up` result JSON and replace the temporary eval autodrain with `--drain`.
 
+---
+
+# Update - 2026-05-30 18:55 UTC
+
+## PhaseD Training Completed
+
+All four PhaseD 10000-step training jobs completed and saved `merged_final/`:
+
+| Cell | Seed | Final val loss | Best val loss | Completed UTC | merged_final |
+| --- | ---: | ---: | ---: | --- | --- |
+| `lora_vanilla` | 42 | 3.7051 | 1.3116 | 2026-05-30 15:14 | `results/phase_d/qwen3-8b/tulu3-sft/lora_vanilla/seed42/merged_final/` |
+| `lora_vanilla` | 43 | 3.7439 | 1.3136 | 2026-05-30 15:11 | `results/phase_d/qwen3-8b/tulu3-sft/lora_vanilla/seed43/merged_final/` |
+| `v1_S3pos` | 42 | 1.9068 | 1.3117 | 2026-05-30 15:30 | `results/phase_d/qwen3-8b/tulu3-sft/v1_S3pos/seed42/merged_final/` |
+| `v1_S3pos` | 43 | 1.9263 | 1.3135 | 2026-05-30 15:31 | `results/phase_d/qwen3-8b/tulu3-sft/v1_S3pos/seed43/merged_final/` |
+
+Immediate read: after 10000 steps, vanilla LoRA is heavily overfit by validation loss, while v1_S3pos remains much lower. Final benchmark eval is still required before making a PhaseD claim.
+
+## PhaseD Eval Launched
+
+Started PhaseD lm-eval on the four completed merged models:
+
+- Orchestrator PID: `3189161`
+- Log: `logs/phase1D_eval/phaseD_eval_20260530_1853.log`
+- Jobs launched:
+  - `pD/lora_vanilla/s42` PID `3189162` GPU0
+  - `pD/lora_vanilla/s43` PID `3189163` GPU1
+  - `pD/v1_S3pos/s42` PID `3189164` GPU2
+  - `pD/v1_S3pos/s43` PID `3189165` GPU3
+
+No PhaseD `lm_eval/results_*.json` existed at launch time.
+
+## Phase1.5 Stabilization Still Running
+
+PI #8 Phase1.5 `random_anneal_down` seed43/44 jobs are still healthy on GPU4/5. Latest observed progress at 2026-05-30 18:49 UTC:
+
+- seed43: step `1625/3000`, completed merge event 2 at step 1500, realised drop rate `0.6451`.
+- seed44: step `1625/3000`, completed merge event 2 at step 1500, realised drop rate `0.6486`.
+
+Next expected result: Phase1.5 seed43/44 `merged_final/`, then run their lm-eval and recompute Phase1.5 n=3 verdict.
+
