@@ -189,3 +189,30 @@ PI #8 Phase1.5 `random_anneal_down` seed43/44 jobs are still healthy on GPU4/5. 
 
 Next expected result: Phase1.5 seed43/44 `merged_final/`, then run their lm-eval and recompute Phase1.5 n=3 verdict.
 
+---
+
+# Update - 2026-05-30 19:50 UTC
+
+## Idle GPUs Filled with Frontier Baseline Pilots
+
+Started two frontier baseline pilot trainings on the previously idle GPUs 6 and 7:
+
+| GPU | PID | Job | Log |
+| --- | ---: | --- | --- |
+| 6 | `3200201` | `frontier/dora/seed42`, 3000-step qwen3-8b/tulu3-sft | `logs/frontier/dora.seed42.train.log` |
+| 7 | `3200202` | `frontier/adalora/seed42`, 3000-step qwen3-8b/tulu3-sft | `logs/frontier/adalora.seed42.train.log` |
+
+Both jobs use `--save_merged_final` and output under `results/frontier_baselines/qwen3-8b/tulu3-sft/<method>/seed42/`.
+
+Current GPU allocation after launch:
+
+- GPU0-3: PhaseD benchmark eval via vLLM.
+- GPU4-5: Phase1.5 `random_anneal_down` seed43/44 training.
+- GPU6: DoRA frontier baseline seed42 training.
+- GPU7: AdaLoRA frontier baseline seed42 training.
+
+First-log check:
+
+- DoRA initialized normally: 252 LoRA layers, 4032 components, 45.05M trainable params.
+- AdaLoRA initialized and has 87.30M trainable params, but current rank-stat helper reports 0 standard LoRA handles, causing `mean_ER=nan` / `mean_CN=nan`. This is logged as `BUG-20260530-01` in the frontier comparison log. The run remains useful as a quality baseline, but its rank diagnostics are invalid until fixed or marked N/A.
+

@@ -185,3 +185,62 @@ Immediate baseline queue after current running jobs clear:
 3. Add PiSSA CLI support; run seed42 3000-step baseline if smoke passes.
 4. Add EVA only after checking whether PEFT requires a dataloader-specific initialization pass.
 
+## Run Launch - Frontier Baseline Pilot 2026-05-30 19:45 UTC
+
+Purpose: use idle GPU6/7 while PhaseD eval and Phase1.5 stabilization are running. Start the two lowest-risk frontier baselines that current `stage3_run.py` already supports without code changes.
+
+Git commit at launch: `e15a151`.
+
+Shared config:
+
+- Model: `/mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B`
+- Model key: `qwen3-8b`
+- Dataset: `tulu3-sft`
+- Seed: `42`
+- Steps: `3000`
+- Eval every: `250`
+- Merge every: `750` (irrelevant for non-ReLoRA methods; both have `merge events scheduled at: []`)
+- Checkpoints: disabled via `--ckpt_every 0`
+- Attention: `sdpa`
+- Save: `--save_merged_final`
+
+Jobs launched:
+
+| Method | GPU | PID | Log | Output root | Initial status |
+| --- | ---: | ---: | --- | --- | --- |
+| `dora` | 6 | `3200201` | `logs/frontier/dora.seed42.train.log` | `results/frontier_baselines/qwen3-8b/tulu3-sft/dora/seed42/` | initialized; 252 LoRA layers, 4032 components, 45.05M trainable params |
+| `adalora` | 7 | `3200202` | `logs/frontier/adalora.seed42.train.log` | `results/frontier_baselines/qwen3-8b/tulu3-sft/adalora/seed42/` | initialized; 87.30M trainable params; rank-stat helper sees 0 standard LoRA handles |
+
+Commands used:
+
+```bash
+CUDA_VISIBLE_DEVICES=6 /mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python scripts/stage3_run.py \
+  --model_path /mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B \
+  --model_key qwen3-8b --dataset tulu3-sft --method dora \
+  --total_steps 3000 --merge_every 750 --eval_every 250 --ckpt_every 0 \
+  --saliency_max_seq_len 512 --attn_implementation sdpa --save_merged_final \
+  --seed 42 --out_root results/frontier_baselines/qwen3-8b/tulu3-sft/dora/seed42
+
+CUDA_VISIBLE_DEVICES=7 /mnt/cpfs/junlongke/miniconda3/envs/espo/bin/python scripts/stage3_run.py \
+  --model_path /mnt/cpfs/public_data/public_model/Qwen3/Qwen3-8B \
+  --model_key qwen3-8b --dataset tulu3-sft --method adalora \
+  --total_steps 3000 --merge_every 750 --eval_every 250 --ckpt_every 0 \
+  --saliency_max_seq_len 512 --attn_implementation sdpa --save_merged_final \
+  --seed 42 --out_root results/frontier_baselines/qwen3-8b/tulu3-sft/adalora/seed42
+```
+
+Observed first-log check:
+
+- DoRA reached data/model init, LoRA wrapping, step-0 rank stats, and no merge events.
+- AdaLoRA reached data/model init and no merge events, but standard `get_lora_BA_handles()` returned 0 handles. This makes effective-rank/condition-number logging `nan`; training can still proceed because trainable params are present.
+
+### BUG-20260530-01 - AdaLoRA rank-stat helper sees no standard LoRA handles
+
+- Symptom: `stage3_run.py --method adalora` logs `#LoRA layers=0 #components=0`, then `mean_ER=nan mean_CN=nan` at step 0.
+- Repro command: see AdaLoRA command above.
+- Affected commit: `e15a151`.
+- Root cause: current `src.model.get_lora_BA_handles()` appears tailored to standard LoRA modules and does not recognize PEFT AdaLoRA module structure.
+- Impact: rank/effective-rank diagnostics are invalid for AdaLoRA, but the run still has 87.30M trainable parameters and can produce val/eval metrics.
+- Fix plan: before using AdaLoRA diagnostic claims, extend the handle collector or explicitly mark AdaLoRA rank metrics as N/A in summaries.
+- Current action: keep the run alive as a quality baseline pilot; do not use its rank-stat diagnostics for conclusions.
+
