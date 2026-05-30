@@ -216,3 +216,31 @@ First-log check:
 - DoRA initialized normally: 252 LoRA layers, 4032 components, 45.05M trainable params.
 - AdaLoRA initialized and has 87.30M trainable params, but current rank-stat helper reports 0 standard LoRA handles, causing `mean_ER=nan` / `mean_CN=nan`. This is logged as `BUG-20260530-01` in the frontier comparison log. The run remains useful as a quality baseline, but its rank diagnostics are invalid until fixed or marked N/A.
 
+
+---
+
+# Update - 2026-05-30 19:55 UTC
+
+## GPU Utilization Check
+
+No idle GPU remains. `nvidia-smi` at 2026-05-30 19:52 UTC showed all eight A100s at high utilization:
+
+- GPU0-3: PhaseD `lm_eval` via vLLM, each using ~76.4 GiB and 96-100% GPU util.
+- GPU4: Phase1.5 `random_anneal_down` seed43, PID `3165503`, ~31.9 GiB and 100% util.
+- GPU5: Phase1.5 `random_anneal_down` seed44, PID `3165504`, ~32.6 GiB and 100% util.
+- GPU6: DoRA frontier baseline seed42, PID `3200201`, ~31.3 GiB and 100% util.
+- GPU7: AdaLoRA frontier baseline seed42, PID `3200202`, ~32.0 GiB and 100% util.
+
+Decision: do not launch additional jobs just because GPU4-7 still have free memory. Compute utilization is already saturated; colocating another training job would likely slow the active jobs and increase OOM risk.
+
+## Runtime Health
+
+Latest observed progress:
+
+- PhaseD eval orchestrator still reports all four PhaseD eval jobs running through 2026-05-30 19:52 UTC. No `results_*.json` files are complete yet under `results/phase_d/`.
+- Phase1.5 `random_anneal_down` seed43 reached step `1950/3000` at 2026-05-30 19:50 UTC.
+- Phase1.5 `random_anneal_down` seed44 reached step `1975/3000` at 2026-05-30 19:53 UTC.
+- AdaLoRA frontier baseline reached step `25/3000` at 2026-05-30 19:51 UTC, train loss `1.9309`.
+- DoRA frontier baseline has completed initialization and is consuming GPU, but has not emitted a step-25 line yet. Keep monitoring; current state is consistent with a slow first compiled training segment rather than a confirmed failure.
+
+Next action when a GPU frees: if PhaseD eval completes first, use freed GPUs to evaluate Phase1.5 seed43/44 once their `merged_final/` directories exist. If a training GPU frees first, extend frontier baselines with PiSSA support and a seed42 run after a smoke check.

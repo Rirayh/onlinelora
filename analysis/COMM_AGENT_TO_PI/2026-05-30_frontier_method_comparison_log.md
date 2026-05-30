@@ -244,3 +244,14 @@ Observed first-log check:
 - Fix plan: before using AdaLoRA diagnostic claims, extend the handle collector or explicitly mark AdaLoRA rank metrics as N/A in summaries.
 - Current action: keep the run alive as a quality baseline pilot; do not use its rank-stat diagnostics for conclusions.
 
+
+## Run Health Check - 2026-05-30 19:55 UTC
+
+GPU6/GPU7 frontier pilots are occupying the remaining compute capacity; no extra baseline is launched at this checkpoint.
+
+Observed state:
+
+- DoRA seed42 PID `3200201`: process alive on GPU6, ~31.3 GiB memory, 100% util. Log confirms initialization, 252 LoRA layers, 4032 components, 45.05M trainable params, and no merge events. No step-25 line yet; keep monitoring before declaring stuck.
+- AdaLoRA seed42 PID `3200202`: process alive on GPU7, ~32.0 GiB memory, 100% util. Reached step `25/3000` at 2026-05-30 19:51 UTC with train loss `1.9309`. `BUG-20260530-01` still applies to rank diagnostics only.
+
+Operational rule added from this check: free memory is not sufficient reason to colocate another training job. Current A100 util is already saturated, so the next frontier experiment should wait for an actual GPU to free.
