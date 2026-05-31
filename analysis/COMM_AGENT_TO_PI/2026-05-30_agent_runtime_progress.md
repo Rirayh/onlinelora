@@ -349,3 +349,17 @@ Started fair LoRA vanilla n=3 frontier baselines because GPUs 0-2 were idle and 
 | 2 | `3294694` | `lora_vanilla` seed44 | `logs/frontier/lora_vanilla.seed44.train.log` |
 
 This gives a fair 3000-step vanilla baseline for comparing AdaLoRA/DoRA/PiSSA against the project method, rather than relying only on PhaseD's 10000-step overtrain runs.
+
+---
+
+# Update - 2026-05-31 13:57 UTC
+
+Committed and pushed progress report commit `18066fb` (`Summarize Phase1.5 n3 and frontier partials`).
+
+Runtime check:
+
+- GPUs 0/1/2: `lora_vanilla` seeds 42/43/44 are alive and consuming GPU.
+- GPUs 3/4: AdaLoRA seeds 43/44 are alive, around step 1775/3000; validation loss has started rising after the earlier best checkpoints.
+- GPU6: DoRA seed42 remains alive and consuming GPU.
+- GPU7: `pissa_niter_16` seed42 remains alive, around step 1800/3000; validation loss continues to rise (`1.7193` at step 1750), so do not expand this method before final eval.
+- GPU5: plain `pissa` seed42 process is alive but not consuming GPU yet. `ps` shows very high CPU usage (`~3973%`) after `model loaded`, consistent with CPU-heavy PiSSA initialization/decomposition before training. Do not launch another GPU5 job until this either enters GPU training or fails, otherwise it may collide later.
