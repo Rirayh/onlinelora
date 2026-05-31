@@ -244,3 +244,51 @@ Latest observed progress:
 - DoRA frontier baseline has completed initialization and is consuming GPU, but has not emitted a step-25 line yet. Keep monitoring; current state is consistent with a slow first compiled training segment rather than a confirmed failure.
 
 Next action when a GPU frees: if PhaseD eval completes first, use freed GPUs to evaluate Phase1.5 seed43/44 once their `merged_final/` directories exist. If a training GPU frees first, extend frontier baselines with PiSSA support and a seed42 run after a smoke check.
+
+---
+
+# Update - 2026-05-31 08:10 UTC
+
+## Overnight Results and GPU Refill
+
+At 2026-05-31 07:59 UTC, GPUs 0-5 and 7 were free; only DoRA seed42 was still running on GPU6.
+
+Completed since the previous checkpoint:
+
+- PhaseD benchmark eval finished at 2026-05-30 20:23 UTC.
+- Phase1.5 `random_anneal_down` seed43/44 training finished and wrote `summary.json` plus `merged_final/`.
+- AdaLoRA seed42 finished training, wrote `summary.json`, and saved `merged_final/`.
+
+### PhaseD Eval Summary
+
+| Cell | Seed | gsm8k strict | gsm8k flex | HellaSwag | ARC-C | MMLU | IFEval |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| `lora_vanilla` | 42 | 87.57 | 88.25 | 76.07 | 66.47 | 74.78 | 25.51 |
+| `lora_vanilla` | 43 | 87.57 | 88.25 | 76.07 | 66.47 | 74.78 | 25.51 |
+| `v1_S3pos` | 42 | 77.03 | 77.18 | 79.00 | 66.72 | 73.17 | 42.33 |
+| `v1_S3pos` | 43 | 76.65 | 77.03 | 79.41 | 65.10 | 73.24 | 44.36 |
+
+Read: PhaseD does not give a single-axis win. Vanilla LoRA wins GSM8K after long overtraining, while `v1_S3pos` has much better IFEval and slightly better HellaSwag. This should be framed as a tradeoff / overtraining-regime diagnostic, not as a clean dominance result.
+
+## New Jobs Launched
+
+### Eval Jobs
+
+Started with `setsid env ...` after plain background `nohup` failed to keep lm-eval alive in this execution wrapper.
+
+| GPU | PID | Job | Log |
+| --- | ---: | --- | --- |
+| 0 | `3248737` | Phase1.5 `random_anneal_down` seed43 lm-eval | `logs/phase1p5_eval/random_anneal_down.seed43.eval.log` |
+| 1 | `3249570` | Phase1.5 `random_anneal_down` seed44 lm-eval | `logs/phase1p5_eval/random_anneal_down.seed44.eval.log` |
+| 2 | `3249642` | Frontier AdaLoRA seed42 lm-eval | `logs/frontier_eval/adalora.seed42.eval.log` |
+
+### Frontier Training Jobs
+
+| GPU | PID | Job | Log |
+| --- | ---: | --- | --- |
+| 3 | `3250178` | AdaLoRA seed43, 3000 steps | `logs/frontier/adalora.seed43.train.log` |
+| 4 | `3250040` | AdaLoRA seed44, 3000 steps | `logs/frontier/adalora.seed44.train.log` |
+| 5 | `3252651` | PiSSA-niter-16 seed42 smoke | `logs/frontier/pissa_niter_16.seed42.smoke.log` |
+| 6 | `3200201` | DoRA seed42 continues | `logs/frontier/dora.seed42.train.log` |
+
+Current note: DoRA seed42 is healthy but very slow. It reached step `600/3000` at 2026-05-31 07:46 UTC, with best observed val loss `1.3106` at step 500. Do not expand DoRA seeds until seed42 completes or a shorter-budget policy is agreed.

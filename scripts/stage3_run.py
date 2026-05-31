@@ -171,6 +171,8 @@ METHOD_CHOICES = [
     "relora_diag_gated_S3pos_keepB",
     "dora",
     "adalora",
+    "pissa",
+    "pissa_niter_16",
     "relora_random_drop",
     "relora_train_gated",
     "cola",
@@ -470,6 +472,11 @@ def wrap_lora(model: nn.Module, r: int, alpha: int, dropout: float,
             target_modules=target_modules, bias="none",
             total_step=total_steps,
         )
+    elif method in {"pissa", "pissa_niter_16"}:
+        init_lora_weights = "pissa" if method == "pissa" else "pissa_niter_16"
+        cfg = LoraConfig(r=r, lora_alpha=alpha, lora_dropout=dropout,
+                         target_modules=target_modules, bias="none",
+                         init_lora_weights=init_lora_weights)
     else:
         cfg = LoraConfig(r=r, lora_alpha=alpha, lora_dropout=dropout,
                          target_modules=target_modules, bias="none")
@@ -831,6 +838,9 @@ def main() -> int:
         gate_sign = None
     elif args.method == "adalora":
         do_relora = False    # AdaLoRA has its own importance-driven rank reduction
+        gate_sign = None
+    elif args.method in {"pissa", "pissa_niter_16"}:
+        do_relora = False    # PiSSA is a LoRA initialization baseline, no ReLoRA merges
         gate_sign = None
     elif args.method == "cola":
         # COLA (Chain-of-LoRA, Xia et al. 2024 arxiv:2401.04151).

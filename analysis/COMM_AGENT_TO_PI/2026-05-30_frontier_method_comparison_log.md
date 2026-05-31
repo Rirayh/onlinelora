@@ -255,3 +255,27 @@ Observed state:
 - AdaLoRA seed42 PID `3200202`: process alive on GPU7, ~32.0 GiB memory, 100% util. Reached step `25/3000` at 2026-05-30 19:51 UTC with train loss `1.9309`. `BUG-20260530-01` still applies to rank diagnostics only.
 
 Operational rule added from this check: free memory is not sufficient reason to colocate another training job. Current A100 util is already saturated, so the next frontier experiment should wait for an actual GPU to free.
+
+## Run Launch - 2026-05-31 08:10 UTC
+
+Overnight frontier status:
+
+- AdaLoRA seed42 completed training in `35454.0s`, final val loss `1.3689`, best logged val loss `1.3061` at step 1000. `merged_final/` was saved. Rank diagnostics remain invalid because `BUG-20260530-01` still applies.
+- DoRA seed42 is still running and is much slower: step `600/3000` at 2026-05-31 07:46 UTC, best logged val loss `1.3106` at step 500.
+
+New jobs:
+
+| GPU | PID | Method | Seed | Purpose | Status |
+| --- | ---: | --- | ---: | --- | --- |
+| 2 | `3249642` | AdaLoRA | 42 | final benchmark eval | running |
+| 3 | `3250178` | AdaLoRA | 43 | n=3 expansion | running; initialized, 87.30M trainable params |
+| 4 | `3250040` | AdaLoRA | 44 | n=3 expansion | running |
+| 5 | `3252651` | PiSSA-niter-16 | 42 | smoke for PEFT PiSSA support | running; pending validation |
+
+Code change staged in working tree: `scripts/stage3_run.py` now exposes `pissa` and `pissa_niter_16` as PEFT LoRA initialization baselines with no ReLoRA merge events. Syntax check passed with `python -m py_compile scripts/stage3_run.py`.
+
+Operational notes:
+
+- DoRA seed expansion is deferred because seed42 ETA is too high.
+- AdaLoRA seed expansion is preferred because seed42 completed overnight and produces a viable quality baseline, although rank diagnostics must be marked N/A.
+- PiSSA is treated as an initialization baseline. It should only be promoted from smoke to 3000-step run after the smoke confirms model wrapping, rank stats, and at least one eval point.
