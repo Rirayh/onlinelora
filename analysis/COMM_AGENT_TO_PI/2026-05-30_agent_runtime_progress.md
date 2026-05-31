@@ -308,3 +308,44 @@ As of this update, all eight GPUs have assigned work:
 - GPU5: PiSSA-niter-16 smoke.
 - GPU6: DoRA seed42 training.
 - GPU7: PiSSA-niter-16 seed42 full training.
+
+---
+
+# Update - 2026-05-31 13:55 UTC
+
+## Completed Evals
+
+Phase1.5 `random_anneal_down` seed43/44 and AdaLoRA seed42 final lm-eval completed.
+
+New reports written:
+
+- `analysis/COMM_AGENT_TO_PI/2026-05-31_phase1p5_n3_decision.md`
+- `analysis/COMM_AGENT_TO_PI/2026-05-31_frontier_partial_results.md`
+- `analysis/results_v3/phase1p5_n3_and_frontier_partial.json`
+
+Key Phase1.5 n=3 finding:
+
+- `v1_S3pos` beats `random_anneal_down` on GSM8K strict by `+1.01pp` mean paired delta, but `p=0.0914`.
+- `random_anneal_down` beats `v1_S3pos` on IFEval by `+2.90pp` mean paired delta.
+- Interpretation: saliency remains a GSM-specific improvement but the schedule baseline is strong; paper claim must be metric-specific.
+
+AdaLoRA seed42 final eval:
+
+- GSM8K strict `87.57`, GSM8K flex `88.25`, HellaSwag `76.07`, ARC-C `66.47`, MMLU `74.78`, IFEval `25.32`.
+- Rank diagnostics remain invalid for AdaLoRA because `get_lora_BA_handles()` does not recognize AdaLoRA modules.
+
+## New Jobs Launched
+
+Started plain PiSSA seed42 to compare against PiSSA-niter-16:
+
+- GPU5: PID `3281699`, log `logs/frontier/pissa.seed42.train.log`, output `results/frontier_baselines/qwen3-8b/tulu3-sft/pissa/seed42/`.
+
+Started fair LoRA vanilla n=3 frontier baselines because GPUs 0-2 were idle and AdaLoRA seed42 looked close to a vanilla/overtrain profile:
+
+| GPU | PID | Job | Log |
+| --- | ---: | --- | --- |
+| 0 | `3294622` | `lora_vanilla` seed42 | `logs/frontier/lora_vanilla.seed42.train.log` |
+| 1 | `3294415` | `lora_vanilla` seed43 | `logs/frontier/lora_vanilla.seed43.train.log` |
+| 2 | `3294694` | `lora_vanilla` seed44 | `logs/frontier/lora_vanilla.seed44.train.log` |
+
+This gives a fair 3000-step vanilla baseline for comparing AdaLoRA/DoRA/PiSSA against the project method, rather than relying only on PhaseD's 10000-step overtrain runs.

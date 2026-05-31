@@ -297,3 +297,15 @@ Based on that, launched full `pissa_niter_16` seed42 on GPU7:
 - Config: qwen3-8b/tulu3-sft, 3000 steps, eval every 250, no ReLoRA merge events, `--save_merged_final`.
 
 This fills the last idle GPU. Current frontier training coverage now includes AdaLoRA n=3 in progress, DoRA seed42 in progress, and PiSSA-niter-16 seed42 in progress.
+
+## Run Launch - Vanilla Frontier Baseline 2026-05-31 13:55 UTC
+
+AdaLoRA seed42's final benchmark profile is extremely close to the vanilla-overtrain profile: high GSM8K, weak IFEval. To avoid over-interpreting AdaLoRA without a fair 3000-step vanilla control, launched `lora_vanilla` n=3 under the same frontier baseline config.
+
+| GPU | PID | Method | Seed | Log |
+| --- | ---: | --- | ---: | --- |
+| 0 | `3294622` | `lora_vanilla` | 42 | `logs/frontier/lora_vanilla.seed42.train.log` |
+| 1 | `3294415` | `lora_vanilla` | 43 | `logs/frontier/lora_vanilla.seed43.train.log` |
+| 2 | `3294694` | `lora_vanilla` | 44 | `logs/frontier/lora_vanilla.seed44.train.log` |
+
+Also launched plain `pissa` seed42 on GPU5 (PID `3281699`) to separate plain PiSSA from `pissa_niter_16` behavior. PiSSA-niter-16 seed42 is still running but shows validation overfitting by step 1750.
