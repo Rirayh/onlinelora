@@ -292,3 +292,19 @@ Started with `setsid env ...` after plain background `nohup` failed to keep lm-e
 | 6 | `3200201` | DoRA seed42 continues | `logs/frontier/dora.seed42.train.log` |
 
 Current note: DoRA seed42 is healthy but very slow. It reached step `600/3000` at 2026-05-31 07:46 UTC, with best observed val loss `1.3106` at step 500. Do not expand DoRA seeds until seed42 completes or a shorter-budget policy is agreed.
+
+## GPU7 Filled - 2026-05-31 08:12 UTC
+
+PiSSA-niter-16 smoke reached step `15/50` without errors and validated the new runner path. Started the full PiSSA-niter-16 seed42 baseline on GPU7:
+
+- PID: `3258837`
+- Log: `logs/frontier/pissa_niter_16.seed42.train.log`
+- Output: `results/frontier_baselines/qwen3-8b/tulu3-sft/pissa_niter_16/seed42/`
+
+As of this update, all eight GPUs have assigned work:
+
+- GPU0-2: lm-eval jobs for Phase1.5 seed43/44 and AdaLoRA seed42.
+- GPU3-4: AdaLoRA seed43/44 training.
+- GPU5: PiSSA-niter-16 smoke.
+- GPU6: DoRA seed42 training.
+- GPU7: PiSSA-niter-16 seed42 full training.

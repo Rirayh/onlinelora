@@ -279,3 +279,21 @@ Operational notes:
 - DoRA seed expansion is deferred because seed42 ETA is too high.
 - AdaLoRA seed expansion is preferred because seed42 completed overnight and produces a viable quality baseline, although rank diagnostics must be marked N/A.
 - PiSSA is treated as an initialization baseline. It should only be promoted from smoke to 3000-step run after the smoke confirms model wrapping, rank stats, and at least one eval point.
+
+## Run Launch - PiSSA Full Seed42 2026-05-31 08:12 UTC
+
+PiSSA-niter-16 smoke passed the initialization and training-loop checks by 2026-05-31 08:11 UTC:
+
+- 252 LoRA layers, 4032 components.
+- 43.65M trainable params.
+- Step-0 rank stats valid: `mean_ER=1926.51`, `mean_CN=8.22e+04`.
+- Reached step `15/50` without error.
+
+Based on that, launched full `pissa_niter_16` seed42 on GPU7:
+
+- PID: `3258837`
+- Log: `logs/frontier/pissa_niter_16.seed42.train.log`
+- Output: `results/frontier_baselines/qwen3-8b/tulu3-sft/pissa_niter_16/seed42/`
+- Config: qwen3-8b/tulu3-sft, 3000 steps, eval every 250, no ReLoRA merge events, `--save_merged_final`.
+
+This fills the last idle GPU. Current frontier training coverage now includes AdaLoRA n=3 in progress, DoRA seed42 in progress, and PiSSA-niter-16 seed42 in progress.
